@@ -15,17 +15,16 @@ BPPJ
     <?php
 
 // Inicializa las variables con valores por defecto
-$proyecto_nombre = $proyecto_codigo = $tipo_trabajo = $area_trabajo = $riesgo = '';
+$proyecto_nombre = $proyecto_codigo = $tipo_trabajo = $area_trabajo = $riesgo = $riesgo_descripcion;
 $dias_compra = $dias_trabajo = $trabajadores = '';
 $horario = $colacion = $entrega = '';
 
-// Verificar si se ha enviado un ID de cotización
 if (isset($_GET['id']) && intval($_GET['id']) > 0) {
     $id_cotizacion = intval($_GET['id']);
 
     echo "<!-- Debug: Cotización ID = " . (isset($_GET['id']) ? $_GET['id'] : 'Not set') . " -->";
-
-    // Consulta para obtener los datos del proyecto basado en la cotización
+    
+    // Preparación y ejecución de la consulta
     $sql_proyecto = "SELECT 
     p.id_proyecto,
     p.nombre_proyecto,
@@ -33,7 +32,7 @@ if (isset($_GET['id']) && intval($_GET['id']) > 0) {
     p.id_tp_trabajo AS tipo_trabajo,
     p.id_area AS area_trabajo,
     p.id_tp_riesgo AS riesgo_proyecto,
-    p.descripcion_riesgo,
+    p.descripcion_riesgo AS riesgo_descripcion,
     p.dias_compra,
     p.dias_trabajo,
     p.trabajadores,
@@ -43,35 +42,38 @@ if (isset($_GET['id']) && intval($_GET['id']) > 0) {
 FROM C_Proyectos p
 INNER JOIN C_Cotizaciones c ON p.id_proyecto = c.id_proyecto
 WHERE c.id_cotizacion = ?";
-
-if ($stmt_proyecto = $mysqli->prepare($sql_proyecto)) {
-    $stmt_proyecto->bind_param("i", $id_cotizacion);
-    $stmt_proyecto->execute();
-    $result_proyecto = $stmt_proyecto->get_result();
-    
-    // Debugging: Output the number of rows returned
-    echo "<!-- Debug: Number of rows returned = " . $result_proyecto->num_rows . " -->";
-    
-    if ($result_proyecto->num_rows === 1) {
-        $row = $result_proyecto->fetch_assoc();
-        // Assign values to variables as before
-        $proyecto_nombre = $row['nombre_proyecto'];
-        $proyecto_codigo = $row['codigo_proyecto'];
-        // ... (assign other variables)
+    if ($stmt_proyecto = $mysqli->prepare($sql_proyecto)) {
+        $stmt_proyecto->bind_param("i", $id_cotizacion);
+        $stmt_proyecto->execute();
+        $result_proyecto = $stmt_proyecto->get_result();
         
-        // Debugging: Output the project name
-        echo "<!-- Debug: Project Name = " . htmlspecialchars($proyecto_nombre) . " -->";
+        if ($result_proyecto->num_rows === 1) {
+            $row = $result_proyecto->fetch_assoc();
+            // Asigna valores aquí
+            $proyecto_nombre = $row['nombre_proyecto'];
+            $proyecto_codigo = $row['codigo_proyecto'];
+            $tipo_trabajo = $row['tipo_trabajo'];
+            $area_trabajo = $row['area_trabajo'];
+            $riesgo = $row['riesgo_proyecto'];
+            $riesgo_descripcion = $row['descripcion_riesgo'];
+            $dias_compra = $row['dias_compra'];
+            $dias_trabajo = $row['dias_trabajo'];
+            $trabajadores = $row['trabajadores'];
+            $horario = $row['horario'];
+            $colacion = $row['colacion'];
+            $entrega = $row['entrega'];
+        } else {
+            echo "<p>No se encontró el proyecto para la cotización especificada.</p>";
+        }
+        $stmt_proyecto->close();
     } else {
-        echo "<p>No se encontró el proyecto para la cotización especificada.</p>";
+        echo "<p>Error en la consulta: " . $mysqli->error . "</p>";
     }
-
-    $stmt_proyecto->close();
 } else {
-    echo "<p>Error al preparar la consulta del proyecto: " . $mysqli->error . "</p>";
+    echo "<p>ID de cotización no especificado o inválido.</p>";
 }
-}
-
 ?>
+
 
 
 <!-- TÍTULO: IMPORTACIÓN DE ARCHIVO .CSS -->
@@ -183,7 +185,7 @@ if ($stmt_proyecto = $mysqli->prepare($sql_proyecto)) {
                     title="Por favor, ingrese solo letras, números y caracteres como &,-."
                     oninput="QuitarCaracteresInvalidos(this)"
                     placeholder="Ejemplo: Riesgo de retraso en la entrega"
-                    value="<?php echo htmlspecialchars($descripcion_riesgo); ?>">
+                    value="<?php echo htmlspecialchars($riesgo_descripcion); ?>">
         </div>
     </fieldset>
 
@@ -273,7 +275,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $tipo_trabajo = isset($_POST['tipo_trabajo']) ? $_POST['tipo_trabajo'] : null;
     $area_trabajo = isset($_POST['area_trabajo']) ? $_POST['area_trabajo'] : null;
     $riesgo = isset($_POST['riesgo']) ? $_POST['riesgo'] : null;
-    $descripcion_riesgo = isset($_POST['descripcion_riesgo']) ? $_POST['descripcion_riesgo'] : null;
+    $riesgo_descripcion = isset($_POST['descripcion_riesgo']) ? $_POST['descripcion_riesgo'] : null;
     $dias_compra = isset($_POST['dias_compra']) ? $_POST['dias_compra'] : null;
     $dias_trabajo = isset($_POST['dias_trabajo']) ? $_POST['dias_trabajo'] : null;
     $trabajadores = isset($_POST['trabajadores']) ? $_POST['trabajadores'] : null;
@@ -311,7 +313,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $tipo_trabajo, 
                 $area_trabajo, 
                 $riesgo,
-                $descripcion_riesgo,
+                $riesgo_descripcion,
                 $dias_compra, 
                 $dias_trabajo, 
                 $trabajadores, 

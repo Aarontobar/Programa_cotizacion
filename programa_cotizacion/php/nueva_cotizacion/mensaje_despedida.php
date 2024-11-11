@@ -39,7 +39,7 @@ BPPJ
 
 
 
-     <?php
+    <?php
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $mensaje_despedida = $_POST['mensaje_despedida'] ?? '';
@@ -78,7 +78,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 }
-
 ?>
 
 

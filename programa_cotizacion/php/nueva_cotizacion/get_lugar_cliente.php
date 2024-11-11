@@ -31,7 +31,7 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
 
 // Consulta para obtener los lugares
 
-$query = "SELECT id_lugar, nombre_lugar FROM tp_lugar";
+$query = "SELECT id, nombre_lugar FROM tp_lugar";
 $result = $mysqli->query($query);
 
 // Verificar si se obtuvieron resultados
@@ -45,7 +45,7 @@ if ($result->num_rows > 0) {
 
         // Mostrar solo el nombre en el texto de la opción, con el valor como id_lugar
 
-        echo '<option value="' . htmlspecialchars($row['id_lugar']) . '">' . htmlspecialchars($row['nombre_lugar']) . '</option>';
+        echo '<option value="' . htmlspecialchars($row['id']) . '">' . htmlspecialchars($row['nombre_lugar']) . '</option>';
 
          //-----------------------------------------------------------------
     }

@@ -116,6 +116,7 @@ BPPJ
 
                 <!-- Campo de selección PARA el lugar del cliente. Este campo es obligatorio -->
                 <select id="cliente_lugar" name="cliente_lugar" required> 
+
                 </select>
             </div>
         </div>
@@ -358,7 +359,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             email_empresa_cliente, 
             giro_empresa_cliente, 
             tipo_empresa_cliente, 
-            lugar_empresa_cliente, 
+            id_lugar, 
             ciudad_empresa_cliente, 
             comuna_empresa_cliente, 
             direccion_empresa_cliente, 
@@ -375,7 +376,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
    
    $stmt = $mysqli->prepare($sql);
    $stmt->bind_param(
-       'isssssssssssssssssss',
+       'isssssssisssssssssss',
        $id, 
        $rut_empresa_cliente, 
        $nombre_empresa_cliente, 

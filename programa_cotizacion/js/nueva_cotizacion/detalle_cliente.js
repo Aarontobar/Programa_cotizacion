@@ -149,6 +149,12 @@ BPPJ
             .catch(error => console.error('Error al cargar lugares clientes:', error)); // Manejar errores de la solicitud
     }
 
+    CargarLugarCliente();
+
+    document.addEventListener('DOMContentLoaded', () => {
+        CargarLugarCliente(); // Llamar a la función para cargar las áreas de empresa
+    });
+
 
 // TÍTULO: PARA LA INICIALIZACIÓN AL CARGAR LA PÁGINA
 

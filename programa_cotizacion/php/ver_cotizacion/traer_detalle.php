@@ -134,7 +134,7 @@ $stmt_detalles->close();
                                 
                             <!-- TÍTULO: ENCABEZADO DE LA TABLA -->
 
-                                <!-- reculiao  -->
+                                <!-- Tabla de detalle  -->
                                 <tr>
                                     <th>Tipo</th>
                                     <th>Nombre Producto</th>

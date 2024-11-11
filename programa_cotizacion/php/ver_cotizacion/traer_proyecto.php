@@ -23,52 +23,52 @@ $horario = $colacion = $entrega = '';
 if (isset($_GET['id']) && intval($_GET['id']) > 0) {
     $id_cotizacion = intval($_GET['id']);
 
+    echo "<!-- Debug: Cotización ID = " . (isset($_GET['id']) ? $_GET['id'] : 'Not set') . " -->";
+
     // Consulta para obtener los datos del proyecto basado en la cotización
     $sql_proyecto = "SELECT 
-        p.nombre_proyecto,
-        p.codigo_proyecto ,
-        p.id_tp_trabajo AS tipo_trabajo,
-        p.id_area AS area_trabajo,
-        p.id_tp_riesgo AS riesgo_proyecto,
-        descripcion_riesgo,
-        p.dias_compra,
-        p.dias_trabajo,
-        p.trabajadores,
-        p.horario,
-        p.colacion,
-        p.entrega
-    FROM C_Proyectos p
-    LEFT JOIN C_Cotizaciones c ON p.id_proyecto = c.id_proyecto
-    WHERE c.id_cotizacion = ?";
+    p.id_proyecto,
+    p.nombre_proyecto,
+    p.codigo_proyecto,
+    p.id_tp_trabajo AS tipo_trabajo,
+    p.id_area AS area_trabajo,
+    p.id_tp_riesgo AS riesgo_proyecto,
+    p.descripcion_riesgo,
+    p.dias_compra,
+    p.dias_trabajo,
+    p.trabajadores,
+    p.horario,
+    p.colacion,
+    p.entrega
+FROM C_Proyectos p
+INNER JOIN C_Cotizaciones c ON p.id_proyecto = c.id_proyecto
+WHERE c.id_cotizacion = ?";
 
-    if ($stmt_proyecto = $mysqli->prepare($sql_proyecto)) {
-        $stmt_proyecto->bind_param("i", $id_cotizacion);
-        $stmt_proyecto->execute();
-        $result_proyecto = $stmt_proyecto->get_result();
+if ($stmt_proyecto = $mysqli->prepare($sql_proyecto)) {
+    $stmt_proyecto->bind_param("i", $id_cotizacion);
+    $stmt_proyecto->execute();
+    $result_proyecto = $stmt_proyecto->get_result();
+    
+    // Debugging: Output the number of rows returned
+    echo "<!-- Debug: Number of rows returned = " . $result_proyecto->num_rows . " -->";
+    
+    if ($result_proyecto->num_rows === 1) {
+        $row = $result_proyecto->fetch_assoc();
+        // Assign values to variables as before
+        $proyecto_nombre = $row['nombre_proyecto'];
+        $proyecto_codigo = $row['codigo_proyecto'];
+        // ... (assign other variables)
         
-        if ($result_proyecto->num_rows === 1) {
-            $row = $result_proyecto->fetch_assoc();
-            // Asignar los valores a las variables
-            $proyecto_nombre = $row['nombre_proyecto'];
-            $proyecto_codigo = $row['codigo_proyecto'];
-            $tipo_trabajo = $row['tipo_trabajo'];
-            $area_trabajo = $row['area_trabajo'];
-            $riesgo = $row['riesgo_proyecto'];
-            $riesgo_descripcion = $row['descripcion_riesgo'];
-            $dias_compra = $row['dias_compra'];
-            $dias_trabajo = $row['dias_trabajo'];
-            $trabajadores = $row['trabajadores'];
-            $horario = $row['horario'];
-            $colacion = $row['colacion'];
-            $entrega = $row['entrega'];
-        } else {
-            echo "<p>No se encontró el proyecto para la cotización especificada.</p>";
-        }
-
-        $stmt_proyecto->close();
+        // Debugging: Output the project name
+        echo "<!-- Debug: Project Name = " . htmlspecialchars($proyecto_nombre) . " -->";
     } else {
-        echo "<p>Error al preparar la consulta del proyecto: " . $mysqli->error . "</p>";
+        echo "<p>No se encontró el proyecto para la cotización especificada.</p>";
     }
+
+    $stmt_proyecto->close();
+} else {
+    echo "<p>Error al preparar la consulta del proyecto: " . $mysqli->error . "</p>";
+}
 }
 
 ?>

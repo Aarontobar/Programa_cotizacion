@@ -213,16 +213,16 @@ CREATE TABLE C_Clientes (
     direccion_encargado_cliente varchar(255), -- Dirección del cliente
     telefono_encargado_cliente varchar(20), -- Teléfono del cliente    
     email_encargado_cliente varchar(100), -- Email del cliente
-    cargo_encargado_cliente varchar(255), -- Cargo del cliente
     comuna_encargado_cliente varchar(255), -- Comuna del cliente
     ciudad_encargado_cliente varchar(255), -- Ciudad del cliente
     estado_empresa_cliente varchar(20) DEFAULT 'activo', -- estado empresa
     estado_encargado_cliente varchar(20) DEFAULT 'activo', -- estado cliente
+    id_cargo INT, -- Identificador del cargo (clave foránea)
     PRIMARY KEY (id_cliente), -- Definición de la clave primaria
     FOREIGN KEY (id_empresa_creadora) REFERENCES E_Empresa(id_empresa) ON DELETE SET NULL, -- Clave foránea para referenciar la empresa
-    FOREIGN KEY (id_lugar) REFERENCES Tp_Lugar(id) ON DELETE SET NULL -- Clave foránea para referenciar el lugar
+    FOREIGN KEY (id_lugar) REFERENCES Tp_Lugar(id) ON DELETE SET NULL, -- Clave foránea para referenciar el lugar
+    FOREIGN KEY (id_cargo) REFERENCES Tp_Cargo(id_tp_cargo) ON DELETE SET NULL -- Clave foránea para referenciar el cargo
 ) ENGINE=InnoDB;
-
 
 -- ----------------------------------------------------------
 -- Estructura de tabla para la tabla `P_Proveedor`-----------
@@ -1056,7 +1056,7 @@ INSERT INTO C_Clientes (
     direccion_encargado_cliente, 
     telefono_encargado_cliente, 
     email_encargado_cliente, 
-    cargo_encargado_cliente, 
+    id_cargo, 
     comuna_encargado_cliente, 
     ciudad_encargado_cliente
 ) VALUES (
@@ -1075,7 +1075,7 @@ INSERT INTO C_Clientes (
     'Calle Falsa 123', -- Dirección del encargado
     '0987654321', -- Teléfono del encargado
     'juan.perez@ejemplo.com', -- Email del encargado
-    'Gerente', -- Cargo del encargado
+    1, -- Cargo del encargado
     'Providencia', -- Comuna del encargado
     'Santiago' -- Ciudad del encargado
 );

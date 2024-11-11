@@ -155,6 +155,25 @@ BPPJ
         CargarLugarCliente(); // Llamar a la función para cargar las áreas de empresa
     });
 
+// TÍTULO PARA CARGAR cargos clientes
+
+    // Función para cargar los cargos de los clientes
+    function CargarCargoCliente() {
+        // Realiza una solicitud para obtener la lista de cargos clientes desde el servidor
+        fetch('../../php/nueva_cotizacion/get_cargo_cliente.php')
+            .then(response => response.text())
+            .then(data => {
+                const select = document.getElementById('cliente_cargo'); // Obtener el elemento select por su ID
+                select.innerHTML = data;  // Insertar directamente las opciones generadas en el select
+            })
+            .catch(error => console.error('Error al cargar cargos clientes:', error)); // Manejar errores de la solicitud
+    }
+
+    CargarCargoCliente();
+
+    document.addEventListener('DOMContentLoaded', () => {
+        CargarCargoCliente(); // Llamar a la función para cargar los cargos de cliente
+    });
 
 // TÍTULO: PARA LA INICIALIZACIÓN AL CARGAR LA PÁGINA
 

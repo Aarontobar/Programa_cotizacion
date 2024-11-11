@@ -199,25 +199,6 @@ BPPJ
             <!-- Campo de selección PARA el cargo del cliente. Este campo es obligatorio -->
             <select id="cliente_cargo" name="cliente_cargo" required>
                 <!-- Opción por defecto -->
-                <option value="" disabled selected>Selecciona un cargo</option> 
-                <option value="gerente">Gerente</option>
-                <option value="director">Director</option>
-                <option value="ejecutivo">Ejecutivo</option>
-                <option value="supervisor">Supervisor</option>
-                <option value="jefe_area">Jefe de Área</option>
-                <option value="coordinador">Coordinador</option>
-                <option value="analista">Analista</option>
-                <option value="asistente">Asistente</option>
-                <option value="consultor">Consultor</option>
-                <option value="ingeniero">Ingeniero</option>
-                <option value="técnico">Técnico</option>
-                <option value="auxiliar">Auxiliar</option>
-                <option value="vendedor">Vendedor</option>
-                <option value="administrativo">Administrativo</option>
-                <option value="recepcionista">Recepcionista</option>
-                <option value="operador">Operador</option>
-                <option value="contador">Contador</option>
-                <option value="encargado_rrhh">Encargado de RRHH</option>
             </select>
         </div>
         <div class="form-group">
@@ -369,14 +350,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             direccion_encargado_cliente, 
             telefono_encargado_cliente, 
             email_encargado_cliente, 
-            cargo_encargado_cliente, 
+            id_cargo, 
             comuna_encargado_cliente, 
             ciudad_encargado_cliente
         ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
    
    $stmt = $mysqli->prepare($sql);
    $stmt->bind_param(
-       'isssssssisssssssssss',
+       'isssssssissssssssiss',
        $id, 
        $rut_empresa_cliente, 
        $nombre_empresa_cliente, 

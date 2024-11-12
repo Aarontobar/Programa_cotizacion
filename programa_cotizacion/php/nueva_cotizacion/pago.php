@@ -105,7 +105,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
            porcentaje_pago,
             monto_pago,
              fecha_pago,
-             forma_pago)
+             id_forma_pago)
                 VALUES (
                 ?,
                  ?,
@@ -123,7 +123,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Asignar los parámetros de forma correcta
 
-        $stmt->bind_param("iisdiss",
+        $stmt->bind_param("iisdisi",
          $id_cotizacion,
           $numero_pago,
            $pago_descripcion,

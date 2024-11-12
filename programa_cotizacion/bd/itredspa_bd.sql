@@ -48,6 +48,42 @@ CREATE TABLE FP_FotosPerfil (
     PRIMARY KEY (id_foto) -- Definición de la clave primaria
 ) ENGINE=InnoDB;
 
+-- ----------------------------------------------------------
+-- Estructura de tabla para la tabla `Tp_giro`
+-- ----------------------------------------------------------
+
+-- ----------------------------------------------------------
+-- CREAR LA TABLA Tp_giro----------------------------------
+-- ----------------------------------------------------------
+
+CREATE TABLE Tp_Giro (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    tipo VARCHAR(50) NOT NULL UNIQUE
+) ENGINE=InnoDB;
+-- ----------------------------------------------------------
+-- Estructura de tabla para la tabla `Tp_Pago`
+-- ----------------------------------------------------------
+
+-- -----------------------------------------------------------
+-- Crear la tabla Tp_Pago-------------------------------------
+-- -----------------------------------------------------------
+
+CREATE TABLE Tp_Pago (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    tipo VARCHAR(50) NOT NULL UNIQUE
+) ENGINE=InnoDB;
+-- ----------------------------------------------------------
+-- Estructura de tabla para la tabla `Tp_Cliente`
+-- ----------------------------------------------------------
+
+-- ----------------------------------------------------------
+-- CREAR LA TABLA Tp_Cliente---------------------------------
+-- ----------------------------------------------------------
+
+CREATE TABLE Tp_Cliente (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    tipo VARCHAR(50) NOT NULL UNIQUE
+) ENGINE=InnoDB;
 
 -- ----------------------------------------------------------
 -- Estructura de tabla para la tabla `Tp_Firma`
@@ -201,8 +237,8 @@ CREATE TABLE C_Clientes (
     nombre_empresa_cliente varchar(255), -- Nombre Empresa del cliente
     telefono_empresa_cliente varchar(20), -- Teléfono de la empresa del cliente 
     email_empresa_cliente varchar(100), -- Email de la empresa del cliente
-    giro_empresa_cliente varchar(255), -- Giro de la empresa del cliente
-    tipo_empresa_cliente varchar(255), -- Tipo de empresa del cliente
+    id_giro INT, -- Identificador del giro de la empresa del cliente (clave foránea)
+    id_tipo_empresa INT, -- Identificador del tipo de empresa del cliente (clave foránea)
     id_lugar INT, -- Identificador del lugar de la empresa del cliente (clave foránea)
     ciudad_empresa_cliente varchar(255), -- Ciudad de la empresa del cliente
     comuna_empresa_cliente varchar(255), -- Comuna de la empresa del cliente
@@ -221,6 +257,8 @@ CREATE TABLE C_Clientes (
     PRIMARY KEY (id_cliente), -- Definición de la clave primaria
     FOREIGN KEY (id_empresa_creadora) REFERENCES E_Empresa(id_empresa) ON DELETE SET NULL, -- Clave foránea para referenciar la empresa
     FOREIGN KEY (id_lugar) REFERENCES Tp_Lugar(id) ON DELETE SET NULL, -- Clave foránea para referenciar el lugar
+    FOREIGN KEY (id_giro) REFERENCES Tp_Giro(id) ON DELETE SET NULL, -- Clave foránea para referenciar el giro
+    FOREIGN KEY (id_tipo_empresa) REFERENCES Tp_Cliente(id) ON DELETE SET NULL, -- Clave foránea para referenciar el tipo de empresa
     FOREIGN KEY (id_cargo) REFERENCES Tp_Cargo(id_tp_cargo) ON DELETE SET NULL -- Clave foránea para referenciar el cargo
 ) ENGINE=InnoDB;
 
@@ -624,13 +662,14 @@ CREATE TABLE C_pago (
     id_pago INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     id_cotizacion INT NOT NULL, -- ID de la cotización (clave foránea)
     numero_pago INT,
-    descripcion VARCHAR(255) ,
-    porcentaje_pago INT(3)  DEFAULT 0, 
+    descripcion VARCHAR(255),
+    porcentaje_pago INT(3) DEFAULT 0, 
     monto_pago INT(10) DEFAULT 0,
-    fecha_pago DATE ,
-    forma_pago VARCHAR(50),
-    FOREIGN KEY (id_cotizacion) REFERENCES C_Cotizaciones(id_cotizacion) ON DELETE CASCADE
-) ENGINE=InnoDB ;
+    fecha_pago DATE,
+    id_forma_pago INT, -- Identificador de la forma de pago (clave foránea)
+    FOREIGN KEY (id_cotizacion) REFERENCES C_Cotizaciones(id_cotizacion) ON DELETE CASCADE,
+    FOREIGN KEY (id_forma_pago) REFERENCES Tp_Pago(id) ON DELETE SET NULL
+) ENGINE=InnoDB;
 
 COMMIT;
 
@@ -881,6 +920,59 @@ INSERT INTO Tp_Riesgo (nombre_riesgo) VALUES ('sin riesgo'),
                                               ('bajo riesgo'),
                                                ('medio riesgo'),
                                                 ('alto riesgo');
+-- Insertar datos en la tabla+ tp_pago
+
+INSERT INTO Tp_Pago (tipo) VALUES ('Efectivo');
+INSERT INTO Tp_Pago (tipo) VALUES ('Tarjeta de Crédito');
+INSERT INTO Tp_Pago (tipo) VALUES ('Tarjeta de Débito');
+INSERT INTO Tp_Pago (tipo) VALUES ('Transferencia Bancaria');
+INSERT INTO Tp_Pago (tipo) VALUES ('Cheque');
+INSERT INTO Tp_Pago (tipo) VALUES ('PayPal');
+INSERT INTO Tp_Pago (tipo) VALUES ('Crédito a 30 días');
+INSERT INTO Tp_Pago (tipo) VALUES ('Crédito a 60 días');
+INSERT INTO Tp_Pago (tipo) VALUES ('Crédito a 90 días');
+INSERT INTO Tp_Pago (tipo) VALUES ('Pago Contra Entrega');
+INSERT INTO Tp_Pago (tipo) VALUES ('Pago en Cuotas');
+INSERT INTO Tp_Pago (tipo) VALUES ('Pago por Adelantado');
+INSERT INTO Tp_Pago (tipo) VALUES ('Pago con Puntos de Fidelidad');
+INSERT INTO Tp_Pago (tipo) VALUES ('Pago con Criptomonedas');
+INSERT INTO Tp_Pago (tipo) VALUES ('Pago con Vale Vista');
+
+-- Insertar datos en la tabla Tp_giro
+
+INSERT INTO Tp_Giro (tipo) VALUES ('Comercio');
+INSERT INTO Tp_Giro (tipo) VALUES ('Servicios');
+INSERT INTO Tp_Giro (tipo) VALUES ('Manufactura');
+INSERT INTO Tp_Giro (tipo) VALUES ('Construcción');
+INSERT INTO Tp_Giro (tipo) VALUES ('Tecnología');
+INSERT INTO Tp_Giro (tipo) VALUES ('Alimentos y Bebidas');
+INSERT INTO Tp_Giro (tipo) VALUES ('Educación');
+INSERT INTO Tp_Giro (tipo) VALUES ('Salud');
+INSERT INTO Tp_Giro (tipo) VALUES ('Finanzas');
+INSERT INTO Tp_Giro (tipo) VALUES ('Agricultura');
+INSERT INTO Tp_Giro (tipo) VALUES ('Logística y Transporte');
+INSERT INTO Tp_Giro (tipo) VALUES ('Inmobiliario');
+INSERT INTO Tp_Giro (tipo) VALUES ('Minería');
+INSERT INTO Tp_Giro (tipo) VALUES ('Energía');
+INSERT INTO Tp_Giro (tipo) VALUES ('Turismo');
+INSERT INTO Tp_Giro (tipo) VALUES ('Arte y Cultura');
+
+-- Insertar datos en la tabla Tp_cliente
+INSERT INTO Tp_Cliente (tipo) VALUES ('Corporativo');
+INSERT INTO Tp_Cliente (tipo) VALUES ('Individual');
+INSERT INTO Tp_Cliente (tipo) VALUES ('Gobierno');
+INSERT INTO Tp_Cliente (tipo) VALUES ('ONG');
+INSERT INTO Tp_Cliente (tipo) VALUES ('Educativo');
+INSERT INTO Tp_Cliente (tipo) VALUES ('Salud');
+INSERT INTO Tp_Cliente (tipo) VALUES ('Tecnología');
+INSERT INTO Tp_Cliente (tipo) VALUES ('Financiero');
+INSERT INTO Tp_Cliente (tipo) VALUES ('Retail');
+INSERT INTO Tp_Cliente (tipo) VALUES ('Manufactura');
+INSERT INTO Tp_Cliente (tipo) VALUES ('Construcción');
+INSERT INTO Tp_Cliente (tipo) VALUES ('Transporte');
+INSERT INTO Tp_Cliente (tipo) VALUES ('Agricultura');
+INSERT INTO Tp_Cliente (tipo) VALUES ('Turismo');
+INSERT INTO Tp_Cliente (tipo) VALUES ('Energía');
 
 -- Insertar datos en la tabla Tp_Lugar
 INSERT INTO Tp_Lugar (nombre_lugar) VALUES 

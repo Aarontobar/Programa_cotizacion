@@ -213,23 +213,7 @@ BPPJ
         <!-- Campo de selección PARA el giro del cliente. Este campo es obligatorio -->
         <select id="cliente_giro" name="cliente_giro" required> 
             <!-- Opción por defecto -->
-            <option value="" disabled selected>Selecciona un giro</option> 
-            <option value="comercio">Comercio</option>
-            <option value="servicios">Servicios</option>
-            <option value="manufactura">Manufactura</option>
-            <option value="construccion">Construcción</option>
-            <option value="tecnologia">Tecnología</option>
-            <option value="alimentos_bebidas">Alimentos y Bebidas</option>
-            <option value="educacion">Educación</option>
-            <option value="salud">Salud</option>
-            <option value="finanzas">Finanzas</option>
-            <option value="agricultura">Agricultura</option>
-            <option value="logistica_transporte">Logística y Transporte</option>
-            <option value="inmobiliario">Inmobiliario</option>
-            <option value="mineria">Minería</option>
-            <option value="energia">Energía</option>
-            <option value="turismo">Turismo</option>
-            <option value="arte_cultura">Arte y Cultura</option>
+
         </select>
     </div>
 
@@ -338,8 +322,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             nombre_empresa_cliente, 
             telefono_empresa_cliente, 
             email_empresa_cliente, 
-            giro_empresa_cliente, 
-            tipo_empresa_cliente, 
+            id_giro, 
+            id_tipo_empresa, 
             id_lugar, 
             ciudad_empresa_cliente, 
             comuna_empresa_cliente, 
@@ -357,7 +341,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
    
    $stmt = $mysqli->prepare($sql);
    $stmt->bind_param(
-       'isssssssissssssssiss',
+       'issssiisissssssssiss',
        $id, 
        $rut_empresa_cliente, 
        $nombre_empresa_cliente, 

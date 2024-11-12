@@ -175,6 +175,46 @@ BPPJ
         CargarCargoCliente(); // Llamar a la función para cargar los cargos de cliente
     });
 
+// TÍTULO PARA CARGAR giros clientes
+
+    // Función para cargar los giros de los clientes
+    function CargarGiroCliente() {
+        // Realiza una solicitud para obtener la lista de giros clientes desde el servidor
+        fetch('../../php/nueva_cotizacion/get_giro_cliente.php')
+            .then(response => response.text())
+            .then(data => {
+                const select = document.getElementById('cliente_giro'); // Obtener el elemento select por su ID
+                select.innerHTML = data;  // Insertar directamente las opciones generadas en el select
+            })
+            .catch(error => console.error('Error al cargar giros clientes:', error)); // Manejar errores de la solicitud
+    }
+
+    CargarGiroCliente();
+
+    document.addEventListener('DOMContentLoaded', () => {
+        CargarGiroCliente(); // Llamar a la función para cargar los giros de cliente
+    });
+    
+// TÍTULO PARA CARGAR tipos de clientes
+
+    // Función para cargar los tipos de clientes
+    function CargarTipoCliente() {
+        // Realiza una solicitud para obtener la lista de tipos de clientes desde el servidor
+        fetch('../../php/nueva_cotizacion/get_tipo_cliente.php')
+            .then(response => response.text())
+            .then(data => {
+                const select = document.getElementById('cliente_tipo'); // Obtener el elemento select por su ID
+                select.innerHTML = data;  // Insertar directamente las opciones generadas en el select
+            })
+            .catch(error => console.error('Error al cargar tipos de clientes:', error)); // Manejar errores de la solicitud
+    }
+
+    CargarTipoCliente();
+
+    document.addEventListener('DOMContentLoaded', () => {
+        CargarTipoCliente(); // Llamar a la función para cargar los tipos de cliente
+    });
+
 // TÍTULO: PARA LA INICIALIZACIÓN AL CARGAR LA PÁGINA
 
     // Asegúrate de que la bandera se actualice al cargar la página

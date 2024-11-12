@@ -222,15 +222,6 @@ BPPJ
 
 // Redirigir a la página de visualización de la cotización usando un formulario oculto
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    echo '
-    <form id="redireccionar" method="GET" action="http://localhost/programa_cotizacion/php/ver_cotizacion/ver.php">
-        <input type="hidden" name="id" value="' . $id_cotizacion . '">
-    </form>
-    <script>
-        document.getElementById("redireccionar").submit();
-    </script>';
-}
 //-------------------------------------------------------------------------------------
     $mysqli->close();
 ?>

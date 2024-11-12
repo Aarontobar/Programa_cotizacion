@@ -358,7 +358,7 @@ CREATE TABLE C_Proyectos (
     id_tp_trabajo INT NOT NULL, -- Reemplazar tipo_trabajo por la FK
     id_area INT NOT NULL, -- Identificador del área de la empresa (clave foránea)
     id_tp_riesgo INT NULL, -- Identificador del tipo de riesgo (FK)
-    riesgo_proyecto VARCHAR(255), -- Descripción del riesgo
+    descripcion_riesgo VARCHAR(255), -- Descripción del riesgo
     dias_compra VARCHAR(50), -- Días de compra relacionados con la cotización
     dias_trabajo VARCHAR(50), -- Días de trabajo relacionados con la cotización
     trabajadores INT, -- Número de trabajadores asignados

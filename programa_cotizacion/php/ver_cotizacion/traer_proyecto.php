@@ -185,13 +185,13 @@ if (isset($_GET['id']) && intval($_GET['id']) > 0) {
 
             <!-- TÍTULO: CAMPO DESCRIPCIÓN DE RIESGO -->
 
-                <label for="riesgo_descripcion">Descripción de riesgo</label>
-                <input type="text" id="riesgo_descripcion" name="riesgo_descripcion" required 
+                <label for="descripcion_riesgo">Descripción de riesgo</label>
+                <input type="text" id="descripcion_riesgo" name="descripcion_riesgo" required 
                     pattern="^[A-Za-zÀ-ÿ0-9\s&.-]+$" 
                     title="Por favor, ingrese solo letras, números y caracteres como &,-."
                     oninput="QuitarCaracteresInvalidos(this)"
                     placeholder="Ejemplo: Riesgo de retraso en la entrega"
-                    value="<?php echo htmlspecialchars($riesgo_descripcion); ?>">
+                    value="<?php echo htmlspecialchars($descripcion_riesgo); ?>">
         </div>
     </fieldset>
 
@@ -281,6 +281,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $tipo_trabajo = isset($_POST['tipo_trabajo']) ? $_POST['tipo_trabajo'] : null;
     $area_trabajo = isset($_POST['area_trabajo']) ? $_POST['area_trabajo'] : null;
     $riesgo = isset($_POST['riesgo']) ? $_POST['riesgo'] : null;
+    $riesgo = isset($_POST['descripcion_riesgo']) ? $_POST['descripcion_riesgo'] : null;
     $dias_compra = isset($_POST['dias_compra']) ? $_POST['dias_compra'] : null;
     $dias_trabajo = isset($_POST['dias_trabajo']) ? $_POST['dias_trabajo'] : null;
     $trabajadores = isset($_POST['trabajadores']) ? $_POST['trabajadores'] : null;
@@ -293,14 +294,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // Insertar o actualizar el proyecto
 
-            $sql = "INSERT INTO C_Proyectos (nombre_proyecto, codigo_proyecto, tipo_trabajo, area_trabajo, riesgo_proyecto, dias_compra, dias_trabajo, trabajadores, horario, colacion, entrega)
-                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            $sql = "INSERT INTO C_Proyectos (nombre_proyecto, codigo_proyecto, tipo_trabajo, area_trabajo, riesgo_proyecto, descripcion_riesgo, dias_compra, dias_trabajo, trabajadores, horario, colacion, entrega)
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                     ON DUPLICATE KEY UPDATE 
                         nombre_proyecto=VALUES(nombre_proyecto), 
                         codigo_proyecto=VALUES(codigo_proyecto), 
                         tipo_trabajo=VALUES(tipo_trabajo), 
                         area_trabajo=VALUES(area_trabajo), 
                         riesgo_proyecto=VALUES(riesgo_proyecto),
+                        descripcion_riesgo=VALUES(descripcion_riesgo),
                         dias_compra=VALUES(dias_compra),
                         dias_trabajo=VALUES(dias_trabajo),
                         trabajadores=VALUES(trabajadores),
@@ -311,12 +313,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if ($stmt === false) {
                 die("Error en la preparación de la consulta: " . $mysqli->error);
             }
-            $stmt->bind_param("sssssiissss", 
+            $stmt->bind_param("ssssssiissss", 
                 $proyecto_nombre, 
                 $proyecto_codigo, 
                 $tipo_trabajo, 
                 $area_trabajo, 
                 $riesgo, 
+                $descripcion_riesgo,
                 $dias_compra, 
                 $dias_trabajo, 
                 $trabajadores, 

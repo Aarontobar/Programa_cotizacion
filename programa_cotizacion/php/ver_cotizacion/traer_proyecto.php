@@ -13,68 +13,72 @@ BPPJ
     ------------------------------------------------------------------------------------------------------------- -->
 
     <?php
-
-// Inicializa las variables con valores por defecto
-$proyecto_nombre = $proyecto_codigo = $tipo_trabajo = $area_trabajo = $riesgo = $riesgo_descripcion;
+// Initialize all variables with default values at the start
+$proyecto_nombre = $proyecto_codigo = $tipo_trabajo = $area_trabajo = $riesgo = '';
 $dias_compra = $dias_trabajo = $trabajadores = '';
 $horario = $colacion = $entrega = '';
+$riesgo_descripcion = ''; // Add this line to initialize the variable
 
+// Verificar si se ha enviado un ID de cotización
 if (isset($_GET['id']) && intval($_GET['id']) > 0) {
     $id_cotizacion = intval($_GET['id']);
 
     echo "<!-- Debug: Cotización ID = " . (isset($_GET['id']) ? $_GET['id'] : 'Not set') . " -->";
-    
-    // Preparación y ejecución de la consulta
+
+    // Consulta para obtener los datos del proyecto basado en la cotización
     $sql_proyecto = "SELECT 
-    p.id_proyecto,
-    p.nombre_proyecto,
-    p.codigo_proyecto,
-    p.id_tp_trabajo AS tipo_trabajo,
-    p.id_area AS area_trabajo,
-    p.id_tp_riesgo AS riesgo_proyecto,
-    p.descripcion_riesgo AS riesgo_descripcion,
-    p.dias_compra,
-    p.dias_trabajo,
-    p.trabajadores,
-    p.horario,
-    p.colacion,
-    p.entrega
-FROM C_Proyectos p
-INNER JOIN C_Cotizaciones c ON p.id_proyecto = c.id_proyecto
-WHERE c.id_cotizacion = ?";
+        p.nombre_proyecto,
+        p.codigo_proyecto,
+        p.id_tp_trabajo AS tipo_trabajo,
+        p.id_area AS area_trabajo,
+        p.id_tp_riesgo AS riesgo_proyecto,
+        p.descripcion_riesgo,
+        p.dias_compra,
+        p.dias_trabajo,
+        p.trabajadores,
+        p.horario,
+        p.colacion,
+        p.entrega
+    FROM C_Proyectos p
+    INNER JOIN C_Cotizaciones c ON p.id_proyecto = c.id_proyecto
+    WHERE c.id_cotizacion = ?";
+
     if ($stmt_proyecto = $mysqli->prepare($sql_proyecto)) {
         $stmt_proyecto->bind_param("i", $id_cotizacion);
         $stmt_proyecto->execute();
         $result_proyecto = $stmt_proyecto->get_result();
         
+        // Debugging: Output the number of rows returned
+        echo "<!-- Debug: Number of rows returned = " . $result_proyecto->num_rows . " -->";
+        
         if ($result_proyecto->num_rows === 1) {
             $row = $result_proyecto->fetch_assoc();
-            // Asigna valores aquí
+            // Assign all values from the database
             $proyecto_nombre = $row['nombre_proyecto'];
             $proyecto_codigo = $row['codigo_proyecto'];
             $tipo_trabajo = $row['tipo_trabajo'];
             $area_trabajo = $row['area_trabajo'];
             $riesgo = $row['riesgo_proyecto'];
-            $riesgo_descripcion = $row['descripcion_riesgo'];
+            $riesgo_descripcion = $row['descripcion_riesgo']; // Properly assign the risk description
             $dias_compra = $row['dias_compra'];
             $dias_trabajo = $row['dias_trabajo'];
             $trabajadores = $row['trabajadores'];
             $horario = $row['horario'];
             $colacion = $row['colacion'];
             $entrega = $row['entrega'];
+            
+            // Debugging: Output the project name
+            echo "<!-- Debug: Project Name = " . htmlspecialchars($proyecto_nombre) . " -->";
         } else {
             echo "<p>No se encontró el proyecto para la cotización especificada.</p>";
         }
+
         $stmt_proyecto->close();
     } else {
-        echo "<p>Error en la consulta: " . $mysqli->error . "</p>";
+        echo "<p>Error al preparar la consulta del proyecto: " . $mysqli->error . "</p>";
     }
-} else {
-    echo "<p>ID de cotización no especificado o inválido.</p>";
 }
 ?>
-
-
 
 <!-- TÍTULO: IMPORTACIÓN DE ARCHIVO .CSS -->
 
@@ -179,8 +183,8 @@ WHERE c.id_cotizacion = ?";
 
             <!-- TÍTULO: CAMPO DESCRIPCIÓN DE RIESGO -->
 
-                <label for="descripcion_riesgo">Descripción de riesgo</label>
-                <input type="text" id="descripcion_riesgo" name="descripcion_riesgo" required 
+                <label for="riesgo_descripcion">Descripción de riesgo</label>
+                <input type="text" id="riesgo_descripcion" name="riesgo_descripcion" required 
                     pattern="^[A-Za-zÀ-ÿ0-9\s&.-]+$" 
                     title="Por favor, ingrese solo letras, números y caracteres como &,-."
                     oninput="QuitarCaracteresInvalidos(this)"
@@ -275,7 +279,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $tipo_trabajo = isset($_POST['tipo_trabajo']) ? $_POST['tipo_trabajo'] : null;
     $area_trabajo = isset($_POST['area_trabajo']) ? $_POST['area_trabajo'] : null;
     $riesgo = isset($_POST['riesgo']) ? $_POST['riesgo'] : null;
-    $riesgo_descripcion = isset($_POST['descripcion_riesgo']) ? $_POST['descripcion_riesgo'] : null;
     $dias_compra = isset($_POST['dias_compra']) ? $_POST['dias_compra'] : null;
     $dias_trabajo = isset($_POST['dias_trabajo']) ? $_POST['dias_trabajo'] : null;
     $trabajadores = isset($_POST['trabajadores']) ? $_POST['trabajadores'] : null;
@@ -288,15 +291,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // Insertar o actualizar el proyecto
 
-            $sql = "INSERT INTO C_Proyectos (nombre_proyecto, codigo_proyecto, tipo_trabajo, area_trabajo, riesgo_proyecto, descripcion_riesgo, dias_compra, dias_trabajo, trabajadores, horario, colacion, entrega)
-                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            $sql = "INSERT INTO C_Proyectos (nombre_proyecto, codigo_proyecto, tipo_trabajo, area_trabajo, riesgo_proyecto, dias_compra, dias_trabajo, trabajadores, horario, colacion, entrega)
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                     ON DUPLICATE KEY UPDATE 
                         nombre_proyecto=VALUES(nombre_proyecto), 
                         codigo_proyecto=VALUES(codigo_proyecto), 
                         tipo_trabajo=VALUES(tipo_trabajo), 
                         area_trabajo=VALUES(area_trabajo), 
                         riesgo_proyecto=VALUES(riesgo_proyecto),
-                        descripcion_riesgo=VALUES(descripcion_riesgo),
                         dias_compra=VALUES(dias_compra),
                         dias_trabajo=VALUES(dias_trabajo),
                         trabajadores=VALUES(trabajadores),
@@ -307,13 +309,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if ($stmt === false) {
                 die("Error en la preparación de la consulta: " . $mysqli->error);
             }
-            $stmt->bind_param("ssssssiissss", 
+            $stmt->bind_param("sssssiissss", 
                 $proyecto_nombre, 
                 $proyecto_codigo, 
                 $tipo_trabajo, 
                 $area_trabajo, 
-                $riesgo,
-                $riesgo_descripcion,
+                $riesgo, 
                 $dias_compra, 
                 $dias_trabajo, 
                 $trabajadores, 

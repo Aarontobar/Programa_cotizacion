@@ -75,7 +75,14 @@ if (isset($_GET['id']) && intval($_GET['id']) > 0) {
         // Set default values or handle the error case
         $proyecto_nombre = 'No disponible';
         $proyecto_codigo = 'No disponible';
-        // ... set other variables to 'No disponible'
+        $proyecto_nombre = 'No disponible';
+        $proyecto_codigo = 'No disponible';
+        $proyecto_nombre = 'No disponible';
+        $proyecto_codigo = 'No disponible';
+        $proyecto_nombre = 'No disponible';
+        $proyecto_codigo = 'No disponible';
+        $proyecto_nombre = 'No disponible';
+        $proyecto_codigo = 'No disponible';
     }
 } else {
     echo "<!-- Debug: Error preparing SQL query: " . $mysqli->error . " -->";

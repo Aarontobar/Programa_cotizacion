@@ -27,56 +27,58 @@ if (isset($_GET['id']) && intval($_GET['id']) > 0) {
 
     // Consulta para obtener los datos del proyecto basado en la cotización
     $sql_proyecto = "SELECT 
-        p.nombre_proyecto,
-        p.codigo_proyecto,
-        p.id_tp_trabajo AS tipo_trabajo,
-        p.id_area AS area_trabajo,
-        p.id_tp_riesgo AS riesgo_proyecto,
-        p.descripcion_riesgo,
-        p.dias_compra,
-        p.dias_trabajo,
-        p.trabajadores,
-        p.horario,
-        p.colacion,
-        p.entrega
+            p.id_proyecto,
+            p.nombre_proyecto,
+            p.codigo_proyecto,
+            p.id_tp_trabajo AS tipo_trabajo,
+            p.id_area AS area_trabajo,
+            p.id_tp_riesgo AS riesgo_proyecto,
+            p.descripcion_riesgo,
+            p.dias_compra,
+            p.dias_trabajo,
+            p.trabajadores,
+            p.horario,
+            p.colacion,
+            p.entrega,
+            c.id_proyecto AS cotizacion_id_proyecto
     FROM C_Proyectos p
-    INNER JOIN C_Cotizaciones c ON p.id_proyecto = c.id_proyecto
+    RIGHT JOIN C_Cotizaciones c ON p.id_proyecto = c.id_proyecto
     WHERE c.id_cotizacion = ?";
 
     if ($stmt_proyecto = $mysqli->prepare($sql_proyecto)) {
-        $stmt_proyecto->bind_param("i", $id_cotizacion);
-        $stmt_proyecto->execute();
-        $result_proyecto = $stmt_proyecto->get_result();
+    $stmt_proyecto->bind_param("i", $id_cotizacion);
+    $stmt_proyecto->execute();
+    $result_proyecto = $stmt_proyecto->get_result();
+    
+    echo "<!-- Debug: SQL query executed. Error (if any): " . $mysqli->error . " -->";
+    echo "<!-- Debug: Number of rows returned: " . $result_proyecto->num_rows . " -->";
+    
+    if ($result_proyecto->num_rows === 1) {
+        $row = $result_proyecto->fetch_assoc();
+        // Assign values to variables
+        $proyecto_nombre = $row['nombre_proyecto'] ?? 'No disponible';
+        $proyecto_codigo = $row['codigo_proyecto'] ?? 'No disponible';
+        $tipo_trabajo = $row['tipo_trabajo'] ?? 'No disponible';
+        $area_trabajo = $row['area_trabajo'] ?? 'No disponible';
+        $riesgo = $row['riesgo_proyecto'] ?? 'No disponible';
+        $riesgo_descripcion = $row['descripcion_riesgo'] ?? 'No disponible';
+        $dias_compra = $row['dias_compra'] ?? 'No disponible';
+        $dias_trabajo = $row['dias_trabajo'] ?? 'No disponible';
+        $trabajadores = $row['trabajadores'] ?? 'No disponible';
+        $horario = $row['horario'] ?? 'No disponible';
+        $colacion = $row['colacion'] ?? 'No disponible';
+        $entrega = $row['entrega'] ?? 'No disponible';
         
-        // Debugging: Output the number of rows returned
-        echo "<!-- Debug: Number of rows returned = " . $result_proyecto->num_rows . " -->";
-        
-        if ($result_proyecto->num_rows === 1) {
-            $row = $result_proyecto->fetch_assoc();
-            // Assign all values from the database
-            $proyecto_nombre = $row['nombre_proyecto'];
-            $proyecto_codigo = $row['codigo_proyecto'];
-            $tipo_trabajo = $row['tipo_trabajo'];
-            $area_trabajo = $row['area_trabajo'];
-            $riesgo = $row['riesgo_proyecto'];
-            $riesgo_descripcion = $row['descripcion_riesgo']; // Properly assign the risk description
-            $dias_compra = $row['dias_compra'];
-            $dias_trabajo = $row['dias_trabajo'];
-            $trabajadores = $row['trabajadores'];
-            $horario = $row['horario'];
-            $colacion = $row['colacion'];
-            $entrega = $row['entrega'];
-            
-            // Debugging: Output the project name
-            echo "<!-- Debug: Project Name = " . htmlspecialchars($proyecto_nombre) . " -->";
-        } else {
-            echo "<p>No se encontró el proyecto para la cotización especificada.</p>";
-        }
-
-        $stmt_proyecto->close();
+        echo "<!-- Debug: Project data loaded successfully -->";
     } else {
-        echo "<p>Error al preparar la consulta del proyecto: " . $mysqli->error . "</p>";
+        echo "<!-- Debug: No project found or multiple projects found -->";
+        // Set default values or handle the error case
+        $proyecto_nombre = 'No disponible';
+        $proyecto_codigo = 'No disponible';
+        // ... set other variables to 'No disponible'
     }
+} else {
+    echo "<!-- Debug: Error preparing SQL query: " . $mysqli->error . " -->";
 }
 ?>
 

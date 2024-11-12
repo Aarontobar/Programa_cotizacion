@@ -30,14 +30,15 @@ if (isset($_GET['id']) && intval($_GET['id']) > 0) {
     c.rut_encargado_cliente,
     c.nombre_empresa_cliente,
     c.direccion_encargado_cliente,
-    c.lugar_empresa_cliente,
+    c.id_lugar,
     c.telefono_encargado_cliente,
     c.email_encargado_cliente,
-    c.cargo_encargado_cliente,
-    c.giro_empresa_cliente,
+    c.id_cargo,
+    c.id_giro,
     c.comuna_encargado_cliente,
     c.ciudad_encargado_cliente,
-    c.tipo_empresa_cliente
+    c.id_tipo_empresa,
+    c.id_giro
     FROM C_Clientes c
     LEFT JOIN C_Cotizaciones co ON c.id_cliente = co.id_cliente
     WHERE co.id_cotizacion = ?";
@@ -56,14 +57,14 @@ if (isset($_GET['id']) && intval($_GET['id']) > 0) {
             $cliente_rut = $row['rut_encargado_cliente'];
             $cliente_empresa = $row['nombre_empresa_cliente'];
             $cliente_direccion = $row['direccion_encargado_cliente'];
-            $cliente_lugar = $row['lugar_empresa_cliente'];
+            $cliente_lugar = $row['id_lugar'];
             $cliente_fono = $row['telefono_encargado_cliente'];
             $cliente_email = $row['email_encargado_cliente'];
-            $cliente_cargo = $row['cargo_encargado_cliente'];
-            $cliente_giro = $row['giro_empresa_cliente'];
+            $cliente_cargo = $row['id_cargo'];
+            $cliente_giro = $row['id_giro'];
             $cliente_comuna = $row['comuna_encargado_cliente'];
             $cliente_ciudad = $row['ciudad_encargado_cliente'];
-            $cliente_tipo = $row['tipo_empresa_cliente'];
+            $cliente_tipo = $row['id_tipo_empresa'];
         } else {
             echo "<p>No se encontró el cliente para la cotización especificada.</p>";
         }

@@ -77,6 +77,7 @@ if (isset($_GET['id']) && intval($_GET['id']) > 0) {
         $proyecto_codigo = 'No disponible';
         // ... set other variables to 'No disponible'
     }
+}
 } else {
     echo "<!-- Debug: Error preparing SQL query: " . $mysqli->error . " -->";
 }

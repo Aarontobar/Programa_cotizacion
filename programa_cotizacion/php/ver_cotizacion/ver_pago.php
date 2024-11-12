@@ -14,7 +14,7 @@ BPPJ
 
     <?php
 $query_pagos = "
-    SELECT numero_pago, descripcion, porcentaje_pago, monto_pago, fecha_pago, forma_pago
+    SELECT numero_pago, descripcion, porcentaje_pago, monto_pago, fecha_pago, id_forma_pago
     FROM C_pago
     WHERE id_cotizacion = ?
 ";
@@ -78,7 +78,7 @@ $stmt_pagos->close();
                 <td><?php echo htmlspecialchars($pago['porcentaje_pago']); ?>%</td>
                 <td><?php echo htmlspecialchars($pago['monto_pago']); ?></td>
                 <td><?php echo htmlspecialchars($pago['fecha_pago']); ?></td>
-                <td><?php echo htmlspecialchars($pago['forma_pago']); ?></td>
+                <td><?php echo htmlspecialchars($pago['id_forma_pago']); ?></td>
 
             </tr>
         <?php endforeach; ?>

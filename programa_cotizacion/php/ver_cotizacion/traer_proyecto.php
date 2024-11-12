@@ -61,7 +61,7 @@ if (isset($_GET['id']) && intval($_GET['id']) > 0) {
         $tipo_trabajo = $row['tipo_trabajo'] ?? 'No disponible';
         $area_trabajo = $row['area_trabajo'] ?? 'No disponible';
         $riesgo = $row['riesgo_proyecto'] ?? 'No disponible';
-        $riesgo_descripcion = $row['descripcion_riesgo'] ?? 'No disponible';
+        $descripcion_riesgo = $row['descripcion_riesgo'] ?? 'No disponible';
         $dias_compra = $row['dias_compra'] ?? 'No disponible';
         $dias_trabajo = $row['dias_trabajo'] ?? 'No disponible';
         $trabajadores = $row['trabajadores'] ?? 'No disponible';
@@ -281,7 +281,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $tipo_trabajo = isset($_POST['tipo_trabajo']) ? $_POST['tipo_trabajo'] : null;
     $area_trabajo = isset($_POST['area_trabajo']) ? $_POST['area_trabajo'] : null;
     $riesgo = isset($_POST['riesgo']) ? $_POST['riesgo'] : null;
-    $riesgo = isset($_POST['descripcion_riesgo']) ? $_POST['descripcion_riesgo'] : null;
+    $descripcion_riesgo = isset($_POST['descripcion_riesgo']) ? $_POST['descripcion_riesgo'] : null;
     $dias_compra = isset($_POST['dias_compra']) ? $_POST['dias_compra'] : null;
     $dias_trabajo = isset($_POST['dias_trabajo']) ? $_POST['dias_trabajo'] : null;
     $trabajadores = isset($_POST['trabajadores']) ? $_POST['trabajadores'] : null;

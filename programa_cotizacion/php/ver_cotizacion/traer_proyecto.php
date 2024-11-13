@@ -75,14 +75,16 @@ if (isset($_GET['id']) && intval($_GET['id']) > 0) {
         // Set default values or handle the error case
         $proyecto_nombre = 'No disponible';
         $proyecto_codigo = 'No disponible';
-        $proyecto_nombre = 'No disponible';
-        $proyecto_codigo = 'No disponible';
-        $proyecto_nombre = 'No disponible';
-        $proyecto_codigo = 'No disponible';
-        $proyecto_nombre = 'No disponible';
-        $proyecto_codigo = 'No disponible';
-        $proyecto_nombre = 'No disponible';
-        $proyecto_codigo = 'No disponible';
+        $tipo_trabajo = 'No disponible';
+        $area_trabajo = 'No disponible';
+        $riesgo = 'No disponible';
+        $descripcion_riesgo = 'No disponible';
+        $dias_compra = 'No disponible';
+        $dias_trabajo = 'No disponible';
+        $trabajadores = 'No disponible';
+        $horario = 'No disponible';
+        $colacion = 'No disponible';
+        $entrega = 'No disponible';
     }
 }
 } else {

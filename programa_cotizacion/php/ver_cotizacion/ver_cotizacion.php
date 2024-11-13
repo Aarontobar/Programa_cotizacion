@@ -65,6 +65,7 @@ BPPJ
                 p.tipo_trabajo,
                 p.area_trabajo,
                 p.riesgo_proyecto,
+                p.riesgo_descripcion,
                 p.dias_compra,
                 p.dias_trabajo,
                 p.trabajadores,
@@ -179,6 +180,7 @@ BPPJ
                     $tipo_trabajo = $row_cotizacion['tipo_trabajo'];
                     $area_trabajo = $row_cotizacion['area_trabajo'];
                     $riesgo_proyecto = $row_cotizacion['riesgo_proyecto'];
+                    $riesgo_descripcion = $row_cotizacion['riesgo_descripcion'];
 
                     //-------------------------------------------------------------------------//
                     

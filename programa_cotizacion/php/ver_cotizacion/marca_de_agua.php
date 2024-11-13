@@ -36,7 +36,7 @@ $query = "
         c.nombre_empresa_cliente,
         c.rut_empresa_cliente,
         c.direccion_empresa_cliente,
-        c.giro_empresa_cliente,
+        c.id_giro,
         c.comuna_empresa_cliente,
         c.ciudad_empresa_cliente,
         c.telefono_empresa_cliente,

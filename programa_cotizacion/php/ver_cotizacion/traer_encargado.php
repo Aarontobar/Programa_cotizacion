@@ -247,14 +247,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
                         <!-- TÍTULO: CAMPO DE TEXTO PARA INGRESAR EL NOMBRE DEL PROYECTO ASIGNADO AL ENCARGADO -->
-
-                            <input type="text" id="enc_proyecto" name="enc_proyecto" 
-                                placeholder="Ej: Proyecto XYZ" 
-                                value="<?php echo htmlspecialchars($enc_proyecto); ?>" 
-                                minlength="3" 
-                                maxlength="100" 
-                                pattern="^[a-zA-ZÀ-ÿ0-9\s\-]+$" 
-                                title="Ingresa un nombre de proyecto válido (Ej: Proyecto XYZ). Solo se permiten letras, números, espacios y guiones."> <!-- No es obligatorio -->
+                        <!--
+                        <input type="text" id="enc_proyecto" name="enc_proyecto" 
+                            placeholder="Ej: Proyecto XYZ" 
+                            value="hay que cerrar esto: ?php echo htmlspecialchars($enc_proyecto); ?>">
+                            minlength="3" 
+                            maxlength="100" 
+                            pattern="^[a-zA-ZÀ-ÿ0-9\s\-]+$" 
+                            title="Ingresa un nombre de proyecto válido (Ej: Proyecto XYZ). Solo se permiten letras, números, espacios y guiones."> 
+                        -->
 
                     </div>
 

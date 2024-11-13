@@ -29,7 +29,7 @@ BPPJ
                 <strong>SEÑOR(ES):</strong> <?php echo $items[0]['nombre_empresa_cliente']; ?><br>
                 <strong>RUT:</strong> <?php echo $items[0]['rut_empresa_cliente']; ?><br>
                 <strong>DIRECCIÓN:</strong> <?php echo $items[0]['direccion_empresa_cliente']; ?><br>
-                <strong>GIRO:</strong> <?php echo $items[0]['id_giro']; ?><br>
+                <strong>GIRO:</strong> <?php echo $items[0]['tipo']; ?><br>
                 <strong>COMUNA:</strong> <?php echo $items[0]['comuna_empresa_cliente']; ?><br>
                 <strong>CIUDAD:</strong> <?php echo $items[0]['ciudad_empresa_cliente']; ?><br>
                 <strong>TELÉFONO:</strong> <?php echo $items[0]['telefono_empresa_cliente']; ?><br>

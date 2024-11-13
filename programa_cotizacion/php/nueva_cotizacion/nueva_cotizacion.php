@@ -19,6 +19,7 @@ BPPJ
 <?php
     // Establece la conexión a la base de datos de ITred Spa
     $mysqli = new mysqli('localhost', 'root', '', 'ITredSpa_bd');
+    session_start();
 ?>
 <!-- ---------------------
      -- FIN CONEXION BD --

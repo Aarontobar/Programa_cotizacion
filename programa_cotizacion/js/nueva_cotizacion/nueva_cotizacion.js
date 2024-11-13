@@ -13,13 +13,153 @@ BPPJ
     ------------------------------------------------------------------------------------------------------------- */
    
 // TÍTULO: ESTABLECER FECHA DE EMISIÓN
-
-
     // Función que se ejecuta al cargar el contenido del documento
-    document.addEventListener('DOMContentLoaded', () => {
-        // Establece el valor del campo 'fecha_emision' a la fecha actual en formato ISO
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.getElementById('formulario-cotizacion');
+        
+        // Set the current date as the emission date
         document.getElementById('fecha_emision').value = new Date().toISOString().split('T')[0];
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            if (validateForm()) {
+                handleFormSubmission();
+            }
+        });
+    
+        function validateForm() {
+            let isValid = true;
+            const requiredFields = form.querySelectorAll('[required]');
+            
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    isValid = false;
+                    showError(field, 'Este campo es obligatorio');
+                } else {
+                    clearError(field);
+                }
+            });
+        
+            // RUT validation
+            const rutField = form.querySelector('#rut_empresa');
+            if (rutField && !validateRut(rutField.value)) {
+                isValid = false;
+                showError(rutField, 'RUT inválido');
+            }
+        
+            // Email validation
+            const emailFields = form.querySelectorAll('input[type="email"]');
+            emailFields.forEach(field => {
+                if (field.value && !validateEmail(field.value)) {
+                    isValid = false;
+                    showError(field, 'Email inválido');
+                }
+            });
+        
+            // Phone number validation
+            const phoneFields = form.querySelectorAll('input[type="tel"]');
+            phoneFields.forEach(field => {
+                if (field.value && !validatePhone(field.value)) {
+                    isValid = false;
+                    showError(field, 'Número de teléfono inválido');
+                }
+            });
+        
+            return isValid;
+        }
+    
+        function showError(field, message) {
+            const errorElement = field.nextElementSibling;
+            if (errorElement && errorElement.classList.contains('error-message')) {
+                errorElement.textContent = message;
+            } else {
+                const error = document.createElement('div');
+                error.className = 'error-message';
+                error.textContent = message;
+                field.parentNode.insertBefore(error, field.nextSibling);
+            }
+            field.classList.add('error');
+        }
+    
+        function clearError(field) {
+            const errorElement = field.nextElementSibling;
+            if (errorElement && errorElement.classList.contains('error-message')) {
+                errorElement.remove();
+            }
+            field.classList.remove('error');
+        }
+    
+        function handleFormSubmission() {
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData.entries());
+    
+            // Log form data to console
+            console.log('Form data:', data);
+    
+            // Show success message
+            alert('Cotización creada exitosamente');
+    
+            // Clear the form
+            form.reset();
+    
+            // You might want to store the data in localStorage or sessionStorage
+            // for later use or to display on another page
+            sessionStorage.setItem('lastQuotation', JSON.stringify(data));
+    
+            // Optionally, redirect to a success page
+            window.location.href = '../../php/ver_cotizacion/ver.php';
+        }
     });
+    
+    function validateRut(rut) {
+        // Implement RUT validation logic here
+        // This is a placeholder implementation
+        const rutRegex = /^[0-9]+-[0-9kK]{1}$/;
+        return rutRegex.test(rut);
+    }
+    
+    function validateEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    }
+    
+    function validatePhone(phone) {
+        const phoneRegex = /^\+?[0-9]{8,15}$/;
+        return phoneRegex.test(phone);
+    }
+    
+    function FormatearRut(input) {
+        let rut = input.value.replace(/\D/g, '');
+        if (rut.length > 1) {
+            rut = rut.slice(0, -1).replace(/\B(?=(\d{3})+(?!\d))/g, '.') + '-' + rut.slice(-1);
+        }
+        input.value = rut;
+    }
+    
+    function MostrarInformacionDePago(checkbox) {
+        const table = checkbox.closest('table');
+        const ContenedorDePago = table.querySelector('.payment-info');
+        const CabeceraPago = table.querySelector('.payment-header');
+    
+        if (checkbox.checked) {
+            ContenedorDePago.style.display = 'table-row-group';
+            CabeceraPago.style.display = 'table-row';
+        } else {
+            ContenedorDePago.style.display = 'none';
+            CabeceraPago.style.display = 'none';
+        }
+    }
+
+    function handleFormSubmission(formData) {
+        // Convert FormData to a plain object for logging
+        const data = Object.fromEntries(formData.entries());
+        console.log('Form data:', data);
+    
+        // Submit the form to the server
+        const form = document.getElementById('formulario-cotizacion');
+        form.submit();
+    }
 
 // TÍTULO: FORMATEAR RUT
 
@@ -56,6 +196,8 @@ BPPJ
             CabeceraPago.style.display = 'none'; // Oculta la cabecera de pago
         }
     }
+
+    
 
 /* --------------------------------------------------------------------------------------------------------------
     ---------------------------------------- FIN ITred Spa Nueva_Cotizacion .JS ---------------------------------------

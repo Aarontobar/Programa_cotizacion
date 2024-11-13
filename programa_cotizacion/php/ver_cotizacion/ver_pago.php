@@ -14,9 +14,10 @@ BPPJ
 
     <?php
 $query_pagos = "
-    SELECT numero_pago, descripcion, porcentaje_pago, monto_pago, fecha_pago, id_forma_pago
-    FROM C_pago
-    WHERE id_cotizacion = ?
+SELECT cp.numero_pago, cp.descripcion, cp.porcentaje_pago, cp.monto_pago, cp.fecha_pago, tpp.tipo
+FROM C_pago cp
+JOIN Tp_Pago tpp ON cp.id_forma_pago = tpp.id
+WHERE cp.id_cotizacion = ?
 ";
 
 // Preparar y ejecutar la consulta para obtener los pagos
@@ -78,7 +79,7 @@ $stmt_pagos->close();
                 <td><?php echo htmlspecialchars($pago['porcentaje_pago']); ?>%</td>
                 <td><?php echo htmlspecialchars($pago['monto_pago']); ?></td>
                 <td><?php echo htmlspecialchars($pago['fecha_pago']); ?></td>
-                <td><?php echo htmlspecialchars($pago['id_forma_pago']); ?></td>
+                <td><?php echo htmlspecialchars($pago['tipo']); ?></td>
 
             </tr>
         <?php endforeach; ?>

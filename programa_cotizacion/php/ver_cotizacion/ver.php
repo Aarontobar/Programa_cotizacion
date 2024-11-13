@@ -26,24 +26,47 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
      ------------------------ -->
      
      <?php
+// Establish database connection
+$mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
 
-if (isset($_GET['id_empresa']) && is_numeric($_GET['id_empresa'])) {
-    $id_empresa = (int) $_GET['id_empresa'];
-    // Ejecutar consulta SQL con el ID recibido
-} else {
-    die("Error: ID de empresa no válida.");
+if ($mysqli->connect_error) {
+    die("Connection failed: " . $mysqli->connect_error);
 }
-
-
 
 if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     $id_cotizacion = (int) $_GET['id'];
-    // Ejecutar consulta SQL con el ID recibido
 } else {
-    die("Error: ID de cotización no válida.");
+    // If no ID is provided, get the most recent cotización
+    $sql = "SELECT id_cotizacion FROM C_Cotizaciones ORDER BY id_cotizacion DESC LIMIT 1";
+    $result = $mysqli->query($sql);
+    
+    if ($result && $result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        $id_cotizacion = $row['id_cotizacion'];
+    } else {
+        die("Error: No se encontró ninguna cotización.");
+    }
 }
 
+// Now that we have an $id_cotizacion, we can proceed to fetch and display the cotización details
+$sql = "SELECT * FROM C_Cotizaciones WHERE id_cotizacion = ?";
+$stmt = $mysqli->prepare($sql);
+$stmt->bind_param("i", $id_cotizacion);
+$stmt->execute();
+$result = $stmt->get_result();
 
+if ($result->num_rows > 0) {
+    $cotizacion = $result->fetch_assoc();
+    // Display the cotización details here
+    // For example:
+    echo "Número de cotización: " . htmlspecialchars($cotizacion['numero_cotizacion']) . "<br>";
+    echo "Fecha de emisión: " . htmlspecialchars($cotizacion['fecha_emision']) . "<br>";
+    // ... display other fields as needed
+} else {
+    echo "No se encontró la cotización con ID: " . $id_cotizacion;
+}
+
+$stmt->close();
 ?>
 
 

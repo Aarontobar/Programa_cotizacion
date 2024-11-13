@@ -51,12 +51,6 @@ $query = "
         e.web_empresa,
         e.rut_empresa,
         e.id_foto,
-        p.nombre_proyecto,
-        p.codigo_proyecto,
-        p.tipo_trabajo,
-        p.area_trabajo,
-        p.riesgo_proyecto,
-        p.descripcion_riesgo,,
         c.nombre_empresa_cliente,
         c.rut_empresa_cliente,
         c.direccion_empresa_cliente,
@@ -77,7 +71,6 @@ $query = "
         ven.fono_vendedor,
         ven.celular_vendedor
     FROM C_Cotizaciones cot
-    JOIN C_Proyecto p ON cot.id_id_proyecto = p.id_proyecto
     JOIN C_Clientes c ON cot.id_cliente = c.id_cliente
     JOIN E_Empresa e ON cot.id_empresa = e.id_empresa
     JOIN C_Encargados enc ON cot.id_encargado = enc.id_encargado 

@@ -220,6 +220,7 @@ if ($stmt_firma = $mysqli->prepare($sql_firma)) {
         <h3>COTIZACIÓN</h3>
         <p>Nº: <?php echo $items[0]['numero_cotizacion']; ?></p>
         <p class="sii-info"> SISTEMA DE PRUEBAS</p>
+        <p>Nº: <?php echo $items[0]['fecha_emision']; ?></p>
     </div>
 </div>
 

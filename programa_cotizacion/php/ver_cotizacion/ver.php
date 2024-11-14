@@ -26,8 +26,7 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
      ------------------------ -->
      
      <?php
-// Establish database connection
-$mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
+// Establece la conexión a la base de datos
 
 if ($mysqli->connect_error) {
     die("Connection failed: " . $mysqli->connect_error);
@@ -57,11 +56,9 @@ $result = $stmt->get_result();
 
 if ($result->num_rows > 0) {
     $cotizacion = $result->fetch_assoc();
-    // Display the cotización details here
-    // For example:
+    // Explaya los detalles de la cotización
     echo "Número de cotización: " . htmlspecialchars($cotizacion['numero_cotizacion']) . "<br>";
     echo "Fecha de emisión: " . htmlspecialchars($cotizacion['fecha_emision']) . "<br>";
-    // ... display other fields as needed
 } else {
     echo "No se encontró la cotización con ID: " . $id_cotizacion;
 }
@@ -69,18 +66,13 @@ if ($result->num_rows > 0) {
 $stmt->close();
 ?>
 
-
-
-
 <html>
     <head>
-
 
         <!-- TÍTULO: IMPORTACIÓN DE ARCHIVO .CSS -->
 
             <!-- llama al archivo CSS -->
             <link rel="stylesheet" href="../../css/ver_cotizacion/ver.css">
-
     
     </head>
 <body>

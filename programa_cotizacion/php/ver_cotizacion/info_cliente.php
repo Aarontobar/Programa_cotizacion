@@ -35,16 +35,6 @@ BPPJ
                 <strong>TELÉFONO:</strong> <?php echo $items[0]['telefono_empresa_cliente']; ?><br>
             </td>
 
-            <td>
-
-            <!-- TÍTULO: INFORMACIÓN DE EMISIÓN -->
-                <!-- Importa la fecha de emisión -->
-                <strong>F. EMISIÓN:</strong> <?php echo $items[0]['fecha_emision']; ?><br>
-                <strong>F. VENCIMIENTO:</strong> <?php echo $items[0]['fecha_validez']; ?><br>
-                <strong>CABECERA:</strong><br>
-                <strong>CABECERA1:</strong> <!-- Aquí puedes agregar más información si es necesario -->
-            </td>
-
         </tr>
         <tr>
             <td colspan="1">

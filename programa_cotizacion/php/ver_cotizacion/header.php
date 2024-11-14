@@ -14,7 +14,20 @@ BPPJ
 
 <?php
 
-
+// Función para convertir fecha a formato distinto
+function formatearFechaEspanol($fecha) {
+    $meses = array(
+        "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+        "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
+    );
+    
+    $fecha = new DateTime($fecha);
+    $dia = $fecha->format('j');
+    $mes = $meses[$fecha->format('n') - 1];
+    $año = $fecha->format('Y');
+    
+    return "$dia de $mes de $año";
+}
 
 // Consulta para obtener los datos de la empresa, cliente y detalles de la cotización
 $query = "
@@ -220,9 +233,21 @@ if ($stmt_firma = $mysqli->prepare($sql_firma)) {
         <h3>COTIZACIÓN</h3>
         <p>Nº: <?php echo $items[0]['numero_cotizacion']; ?></p>
         <p class="sii-info"> SISTEMA DE PRUEBAS</p>
-        <p>Nº: <?php echo $items[0]['fecha_emision']; ?></p>
+        <p>Fecha de vencimiento: <?php echo $items[0]['fecha_validez']; ?></p>
     </div>
+
 </div>
+
+    <!-- TÍTULO: FECHA DE EMISIÓN-->
+
+    <!-- Importa la Fecha de emisión -->
+    <div class="fecha-emision">
+        <?php 
+        $ciudad = "Santiago";
+        $fecha_emision = formatearFechaEspanol($items[0]['fecha_emision']);
+        echo htmlspecialchars($ciudad . ", " . $fecha_emision); 
+        ?>
+    </div>
 
 <!-- TITULO: IMPORTACION DE ARCHIVO .JS -->
 

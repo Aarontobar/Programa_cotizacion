@@ -19,12 +19,50 @@ BPPJ
 <?php
     // Establece la conexión a la base de datos de ITred Spa
     $mysqli = new mysqli('localhost', 'root', '', 'ITredSpa_bd');
+    session_start();
 ?>
 <!-- ---------------------
      -- FIN CONEXION BD --
      ----------------------- -->
 
+     <?php
 
+// Redirigir a la página de visualización de la cotización usando un formulario oculto
+
+// TÍTULO: PROCESAMIENTO DEL FORMULARIO
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    try {
+        // TÍTULO: VALIDACIÓN Y PROCESAMIENTO DE DATOS
+        // Aquí va tu código existente para procesar los datos del formulario
+        // y crear la cotización en la base de datos
+        
+        // TÍTULO: VERIFICACIÓN DE CREACIÓN EXITOSA
+        if (isset($id_cotizacion) && $id_cotizacion > 0) {
+            $response = array(
+                'success' => true,
+                'message' => 'Cotización creada exitosamente',
+                'cotizacion_id' => $id_cotizacion
+            );
+        } else {
+            throw new Exception('Error al crear la cotización: ID no generado');
+        }
+        
+    } catch (Exception $e) {
+        // TÍTULO: MANEJO DE ERRORES
+        $response = array(
+            'success' => false,
+            'message' => $e->getMessage()
+        );
+    }
+    
+    // TÍTULO: ENVÍO DE RESPUESTA
+    echo json_encode($response);
+    exit;
+}
+
+//-------------------------------------------------------------------------------------
+    
+?>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -209,22 +247,60 @@ BPPJ
 
         </form> <!-- Cierra el formulario -->
     </div> <!-- Cierra el contenedor principal -->
+
 </body>
+
+<!-- TÍTULO: SCRIPT DE PROCESAMIENTO DEL FORMULARIO -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // TÍTULO: CONFIGURACIÓN DEL FORMULARIO
+    const form = document.getElementById('formulario-cotizacion');
+    
+    // TÍTULO: MANEJADOR DE ENVÍO DEL FORMULARIO
+    form.addEventListener('submit', async function(event) {
+        event.preventDefault();
+        
+        // TÍTULO: VALIDACIÓN DE CAMPOS
+        if (validateForm()) {
+            try {
+                // TÍTULO: ENVÍO DE DATOS AL SERVIDOR
+                const formData = new FormData(form);
+                const response = await fetch('nueva_cotizacion.php', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                // TÍTULO: PROCESAMIENTO DE LA RESPUESTA
+                if (!response.ok) {
+                    throw new Error(`Error HTTP: ${response.status}`);
+                }
+
+                const result = await response.json();
+                console.log('Respuesta del servidor:', result); // Para depuración
+
+                // TÍTULO: MANEJO DE LA RESPUESTA
+                if (result.success) {
+                    alert('Cotización creada exitosamente');
+                    window.location.href = `ver.php?id=${result.cotizacion_id}`;
+                } else {
+                    alert('Error al crear la cotización: ' + result.message);
+                }
+            } catch (error) {
+                // TÍTULO: MANEJO DE ERRORES
+                console.error('Error detallado:', error);
+                alert('Error al procesar la solicitud. Por favor, intente nuevamente.');
+            }
+        }
+    });
+});
+</script>
 </html>
-
-
-
 
 <!-- ---------------------
 -- INICIO CIERRE CONEXION BD --
      --------------------- -->
-<?php
 
-// Redirigir a la página de visualización de la cotización usando un formulario oculto
-
-//-------------------------------------------------------------------------------------
-    $mysqli->close();
-?>
+$mysqli->close();
 
 <!-- ---------------------
      -- FIN CIERRE CONEXION BD --

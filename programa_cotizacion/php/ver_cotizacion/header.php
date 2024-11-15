@@ -14,7 +14,20 @@ BPPJ
 
 <?php
 
-
+// Función para convertir fecha a formato distinto
+function formatearFechaEspanol($fecha) {
+    $meses = array(
+        "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+        "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
+    );
+    
+    $fecha = new DateTime($fecha);
+    $dia = $fecha->format('j');
+    $mes = $meses[$fecha->format('n') - 1];
+    $año = $fecha->format('Y');
+    
+    return "$dia de $mes de $año";
+}
 
 // Consulta para obtener los datos de la empresa, cliente y detalles de la cotización
 $query = "
@@ -47,12 +60,17 @@ $query = "
         ven.rut_vendedor,
         ven.email_vendedor,
         ven.fono_vendedor,
-        ven.celular_vendedor
+        ven.celular_vendedor,
+        tpg.tipo,
+        tpp.tipo
     FROM C_Cotizaciones cot
     JOIN C_Clientes c ON cot.id_cliente = c.id_cliente
     JOIN E_Empresa e ON cot.id_empresa = e.id_empresa
     JOIN C_Encargados enc ON cot.id_encargado = enc.id_encargado 
-    JOIN Em_Vendedores ven ON cot.id_vendedor = ven.id_vendedor 
+    JOIN Em_Vendedores ven ON cot.id_vendedor = ven.id_vendedor
+    JOIN Tp_Giro tpg ON c.id_giro = tpg.id 
+    JOIN C_pago cp ON cot.id_cotizacion = cp.id_cotizacion
+    JOIN Tp_Pago tpp ON cp.id_pago = tpp.id
     WHERE cot.id_cotizacion = ?
 ";
 
@@ -215,8 +233,21 @@ if ($stmt_firma = $mysqli->prepare($sql_firma)) {
         <h3>COTIZACIÓN</h3>
         <p>Nº: <?php echo $items[0]['numero_cotizacion']; ?></p>
         <p class="sii-info"> SISTEMA DE PRUEBAS</p>
+        <p>Fecha de vencimiento: <?php echo $items[0]['fecha_validez']; ?></p>
     </div>
+
 </div>
+
+    <!-- TÍTULO: FECHA DE EMISIÓN-->
+
+    <!-- Importa la Fecha de emisión -->
+    <div class="fecha-emision">
+        <?php 
+        $ciudad = "Santiago";
+        $fecha_emision = formatearFechaEspanol($items[0]['fecha_emision']);
+        echo htmlspecialchars($ciudad . ", " . $fecha_emision); 
+        ?>
+    </div>
 
 <!-- TITULO: IMPORTACION DE ARCHIVO .JS -->
 

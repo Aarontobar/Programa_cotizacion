@@ -17,9 +17,10 @@ $pagos = [];
 
 if (isset($_GET['id']) && intval($_GET['id']) > 0) {
     $id_cotizacion = intval($_GET['id']);
-    $sql_pagos = "SELECT numero_pago, descripcion, porcentaje_pago, monto_pago, fecha_pago 
-                  FROM C_pago 
-                  WHERE id_cotizacion = ?";
+    $sql_pagos = "SELECT cp.numero_pago, cp.descripcion, cp.porcentaje_pago, cp.monto_pago, cp.fecha_pago, tpp.tipo
+                FROM C_pago cp
+                JOIN Tp_Pago tpp ON cp.id_forma_pago = tpp.id
+                WHERE cp.id_cotizacion = ?";
 
     $stmt = $mysqli->prepare($sql_pagos);
     $stmt->bind_param("i", $id_cotizacion);

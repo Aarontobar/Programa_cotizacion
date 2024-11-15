@@ -82,7 +82,6 @@ BPPJ
                         $selected = ($area['id_area'] == $row['EmpresaArea']) ? 'selected' : '';
                         echo "<option value='" . htmlspecialchars($area['id_area']) . "' $selected>" . htmlspecialchars($area['nombre_area']) . "</option>";
 
-                        // Verifica si es el área seleccionada
                     }
                 }
                 ?>

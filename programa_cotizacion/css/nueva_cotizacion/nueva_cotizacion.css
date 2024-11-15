@@ -103,6 +103,23 @@ BPPJ
   .bancos td {
     text-align: center; /* Centrar texto en celdas de la tabla */
   }
+
+/* TÍTULO: MENSAJE DEL ERROR */
+
+  /* Marca el área o los lados del mensaje del error */
+  .error {
+    border: 2px solid #ff0000;
+  }
+
+/* TÍTULO: MENSAJE DE LAS LETRAS DEL ERROR */
+
+  /* Marca el color, tamaño y posición vertical del mensaje */
+  .error-message {
+      color: #ff0000;
+      font-size: 0.8em;
+      margin-top: 5px;
+  }
+
 /* --------------------------------------------------------------------------------------------------------------
     ---------------------------------------- FIN ITred Spa Formulario Cotizacion .CSS ---------------------------------------
     ------------------------------------------------------------------------------------------------------------- */

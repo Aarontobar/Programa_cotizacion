@@ -1,0 +1,843 @@
+DROP TABLE IF EXISTS FP_FotosPerfil; 
+-- elimina  la tabla si esta ya existe
+
+-- ----------------------------------------------------------
+-- CREAR LA TABLA FOTOSPERFIL--------------------------------
+-- ----------------------------------------------------------
+
+CREATE TABLE FP_FotosPerfil (
+    id_foto INT NOT NULL AUTO_INCREMENT, -- Identificador único de la foto
+    ruta_foto VARCHAR(255) NOT NULL, -- Ruta del archivo de la foto
+    fecha_subida DATETIME DEFAULT CURRENT_TIMESTAMP, -- Fecha de carga de la foto
+    PRIMARY KEY (id_foto) -- Definición de la clave primaria
+) ENGINE=InnoDB;
+
+-- ----------------------------------------------------------
+-- Estructura de tabla para la tabla `Tp_giro`
+-- ----------------------------------------------------------
+
+-- ----------------------------------------------------------
+-- CREAR LA TABLA Tp_giro----------------------------------
+-- ----------------------------------------------------------
+
+CREATE TABLE Tp_Giro (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    tipo VARCHAR(50) NOT NULL UNIQUE
+) ENGINE=InnoDB;
+-- ----------------------------------------------------------
+-- Estructura de tabla para la tabla `Tp_Pago`
+-- ----------------------------------------------------------
+
+-- -----------------------------------------------------------
+-- Crear la tabla Tp_Pago-------------------------------------
+-- -----------------------------------------------------------
+
+CREATE TABLE Tp_Pago (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    tipo VARCHAR(50) NOT NULL UNIQUE
+) ENGINE=InnoDB;
+-- ----------------------------------------------------------
+-- Estructura de tabla para la tabla `Tp_Cliente`
+-- ----------------------------------------------------------
+
+-- ----------------------------------------------------------
+-- CREAR LA TABLA Tp_Cliente---------------------------------
+-- ----------------------------------------------------------
+
+CREATE TABLE Tp_Cliente (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    tipo VARCHAR(50) NOT NULL UNIQUE
+) ENGINE=InnoDB;
+
+-- ----------------------------------------------------------
+-- Estructura de tabla para la tabla `Tp_Firma`
+-- ----------------------------------------------------------
+
+-- ----------------------------------------------------------
+-- CREAR LA TABLA Tp_Firma----------------------------------
+-- ----------------------------------------------------------
+CREATE TABLE Tp_Firma (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    tipo VARCHAR(50) NOT NULL UNIQUE
+);
+
+
+-- ----------------------------------------------------------
+-- Estructura de tabla para la tabla `Tp_Area´---------------
+-- ----------------------------------------------------------
+
+-- ----------------------------------------------------------
+-- Eliminar la tabla Tp_Area_ si existe----------------------
+-- ----------------------------------------------------------
+
+DROP TABLE IF EXISTS Tp_Area; -- elimina  la tabla si existe
+
+-- ----------------------------------------------------------
+-- Crear la tabla de áreas de la empresa---------------------
+-- ----------------------------------------------------------
+CREATE TABLE Tp_Area (
+    id_area INT NOT NULL AUTO_INCREMENT, -- Identificador único del área de la empresa
+    nombre_area VARCHAR(255) NOT NULL, -- Nombre del área de la empresa
+    PRIMARY KEY (id_area) -- Definir clave primaria
+) ENGINE=InnoDB;
+
+
+
+-- ----------------------------------------------------------
+-- Estructura de tabla para la tabla `E_Empresa--------------
+-- ----------------------------------------------------------
+
+-- -----------------------------------------------------------
+-- Eliminar la tabla Empresa si existe-----------------------
+-- -----------------------------------------------------------
+
+DROP TABLE IF EXISTS E_Empresa; -- elimina  la tabla si existe
+
+-- -----------------------------------------------------------
+-- Crear la tabla Empresa con la nueva columna id_area_empresa
+-- -----------------------------------------------------------
+
+    CREATE TABLE E_Empresa (
+        id_empresa INT NOT NULL AUTO_INCREMENT, -- Identificador único de la empresa
+        id_foto INT, -- Identificador de la foto de la empresa
+        rut_empresa VARCHAR(20) NOT NULL, -- RUT de la empresa
+        nombre_empresa VARCHAR(255) NOT NULL, -- Nombre de la empresa
+        id_area_empresa INT NOT NULL, -- Identificador del área de la empresa (clave foránea)
+        direccion_empresa VARCHAR(255), -- Dirección de la empresa
+        ciudad_empresa VARCHAR(100), -- Ciudad de la empresa
+        pais_empresa VARCHAR(100), -- País de la empresa
+        telefono_empresa VARCHAR(20), -- Teléfono de la empresa
+        email_empresa VARCHAR(100), -- Email de la empresa
+        web_empresa VARCHAR(255), -- Sitio web de la empresa
+        fecha_creacion DATE, -- Fecha de creación de la empresa
+        dias_validez INT, -- Días de validez
+        id_tipo_firma INT, -- Identificador del tipo de firma
+        PRIMARY KEY (id_empresa), -- Clave primaria
+        FOREIGN KEY (id_foto) REFERENCES FP_FotosPerfil(id_foto) ON DELETE CASCADE, -- Clave foránea de fotos
+        FOREIGN KEY (id_tipo_firma) REFERENCES Tp_Firma(id) ON DELETE SET NULL, -- Clave foránea de tipo de firma
+        FOREIGN KEY (id_area_empresa) REFERENCES Tp_Area(id_area) -- Clave foránea del área de la empresa
+    ) ENGINE=InnoDB;
+
+
+-- ----------------------------------------------------------
+-- ESTRUCTURA DE TABLA PARA LA TABLA `TP_CARGO`--------------
+-- ----------------------------------------------------------
+
+-- -----------------------------------------------------------
+-- ELIMINAR LA TABLA TP_CARGO SI EXISTE----------------------
+-- -----------------------------------------------------------
+
+DROP TABLE IF EXISTS Tp_cargo; -- elimina  la tabla si existe
+
+-- -----------------------------------------------------------
+-- CREAR LA TABLA DE TIPOS DE CARGOS DEL ENCARGADO O PERSONAL-
+-- -----------------------------------------------------------
+CREATE TABLE Tp_cargo (
+    id_tp_cargo INT NOT NULL AUTO_INCREMENT, -- Identificador único del tipo de cargo
+    nombre_cargo VARCHAR(255) NOT NULL, -- Nombre del tipo de cargo
+    PRIMARY KEY (id_tp_cargo) -- Definir clave primaria
+) ENGINE=InnoDB;
+
+-- ----------------------------------------------------------
+-- Estructura de tabla para la tabla `Em_Encargado`----------
+-- ----------------------------------------------------------
+
+--  -----------------------------------------------------------
+-- Eliminar la tabla Em_Encargados si existe-----------------
+-- -----------------------------------------------------------
+
+DROP TABLE IF EXISTS Em_Encargados; -- elimina  la tabla si existe
+
+-- -----------------------------------------------------------
+-- Crear la tabla E_Encargados-------------------------------
+-- -----------------------------------------------------------
+CREATE TABLE Em_Encargados (
+    id_encargado INT NOT NULL AUTO_INCREMENT, -- Identificador único del encargado
+    rut_encargado VARCHAR(20) UNIQUE, -- RUT del encargado (debe ser único)
+    nombre_encargado VARCHAR(255) NOT NULL, -- Nombre del encargado
+    id_tp_cargo INT  NULL, -- Identificador del tipo de cargo del encargado (fk)
+    email_encargado VARCHAR(100), -- Email del encargado
+    fono_encargado VARCHAR(20), -- Teléfono del encargado
+    celular_encargado VARCHAR(20), -- Celular del encargado
+    id_empresa INT NULL, -- Identificador de la empresa a la que pertenece el encargado
+    PRIMARY KEY (id_encargado), -- Definición de la clave primaria
+    FOREIGN KEY (id_empresa) REFERENCES E_Empresa(id_empresa) ON DELETE SET NULL, -- Clave foránea para referenciar la empresa
+    FOREIGN KEY (id_tp_cargo) REFERENCES Tp_cargo(id_tp_cargo) ON DELETE SET NULL -- Clave foránea para referenciar el tipo de cargo
+) ENGINE=InnoDB;
+
+-- ----------------------------------------------------------
+-- ESTRUCTURA DE TABLA PARA LA TABLA `tp_lugar`-------------
+-- ----------------------------------------------------------
+
+-- -----------------------------------------------------------
+-- ELIMINAR LA TABLA CLIENTES SI EXISTE----------------------
+-- -----------------------------------------------------------
+
+DROP TABLE IF EXISTS tp_lugar; -- elimina  la tabla si ya existe
+
+-- ----------------------------------------------------------
+-- ESTRUCTURA DE TABLA PARA LA TABLA `tp_lugar`-------------
+-- ----------------------------------------------------------
+
+-- Crear la tabla Tp_Lugar
+CREATE TABLE Tp_Lugar (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    nombre_lugar VARCHAR(255) NOT NULL
+) ENGINE=InnoDB;
+
+-- -----------------------------------------------------------
+-- ELIMINAR LA TABLA CLIENTES SI EXISTE----------------------
+-- -----------------------------------------------------------
+
+DROP TABLE IF EXISTS C_Clientes; -- elimina  la tabla si ya existe
+
+-- -----------------------------------------------------------
+-- CREAR LA TABLA CLIENTES----------------------------------
+-- -----------------------------------------------------------
+CREATE TABLE C_Clientes (
+    id_cliente int NOT NULL AUTO_INCREMENT, -- Identificador único del cliente
+    id_empresa_creadora INT, -- Identificador de la empresa a la que pertenece el encargado
+    rut_empresa_cliente varchar(20), -- RUT de la empresa del cliente (debe ser único)
+    nombre_empresa_cliente varchar(255), -- Nombre Empresa del cliente
+    telefono_empresa_cliente varchar(20), -- Teléfono de la empresa del cliente 
+    email_empresa_cliente varchar(100), -- Email de la empresa del cliente
+    id_giro INT, -- Identificador del giro de la empresa del cliente (clave foránea)
+    id_tipo_empresa INT, -- Identificador del tipo de empresa del cliente (clave foránea)
+    id_lugar INT, -- Identificador del lugar de la empresa del cliente (clave foránea)
+    ciudad_empresa_cliente varchar(255), -- Ciudad de la empresa del cliente
+    comuna_empresa_cliente varchar(255), -- Comuna de la empresa del cliente
+    direccion_empresa_cliente varchar(255), -- Direccion de la empresa del cliente
+    observacion varchar(255), -- Observacion de la empresa del cliente
+    rut_encargado_cliente varchar(20), -- RUT del encargado del cliente (debe ser único)
+    nombre_encargado_cliente varchar(255) NOT NULL, -- Nombre del cliente
+    direccion_encargado_cliente varchar(255), -- Dirección del cliente
+    telefono_encargado_cliente varchar(20), -- Teléfono del cliente    
+    email_encargado_cliente varchar(100), -- Email del cliente
+    comuna_encargado_cliente varchar(255), -- Comuna del cliente
+    ciudad_encargado_cliente varchar(255), -- Ciudad del cliente
+    estado_empresa_cliente varchar(20) DEFAULT 'activo', -- estado empresa
+    estado_encargado_cliente varchar(20) DEFAULT 'activo', -- estado cliente
+    id_cargo INT, -- Identificador del cargo (clave foránea)
+    PRIMARY KEY (id_cliente), -- Definición de la clave primaria
+    FOREIGN KEY (id_empresa_creadora) REFERENCES E_Empresa(id_empresa) ON DELETE SET NULL, -- Clave foránea para referenciar la empresa
+    FOREIGN KEY (id_lugar) REFERENCES Tp_Lugar(id) ON DELETE SET NULL, -- Clave foránea para referenciar el lugar
+    FOREIGN KEY (id_giro) REFERENCES Tp_Giro(id) ON DELETE SET NULL, -- Clave foránea para referenciar el giro
+    FOREIGN KEY (id_tipo_empresa) REFERENCES Tp_Cliente(id) ON DELETE SET NULL, -- Clave foránea para referenciar el tipo de empresa
+    FOREIGN KEY (id_cargo) REFERENCES Tp_Cargo(id_tp_cargo) ON DELETE SET NULL -- Clave foránea para referenciar el cargo
+) ENGINE=InnoDB;
+
+-- ----------------------------------------------------------
+-- Estructura de tabla para la tabla `P_Proveedor`-----------
+-- ----------------------------------------------------------
+
+-- -----------------------------------------------------------
+-- Eliminar la tabla Proveedor si existe---------------------
+-- -----------------------------------------------------------
+
+DROP TABLE IF EXISTS P_Proveedor; -- elimina  la tabla si esta ya existe
+
+-- -----------------------------------------------------------
+-- Crear la tabla Proveedor----------------------------------
+-- -----------------------------------------------------------
+CREATE TABLE P_Proveedor (
+    id_proveedor int NOT NULL AUTO_INCREMENT, -- Identificador único del proveedor
+    nombre_proveedor varchar(255) NOT NULL, -- Nombre del proveedor
+    rut_proveedor varchar(20) , -- RUT del proveedor (debe ser único)
+    direccion_proveedor varchar(255), -- Dirección del proveedor
+    telefono_proveedor varchar(20), -- Teléfono del proveedor
+    email_proveedor varchar(100), -- Email del proveedor
+    cargo_proveedor varchar(255), -- Cargo del proveedor
+    comuna_proveedor varchar(255), -- Comuna del proveedor
+    ciudad_proveedor varchar(255), -- Ciudad del proveedor
+    tipo_proveedor varchar(255), -- Tipo del proveedor
+    empresa_proveedor varchar(255), -- Empresa del proveedor(empresa)
+    rut_empresa_proveedor varchar(20) , -- RUT del proveedor(debe ser único)(empresa)
+    direccion_empresa_proveedor varchar(255), -- Dirección del proveedor(empresa)
+    telefono_empresa_proveedor varchar(20), -- Teléfono del proveedor(empresa)
+    email_empresa_proveedor varchar(100), -- Email del proveedor(empresa)
+    comuna_empresa_proveedor varchar(255), -- Comuna del proveedor(empresa)
+    ciudad_empresa_proveedor varchar(255), -- Ciudad del proveedor(empresa)
+    giro_proveedor varchar(255), -- Giro del proveedor(empresa)
+    PRIMARY KEY (id_proveedor) -- Definición de la clave primaria
+) ENGINE=InnoDB ;
+
+
+-- ----------------------------------------------------------
+-- Estructura de tabla para la tabla `Tp_trabajo`------------
+-- ----------------------------------------------------------
+
+-- -----------------------------------------------------------
+-- Eliminar la tabla Tp_trabajo si existe--------------------
+-- -----------------------------------------------------------
+
+DROP TABLE IF EXISTS Tp_trabajo; 
+-- elimina  la tabla si ya existe
+
+-- -----------------------------------------------------------
+-- Crear la tabla de tipos de trabajo del proyecto-----------
+-- -----------------------------------------------------------
+CREATE TABLE Tp_trabajo (
+    id_tp_trabajo INT NOT NULL AUTO_INCREMENT, -- Identificador único del tipo de trabajo
+    nombre_trabajo VARCHAR(255) NOT NULL, -- Nombre del tipo de trabajo
+    PRIMARY KEY (id_tp_trabajo) -- Definir clave primaria
+) ENGINE=InnoDB;
+
+
+-- ----------------------------------------------------------
+-- Estructura de tabla para la tabla `Tp_Riesgo`-------------
+-- ----------------------------------------------------------
+
+-- -----------------------------------------------------------
+-- Eliminar la tabla Tp_Riesgo si existe---------------------
+-- -----------------------------------------------------------
+DROP TABLE IF EXISTS Tp_Riesgo; -- elimina  la tabla si existe
+
+-- -----------------------------------------------------------
+-- Crear la tabla de tipos de riesgo del proyecto------------
+-- -----------------------------------------------------------
+
+CREATE TABLE Tp_Riesgo (
+    id_tp_riesgo INT NOT NULL AUTO_INCREMENT, -- Identificador único del tipo de riesgo
+    nombre_riesgo VARCHAR(255) NOT NULL, -- Nombre del tipo de riesgo
+    PRIMARY KEY (id_tp_riesgo) -- Definir clave primaria
+) ENGINE=InnoDB;
+
+
+-- ----------------------------------------------------------
+-- ESTRUCTURA DE TABLA PARA LA TABLA `C_PROYECTO`------------
+-- ---------------------------------------------------------- 
+
+-- -----------------------------------------------------------
+-- Eliminar la tabla C_Proyectos si existe-------------------
+-- -----------------------------------------------------------
+DROP TABLE IF EXISTS C_Proyectos; -- elimina  la tabla si existe
+
+-- -----------------------------------------------------------
+-- Crear la tabla Proyectos----------------------------------
+-- -----------------------------------------------------------
+CREATE TABLE C_Proyectos (
+    id_proyecto INT NOT NULL AUTO_INCREMENT, -- Identificador único del proyecto
+    nombre_proyecto VARCHAR(255), -- Nombre del proyecto
+    codigo_proyecto VARCHAR(50) NOT NULL, -- Código del proyecto
+    id_tp_trabajo INT NOT NULL, -- Reemplazar tipo_trabajo por la FK
+    id_area INT NOT NULL, -- Identificador del área de la empresa (clave foránea)
+    id_tp_riesgo INT NULL, -- Identificador del tipo de riesgo (FK)
+    descripcion_riesgo VARCHAR(255), -- Descripción del riesgo
+    dias_compra VARCHAR(50), -- Días de compra relacionados con la cotización
+    dias_trabajo VARCHAR(50), -- Días de trabajo relacionados con la cotización
+    trabajadores INT, -- Número de trabajadores asignados
+    horario VARCHAR(50), -- Horario de trabajo
+    colacion VARCHAR(50), -- Colación incluida
+    entrega VARCHAR(50), -- Entrega especificada
+    PRIMARY KEY (id_proyecto), -- Definición de la clave primaria
+    FOREIGN KEY (id_area) REFERENCES Tp_Area(id_area), -- Clave foránea del área de la empresa
+    FOREIGN KEY (id_tp_trabajo) REFERENCES Tp_trabajo(id_tp_trabajo) ON DELETE CASCADE, -- Clave foránea para referenciar el tipo de trabajo
+    FOREIGN KEY (id_tp_riesgo) REFERENCES Tp_Riesgo(id_tp_riesgo) ON DELETE SET NULL -- Clave foránea para referenciar el tipo de riesgo
+) ENGINE=InnoDB;
+
+
+
+-- ----------------------------------------------------------
+-- Estructura de tabla para la tabla `C_Encargado`-----------
+-- ----------------------------------------------------------
+
+-- -----------------------------------------------------------
+-- Eliminar la tabla Encargados si existe--------------------
+-- -----------------------------------------------------------
+
+DROP TABLE IF EXISTS C_Encargados;-- elimina  la tabla si ya existe
+
+-- -----------------------------------------------------------
+-- Crear la tabla Encargados---------------------------------
+-- -----------------------------------------------------------
+CREATE TABLE C_Encargados (
+    id_encargado int NOT NULL AUTO_INCREMENT, -- Identificador único del encargado
+    rut_encargado varchar(20) , -- RUT del cliente (debe ser único)
+    nombre_encargado varchar(255) NOT NULL, -- Nombre del encargado
+    email_encargado varchar(100), -- Email del encargado
+    fono_encargado varchar(20), -- Teléfono del encargado
+    celular_encargado varchar(20), -- Celular del encargado
+    PRIMARY KEY (id_encargado) -- Definición de la clave primaria
+) ENGINE=InnoDB ;
+
+-- ----------------------------------------------------------
+-- Estructura de tabla para la tabla `Em_Vendedores`---------
+-- ----------------------------------------------------------
+
+-- -----------------------------------------------------------
+-- Eliminar la tabla Em_Vendedores si existe-----------------
+-- -----------------------------------------------------------
+
+DROP TABLE IF EXISTS Em_Vendedores;-- elimina  la tabla si ya existe
+
+-- -----------------------------------------------------------
+-- Crear la tabla Em_Vendedores------------------------------
+-- -----------------------------------------------------------
+CREATE TABLE Em_Vendedores (
+    id_vendedor INT NOT NULL AUTO_INCREMENT, -- Identificador único del vendedor
+    rut_vendedor VARCHAR(20), -- RUT del vendedor (debe ser único)
+    nombre_vendedor VARCHAR(255) NOT NULL, -- Nombre del vendedor
+    email_vendedor VARCHAR(100), -- Email del vendedor
+    fono_vendedor VARCHAR(20), -- Teléfono del vendedor
+    celular_vendedor VARCHAR(20), -- Celular del vendedor
+    id_tp_cargo INT DEFAULT 3, -- Identificador del tipo de cargo del vendedor (FK), con valor por defecto de 3
+    PRIMARY KEY (id_vendedor), -- Definición de la clave primaria
+    FOREIGN KEY (id_tp_cargo) REFERENCES Tp_cargo(id_tp_cargo) ON DELETE SET NULL -- Clave foránea para referenciar el tipo de cargo
+) ENGINE=InnoDB;
+
+
+-- ----------------------------------------------------------
+-- Estructura de tabla para la tabla `Tp_Banco`--------------
+-- ----------------------------------------------------------
+
+-- -----------------------------------------------------------
+-- Eliminar la tabla Tp_Banco si existe----------------------
+-- -----------------------------------------------------------
+
+DROP TABLE IF EXISTS Tp_Banco;-- elimina  la tabla si ya existe
+
+-- -----------------------------------------------------------
+-- Crear la tabla Tp_Banco-----------------------------------
+-- -----------------------------------------------------------
+CREATE TABLE Tp_Banco (
+    id_banco INT AUTO_INCREMENT PRIMARY KEY,
+    nombre_banco VARCHAR(255) NOT NULL UNIQUE
+);
+
+-- ----------------------------------------------------------
+-- Estructura de tabla para la tabla `Tp_Cuenta`-------------
+-- ----------------------------------------------------------
+
+-- -----------------------------------------------------------
+-- Eliminar la tabla Tp_Cuenta si existe---------------------
+-- -----------------------------------------------------------
+
+DROP TABLE IF EXISTS Tp_Cuenta;-- elimina  la tabla si ya existe
+
+-- -----------------------------------------------------------
+-- Crear la tabla Tp_Cuenta----------------------------------
+-- -----------------------------------------------------------
+
+CREATE TABLE Tp_Cuenta (
+    id_tipocuenta INT AUTO_INCREMENT PRIMARY KEY,
+    tipocuenta VARCHAR(255) NOT NULL,
+    descripcion VARCHAR(255)
+);
+
+-- ----------------------------------------------------------
+-- Estructura de tabla para la tabla `Em_Cuenta_Bancaria`----
+-- ----------------------------------------------------------
+
+-- -----------------------------------------------------------
+-- Eliminar la tabla Em_Cuenta_Bancaria si existe------------
+-- -----------------------------------------------------------
+
+DROP TABLE IF EXISTS Em_Cuenta_Bancaria; -- elimina  la tabla si existe
+
+-- -----------------------------------------------------------
+-- crea la tabla Em_Cuenta_Bancaria---------------------------
+-- -----------------------------------------------------------
+CREATE TABLE Em_Cuenta_Bancaria (
+    id_cuenta INT AUTO_INCREMENT PRIMARY KEY,
+    rut_titular VARCHAR(12) NOT NULL,
+    nombre_titular VARCHAR(255) NOT NULL,
+    id_banco INT NOT NULL,
+    id_tipocuenta INT NOT NULL,
+    numero_cuenta VARCHAR(20) NOT NULL,
+    celular INT ,
+    email_banco VARCHAR(255) NOT NULL,
+    id_empresa INT NOT NULL,
+    FOREIGN KEY (id_banco) REFERENCES Tp_Banco(id_banco),
+    FOREIGN KEY (id_tipocuenta) REFERENCES Tp_Cuenta(id_tipocuenta),
+    FOREIGN KEY (id_empresa) REFERENCES E_Empresa(id_empresa)
+);
+
+
+-- ----------------------------------------------------------
+-- Estructura de tabla para la tabla `C_Cotizaciones`--------
+-- ----------------------------------------------------------
+
+-- -----------------------------------------------------------
+-- Eliminar la tabla Cotizaciones si existe------------------
+-- -----------------------------------------------------------
+
+DROP TABLE IF EXISTS C_Cotizaciones; -- elimina  la tabla si esta ya existe 
+
+-- -----------------------------------------------------------
+-- Crear la tabla Cotizaciones actualizada-------------------
+-- -----------------------------------------------------------
+CREATE TABLE C_Cotizaciones (
+    id_cotizacion INT NOT NULL AUTO_INCREMENT,
+    numero_cotizacion VARCHAR(50) NOT NULL,
+    fecha_emision DATE, 
+    fecha_validez DATE, 
+    estado varchar(50),
+    id_cliente INT, 
+    id_proyecto INT, 
+    id_empresa INT, 
+    id_vendedor INT, 
+    id_encargado INT,
+    PRIMARY KEY (id_cotizacion),
+    FOREIGN KEY (id_cliente) REFERENCES C_Clientes(id_cliente) ON DELETE CASCADE, 
+    FOREIGN KEY (id_proyecto) REFERENCES C_Proyectos(id_proyecto) ON DELETE CASCADE, 
+    FOREIGN KEY (id_empresa) REFERENCES E_Empresa(id_empresa) ON DELETE CASCADE, 
+    FOREIGN KEY (id_vendedor) REFERENCES Em_Vendedores(id_vendedor) ON DELETE SET NULL,
+    FOREIGN KEY (id_encargado) REFERENCES Em_Encargados(id_encargado) ON DELETE SET NULL
+) ENGINE=InnoDB ;
+
+-- ----------------------------------------------------------
+-- Estructura de tabla para la tabla `C_Titulos`-------------
+-- ----------------------------------------------------------
+
+-- -----------------------------------------------------------
+-- Eliminar la tabla Titulos si existe-----------------------
+-- -----------------------------------------------------------
+
+DROP TABLE IF EXISTS C_Titulos; -- elimina  la tabla si existe
+
+-- -----------------------------------------------------------
+-- Crear la tabla Titulos------------------------------------
+-- -----------------------------------------------------------
+CREATE TABLE C_Titulos (
+    id_titulo INT NOT NULL AUTO_INCREMENT,
+    id_cotizacion INT NOT NULL,
+    nombre VARCHAR(255) NOT NULL,
+    PRIMARY KEY (id_titulo),
+    FOREIGN KEY (id_cotizacion) REFERENCES C_Cotizaciones(id_cotizacion) ON DELETE CASCADE
+) ENGINE=InnoDB ;
+
+
+
+
+-- ----------------------------------------------------------
+-- Estructura de tabla para la tabla `C_Subtitulos`----------
+-- ----------------------------------------------------------
+
+-- -----------------------------------------------------------
+-- Crear la tabla C_Subtitulos-------------------------------
+-- -----------------------------------------------------------
+CREATE TABLE C_Subtitulos (
+    id_subtitulo INT NOT NULL AUTO_INCREMENT,
+    id_titulo INT NOT NULL,     -- ID del título
+    nombre VARCHAR(255),
+    color VARCHAR(255),
+    PRIMARY KEY (id_subtitulo),
+    FOREIGN KEY (id_titulo) REFERENCES C_Titulos(id_titulo) ON DELETE CASCADE
+) ENGINE=InnoDB ;
+
+-- ----------------------------------------------------------
+-- Estructura de tabla para la tabla `C_Notas`---------------
+-- ----------------------------------------------------------
+
+-- -----------------------------------------------------------
+-- Crear la tabla C_Notas------------------------------------
+-- -----------------------------------------------------------
+CREATE TABLE C_Notas (
+    id_nota INT NOT NULL AUTO_INCREMENT,    -- ID de la nota
+    id_titulo INT NOT NULL,                 -- ID del título (relación con C_Titulos)
+    contenido TEXT,                         -- Contenido de la nota
+    color VARCHAR(50),                      -- Color de la nota
+    PRIMARY KEY (id_nota),
+    FOREIGN KEY (id_titulo) REFERENCES C_Titulos(id_titulo) ON DELETE CASCADE
+) ENGINE=InnoDB;
+
+
+
+-- ----------------------------------------------------------
+-- Estructura de tabla para la tabla `C_Detalle`-------------
+-- ----------------------------------------------------------
+
+-- -----------------------------------------------------------
+-- Eliminar la tabla C_Detalles si existe--------------------
+-- -----------------------------------------------------------
+
+DROP TABLE IF EXISTS C_Detalles; -- elimina  la tabla si existe
+
+-- -----------------------------------------------------------
+-- Crear la tabla C_Detalles---------------------------------
+-- -----------------------------------------------------------
+CREATE TABLE C_Detalles (
+    id_detalle INT NOT NULL AUTO_INCREMENT,
+    id_titulo INT,
+    id_subtitulo INT,
+    tipo VARCHAR(50),
+    nombre_producto VARCHAR(255),
+    descripcion TEXT,
+    cantidad INT NOT NULL,
+    precio_unitario DECIMAL(10,2) NOT NULL,
+    descuento_porcentaje DECIMAL(5,2) DEFAULT 0,
+    color VARCHAR(255),
+    total DECIMAL(10,2),
+    PRIMARY KEY (id_detalle),
+    FOREIGN KEY (id_subtitulo) REFERENCES C_Subtitulos(id_subtitulo) ON DELETE CASCADE,
+    FOREIGN KEY (id_titulo) REFERENCES C_Titulos(id_titulo) ON DELETE CASCADE
+) ENGINE=InnoDB ;
+
+-- ----------------------------------------------------------
+-- Estructura de tabla para la tabla `C-Totales`-------------
+-- ----------------------------------------------------------
+
+-- -----------------------------------------------------------
+-- Eliminar la tabla C_Totales si existe---------------------
+-- -----------------------------------------------------------
+
+DROP TABLE IF EXISTS C_Totales; -- elimina  la tabla si existe
+
+-- -----------------------------------------------------------
+-- Crear la tabla C_Totales----------------------------------
+-- -----------------------------------------------------------
+CREATE TABLE C_Totales (
+    id_total INT NOT NULL AUTO_INCREMENT,
+    id_cotizacion INT NOT NULL,
+    sub_total INT,                 
+    descuento_global INT,           
+    monto_neto INT,                 
+    iva_valor INT,             
+    total_iva INT,                
+    total_final INT,                
+    total_final_letras VARCHAR(100),
+    PRIMARY KEY (id_total),
+    FOREIGN KEY (id_cotizacion) REFERENCES C_Cotizaciones(id_cotizacion) ON DELETE CASCADE
+) ENGINE=InnoDB;
+
+-- ----------------------------------------------------------
+-- Estructura de tabla para la tabla `p_tipo_producto`-------
+-- ----------------------------------------------------------
+
+CREATE TABLE p_tipo_producto (
+    id_tipo_producto INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    tipo_producto VARCHAR(255) NOT NULL
+) ENGINE=InnoDB ;
+
+-- ----------------------------------------------------------
+-- Estructura de tabla para la tabla `C_pago`----------------
+-- ----------------------------------------------------------
+
+-- -----------------------------------------------------------
+-- Eliminar la tabla pago si existe--------------------------
+-- -----------------------------------------------------------
+
+DROP TABLE IF EXISTS C_pago; -- elimina  la tabla si existe
+
+-- -----------------------------------------------------------
+-- Crear la tabla pago---------------------------------------
+-- -----------------------------------------------------------
+CREATE TABLE C_pago (
+    id_pago INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    id_cotizacion INT NOT NULL, -- ID de la cotización (clave foránea)
+    numero_pago INT,
+    descripcion VARCHAR(255),
+    porcentaje_pago INT(3) DEFAULT 0, 
+    monto_pago INT(10) DEFAULT 0,
+    fecha_pago DATE,
+    id_forma_pago INT, -- Identificador de la forma de pago (clave foránea)
+    FOREIGN KEY (id_cotizacion) REFERENCES C_Cotizaciones(id_cotizacion) ON DELETE CASCADE,
+    FOREIGN KEY (id_forma_pago) REFERENCES Tp_Pago(id) ON DELETE SET NULL
+) ENGINE=InnoDB;
+
+COMMIT;
+
+-- ------------------------------------------------------------
+-- Estructura de tabla para la tabla `Em_Condiciones_generales`
+-- ------------------------------------------------------------
+
+-- -------------------------------------------------------------
+-- elimina  la tabla Em_Condiciones_Generales--------------------
+-- -------------------------------------------------------------
+
+DROP TABLE IF EXISTS Em_Condiciones_Generales; -- elimina  la tabla si existe
+
+-- -------------------------------------------------------------
+-- Crear la tabla Condiciones_Generales------------------------
+-- -------------------------------------------------------------
+CREATE TABLE Em_Condiciones_Generales (
+    id_condiciones INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    id_empresa INT NOT NULL, -- ID de la cotización (clave foránea)
+    descripcion_condiciones TEXT NOT NULL, -- Descripción de las condiciones generales
+    estado BOOLEAN DEFAULT FALSE, -- Estado de la condición (por defecto, falso)
+    FOREIGN KEY (id_empresa) REFERENCES E_Empresa(id_empresa) ON DELETE CASCADE -- Clave foránea hacia Cotizaciones
+) ENGINE=InnoDB ;
+
+-- ----------------------------------------------------------
+-- Estructura de tabla para la tabla `C_Cotizacion_Condiciones`
+-- ----------------------------------------------------------
+
+-- -----------------------------------------------------------
+-- elimina  la tabla C_Cotizacion_Condiciones------------------
+-- -----------------------------------------------------------
+
+DROP TABLE IF EXISTS C_Cotizacion_Condiciones; -- elimina  la tabla si existe
+
+-- -----------------------------------------------------------
+-- Crear la tabla intermedia Cotizacion_Condiciones----------
+-- -----------------------------------------------------------
+
+CREATE TABLE C_Cotizacion_Condiciones (
+    id_cotizacion_condiciones INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    id_cotizacion INT NOT NULL, -- Clave foránea hacia Cotizaciones
+    id_condiciones INT NOT NULL, -- Clave foránea hacia Condiciones Generales
+    FOREIGN KEY (id_cotizacion) REFERENCES C_Cotizaciones(id_cotizacion) ON DELETE CASCADE,
+    FOREIGN KEY (id_condiciones) REFERENCES Em_Condiciones_Generales(id_condiciones) ON DELETE CASCADE
+  --  UNIQUE KEY (id_cotizacion, id_condiciones) Para evitar duplicados
+) ENGINE=InnoDB ;
+
+-- ----------------------------------------------------------
+-- Estructura de tabla para la tabla `Em_Requisitos_Basicos`-
+-- ----------------------------------------------------------
+
+-- -----------------------------------------------------------
+-- elimina  la tabla Em_Requisitos_basicos---------------------
+-- -----------------------------------------------------------
+
+DROP TABLE IF EXISTS Em_Requisitos_Basicos; -- elimina  la tabla si existe
+
+-- -----------------------------------------------------------
+-- Crear la tabla Requisitos_Basicos-------------------------
+-- -----------------------------------------------------------
+CREATE TABLE Em_Requisitos_Basicos (
+    id_requisitos INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    indice INT NOT NULL, -- nueva tabla?
+    descripcion_condiciones VARCHAR(255) NOT NULL,
+    estado BOOLEAN DEFAULT FALSE, -- Estado de la condición (por defecto, falso)
+    id_empresa INT NOT NULL, -- ID de la empresa (clave foránea)
+
+    FOREIGN KEY (id_empresa) REFERENCES E_Empresa(id_empresa) ON DELETE CASCADE -- Clave foránea hacia Empresa
+) ENGINE=InnoDB ;
+
+-- -------------------------------------------------------------
+-- Estructura de tabla para la tabla `C_Cotizaciones_Requisitos`
+-- -------------------------------------------------------------
+
+-- ---------------------------------------------------------------
+-- eliminar la tabla intermedia Cotizaciones_Requisitos si existe
+-- ---------------------------------------------------------------
+
+DROP TABLE IF EXISTS C_Cotizaciones_Requisitos; -- elimina  la tabla si existe
+
+-- Crear la tabla intermedia Cotizaciones_Requisitos
+CREATE TABLE C_Cotizaciones_Requisitos (
+    id_cotizacion_requisito INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    id_cotizacion INT NOT NULL, -- Clave foránea hacia Cotizaciones
+    id_requisitos INT NOT NULL, -- Clave foránea hacia Requisitos Básicos
+    FOREIGN KEY (id_cotizacion) REFERENCES C_Cotizaciones(id_cotizacion) ON DELETE CASCADE,
+    FOREIGN KEY (id_requisitos) REFERENCES Em_Requisitos_Basicos(id_requisitos) ON DELETE CASCADE
+   -- UNIQUE KEY (id_cotizacion, id_requisitos) -- Para evitar duplicados
+) ENGINE=InnoDB;
+
+
+-- ----------------------------------------------------------
+-- Estructura de tabla para la tabla `Em_obligaciones_cliente
+-- ----------------------------------------------------------
+
+-- -----------------------------------------------------------
+-- eliminar la tabla Em_obligaciones_cliente si existe-------
+-- -----------------------------------------------------------
+
+DROP TABLE IF EXISTS Em_obligaciones_cliente; -- elimina  la tabla si existe
+
+-- -----------------------------------------------------------
+-- Crear la tabla Em_obligaciones_cliente--------------------
+-- -----------------------------------------------------------
+CREATE TABLE Em_obligaciones_cliente (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    indice INT NOT NULL,
+    descripcion TEXT NOT NULL,
+    estado BOOLEAN DEFAULT FALSE, -- Estado de la condición (por defecto, falso)
+    id_empresa INT NOT NULL,
+    FOREIGN KEY (id_empresa) REFERENCES E_Empresa(id_empresa) ON DELETE CASCADE 
+);
+
+-- ---------------------------------------------------------------
+-- Estructura de tabla para la tabla `C_Cotizaciones_Obligaciones`
+-- ---------------------------------------------------------------
+
+-- ----------------------------------------------------------------
+-- elimina  la tabla C_Cotizaciones_Obligaciones--------------------
+-- ----------------------------------------------------------------
+
+DROP TABLE IF EXISTS C_Cotizaciones_Obligaciones; -- elimina  la tabla si existe
+
+-- ----------------------------------------------------------------
+-- Crear la tabla intermedia Cotizaciones_Obligaciones------------
+-- ----------------------------------------------------------------
+
+CREATE TABLE C_Cotizaciones_Obligaciones (
+    id_cotizacion_obligacion INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    id_cotizacion INT NOT NULL, -- Clave foránea hacia Cotizaciones
+    id_obligacion INT NOT NULL, -- Clave foránea hacia Obligaciones del Cliente
+    FOREIGN KEY (id_cotizacion) REFERENCES C_Cotizaciones(id_cotizacion) ON DELETE CASCADE,
+    FOREIGN KEY (id_obligacion) REFERENCES Em_obligaciones_cliente(id) ON DELETE CASCADE
+    -- UNIQUE KEY (id_cotizacion, id_obligacion) -- Para evitar duplicados
+) ENGINE=InnoDB;
+
+
+
+
+-- ----------------------------------------------------------
+-- Estructura de tabla para la tabla `C_Observaciones`-------
+-- ----------------------------------------------------------
+
+-- -----------------------------------------------------------
+-- Elimina la tabla Observaciones----------------------------
+-- -----------------------------------------------------------
+
+DROP TABLE IF EXISTS C_Observaciones; -- elimina  la tabla si existe
+
+-- -----------------------------------------------------------
+-- crea la tabla C_Oberservaciones----------------------------
+-- -----------------------------------------------------------
+CREATE TABLE C_Observaciones (
+    id_observacion INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    id_cotizacion INT NOT NULL, -- Clave foránea hacia Cotizaciones
+    observacion TEXT , -- Campo para guardar la observación
+    FOREIGN KEY (id_cotizacion) REFERENCES C_Cotizaciones(id_cotizacion) ON DELETE CASCADE
+) ENGINE=InnoDB;
+
+
+-- ----------------------------------------------------------
+-- Estructura de tabla para la tabla `C_mensaje_despedida`---
+-- ----------------------------------------------------------
+
+-- -----------------------------------------------------------
+-- Crear la tabla C_Mensaje_Despedida------------------------
+-- -----------------------------------------------------------
+
+DROP TABLE IF EXISTS C_mensaje_despedida; -- elimina  la tabla si existe
+
+-- -----------------------------------------------------------
+-- Crea la tabla C-Mensaje_Despedida-------------------------
+-- -----------------------------------------------------------
+CREATE TABLE C_Mensaje_Despedida (
+    id_mensaje_despedida INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    id_cotizacion INT NOT NULL, -- Clave foránea hacia Cotizaciones
+    mensaje_despedida TEXT , -- Campo para guardar el mensaje
+    FOREIGN KEY (id_cotizacion) REFERENCES C_Cotizaciones(id_cotizacion) ON DELETE CASCADE
+) ENGINE=InnoDB;
+
+
+-- ----------------------------------------------------------
+-- Estructura de tabla para la tabla `Em_Firmas`-------------
+-- ----------------------------------------------------------
+
+-- -----------------------------------------------------------
+-- crea la tabla Em_Firmas------------------------------------
+-- -----------------------------------------------------------
+CREATE TABLE Em_Firmas (
+    id_firma INT AUTO_INCREMENT PRIMARY KEY,
+    id_empresa INT NOT NULL,
+    titulo_firma VARCHAR(255) NOT NULL,
+    nombre_encargado_firma VARCHAR(255) NULL,
+    cargo_encargado_firma VARCHAR(100) NULL, -- Campo de cargo del encargado
+    telefono_encargado_firma VARCHAR(20) NULL,
+    nombre_empresa_firma VARCHAR(255) NULL,
+    area_empresa_firma VARCHAR(255) NULL,
+    telefono_empresa_firma VARCHAR(20) NULL,
+    firma_digital VARCHAR(255) NULL,
+    email_firma VARCHAR(100) NULL,
+    direccion_firma VARCHAR(255) NULL,
+    ciudad_firma VARCHAR(100) NULL, -- Campo para la ciudad
+    pais_firma VARCHAR(100) NULL, -- Campo para el país
+    rut_firma VARCHAR(20) NULL,
+    web_firma VARCHAR(255) NULL, -- Campo para el sitio web
+    FOREIGN KEY (id_empresa) REFERENCES E_Empresa(id_empresa)
+);

@@ -1137,8 +1137,8 @@ INSERT INTO C_Clientes (
     nombre_empresa_cliente, 
     telefono_empresa_cliente, 
     email_empresa_cliente, 
-    giro_empresa_cliente, 
-    tipo_empresa_cliente, 
+    id_giro, 
+    id_tipo_empresa, 
     ciudad_empresa_cliente, 
     comuna_empresa_cliente, 
     direccion_empresa_cliente, 
@@ -1156,8 +1156,8 @@ INSERT INTO C_Clientes (
     'Ejemplo S.A.', -- Nombre de la empresa del cliente
     '0987654321', -- Teléfono de la empresa del cliente
     'contacto@ejemplo.com', -- Email de la empresa del cliente
-    'Retail', -- Giro de la empresa del cliente
-    'Corporativo', -- Tipo de empresa del cliente
+    '1', -- Giro de la empresa del cliente
+    '1', -- Tipo de empresa del cliente
     'Santiago', -- Ciudad de la empresa del cliente
     'Providencia', -- Comuna de la empresa del cliente
     'Av. Siempre Viva 123', -- Dirección de la empresa del cliente

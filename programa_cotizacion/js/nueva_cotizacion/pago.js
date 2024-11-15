@@ -14,134 +14,104 @@ BPPJ
     -------------------------------------- INICIO ITred Spa Adelanto.JS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
 
-// TÍTULO: CARGAR FORMAS DE PAGO
+// TÍTULO: FUNCIONES DE MANEJO DE PAGOS
 
-    // funcion que carga las formas de pago que se traen del php para que se muestren 
-    function CargarFormaPago(idSelect) {
-        // Realiza una solicitud para obtener la lista de formas de pago desde el servidor
-        fetch('../../php/nueva_cotizacion/get_forma_pago.php')
-            .then(response => response.text())
-            .then(data => {
-                const select = document.getElementById(idSelect); // Obtener el elemento select por su ID único
-                select.innerHTML = data;  // Insertar directamente las opciones generadas en el select
-            })
-            .catch(error => console.error('Error al cargar formas de pago:', error)); // Manejar errores de la solicitud
-    }
+let contadorPagos = 0;
 
-    // TÍTULO: AGREGAR Y GESTIONAR PAGOS
+// TÍTULO: FUNCIÓN PARA AGREGAR UN NUEVO PAGO
+function AgregarPago() {
+    const tabla = document.getElementById('payment-table');
+    const contenedor = document.getElementById('payments-contenedor');
+    
+    // Mostrar la tabla si está oculta
+    tabla.style.display = 'table';
+    
+    contadorPagos++;
+    
+    // TÍTULO: CREAR NUEVA FILA DE PAGO
+    const nuevaFila = document.createElement('tr');
+    nuevaFila.innerHTML = `
+        <td>
+            <input type="number" name="numero_pago[]" value="${contadorPagos}" readonly class="numero-pago">
+        </td>
+        <td>
+            <textarea name="descripcion_pago[]" required></textarea>
+        </td>
+        <td>
+            <select name="forma_pago[]" required>
+                <option value="">Seleccione forma de pago</option>
+                <option value="1">Efectivo</option>
+                <option value="2">Transferencia</option>
+                <option value="3">Cheque</option>
+            </select>
+        </td>
+        <td>
+            <input type="number" name="porcentaje_pago[]" required min="0" max="100" 
+                   onchange="calcularMontoPago(this)">
+        </td>
+        <td>
+            <input type="number" name="monto_pago[]" required readonly>
+        </td>
+        <td>
+            <input type="date" name="fecha_pago[]" required>
+        </td>
+        <td>
+            <button type="button" onclick="eliminarPago(this)" class="eliminar-pago">Eliminar</button>
+        </td>
+    `;
+    
+    contenedor.appendChild(nuevaFila);
+    actualizarNumerosPago();
+}
 
-    // Función para agregar un nuevo pago a la tabla de pagos
-    function AgregarPago() {
-        const contenedor = document.getElementById('payments-contenedor');
-        const porcentajeInputs = contenedor.querySelectorAll('input[name="porcentaje_pago[]"]');
-        let totalPorcentaje = 0;
-
-        // Sumar todos los porcentajes existentes
-        porcentajeInputs.forEach(input => {
-            totalPorcentaje += parseFloat(input.value) || 0; // Sumar los porcentajes, considerando valor por defecto 0
-        });
-
-        // Verificar si el total ya alcanza o supera el 100%
-        if (totalPorcentaje >= 100) {
-            alert("Ya se ha alcanzado el 100% de los pagos. No se pueden agregar más pagos.");
-            return; // Salir de la función si se ha alcanzado el límite
-        }
-
-        // Mostrar la tabla si está oculta
-        const table = document.getElementById('payment-table');
-        if (table.style.display === 'none') {
-            table.style.display = 'table'; // Cambiar a modo de visualización de tabla
-        }
-
-        // Crear un nuevo bloque de pago
-        const LineaPago = document.createElement('tr');
-
-        // Generar un ID único para el nuevo select
-        const idUnico = 'forma-pago-' + (contenedor.getElementsByTagName('tr').length + 1);
-
-        // Generar el HTML para un nuevo pago dentro de la tabla
-        LineaPago.innerHTML = `
-            <td><input type="number" name="numero_pago[]" required oninput="QuitarCaracteresInvalidos(this)"></td>
-            <td><textarea name="descripcion_pago[]" placeholder="Descripción del pago" oninput="QuitarCaracteresInvalidos(this)"></textarea></td>
-            <td>
-                <select id="${idUnico}" name="forma_pago[]" required>
-                </select>
-            </td>
-            <td><input type="number" id="porcentaje-pago" name="porcentaje_pago[]" min="0" max="${100 - totalPorcentaje}" required oninput="calcularPago(this)" oninput="QuitarCaracteresInvalidos(this)"></td>
-            <td><input type="number" id="monto-pago" name="monto_pago[]" min="0" required readonly oninput="QuitarCaracteresInvalidos(this)"></td>
-            <td><input type="date" name="fecha_pago[]" required oninput="QuitarCaracteresInvalidos(this)"></td>
-            <td><button type="button" onclick="EliminarPago(this)">Eliminar</button></td>
-        `;
-
-        // Agregar la nueva fila de pago al cuerpo de la tabla
-        contenedor.appendChild(LineaPago);
-
-        // Cargar las formas de pago en el nuevo select usando el ID único
-        CargarFormaPago(idUnico);
-    }
-
-    // Ejecutar la función al cargar la página
-    AgregarPago();
-
-
-// TÍTULO: ELIMINAR PAGO
-
-    // Función para eliminar un pago de la tabla
-    function EliminarPago(button) {
-        // Eliminar la fila correspondiente
-        const row = button.closest('tr');
-        row.remove();
-
-        // Ocultar la tabla si no quedan filas
+// TÍTULO: FUNCIÓN PARA ELIMINAR UN PAGO
+function eliminarPago(boton) {
+    const fila = boton.closest('tr');
+    if (fila) {
+        fila.remove();
+        actualizarNumerosPago();
+        
+        // Ocultar la tabla si no hay pagos
         const contenedor = document.getElementById('payments-contenedor');
         if (contenedor.children.length === 0) {
-            document.getElementById('payment-table').style.display = 'none'; // Ocultar tabla si no hay filas
+            document.getElementById('payment-table').style.display = 'none';
         }
     }
+}
 
+// TÍTULO: FUNCIÓN PARA ACTUALIZAR NÚMEROS DE PAGO
+function actualizarNumerosPago() {
+    const filas = document.querySelectorAll('#payments-contenedor tr');
+    filas.forEach((fila, index) => {
+        const numeroInput = fila.querySelector('.numero-pago');
+        if (numeroInput) {
+            numeroInput.value = index + 1;
+        }
+    });
+    contadorPagos = filas.length;
+}
 
-// TÍTULO: CALCULAR MONTO DEL PAGO
-
-    // Función para calcular el monto del pago basado en el porcentaje ingresado
-    function calcularPago(input) {
-        const row = input.closest('tr'); // Obtener la fila actual
-        const montoPagoInput = row.querySelector('#monto-pago'); // Obtener el input de monto
-        const totalFinalInput = document.getElementById('total_final'); // Obtener el total final
-
-        const porcentajeAdelanto = parseFloat(input.value) || 0; // Obtener porcentaje del input
-        const totalFinal = parseFloat(totalFinalInput.value) || 0; // Obtener el total final
-
-        const montoAdelanto = (totalFinal * (porcentajeAdelanto / 100)).toFixed(2); // Calcular monto del pago
-        montoPagoInput.value = montoAdelanto; // Asignar monto al input correspondiente
-
-        // Verificar si la suma de todos los porcentajes excede el 100%
-        verificarTotalPorcentajes(input);
-    }
-
-
-// TÍTULO: VERIFICAR TOTAL DE PORCENTAJES
-
-    // Función para verificar que la suma de los porcentajes no exceda el 100%
-    function verificarTotalPorcentajes(input) {
-        const contenedor = document.getElementById('payments-contenedor');
-        const porcentajeInputs = contenedor.querySelectorAll('input[name="porcentaje_pago[]"]');
-        let totalPorcentaje = 0;
-
-        // Sumar todos los porcentajes existentes
-        porcentajeInputs.forEach(porcentajeInput => {
-            totalPorcentaje += parseFloat(porcentajeInput.value) || 0; // Sumar porcentajes
-        });
-
-        // Si el total supera el 100%, restablecer el último valor y mostrar alerta
-        if (totalPorcentaje > 100) {
-            // Restablecer el valor del campo actual para no exceder el 100%
-            const porcentajeActual = parseFloat(input.value);
-            const maxValorPermitido = 100 - (totalPorcentaje - porcentajeActual); // Calcular el máximo permitido
-            input.value = Math.max(0, maxValorPermitido);  // Limitar el valor al máximo permitido
-
-            alert("La suma de los porcentajes no puede exceder el 100%. Por favor, ajusta los pagos existentes.");
+// TÍTULO: FUNCIÓN PARA CALCULAR MONTO DE PAGO
+function calcularMontoPago(input) {
+    const porcentaje = parseFloat(input.value) || 0;
+    const montoTotal = obtenerMontoTotal(); // Implementa esta función según tu lógica
+    const montoPago = (porcentaje / 100) * montoTotal;
+    
+    const fila = input.closest('tr');
+    if (fila) {
+        const montoInput = fila.querySelector('input[name="monto_pago[]"]');
+        if (montoInput) {
+            montoInput.value = Math.round(montoPago);
         }
     }
+}
+
+// TÍTULO: FUNCIÓN PARA OBTENER MONTO TOTAL
+function obtenerMontoTotal() {
+    // Implementa esta función para obtener el monto total de la cotización
+    // Por ahora retornamos un valor de ejemplo
+    return 1000000;
+}
 
 /* --------------------------------------------------------------------------------------------------------------
     ---------------------------------------- FIN ITred Spa Adelanto.JS ---------------------------------------

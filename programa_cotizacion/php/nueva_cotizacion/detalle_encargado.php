@@ -109,7 +109,7 @@ BPPJ
                 maxlength="16" 
                 required 
                 title="Formato válido: +56 9 1234 1234 (código de país, seguido de número)"
-                oninput="asegurarMasYDetectarPais2(this)"> <!-- Campo de texto para ingresar el teléfono del encargado -->
+                oninput="asegurarMasYDetectarPais(this)"> <!-- Campo de texto para ingresar el teléfono del encargado -->
 
 
         </div>
@@ -139,7 +139,7 @@ BPPJ
                 maxlength="15" 
                 required 
                 title="Formato válido: +56 9 1234 1234 (código de país, seguido de número)"
-                oninput="asegurarMasYDetectarPais3(this)"> <!-- Campo de texto para ingresar el número de celular del encargado -->
+                oninput="asegurarMasYDetectarPais(this)"> <!-- Campo de texto para ingresar el número de celular del encargado -->
 
         </div>
 

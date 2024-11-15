@@ -14,7 +14,7 @@ BPPJ
     -------------------------------------- INICIO ITred Spa Detalle encargado.JS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
 
-// TÍTULO: PARA EL OBJETO DE BANDERAS
+// TÍTULO: PARA EL OBJETO DE BANDERAS 2
 
     // Objeto que asocia códigos de país de América con imágenes de banderas
     const banderasPais2 = {
@@ -46,53 +46,54 @@ BPPJ
     const banderaPorDefecto2 = "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/World_Flag_%282004%29.svg/640px-World_Flag_%282004%29.svg.png"; // Bandera por defecto
 
 
-// Título para la función de detección de país
+// TÍTULO: PARA LA FUNCIÓN DE DETECCIÓN DE PAÍS
 
     // Función para detectar el país según el número de teléfono ingresado
     function detectarPais2(input) {
         const numeroTelefono2 = input.value.trim(); // Asegúrate de eliminar espacios
-        const imagenBandera2 = document.getElementById("flag_encargado"); // Asegúrate de tener la imagen con este ID
+        const imagenBandera2 = document.getElementById("flag_vendedor_telefono"); // Asegúrate de tener la imagen con este ID
         
+        // Título para la iteración sobre los códigos de país
         // Itera sobre los códigos de país para detectar el correcto
         for (const codigo in banderasPais2) {
             if (numeroTelefono2.startsWith(codigo)) {
-                imagenBandera2.src = banderasPais2[codigo]; // Asigna la imagen de la bandera correspondiente
+                imagenBandera2.src = banderasPais2[codigo]; // Establece la imagen de la bandera correspondiente
                 imagenBandera2.style.display = "inline"; // Mostrar la imagen de la bandera
                 return; // Detener la función si se encuentra el país
             }
         }
         // Si no se encuentra un código de país coincidente, muestra la bandera por defecto
-        imagenBandera2.src = banderaPorDefecto2; // Asigna la imagen de la bandera por defecto
-        imagenBandera2.style.display = "inline"; // Mostrar la imagen de la bandera por defecto
+        imagenBandera2.src = banderaPorDefecto2; // Establece la imagen de la bandera por defecto
+        imagenBandera2.style.display = "inline"; // Mostrar la bandera por defecto
     }
 
 
-// Título para la función de asegurar '+' y detectar país
+// TÍTULO: PARA LA FUNCIÓN DE ASEGURAR '+' Y DETECTAR PAÍS
 
     // Función para asegurar que el '+' esté presente y detectar el país
     function asegurarMasYDetectarPais2(input) {
         // Verificar si el valor actual comienza con '+'
         if (!input.value.startsWith('+')) {
-            input.value = '+' + input.value.replace(/^\+/, ''); // Agregar '+' al INICIO si no está presente
+            input.value = '+' + input.value.replace(/^\+/, ''); // Agregar '+' al INICIO
         }
-        
+
         // Permitir solo números después del '+' y mantener el '+'
         const validCharacters = input.value.replace(/[^0-9]/g, ''); // Eliminar caracteres no válidos, excepto '+'
         input.value = input.value[0] + validCharacters; // Mantener el '+' y agregar solo los números
 
-        // Llamar a la función de detección de la bandera
-        detectarPais2(input); // Detectar el país según el número de teléfono ingresado
+        // Llama a la función de detección de la bandera
+        detectarPais2(input); // Llama a la función para detectar la bandera
     }
 
 
-// Título para la inicialización al cargar la página
+// TÍTULO: PARA LA INICIALIZACIÓN AL CARGAR LA PÁGINA
 
     // Asegúrate de que la bandera se actualice al cargar la página
     window.onload = function() {
-        const campoTelefono2 = document.getElementById('enc-fono'); // Obtén el campo de entrada del teléfono
+        const campoTelefono2 = document.getElementById('enc_fono'); // Obtiene el campo de teléfono
         asegurarMasYDetectarPais2(campoTelefono2); // Llama a la función para asegurar "+" y detectar el país
     };
-    
+
 
 // TÍTULO: PARA EL OBJETO DE BANDERAS 3
 
@@ -129,13 +130,13 @@ BPPJ
 
     // Función para detectar el país según el número de teléfono ingresado
     function detectarPais3(input) {
-        const numeroTelefono3 = input.value.trim(); // Asegúrate de eliminar espacios
-        const imagenBandera3 = document.getElementById("flag_encargado_celular"); // Asegúrate de tener la imagen con este ID
+        const campoCelular = input.value.trim(); // Asegúrate de eliminar espacios
+        const imagenBandera3 = document.getElementById("flag_vendedor_celular"); // Asegúrate de tener la imagen con este ID
         
         // Título para la iteración sobre los códigos de país
         // Itera sobre los códigos de país para detectar el correcto
         for (const codigo in banderasPais3) {
-            if (numeroTelefono3.startsWith(codigo)) {
+            if (campoCelular.startsWith(codigo)) {
                 imagenBandera3.src = banderasPais3[codigo]; // Establece la imagen de la bandera correspondiente
                 imagenBandera3.style.display = "inline"; // Mostrar la imagen de la bandera
                 return; // Detener la función si se encuentra el país
@@ -169,8 +170,8 @@ BPPJ
 
     // Asegúrate de que la bandera se actualice al cargar la página
     window.onload = function() {
-        const campoTelefono3 = document.getElementById('enc_celular'); // Obtiene el campo de teléfono
-        asegurarMasYDetectarPais3(campoTelefono3); // Llama a la función para asegurar "+" y detectar el país
+        const campoCelular = document.getElementById('enc_celular'); // Obtiene el campo de teléfono
+        asegurarMasYDetectarPais3(campoCelular); // Llama a la función para asegurar "+" y detectar el país
     };
 
 /* --------------------------------------------------------------------------------------------------------------

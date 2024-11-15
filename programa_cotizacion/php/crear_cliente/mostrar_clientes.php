@@ -87,12 +87,12 @@ BPPJ
                                                     <td>{$cliente['rut_empresa_cliente']}</td>
                                                     <td>{$cliente['nombre_empresa_cliente']}</td>
                                                     <td>{$cliente['email_empresa_cliente']}</td>
-                                                    <td>{$cliente['giro_empresa_cliente']}</td>
+                                                    <td>{$cliente['id_giro']}</td>
                                                     <td>{$cliente['comuna_empresa_cliente']}</td>
                                                     <td>{$cliente['direccion_empresa_cliente']}</td>
                                                     <td>{$cliente['rut_encargado_cliente']}</td>
                                                     <td>{$cliente['nombre_encargado_cliente']}</td>
-                                                    <td>{$cliente['cargo_encargado_cliente']}</td>
+                                                    <td>{$cliente['id_cargo']}</td>
                                                     <td>{$cliente['telefono_encargado_cliente']}</td>
                                                     <td>{$cliente['email_encargado_cliente']}</td>
                                                     <td>{$cliente['estado_encargado_cliente']}</td>

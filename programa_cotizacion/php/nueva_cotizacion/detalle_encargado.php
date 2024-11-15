@@ -109,7 +109,7 @@ BPPJ
                 maxlength="16" 
                 required 
                 title="Formato válido: +56 9 1234 1234 (código de país, seguido de número)"
-                oninput="asegurarMasYDetectarPais(this)"> <!-- Campo de texto para ingresar el teléfono del encargado -->
+                oninput="asegurarMasYDetectarPais2(this)"> <!-- Campo de texto para ingresar el teléfono del encargado -->
 
 
         </div>
@@ -136,10 +136,10 @@ BPPJ
             <!-- datos del celulcar encargado -->
             <input type="text" id="enc_celular" name="enc_celular"
                 placeholder="+56 9 1234 1234" 
-                maxlength="15" 
+                maxlength="16" 
                 required 
                 title="Formato válido: +56 9 1234 1234 (código de país, seguido de número)"
-                oninput="asegurarMasYDetectarPais(this)"> <!-- Campo de texto para ingresar el número de celular del encargado -->
+                oninput="asegurarMasYDetectarPais3(this)"> <!-- Campo de texto para ingresar el número de celular del encargado -->
 
         </div>
 

@@ -174,6 +174,82 @@ BPPJ
         asegurarMasYDetectarPais5(campoTelefono5); // Llama a la función para asegurar "+" y detectar el país
     };
 
+    document.getElementById('countryCode2').addEventListener('change', function() {
+        const countryCode2 = this.value;
+        const phoneNumberInput = document.getElementById('vendedor_telefono');
+        phoneNumberInput.value = phoneNumberInput.value.replace(/^\+\d+\s*/, '');
+    
+        // Formatear el número de teléfono
+        const phoneNumber = phoneNumberInput.value.replace(/\D/g, ''); // Eliminar caracteres no numéricos
+        const formattedPhoneNumber = phoneNumber.replace(/(\d{1})(\d{4})(\d{4})/, '$1 $2 $3');
+        
+        phoneNumberInput.value = countryCode2 + ' ' + formattedPhoneNumber;
+    });
+    
+    // Formatear el número de teléfono en tiempo real
+    document.getElementById('vendedor_telefono').addEventListener('input', function() {
+        const phoneNumberInput = this;
+        const countryCode2 = document.getElementById('countryCode2').value;
+        let phoneNumber = phoneNumberInput.value.replace(/^\+\d+\s*/, ''); // Eliminar código de país
+        phoneNumber = phoneNumber.replace(/\D/g, ''); // Eliminar caracteres no numéricos
+    
+        // Solo formatear si el número tiene la longitud correcta
+        if (phoneNumber.length > 0) {
+            const formattedPhoneNumber = phoneNumber.replace(/(\d{1})(\d{4})(\d{4})/, '$1 $2 $3');
+            phoneNumberInput.value = countryCode2 + ' ' + formattedPhoneNumber;
+        }
+    });
+    
+    // Set the initial background image for the select element
+    document.getElementById('countryCode2').addEventListener('change', function() {
+        const selectedOption = this.options[this.selectedIndex];
+        const flag = selectedOption.getAttribute('data-flag');
+        this.style.backgroundImage = 'url(../../imagenes/nueva_cotizacion/banderas/' + flag + '.png)';
+        this.style.backgroundSize = '20px 15px'; // Ajusta el tamaño de la bandera
+    });
+    
+    // Trigger the change event to set the initial background image
+    document.getElementById('countryCode2').dispatchEvent(new Event('change'));
+
+
+
+    document.getElementById('countryCode3').addEventListener('change', function() {
+        const countryCode3 = this.value;
+        const phoneNumberInput = document.getElementById('vendedor_celular');
+        phoneNumberInput.value = phoneNumberInput.value.replace(/^\+\d+\s*/, '');
+    
+        // Formatear el número de teléfono
+        const phoneNumber = phoneNumberInput.value.replace(/\D/g, ''); // Eliminar caracteres no numéricos
+        const formattedPhoneNumber = phoneNumber.replace(/(\d{1})(\d{4})(\d{4})/, '$1 $2 $3');
+        
+        phoneNumberInput.value = countryCode3 + ' ' + formattedPhoneNumber;
+    });
+    
+    // Formatear el número de teléfono en tiempo real
+    document.getElementById('vendedor_celular').addEventListener('input', function() {
+        const phoneNumberInput = this;
+        const countryCode3 = document.getElementById('countryCode3').value;
+        let phoneNumber = phoneNumberInput.value.replace(/^\+\d+\s*/, ''); // Eliminar código de país
+        phoneNumber = phoneNumber.replace(/\D/g, ''); // Eliminar caracteres no numéricos
+    
+        // Solo formatear si el número tiene la longitud correcta
+        if (phoneNumber.length > 0) {
+            const formattedPhoneNumber = phoneNumber.replace(/(\d{1})(\d{4})(\d{4})/, '$1 $2 $3');
+            phoneNumberInput.value = countryCode3 + ' ' + formattedPhoneNumber;
+        }
+    });
+    
+    // Set the initial background image for the select element
+    document.getElementById('countryCode3').addEventListener('change', function() {
+        const selectedOption = this.options[this.selectedIndex];
+        const flag = selectedOption.getAttribute('data-flag');
+        this.style.backgroundImage = 'url(../../imagenes/nueva_cotizacion/banderas/' + flag + '.png)';
+        this.style.backgroundSize = '20px 15px'; // Ajusta el tamaño de la bandera
+    });
+    
+    // Trigger the change event to set the initial background image
+    document.getElementById('countryCode3').dispatchEvent(new Event('change'));
+
 /* --------------------------------------------------------------------------------------------------------------
     ---------------------------------------- FIN ITred Spa Detalle vendedor.JS ---------------------------------------
     ------------------------------------------------------------------------------------------------------------- */

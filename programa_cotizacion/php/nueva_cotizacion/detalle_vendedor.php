@@ -83,21 +83,46 @@ BPPJ
         </div>
     </div>
     <div class="box-6 cuadro-datos cuadro-datos-left"> <!-- Crea otra caja para ingresar datos, ocupando las otras 6 columnas. Se aplica una clase adicional "cuadro-datos-left" para estilo -->
-        <div class="form-group">
+        <div class="form-group" style="display: flex; align-items: center;">
+            <!-- Etiqueta PARA el campo de entrada del teléfono del cliente -->
+            <label for="vendedor_telefono" style="margin-right: 0; height: 68%;">Teléfono:</label> 
 
-        <!-- TÍTULO: CAMPO PARA EL TELÉFONO DEL VENDEDOR -->
-
-            <!-- Etiqueta para el campo de entrada del teléfono del vendedor -->
-            <label for="vendedor_telefono">Teléfono:</label>
-            
-
-        <!-- TÍTULO: IMAGEN DE LA BANDERA PARA EL TELÉFONO -->
-
-            <!-- ruta de la imagen -->
-            <img id="flag_vendedor_telefono" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Flag_of_None.svg/32px-Flag_of_None.svg.png" 
-                alt="Bandera" style="display: none; margin-right: 10px;" width="32" height="20">
-
-
+            <!-- Select para el código de país -->
+            <div class="custom-select2-wrapper">
+                <select id="countryCode2" name="countryCode2" class="custom-select2">
+                    <option value="+1" data-flag="us">US +1</option>
+                    <option value="+44" data-flag="gb">GB +44</option>
+                    <option value="+34" data-flag="es">ES +34</option>
+                    <option value="+56" data-flag="cl">CL +56</option>
+                    <option value="+54" data-flag="ar">AR +54</option>
+                    <option value="+591" data-flag="bo">BO +591</option>
+                    <option value="+55" data-flag="br">BR +55</option>
+                    <option value="+57" data-flag="co">CO +57</option>
+                    <option value="+506" data-flag="cr">CR +506</option>
+                    <option value="+53" data-flag="cu">CU +53</option>
+                    <option value="+593" data-flag="ec">EC +593</option>
+                    <option value="+503" data-flag="sv">SV +503</option>
+                    <option value="+502" data-flag="gt">GT +502</option>
+                    <option value="+504" data-flag="hn">HN +504</option>
+                    <option value="+52" data-flag="mx">MX +52</option>
+                    <option value="+505" data-flag="ni">NI +505</option>
+                    <option value="+507" data-flag="pa">PA +507</option>
+                    <option value="+595" data-flag="py">PY +595</option>
+                    <option value="+51" data-flag="pe">PE +51</option>
+                    <option value="+1" data-flag="pr">PR +1</option>
+                    <option value="+598" data-flag="uy">UY +598</option>
+                    <option value="+58" data-flag="ve">VE +58</option>
+                    <option value="+34" data-flag="es">ES +34</option>
+                    <option value="+33" data-flag="fr">FR +33</option>
+                    <option value="+44" data-flag="gb">GB +44</option>
+                    <option value="+39" data-flag="it">IT +39</option>
+                    <option value="+49" data-flag="de">DE +49</option>
+                    <option value="+81" data-flag="jp">JP +81</option>
+                    <option value="+86" data-flag="cn">CN +86</option>
+                    <option value="+82" data-flag="kr">KR +82</option>
+                    <!-- Agrega más opciones según sea necesario -->
+                </select>
+            </div>
         <!-- TÍTULO: CAMPO PARA INGRESAR EL TELÉFONO DEL VENDEDOR -->
 
             <!-- datos telefono vendedor -->
@@ -105,25 +130,49 @@ BPPJ
                 placeholder="+56 9 1234 1234" 
                 maxlength="16" 
                 required 
-                title="Formato válido: +56 9 1234 1234 (código de país, seguido de número)"
-                oninput="asegurarMasYDetectarPais4(this)"> <!-- Campo de texto para ingresar el teléfono del vendedor -->
-
+                title="Formato válido: +56 9 1234 1234 (código de país, seguido de número)"> <!-- Campo de texto para ingresar el teléfono del vendedor -->
         </div>
 
-        <div class="form-group">
+        <div class="form-group" style="display: flex; align-items: center;">
+            <!-- Etiqueta PARA el campo de entrada del teléfono del cliente -->
+            <label for="vendedor_telefono" style="margin-right: 0; height: 68%;">Celular:</label> 
 
-        <!-- TÍTULO: CAMPO PARA EL CELULAR DEL VENDEDOR -->
-
-            <!-- Etiqueta para el campo de entrada del celular del vendedor -->
-            <label for="vendedor_celular">Celular:</label>
-            
-
-        <!-- TÍTULO: IMAGEN DE LA BANDERA PARA EL CELULAR -->
-
-            <!-- ruta wikipedia -->
-            <img id="flag_vendedor_celular" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Flag_of_None.svg/32px-Flag_of_None.svg.png" 
-                 alt="Bandera" style="display: none; margin-right: 10px;" width="32" height="20">
-
+            <!-- Select para el código de país -->
+            <div class="custom-select2-wrapper">
+                <select id="countryCode3" name="countryCode3" class="custom-select2">
+                    <option value="+1" data-flag="us">US +1</option>
+                    <option value="+44" data-flag="gb">GB +44</option>
+                    <option value="+34" data-flag="es">ES +34</option>
+                    <option value="+56" data-flag="cl">CL +56</option>
+                    <option value="+54" data-flag="ar">AR +54</option>
+                    <option value="+591" data-flag="bo">BO +591</option>
+                    <option value="+55" data-flag="br">BR +55</option>
+                    <option value="+57" data-flag="co">CO +57</option>
+                    <option value="+506" data-flag="cr">CR +506</option>
+                    <option value="+53" data-flag="cu">CU +53</option>
+                    <option value="+593" data-flag="ec">EC +593</option>
+                    <option value="+503" data-flag="sv">SV +503</option>
+                    <option value="+502" data-flag="gt">GT +502</option>
+                    <option value="+504" data-flag="hn">HN +504</option>
+                    <option value="+52" data-flag="mx">MX +52</option>
+                    <option value="+505" data-flag="ni">NI +505</option>
+                    <option value="+507" data-flag="pa">PA +507</option>
+                    <option value="+595" data-flag="py">PY +595</option>
+                    <option value="+51" data-flag="pe">PE +51</option>
+                    <option value="+1" data-flag="pr">PR +1</option>
+                    <option value="+598" data-flag="uy">UY +598</option>
+                    <option value="+58" data-flag="ve">VE +58</option>
+                    <option value="+34" data-flag="es">ES +34</option>
+                    <option value="+33" data-flag="fr">FR +33</option>
+                    <option value="+44" data-flag="gb">GB +44</option>
+                    <option value="+39" data-flag="it">IT +39</option>
+                    <option value="+49" data-flag="de">DE +49</option>
+                    <option value="+81" data-flag="jp">JP +81</option>
+                    <option value="+86" data-flag="cn">CN +86</option>
+                    <option value="+82" data-flag="kr">KR +82</option>
+                    <!-- Agrega más opciones según sea necesario -->
+                </select>
+            </div>
 
         <!-- TÍTULO: CAMPO PARA INGRESAR EL CELULAR DEL VENDEDOR -->
 
@@ -132,10 +181,7 @@ BPPJ
                 placeholder="+56 9 1234 1234" 
                 maxlength="16" 
                 required 
-                title="Formato válido: +56 9 1234 1234 (código de país, seguido de número)"
-                oninput="asegurarMasYDetectarPais5(this)"> <!-- Campo de texto para ingresar el número de celular del vendedor -->
-
-
+                title="Formato válido: +56 9 1234 1234 (código de país, seguido de número)"> <!-- Campo de texto para ingresar el número de celular del vendedor -->
         </div>
     </div>
 <!-- Cierra la fila -->

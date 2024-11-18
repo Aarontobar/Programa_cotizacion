@@ -14,81 +14,42 @@ BPPJ
     -------------------------------------- INICIO ITred Spa Detalle encargado.JS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
 
-// TÍTULO: OBJETO DE BANDERAS
-const banderasPais = {
-    "+1": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Flag_of_the_United_States.svg/32px-Flag_of_United_States.svg.png",
-    "+52": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Flag_of_Mexico.svg/32px-Flag_of_Mexico.svg.png",
-    "+56": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Flag_of_Chile.svg/32px-Flag_of_Chile.svg.png",
-    "+54": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Flag_of_Argentina.svg/32px-Flag_of_Argentina.svg.png",
-    "+57": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Colombia.svg/32px-Flag_of_Colombia.svg.png",
-    "+58": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Flag_of_Venezuela.svg/32px-Flag_of_Venezuela.svg.png",
-    "+51": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Flag_of_Peru.svg/32px-Flag_of_Peru.svg.png",
-    "+503": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Flag_of_El_Salvador.svg/32px-Flag_of_El_Salvador.svg.png",
-    "+591": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Flag_of_Bolivia.svg/32px-Flag_of_Bolivia.svg.png",
-    "+507": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Flag_of_Panama.svg/32px-Flag_of_Panama.svg.png",
-    "+505": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Flag_of_Nicaragua.svg/32px-Flag_of_Nicaragua.svg.png",
-    "+502": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Flag_of_Guatemala.svg/32px-Flag_of_Guatemala.svg.png",
-    "+504": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Flag_of_Honduras.svg/32px-Flag_of_Honduras.svg.png",
-    "+53": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Flag_of_Cuba.svg/32px-Flag_of_Cuba.svg.png",
-    "+55": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Flag_of_Brazil.svg/32px-Flag_of_Brazil.svg.png",
-    "+598": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Flag_of_Uruguay.svg/32px-Flag_of_Uruguay.svg.png",
-    "+509": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Flag_of_Haiti.svg/32px-Flag_of_Haiti.svg.png",
-    "+593": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Flag_of_Ecuador.svg/32px-Flag_of_Ecuador.svg.png",
-    "+595": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Flag_of_Paraguay.svg/32px-Flag_of_Paraguay.svg.png"
-};
+document.getElementById('countryCode1').addEventListener('change', function() {
+    const countryCode1 = this.value;
+    const phoneNumberInput = document.getElementById('enc_celular');
+    phoneNumberInput.value = phoneNumberInput.value.replace(/^\+\d+\s*/, '');
 
-// TÍTULO: BANDERA POR DEFECTO
-const banderaPorDefecto = "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/World_Flag_%282004%29.svg/640px-World_Flag_%282004%29.svg.png";
-
-// TÍTULO: FUNCIÓN DE DETECCIÓN DE PAÍS
-function detectarPais(input, flagId) {
-    const numeroTelefono = input.value.trim();
-    const imagenBandera = document.getElementById(flagId);
+    // Formatear el número de teléfono
+    const phoneNumber = phoneNumberInput.value.replace(/\D/g, ''); // Eliminar caracteres no numéricos
+    const formattedPhoneNumber = phoneNumber.replace(/(\d{1})(\d{4})(\d{4})/, '$1 $2 $3');
     
-    if (!imagenBandera) return;
+    phoneNumberInput.value = countryCode1 + ' ' + formattedPhoneNumber;
+});
 
-    for (const codigo in banderasPais) {
-        if (numeroTelefono.startsWith(codigo)) {
-            imagenBandera.src = banderasPais[codigo];
-            imagenBandera.style.display = "inline";
-            return;
-        }
-    }
-    imagenBandera.src = banderaPorDefecto;
-    imagenBandera.style.display = "inline";
-}
+// Formatear el número de teléfono en tiempo real
+document.getElementById('enc_celular').addEventListener('input', function() {
+    const phoneNumberInput = this;
+    const countryCode1 = document.getElementById('countryCode1').value;
+    let phoneNumber = phoneNumberInput.value.replace(/^\+\d+\s*/, ''); // Eliminar código de país
+    phoneNumber = phoneNumber.replace(/\D/g, ''); // Eliminar caracteres no numéricos
 
-// TÍTULO: FUNCIÓN DE ASEGURAR '+' Y DETECTAR PAÍS
-function asegurarMasYDetectarPais(input, flagId) {
-    if (!input.value.startsWith('+')) {
-        input.value = '+' + input.value.replace(/^\+/, '');
-    }
-    
-    const validCharacters = input.value.replace(/[^0-9+]/g, '');
-    input.value = validCharacters.startsWith('+') ? validCharacters : '+' + validCharacters;
-
-    detectarPais(input, flagId);
-}
-
-// TÍTULO: INICIALIZACIÓN AL CARGAR LA PÁGINA
-document.addEventListener('DOMContentLoaded', function() {
-    const campoTelefonoEncargado = document.getElementById('enc-fono');
-    const campoTelefonoVendedor = document.getElementById('enc_celular');
-
-    if (campoTelefonoEncargado) {
-        campoTelefonoEncargado.addEventListener('input', function() {
-            asegurarMasYDetectarPais(this, 'flag_encargado');
-        });
-        asegurarMasYDetectarPais(campoTelefonoEncargado, 'flag_encargado');
-    }
-
-    if (campoTelefonoVendedor) {
-        campoTelefonoVendedor.addEventListener('input', function() {
-            asegurarMasYDetectarPais(this, 'flag_encargado');
-        });
-        asegurarMasYDetectarPais(campoTelefonoVendedor, 'flag_encargado');
+    // Solo formatear si el número tiene la longitud correcta
+    if (phoneNumber.length > 0) {
+        const formattedPhoneNumber = phoneNumber.replace(/(\d{1})(\d{4})(\d{4})/, '$1 $2 $3');
+        phoneNumberInput.value = countryCode1 + ' ' + formattedPhoneNumber;
     }
 });
+
+// Set the initial background image for the select element
+document.getElementById('countryCode1').addEventListener('change', function() {
+    const selectedOption = this.options[this.selectedIndex];
+    const flag = selectedOption.getAttribute('data-flag');
+    this.style.backgroundImage = 'url(../../imagenes/nueva_cotizacion/banderas/' + flag + '.png)';
+    this.style.backgroundSize = '20px 15px'; // Ajusta el tamaño de la bandera
+});
+
+// Trigger the change event to set the initial background image
+document.getElementById('countryCode1').dispatchEvent(new Event('change'));
 /* --------------------------------------------------------------------------------------------------------------
     ---------------------------------------- FIN ITred Spa Detalle encargado.JS ---------------------------------------
     ------------------------------------------------------------------------------------------------------------- */

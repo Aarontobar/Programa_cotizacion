@@ -94,27 +94,54 @@ BPPJ
 
             <div class="form-group-inline">
                 <div class="form-group">
-
-                    <!-- TÍTULO: ETIQUETA PARA EL CAMPO DE ENTRADA DEL TELÉFONO DE LA EMPRESA -->
-                        
-                        <!-- Define el país de la empresa -->
-                        <label for="empresa_telefono">Teléfono de la Empresa:</label>
-
-                    <!-- TÍTULO: IMAGEN DE LA BANDERA -->
-                        
-                        <!-- Define el país de la empresa -->
-                        <img id="flag_empresa" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Flag_of_None.svg/32px-Flag_of_None.svg.png" 
-                                alt="Bandera" style="display: none; margin-right: 10px;" width="32" height="20">
-                    
-                    <!-- TÍTULO: CAMPO DE ENTRADA PARA EL TELÉFONO DE LA EMPRESA -->
-                        
-                        <!-- Define el país de la empresa -->
-                        <input type="text" id="empresa_telefono" name="empresa_telefono" 
-                        placeholder="+56 9 1234 1234" 
-                        maxlength="11" 
-                        required 
-                        title="Formato válido: +56 9 1234 1234 (código de país, seguido de número)"
-                        oninput="asegurarMasYDetectarPais6(this)">
+                    <!-- Etiqueta PARA el campo de entrada del teléfono del cliente -->
+                    <label for="empresa_telefono" style="margin-right: 0; height: 68%;">Teléfono:</label> 
+                    <div style="display: flex; align-items: center;">
+                    <!-- Select para el código de país -->
+                    <div class="custom-select-wrapper">
+                        <select id="countryCode" name="countryCode" class="custom-select">
+                            <option value="+1" data-flag="us">US +1</option>
+                            <option value="+44" data-flag="gb">GB +44</option>
+                            <option value="+34" data-flag="es">ES +34</option>
+                            <option value="+56" data-flag="cl">CL +56</option>
+                            <option value="+54" data-flag="ar">AR +54</option>
+                            <option value="+591" data-flag="bo">BO +591</option>
+                            <option value="+55" data-flag="br">BR +55</option>
+                            <option value="+57" data-flag="co">CO +57</option>
+                            <option value="+506" data-flag="cr">CR +506</option>
+                            <option value="+53" data-flag="cu">CU +53</option>
+                            <option value="+593" data-flag="ec">EC +593</option>
+                            <option value="+503" data-flag="sv">SV +503</option>
+                            <option value="+502" data-flag="gt">GT +502</option>
+                            <option value="+504" data-flag="hn">HN +504</option>
+                            <option value="+52" data-flag="mx">MX +52</option>
+                            <option value="+505" data-flag="ni">NI +505</option>
+                            <option value="+507" data-flag="pa">PA +507</option>
+                            <option value="+595" data-flag="py">PY +595</option>
+                            <option value="+51" data-flag="pe">PE +51</option>
+                            <option value="+1" data-flag="pr">PR +1</option>
+                            <option value="+598" data-flag="uy">UY +598</option>
+                            <option value="+58" data-flag="ve">VE +58</option>
+                            <option value="+34" data-flag="es">ES +34</option>
+                            <option value="+33" data-flag="fr">FR +33</option>
+                            <option value="+44" data-flag="gb">GB +44</option>
+                            <option value="+39" data-flag="it">IT +39</option>
+                            <option value="+49" data-flag="de">DE +49</option>
+                            <option value="+81" data-flag="jp">JP +81</option>
+                            <option value="+86" data-flag="cn">CN +86</option>
+                            <option value="+82" data-flag="kr">KR +82</option>
+                            <!-- Agrega más opciones según sea necesario -->
+                        </select>
+                    </div>
+                        <!-- TÍTULO: CAMPO DE ENTRADA PARA EL TELÉFONO DE LA EMPRESA -->
+                            
+                            <!-- Define el país de la empresa -->
+                            <input type="text" id="empresa_telefono" name="empresa_telefono" 
+                            placeholder="+56 9 1234 1234" 
+                            maxlength="11" 
+                            required 
+                            title="Formato válido: +56 9 1234 1234 (código de país, seguido de número)">
+                    </div>
                 </div>
                 <div class="form-group">
 

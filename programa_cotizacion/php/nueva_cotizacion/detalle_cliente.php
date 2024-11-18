@@ -19,28 +19,161 @@ BPPJ
 
 <link rel="stylesheet" href="../../css/nueva_cotizacion/detalle_cliente.css">
 
-<!-- Crea una fila PARA organizar los elementos en una disposición horizontal -->
+<?php
+// Obtener todos los datos de las empresas
+$sql = "SELECT * FROM C_Clientes";
+$result = $mysqli->query($sql);
 
-<fieldset class="row"> 
+$empresas = [];
+if ($result->num_rows > 0) {
+    while($row = $result->fetch_assoc()) {
+        $empresas[] = $row;
+    }
+}
+?>
 
-    <!-- TÍTULO: DATOS EMPRESA CLIENTE -->
+<!-- Select para mostrar u ocultar el formulario -->
+<!-- Select para mostrar u ocultar el formulario -->
+<div class="form-group">
+    <label for="formulario_opcion">Seleccione una opción:</label>
+    <select id="formulario_opcion" name="formulario_opcion" onchange="toggleFormulario()">
+        <option value="" disabled selected>Seleccione una opción</option>
+        <option value="nuevo">Nuevo</option>
+        <?php foreach ($empresas as $empresa): ?>
+            <option value="<?php echo $empresa['id_cliente']; ?>"><?php echo $empresa['nombre_empresa_cliente']; ?></option>
+        <?php endforeach; ?>
+    </select>
+</div>
 
-    <legend>Datos empresa cliente </legend>
-    <!-- Crea una caja PARA ingresar datos, ocupando 6 de las 12 columnas disponibles en el diseño -->
-    <div class="box-6 cuadro-datos">
-        <div class="form-group-inline">
+<!-- Contenedor del formulario -->
+<div id="formulario_cliente" style="display: none;">
+    <fieldset class="row"> 
+        <!-- TÍTULO: DATOS EMPRESA CLIENTE -->
+        <legend>Datos empresa cliente </legend>
+        <!-- Crea una caja PARA ingresar datos, ocupando 6 de las 12 columnas disponibles en el diseño -->
+        <div class="box-6 cuadro-datos">
+            <div class="form-group-inline">
+                <div class="form-group">
+                    <!-- TÍTULO: CAMPO PARA EL RUT DE LA EMPRESA -->
+                    <!-- Etiqueta PARA el campo de entrada del RUT del cliente -->
+                    <label for="cliente_rut">RUT Empresa: </label> 
+                    <!-- TÍTULO: CAMPO PARA INGRESAR EL RUT DEL CLIENTE -->
+                    <!-- datos del cliente -->
+                    <input type="text" id="cliente_rut" name="cliente_rut" 
+                        minlength="7" maxlength="12" 
+                        placeholder="Ej: 12.345.678-9"
+                        oninput="FormatearRut(this)"
+                        oninput="QuitarCaracteresInvalidos(this)"
+                        required> 
+                        <!-- Campo de texto PARA ingresar el RUT del cliente. También es obligatorio -->
+                </div>
+                <div class="form-group">
+                    <!-- TÍTULO: CAMPO PARA EL NOMBRE DEL REPRESENTANTE -->
+                    <!-- Etiqueta PARA el campo de entrada del nombre del cliente -->
+                    <label for="cliente_nombre">Nombre representante:</label>
+                    <!-- TÍTULO: CAMPO PARA INGRESAR EL NOMBRE DEL CLIENTE -->
+                    <!-- campo para colocar el nombre del cliente -->
+                    <input type="text" id="cliente_nombre" name="cliente_nombre" required
+                        pattern="^[A-Za-zÀ-ÿ0-9\s&.-]+$" 
+                        title="Por favor, ingrese solo letras, números y caracteres como &,-."
+                        oninput="QuitarCaracteresInvalidos(this)"
+                        placeholder="Ejemplo: Pedro Perez"> 
+                        <!-- Campo de texto PARA ingresar el nombre del cliente. El atributo "required" hace que el campo sea obligatorio -->
+                </div>
+            </div>
             <div class="form-group">
-    
-
-            <!-- TÍTULO: CAMPO PARA EL RUT DE LA EMPRESA -->
-
+                <!-- TÍTULO: CAMPO PARA LA EMPRESA DEL CLIENTE -->
+                <!-- Etiqueta PARA el campo de entrada de la empresa del cliente -->
+                <label for="cliente_empresa">Empresa:</label> 
+                <!-- TÍTULO: CAMPO PARA INGRESAR EL NOMBRE DE LA EMPRESA DEL CLIENTE -->
+                <!-- datos del campo empresa -->
+                <input type="text" id="cliente_empresa" name="cliente_empresa" required minlength="3" maxlength="100"
+                    pattern="^[A-Za-zÀ-ÿ0-9\s&.-]+$" 
+                    title="Por favor, ingrese solo letras, números y caracteres como &,-."
+                    oninput="QuitarCaracteresInvalidos(this)"
+                    placeholder="Ejemplo: Mi Empresa S.A."> 
+                    <!-- Campo de texto PARA ingresar el nombre de la empresa del cliente. Este campo no es obligatorio -->
+            </div>
+            <div class="form-group-inline">
+                <div class="form-group">
+                    <!-- TÍTULO: CAMPO PARA LA DIRECCIÓN DEL CLIENTE -->
+                    <!-- Etiqueta PARA el campo de entrada de la dirección del cliente -->
+                    <label for="cliente_direccion">Dirección:</label> 
+                    <!-- TÍTULO: CAMPO PARA INGRESAR LA DIRECCIÓN DEL CLIENTE -->
+                    <!-- datos cliente direccion -->
+                    <input type="text" id="cliente_direccion" name="cliente_direccion"
+                        minlength="5" maxlength="100" 
+                        pattern="^[A-Za-z0-9À-ÿ\s#,-.]*$" 
+                        oninput="QuitarCaracteresInvalidos(this)"
+                        title="Por favor, ingrese una dirección válida. Se permiten letras, números, espacios y los caracteres #, -, , y .."
+                        placeholder="Ejemplo: Av. Siempre Viva 742"> <!-- Campo de texto PARA ingresar la dirección del cliente. No es obligatorio -->
+                </div>
+                <div class="form-group">
+                    <!-- TÍTULO: CAMPO PARA EL LUGAR DEL CLIENTE -->
+                    <!-- Etiqueta PARA el campo de selección del lugar del cliente -->
+                    <label for="cliente_lugar">Lugar:</label> 
+                    <!-- TÍTULO: CAMPO PARA SELECCIONAR EL LUGAR DEL CLIENTE -->
+                    <!-- Campo de selección PARA el lugar del cliente. Este campo es obligatorio -->
+                    <select id="cliente_lugar" name="cliente_lugar" required> 
+                    </select>
+                </div>
+            </div>
+            <div class="form-group" style="display: flex; align-items: center;">
+                <!-- Etiqueta PARA el campo de entrada del teléfono del cliente -->
+                <label for="cliente_fono" style="margin-right: 0; height: 68%;">Teléfono:</label> 
+                <!-- Select para el código de país -->
+                <div class="custom-select-wrapper">
+                    <select id="countryCode" name="countryCode" class="custom-select">
+                        <option value="+1" data-flag="us">US +1</option>
+                        <option value="+44" data-flag="gb">GB +44</option>
+                        <option value="+34" data-flag="es">ES +34</option>
+                        <option value="+56" data-flag="cl">CL +56</option>
+                        <option value="+54" data-flag="ar">AR +54</option>
+                        <option value="+591" data-flag="bo">BO +591</option>
+                        <option value="+55" data-flag="br">BR +55</option>
+                        <option value="+57" data-flag="co">CO +57</option>
+                        <option value="+506" data-flag="cr">CR +506</option>
+                        <option value="+53" data-flag="cu">CU +53</option>
+                        <option value="+593" data-flag="ec">EC +593</option>
+                        <option value="+503" data-flag="sv">SV +503</option>
+                        <option value="+502" data-flag="gt">GT +502</option>
+                        <option value="+504" data-flag="hn">HN +504</option>
+                        <option value="+52" data-flag="mx">MX +52</option>
+                        <option value="+505" data-flag="ni">NI +505</option>
+                        <option value="+507" data-flag="pa">PA +507</option>
+                        <option value="+595" data-flag="py">PY +595</option>
+                        <option value="+51" data-flag="pe">PE +51</option>
+                        <option value="+1" data-flag="pr">PR +1</option>
+                        <option value="+598" data-flag="uy">UY +598</option>
+                        <option value="+58" data-flag="ve">VE +58</option>
+                        <option value="+34" data-flag="es">ES +34</option>
+                        <option value="+33" data-flag="fr">FR +33</option>
+                        <option value="+44" data-flag="gb">GB +44</option>
+                        <option value="+39" data-flag="it">IT +39</option>
+                        <option value="+49" data-flag="de">DE +49</option>
+                        <option value="+81" data-flag="jp">JP +81</option>
+                        <option value="+86" data-flag="cn">CN +86</option>
+                        <option value="+82" data-flag="kr">KR +82</option>
+                        <!-- Agrega más opciones según sea necesario -->
+                    </select>
+                </div>
+                <!-- Campo de entrada de texto para el número de teléfono -->
+                <input type="text" id="cliente_fono" name="cliente_fono"
+                    placeholder="9 1234 1234" 
+                    maxlength="14" 
+                    required 
+                    title="Formato válido: 9 1234 1234 (número sin código de país)" >
+            </div>
+        </div>
+        <!-- Crea otra caja PARA ingresar datos, ocupando las otras 6 columnas. Se aplica una clase adicional "cuadro-datos-left" PARA estilo -->
+        <div class="box-6 cuadro-datos cuadro-datos-left"> 
+            <div class="form-group">
+                <!-- TÍTULO: CAMPO PARA EL RUT DEL ENCARGADO -->
                 <!-- Etiqueta PARA el campo de entrada del RUT del cliente -->
-                <label for="cliente_rut">RUT Empresa: </label> 
-
-            <!-- TÍTULO: CAMPO PARA INGRESAR EL RUT DEL CLIENTE -->
-
-                <!-- datos del cliente -->
-                <input type="text" id="cliente_rut" name="cliente_rut" 
+                <label for="rut_encargado_cliente">RUT Encargado: </label> 
+                <!-- Título: Campo PARA Ingresar el RUT del Encargado -->
+                <!-- datos empresa -->
+                <input type="text" id="rut_encargado_cliente" name="rut_encargado_cliente" 
                     minlength="7" maxlength="12" 
                     placeholder="Ej: 12.345.678-9"
                     oninput="FormatearRut(this)"
@@ -48,238 +181,135 @@ BPPJ
                     required> 
                     <!-- Campo de texto PARA ingresar el RUT del cliente. También es obligatorio -->
             </div>
-
             <div class="form-group">
-
-            <!-- TÍTULO: CAMPO PARA EL NOMBRE DEL REPRESENTANTE -->
-
-                <!-- Etiqueta PARA el campo de entrada del nombre del cliente -->
-                <label for="cliente_nombre">Nombre representante:</label>
-
-            <!-- TÍTULO: CAMPO PARA INGRESAR EL NOMBRE DEL CLIENTE -->
-                 
-                <!-- campo para colocar el nombre del cliente -->
-                <input type="text" id="cliente_nombre" name="cliente_nombre" required
-                    pattern="^[A-Za-zÀ-ÿ0-9\s&.-]+$" 
-                    title="Por favor, ingrese solo letras, números y caracteres como &,-."
+                <!-- Título: Campo PARA el Email del Cliente -->
+                <!-- Etiqueta PARA el campo de entrada del email del cliente -->
+                <label for="cliente_email">Email:</label> 
+                <!-- Título: Campo PARA Ingresar el Email del Cliente -->
+                <input type="email" id="cliente_email" name="cliente_email"
+                    placeholder="ejemplo@gmail.com" 
+                    maxlength="255" 
+                    required 
+                    title="Ingresa un correo electrónico válido, como ejemplo@empresa.com" 
                     oninput="QuitarCaracteresInvalidos(this)"
-                    placeholder="Ejemplo: Pedro Perez"> 
-                    <!-- Campo de texto PARA ingresar el nombre del cliente. El atributo "required" hace que el campo sea obligatorio -->
-  
-            </div>
-        </div>
-
-        <div class="form-group">
-
-        <!-- TÍTULO: CAMPO PARA LA EMPRESA DEL CLIENTE -->
-
-            <!-- Etiqueta PARA el campo de entrada de la empresa del cliente -->
-            <label for="cliente_empresa">Empresa:</label> 
-
-        <!-- TÍTULO: CAMPO PARA INGRESAR EL NOMBRE DE LA EMPRESA DEL CLIENTE -->
-
-            <!-- datos del campo empresa -->
-            <input type="text" id="cliente_empresa" name="cliente_empresa" required minlength="3" maxlength="100"
-                pattern="^[A-Za-zÀ-ÿ0-9\s&.-]+$" 
-                title="Por favor, ingrese solo letras, números y caracteres como &,-."
-                oninput="QuitarCaracteresInvalidos(this)"
-                placeholder="Ejemplo: Mi Empresa S.A."> 
-                <!-- Campo de texto PARA ingresar el nombre de la empresa del cliente. Este campo no es obligatorio -->
-        </div>
-
-        <div class="form-group-inline">
-            <div class="form-group">
-
-            <!-- TÍTULO: CAMPO PARA LA DIRECCIÓN DEL CLIENTE -->
-
-                <!-- Etiqueta PARA el campo de entrada de la dirección del cliente -->
-                <label for="cliente_direccion">Dirección:</label> 
-
-            <!-- TÍTULO: CAMPO PARA INGRESAR LA DIRECCIÓN DEL CLIENTE -->
-
-                <!-- datos cliente direccion -->
-                <input type="text" id="cliente_direccion" name="cliente_direccion"
-                    minlength="5" maxlength="100" 
-                    pattern="^[A-Za-z0-9À-ÿ\s#,-.]*$" 
-                    oninput="QuitarCaracteresInvalidos(this)"
-                    title="Por favor, ingrese una dirección válida. Se permiten letras, números, espacios y los caracteres #, -, , y .."
-                    placeholder="Ejemplo: Av. Siempre Viva 742"> <!-- Campo de texto PARA ingresar la dirección del cliente. No es obligatorio -->
+                    onblur="CompletarEmail(this)"> 
+                    <!-- Campo de correo electrónico PARA ingresar el email del cliente. El tipo "email" valida que el texto ingresado sea una dirección de correo electrónico -->
             </div>
             <div class="form-group">
-
-            <!-- TÍTULO: CAMPO PARA EL LUGAR DEL CLIENTE -->
-
-                <!-- Etiqueta PARA el campo de selección del lugar del cliente -->
-                <label for="cliente_lugar">Lugar:</label> 
-
-            <!-- TÍTULO: CAMPO PARA SELECCIONAR EL LUGAR DEL CLIENTE -->
-
-                <!-- Campo de selección PARA el lugar del cliente. Este campo es obligatorio -->
-                <select id="cliente_lugar" name="cliente_lugar" required> 
-
+                <!-- TÍTULO: CAMPO PARA EL CARGO DEL CLIENTE -->
+                <!-- Etiqueta PARA el campo de selección del cargo del cliente -->
+                <label for="cliente_cargo">Cargo:</label>
+                <!-- TÍTULO: CAMPO PARA SELECCIONAR EL CARGO DEL CLIENTE -->
+                <!-- Campo de selección PARA el cargo del cliente. Este campo es obligatorio -->
+                <select id="cliente_cargo" name="cliente_cargo" required>
+                    <!-- Opción por defecto -->
+                </select>
+            </div>
+            <div class="form-group">
+                <!-- TÍTULO: CAMPO PARA EL GIRO DEL CLIENTE -->
+                <!-- Etiqueta PARA el campo de selección del giro del cliente -->
+                <label for="cliente_giro">Giro:</label> 
+                <!-- TÍTULO: CAMPO PARA SELECCIONAR EL GIRO DEL CLIENTE -->
+                <!-- Campo de selección PARA el giro del cliente. Este campo es obligatorio -->
+                <select id="cliente_giro" name="cliente_giro" required> 
+                    <!-- Opción por defecto -->
+                </select>
+            </div>
+            <div class="form-group-inline">
+                <div class="form-group">
+                    <!-- TÍTULO: CAMPO PARA LA COMUNA DEL CLIENTE -->
+                    <!-- Etiqueta PARA el campo de entrada de la comuna del cliente -->
+                    <label for="cliente_comuna">Comuna:</label> 
+                    <!-- TÍTULO: CAMPO PARA INGRESAR LA COMUNA DEL CLIENTE -->
+                    <!-- datos Cliente_comuna -->
+                    <input type="text" id="cliente_comuna" name="cliente_comuna" 
+                        placeholder="Ej: La Reina, Providencia" 
+                        required 
+                        minlength="3" 
+                        maxlength="50" 
+                        pattern="^[a-zA-ZÀ-ÿ\s]+$" 
+                        oninput="QuitarCaracteresInvalidos(this)"
+                        title="Ingresa una comuna válida (Ej: La Reina, Providencia). Solo se permiten letras y espacios."> <!-- Campo de texto PARA ingresar la comuna del cliente. Este campo no es obligatorio -->
+                </div>
+                <div class="form-group">
+                    <!-- TÍTULO: CAMPO PARA LA CIUDAD DEL CLIENTE -->
+                    <!-- Etiqueta PARA el campo de entrada de la ciudad del cliente -->
+                    <label for="cliente_ciudad">Ciudad:</label> 
+                    <!-- TÍTULO: CAMPO PARA INGRESAR LA CIUDAD DEL CLIENTE -->
+                    <!-- datos de la ciudad cliente -->
+                    <input type="text" id="cliente_ciudad" name="cliente_ciudad" 
+                        placeholder="Ej: Santiago, Valparaíso" 
+                        required 
+                        minlength="3" 
+                        maxlength="50" 
+                        pattern="^[a-zA-ZÀ-ÿ\s]+$" 
+                        oninput="QuitarCaracteresInvalidos(this)"
+                        title="Ingresa una ciudad válida (Ej: Santiago, Valparaíso). Solo se permiten letras y espacios."> <!-- Campo de texto PARA ingresar la ciudad del cliente. Este campo no es obligatorio -->
+                </div>
+            </div>
+            <div class="form-group">
+                <!-- TÍTULO: CAMPO PARA EL TIPO DE CLIENTE -->
+                <!-- Etiqueta PARA el campo de selección del tipo de cliente -->
+                <label for="cliente_tipo">Tipo:</label> 
+                <!-- TÍTULO: CAMPO PARA SELECCIONAR EL TIPO DE CLIENTE -->
+                <!-- Campo de selección PARA el tipo de cliente. Este campo es obligatorio -->
+                <select id="cliente_tipo" name="cliente_tipo" required> 
+                    <!-- Opción por defecto -->
+                    <option value="" disabled selected>Selecciona un tipo de cliente</option> 
+                    <option value="persona_natural">Persona Natural</option>
+                    <option value="empresa">Empresa</option>
+                    <option value="organizacion_sin_fines_de_lucro">Organización Sin Fines de Lucro</option>
+                    <option value="institucion_gubernamental">Institución Gubernamental</option>
+                    <option value="institucion_educativa">Institución Educativa</option>
+                    <option value="multinacional">Multinacional</option>
                 </select>
             </div>
         </div>
+    </fieldset>
+</div>
 
-        <div class="form-group" style="display: flex; align-items: center;">
-            
-        <!-- Título: Campo PARA el Teléfono del Cliente -->
-
-            <!-- Etiqueta PARA el campo de entrada del teléfono del cliente -->
-            <label for="cliente_fono" style="margin-right: 10px;">Teléfono:</label> 
-            
-        <!-- Título: Imagen de la Bandera -->
-
-            <!-- Imagen de la bandera -->
-            <img id="flag_cliente" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Flag_of_None.svg/32px-Flag_of_None.svg.png" 
-                 alt="Bandera" style="display: none; margin-right: 10px;" width="32" height="20">
-
-        <!-- Título: Campo PARA Ingresar el Teléfono del Cliente -->
-
-            <!-- Campo de entrada de texto -->
-            <input type="text" id="cliente_fono" name="cliente_fono"
-                   placeholder="+56 9 1234 1234" 
-                   maxlength="14" 
-                   required 
-                   title="Formato válido: +56 9 1234 1234 (código de país, seguido de número)" 
-                   oninput="asegurarMasYDetectarPais1(this)">
-        </div>
-    </div>
+<script>
+function toggleFormulario() {
+    var select = document.getElementById('formulario_opcion');
+    var formulario = document.getElementById('formulario_cliente');
+    var empresas = <?php echo json_encode($empresas); ?>;
     
-    <!-- Crea otra caja PARA ingresar datos, ocupando las otras 6 columnas. Se aplica una clase adicional "cuadro-datos-left" PARA estilo -->
-    <div class="box-6 cuadro-datos cuadro-datos-left"> 
-
-        <div class="form-group">
-
-        <!-- TÍTULO: CA/MPO PARA EL RUT DEL ENCARGADO -->
-
-            <!-- Etiqueta PARA el campo de entrada del RUT del cliente -->
-            <label for="rut_encargado_cliente">RUT Encargado: </label> 
-
-        <!-- Título: Campo PARA Ingresar el RUT del Encargado -->
-
-            <!-- datos empresa -->
-            <input type="text" id="rut_encargado_cliente" name="rut_encargado_cliente" 
-                minlength="7" maxlength="12" 
-                placeholder="Ej: 12.345.678-9"
-                oninput="FormatearRut(this)"
-                oninput="QuitarCaracteresInvalidos(this)"
-                required> 
-                <!-- Campo de texto PARA ingresar el RUT del cliente. También es obligatorio -->
-        </div>
-        
-        <div class="form-group">
-
-        <!-- Título: Campo PARA el Email del Cliente -->
-
-            <!-- Etiqueta PARA el campo de entrada del email del cliente -->
-            <label for="cliente_email">Email:</label> 
-
-        <!-- Título: Campo PARA Ingresar el Email del Cliente -->
-
-            <input type="email" id="cliente_email" name="cliente_email"
-                placeholder="ejemplo@gmail.com" 
-                maxlength="255" 
-                required 
-                title="Ingresa un correo electrónico válido, como ejemplo@empresa.com" 
-                oninput="QuitarCaracteresInvalidos(this)"
-                onblur="CompletarEmail(this)"> 
-                <!-- Campo de correo electrónico PARA ingresar el email del cliente. El tipo "email" valida que el texto ingresado sea una dirección de correo electrónico -->
-        </div>
-
-        <div class="form-group">
-
-        <!-- TÍTULO: CAMPO PARA EL CARGO DEL CLIENTE -->
-
-            <!-- Etiqueta PARA el campo de selección del cargo del cliente -->
-            <label for="cliente_cargo">Cargo:</label>
-             
-        <!-- TÍTULO: CAMPO PARA SELECCIONAR EL CARGO DEL CLIENTE -->
-
-            <!-- Campo de selección PARA el cargo del cliente. Este campo es obligatorio -->
-            <select id="cliente_cargo" name="cliente_cargo" required>
-                <!-- Opción por defecto -->
-            </select>
-        </div>
-        <div class="form-group">
-
-    <!-- TÍTULO: CAMPO PARA EL GIRO DEL CLIENTE -->
-
-        <!-- Etiqueta PARA el campo de selección del giro del cliente -->
-        <label for="cliente_giro">Giro:</label> 
-
-    <!-- TÍTULO: CAMPO PARA SELECCIONAR EL GIRO DEL CLIENTE -->
-
-        <!-- Campo de selección PARA el giro del cliente. Este campo es obligatorio -->
-        <select id="cliente_giro" name="cliente_giro" required> 
-            <!-- Opción por defecto -->
-
-        </select>
-    </div>
-
-    <div class="form-group-inline">
-        <div class="form-group">
-        <!-- TÍTULO: CAMPO PARA LA COMUNA DEL CLIENTE -->
-
-            <!-- Etiqueta PARA el campo de entrada de la comuna del cliente -->
-            <label for="cliente_comuna">Comuna:</label> 
-
-        <!-- TÍTULO: CAMPO PARA INGRESAR LA COMUNA DEL CLIENTE -->
-
-            <!-- datos Cliente_comuna -->
-            <input type="text" id="cliente_comuna" name="cliente_comuna" 
-                placeholder="Ej: La Reina, Providencia" 
-                required 
-                minlength="3" 
-                maxlength="50" 
-                pattern="^[a-zA-ZÀ-ÿ\s]+$" 
-                oninput="QuitarCaracteresInvalidos(this)"
-                title="Ingresa una comuna válida (Ej: La Reina, Providencia). Solo se permiten letras y espacios."> <!-- Campo de texto PARA ingresar la comuna del cliente. Este campo no es obligatorio -->
-        </div>
-        <div class="form-group">
-
-        <!-- TÍTULO: CAMPO PARA LA CIUDAD DEL CLIENTE -->
-
-            <!-- Etiqueta PARA el campo de entrada de la ciudad del cliente -->
-            <label for="cliente_ciudad">Ciudad:</label> 
-
-        <!-- TÍTULO: CAMPO PARA INGRESAR LA CIUDAD DEL CLIENTE -->
-
-            <!-- datos de la ciudad cliente -->
-            <input type="text" id="cliente_ciudad" name="cliente_ciudad" 
-                placeholder="Ej: Santiago, Valparaíso" 
-                required 
-                minlength="3" 
-                maxlength="50" 
-                pattern="^[a-zA-ZÀ-ÿ\s]+$" 
-                oninput="QuitarCaracteresInvalidos(this)"
-                title="Ingresa una ciudad válida (Ej: Santiago, Valparaíso). Solo se permiten letras y espacios."> <!-- Campo de texto PARA ingresar la ciudad del cliente. Este campo no es obligatorio -->
-        </div>
-    </div>
-
-    <div class="form-group">
-
-    <!-- TÍTULO: CAMPO PARA EL TIPO DE CLIENTE -->
-
-        <!-- Etiqueta PARA el campo de selección del tipo de cliente -->
-        <label for="cliente_tipo">Tipo:</label> 
-
-    <!-- TÍTULO: CAMPO PARA SELECCIONAR EL TIPO DE CLIENTE -->
-
-        <!-- Campo de selección PARA el tipo de cliente. Este campo es obligatorio -->
-        <select id="cliente_tipo" name="cliente_tipo" required> 
-            <!-- Opción por defecto -->
-            <option value="" disabled selected>Selecciona un tipo de cliente</option> 
-            <option value="persona_natural">Persona Natural</option>
-            <option value="empresa">Empresa</option>
-            <option value="organizacion_sin_fines_de_lucro">Organización Sin Fines de Lucro</option>
-            <option value="institucion_gubernamental">Institución Gubernamental</option>
-            <option value="institucion_educativa">Institución Educativa</option>
-            <option value="multinacional">Multinacional</option>
-        </select>
-    </div>
-    </div>
-</fieldset>
+    if (select.value === 'nuevo') {
+        formulario.style.display = 'block';
+        // Limpiar el formulario
+        document.getElementById('cliente_rut').value = '';
+        document.getElementById('cliente_nombre').value = '';
+        document.getElementById('cliente_empresa').value = '';
+        document.getElementById('cliente_direccion').value = '';
+        document.getElementById('cliente_lugar').value = '';
+        document.getElementById('cliente_fono').value = '';
+        document.getElementById('cliente_email').value = '';
+        document.getElementById('cliente_giro').value = '';
+        document.getElementById('cliente_comuna').value = '';
+        document.getElementById('cliente_ciudad').value = '';
+        document.getElementById('cliente_tipo').value = '';
+        document.getElementById('rut_encargado_cliente').value = '';
+    } else if (select.value !== '') {
+        formulario.style.display = 'block';
+        // Asignar los valores al formulario
+        var empresa = empresas.find(e => e.id_cliente == select.value);
+        document.getElementById('cliente_rut').value = empresa.rut_empresa_cliente;
+        document.getElementById('cliente_nombre').value = empresa.nombre_encargado_cliente;
+        document.getElementById('cliente_empresa').value = empresa.nombre_empresa_cliente;
+        document.getElementById('cliente_direccion').value = empresa.direccion_empresa_cliente;
+        document.getElementById('cliente_lugar').value = empresa.lugar_empresa_cliente;
+        document.getElementById('cliente_fono').value = empresa.telefono_empresa_cliente;
+        document.getElementById('cliente_email').value = empresa.email_empresa_cliente;
+        document.getElementById('cliente_giro').value = empresa.giro_empresa_cliente;
+        document.getElementById('cliente_comuna').value = empresa.comuna_empresa_cliente;
+        document.getElementById('cliente_ciudad').value = empresa.ciudad_empresa_cliente;
+        document.getElementById('cliente_tipo').value = empresa.tipo_empresa_cliente;
+        document.getElementById('rut_encargado_cliente').value = empresa.rut_encargado_cliente;
+    } else {
+        formulario.style.display = 'none';
+    }
+}
+</script>
 
 <!-- TÍTULO: ARCHIVO JS -->
 

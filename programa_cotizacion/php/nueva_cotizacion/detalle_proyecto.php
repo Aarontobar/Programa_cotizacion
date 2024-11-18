@@ -13,7 +13,7 @@ BPPJ
     ------------------------------------------------------------------------------------------------------------- -->
 
 
-<?php
+    <?php
     // Consulta para obtener los proyectos
     $sql = "SELECT id_proyecto, nombre_proyecto, codigo_proyecto, id_tp_trabajo, id_area, id_tp_riesgo, descripcion_riesgo, dias_compra, dias_trabajo, trabajadores, horario, colacion, entrega FROM C_Proyectos";
     $result = $mysqli->query($sql);
@@ -81,21 +81,16 @@ BPPJ
                 <label for="area_trabajo">Área de Trabajo:</label>
                 <select id="area_trabajo" name="area_trabajo" required>
                     <option value="" disabled selected>Selecciona un área</option>
-                    <option value="tecnologia">Tecnología</option>
-                    <option value="salud">Salud</option>
-                    <option value="educacion">Educación</option>
-                    <option value="construccion">Construcción</option>
-                    <option value="marketing">Marketing</option>
-                    <option value="finanzas">Finanzas</option>
-                    <option value="logistica">Logística</option>
-                    <option value="administracion">Administración</option>
-                    <option value="recursos_humanos">Recursos Humanos</option>
-                    <option value="ventas">Ventas</option>
-                    <option value="diseño">Diseño</option>
-                    <option value="investigacion">Investigación</option>
-                    <option value="arte">Arte</option>
-                    <option value="turismo">Turismo</option>
-                    <option value="comercio">Comercio</option>
+                    <?php
+                    $sql_tp_trabajo = "SELECT id_area, nombre_area FROM tp_area";
+                    $result_tp_trabajo = $mysqli->query($sql_tp_trabajo);
+                    if ($result_tp_trabajo === false) {
+                        die("Error en la consulta: " . $mysqli->error);
+                    }
+                    while ($row_tp_trabajo = $result_tp_trabajo->fetch_assoc()) {
+                        echo '<option value="' . $row_tp_trabajo['id_area'] . '">' . htmlspecialchars($row_tp_trabajo['nombre_area']) . '</option>';
+                    }
+                    ?>
                 </select>
             </div>
             <div class="form-group">
@@ -103,18 +98,16 @@ BPPJ
                 <label for="tipo_trabajo">Tipo de Trabajo:</label>
                 <select id="tipo_trabajo" name="tipo_trabajo" required>
                     <option value="" disabled selected>Selecciona un tipo de trabajo</option>
-                    <option value="instalacion">Instalación</option>
-                    <option value="mantenimiento">Mantenimiento</option>
-                    <option value="reparacion">Reparación</option>
-                    <option value="consultoria">Consultoría</option>
-                    <option value="desarrollo">Desarrollo</option>
-                    <option value="diseño">Diseño</option>
-                    <option value="gestión">Gestión</option>
-                    <option value="soporte">Soporte</option>
-                    <option value="capacitación">Capacitación</option>
-                    <option value="investigacion">Investigación</option>
-                    <option value="logistica">Logística</option>
-                    <option value="ventas">Ventas</option>
+                    <?php
+                    $sql_tp_trabajo = "SELECT id_tp_trabajo, nombre_trabajo FROM tp_trabajo";
+                    $result_tp_trabajo = $mysqli->query($sql_tp_trabajo);
+                    if ($result_tp_trabajo === false) {
+                        die("Error en la consulta: " . $mysqli->error);
+                    }
+                    while ($row_tp_trabajo = $result_tp_trabajo->fetch_assoc()) {
+                        echo '<option value="' . $row_tp_trabajo['id_tp_trabajo'] . '">' . htmlspecialchars($row_tp_trabajo['nombre_trabajo']) . '</option>';
+                    }
+                    ?>
                 </select>
             </div>
         </div>

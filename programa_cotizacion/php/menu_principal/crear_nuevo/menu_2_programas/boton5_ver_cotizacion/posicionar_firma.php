@@ -16,7 +16,7 @@ BPPJ
     <!-- TÍTULO: IMPORTACIÓN DE ARCHIVO .CSS -->
 
         <!-- llama al archivo css -->
-        <link rel="stylesheet" href="../../../../../css/menu_principal/crear_nuevo/ver_cotizacion/posicionar_firma.css">
+        <link rel="stylesheet" href="../../../../../css/menu_principal/crear_nuevo/menu_2_programas/boton5_ver_cotizacion/posicionar_firma.css">
     <div id="firma-container" style="text-align: left;"> <!-- Aseguramos que inicie a la izquierda -->
 
     <!-- TÍTULO: VERIFICACIÓN DE TIPO DE FIRMA -->

@@ -49,7 +49,7 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
 
     <!-- Enlaza una hoja de estilo externa que se encuentra en la ruta especificada para estilizar el contenido de la página -->
 
-    <link rel="stylesheet" href="../../../../../css/menu_principal/crear_nuevo/crear_empresa/crear_empresa.css"> 
+    <link rel="stylesheet" href="../../../../../css/menu_principal/crear_nuevo/menu_2_programas/boton6_crear_empresa/crear_empresa.css"> 
 
     <!------------------------------------------------------------------------------------------------------------------------->
 
@@ -161,7 +161,7 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
 
     <!-- Enlaza un archivo JavaScript externo para actualizar el logo o realizar otras actualizaciones -->
 
-    <script src="../../../../../js/menu_principal/crear_nuevo/crear_empresa/crear_empresa.js"></script> 
+    <script src="../../../../../js/menu_principal/crear_nuevo/menu_2_programas/boton6_crear_empresa/crear_empresa.js"></script> 
 
     <!--------------------------------------------------------------------------------------------------->
     

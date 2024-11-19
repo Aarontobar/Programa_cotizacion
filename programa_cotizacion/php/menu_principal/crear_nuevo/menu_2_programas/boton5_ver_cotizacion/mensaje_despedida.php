@@ -28,7 +28,7 @@ $stmt->close();
 <head>
     <!-- TÍTULO: IMPORTACIÓN DE ARCHIVO .CSS -->
         <!-- Llama al archivo CSS -->
-    <link rel="stylesheet" href="../../../../../css/menu_principal/crear_nuevo/ver_cotizacion/mensaje_despedida.css">
+    <link rel="stylesheet" href="../../../../../css/menu_principal/crear_nuevo/menu_2_programas/boton5_ver_cotizacion/mensaje_despedida.css">
 </head>
 
 <!-- TÍTULO: MENSAJE DE DESPEDIDA -->

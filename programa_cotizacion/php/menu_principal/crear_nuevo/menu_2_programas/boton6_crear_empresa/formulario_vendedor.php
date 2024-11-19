@@ -15,7 +15,7 @@ BPPJ
 <!-- TITULO: IMPORTACIÓN DE ARCHIVO .CSS -->
 
     <!-- Llama al archivo CSS -->
-    <link rel="stylesheet" href="../../../../../css/menu_principal/crear_nuevo/crear_empresa/formulario_vendedor.css">
+    <link rel="stylesheet" href="../../../../../css/menu_principal/crear_nuevo/menu_2_programas/boton6_crear_empresa/formulario_vendedor.css">
 
 <!-- TÍTULO: TABLA PARA AGREGAR VENDEDORES -->
     <!-- Se integra la tabla para agregar los vendedores -->
@@ -94,7 +94,7 @@ BPPJ
 
 <!-- TITULO: IMPORTACION DE ARCHIVO .JS -->
     <!-- Llama al archivo JS -->
-    <script src="../../../../../js/menu_principal/crear_nuevo/crear_empresa/formulario_vendedor.js"></script>
+    <script src="../../../../../js/menu_principal/crear_nuevo/menu_2_programas/boton6_crear_empresa/formulario_vendedor.js"></script>
 
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {

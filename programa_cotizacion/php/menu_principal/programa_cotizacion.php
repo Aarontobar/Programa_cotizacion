@@ -31,7 +31,7 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Menú Principal - Cotización ITred Spa</title>
-        <link rel="stylesheet" href="../../css/menu_principal/crear_nuevo/programa_cotizacion/programa_cotizacion.css">
+        <link rel="stylesheet" href="../../css/menu_principal/crear_nuevo/menu_2_programas/programa_cotizacion/programa_cotizacion.css">
     </head>
 
     <body>
@@ -51,7 +51,7 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
 
         
         <!-- Carga el archivo JavaScript para la funcionalidad del formulario -->
-        <script src="../../js/menu_principal/crear_nuevo/programa_cotizacion/crear_nuevo/programa_cotizacion.js"></script> 
+        <script src="../../js/menu_principal/crear_nuevo/menu_2_programas/programa_cotizacion/crear_nuevo/programa_cotizacion.js"></script> 
 
     </body>
 </html>

@@ -158,7 +158,7 @@ if ($id_empresa > 0) {
 <!-- TÍTULO: IMPORTACIÓN DE ARCHIVO .CSS -->
  
     <!-- Llama al archivo CSS -->
-    <link rel="stylesheet" href="../../../../../css/menu_principal/crear_nuevo/ver_cotizacion/cargar_logo_empresa.css">
+    <link rel="stylesheet" href="../../../../../css/menu_principal/crear_nuevo/menu_2_programas/boton5_ver_cotizacion/cargar_logo_empresa.css">
 
 <!-- TÍTULO: SECCIÓN DE CÓDIGO PARA LA CARGA DE LOGO -->
 

@@ -180,7 +180,7 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
 <!-- TÍTULO: IMPORTACIÓN DE ARCHIVO .CSS -->
 
     <!-- llama al archivo CSS -->
-    <link rel="stylesheet" href="../../../../../css/menu_principal/crear_nuevo/ver_cotizacion/ver_listado.css">
+    <link rel="stylesheet" href="../../../../../css/menu_principal/crear_nuevo/menu_2_programas/boton5_ver_cotizacion/ver_listado.css">
 
 
 </head>

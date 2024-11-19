@@ -15,7 +15,7 @@ BPPJ
 <!-- TITULO: IMPORTACIÓN DE ARCHIVO .CSS -->
 
     <!-- Llama al archivo CSS -->
-    <link rel="stylesheet" href="../../../../../css/menu_principal/crear_nuevo/ver_cotizacion/info_cliente.css">
+    <link rel="stylesheet" href="../../../../../css/menu_principal/crear_nuevo/menu_2_programas/boton5_ver_cotizacion/info_cliente.css">
 
 <!-- TÍTULO: TABLA DE INFORMACIÓN DEL CLIENTE -->
     <!-- Llama a la tabla de información de cliente -->

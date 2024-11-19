@@ -15,7 +15,7 @@ BPPJ
 <!-- TITULO: IMPORTACIÓN DE ARCHIVO .CSS -->
 
     <!-- Llama al archivo CSS -->
-    <link rel="stylesheet" href="../../../../../css/menu_principal/crear_nuevo/crear_empresa/obligaciones_clientes.css"> 
+    <link rel="stylesheet" href="../../../../../css/menu_principal/crear_nuevo/menu_2_programas/boton6_crear_empresa/obligaciones_clientes.css"> 
 
 <!-- TÍTULO DE LA SECCIÓN DE OBLIGACIONES DEL CLIENTE -->
     <!-- Tag de la sección de obligaciones del cliente -->
@@ -52,7 +52,7 @@ BPPJ
 
 <!-- TITULO: IMPORTACION DE ARCHIVO .JS -->
     <!-- Llama al archivo JS -->
-    <script src="../../../../../js/menu_principal/crear_nuevo/crear_empresa/obligaciones_cliente.js"></script>
+    <script src="../../../../../js/menu_principal/crear_nuevo/menu_2_programas/boton6_crear_empresa/obligaciones_cliente.js"></script>
 
 <?php
 

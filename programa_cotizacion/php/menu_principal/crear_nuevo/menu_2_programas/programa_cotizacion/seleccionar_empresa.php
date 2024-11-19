@@ -97,7 +97,7 @@ BPPJ
 
         <!----------------archivo JS------------------------>
 
-        <script src="../../js/menu_principal/crear_nuevo/programa_cotizacion/seleccionar_empresa.js"></script> 
+        <script src="../../js/menu_principal/crear_nuevo/menu_2_programas/programa_cotizacion/seleccionar_empresa.js"></script> 
 
             
 

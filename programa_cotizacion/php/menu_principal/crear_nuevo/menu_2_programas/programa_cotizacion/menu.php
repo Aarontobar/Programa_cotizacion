@@ -56,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
 
 <!-- llama al archivo CSS -->
-<link rel="stylesheet" href="../../css/menu_principal/crear_nuevo/programa_cotizacion/menu.css">
+<link rel="stylesheet" href="../../css/menu_principal/crear_nuevo/menu_2_programas/programa_cotizacion/menu.css">
 
 </head>
 
@@ -132,7 +132,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <!-----------------Archivo JS--------------------------->
 
-<script src="../../js/menu_principal/crear_nuevo/programa_cotizacion/menu.js"></script> 
+<script src="../../js/menu_principal/crear_nuevo/menu_2_programas/programa_cotizacion/menu.js"></script> 
 
      <!-- ------------------------------------------------------------------------------------------------------------
     -------------------------------------- FIN ITred Spa Menu .PHP ----------------------------------------

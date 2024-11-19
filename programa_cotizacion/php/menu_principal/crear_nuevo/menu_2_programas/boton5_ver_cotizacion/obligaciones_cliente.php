@@ -84,7 +84,7 @@ $stmt_obligaciones_seleccionadas->close();
 
 <!-- TÍTULO: IMPORTACIÓN DE ARCHIVO .CSS -->
     <!-- Llama al archivo JS -->
-    <link rel="stylesheet" href="../../../../../css/menu_principal/crear_nuevo/ver_cotizacion/obligaciones_cliente.css">
+    <link rel="stylesheet" href="../../../../../css/menu_principal/crear_nuevo/menu_2_programas/boton5_ver_cotizacion/obligaciones_cliente.css">
 
 <!-------------------------------------------------------------------------->
 

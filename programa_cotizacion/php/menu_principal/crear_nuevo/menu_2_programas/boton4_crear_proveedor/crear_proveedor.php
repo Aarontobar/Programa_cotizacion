@@ -36,7 +36,7 @@ BPPJ
     <!-- TÍTULO: IMPORTACIÓN DE ARCHIVO .CSS -->
      
     <!-- llama al archivo CSS -->
-    <link rel="stylesheet" href="../../../../../css/menu_principal/crear_nuevo/crear_proveedor/crear_proveedor.css"> 
+    <link rel="stylesheet" href="../../../../../css/menu_principal/crear_nuevo/menu_2_programas/boton4_crear_proveedor/crear_proveedor.css"> 
 
     <!-- TÍTULO: IMPORTACIÓN DE ARCHIVO .PHP -->
 
@@ -92,7 +92,7 @@ BPPJ
 
 <!-- TÍTULO: IMPORTACIÓN DE ARCHIVO .JS -->
 
-<script src="../../../../../js/menu_principal/crear_nuevo/crear_proveedor/crear_proveedor.js"></script> 
+<script src="../../../../../js/menu_principal/crear_nuevo/menu_2_programas/boton4_crear_proveedor/crear_proveedor.js"></script> 
 
 <!--------------------------------------------------------------------->
 </html>

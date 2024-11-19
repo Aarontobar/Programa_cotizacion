@@ -248,7 +248,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <!-- TITULO: IMPORTACIÓN DE ARCHIVO .CSS -->
 
     <!-- Llama al archivo CSS -->
-<link rel="stylesheet" href="../../../../../css/menu_principal/crear_nuevo/ver_cotizacion/modificar_cotizacion.css">
+<link rel="stylesheet" href="../../../../../css/menu_principal/crear_nuevo/menu_2_programas/boton5_ver_cotizacion/modificar_cotizacion.css">
 
 </head>
 <body>
@@ -395,7 +395,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
     <!-- Llama al archivo JS -->
     <script src="../../../../../js/menu_principal/crear_nuevo/menu_2_programas/boton1_nueva_cotizacion/nueva_cotizacion.js"></script>    
-        <script src="../../../../../js/menu_principal/crear_nuevo/crear_empresa/upload_logo.js"></script>
+        <script src="../../../../../js/menu_principal/crear_nuevo/menu_2_programas/boton6_crear_empresa/upload_logo.js"></script>
         <script src="../../../../../js/menu_principal/crear_nuevo/menu_2_programas/boton1_nueva_cotizacion/cargar_logo_empresa.js"></script> 
         <script src="../../../../../js/menu_principal/crear_nuevo/menu_2_programas/boton1_nueva_cotizacion/cuadro_rojo_cotizacion.js"></script> 
         <script src="../../../../../js/menu_principal/crear_nuevo/menu_2_programas/boton1_nueva_cotizacion/pago.js"></script> 

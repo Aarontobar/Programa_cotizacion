@@ -1039,7 +1039,7 @@ INSERT INTO p_tipo_producto (tipo_producto) VALUES ('ayudante');
 
 -- Insertar datos en la tabla E_FotosPerfil
 INSERT INTO FP_FotosPerfil (id_foto, ruta_foto, fecha_subida)
-VALUES (1, '../../../../imagenes/menu_principal/crear_nuevo/programa_cotizacion/prueba2.png', '2024-09-09 17:25:20');
+VALUES (1, '../../../../../imagenes/menu_principal/crear_nuevo/programa_cotizacion/prueba2.png', '2024-09-09 17:25:20');
 
 
 

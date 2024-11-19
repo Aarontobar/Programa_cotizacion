@@ -15,7 +15,7 @@ BPPJ
 <!-- TITULO: IMPORTACIÓN DE ARCHIVO .CSS -->
 
     <!-- Llama al archivo CSS -->
-    <link rel="stylesheet" href="../../../../css/menu_principal/crear_nuevo/ver_cotizacion/detalles_proyecto.css">
+    <link rel="stylesheet" href="../../../../../css/menu_principal/crear_nuevo/ver_cotizacion/detalles_proyecto.css">
 
 
  <div class="section">
@@ -32,7 +32,7 @@ BPPJ
 <!-- TITULO: IMPORTACION DE ARCHIVO .JS -->
 
     <!-- Llama al archivo JS -->
-    <script src="../../../../js/menu_principal/crear_nuevo/ver_cotizacion/detalles_proyecto.js"></script>
+    <script src="../../../../../js/menu_principal/crear_nuevo/ver_cotizacion/detalles_proyecto.js"></script>
 
 
 <!-- ------------------------------------------------------------------------------------------------------------

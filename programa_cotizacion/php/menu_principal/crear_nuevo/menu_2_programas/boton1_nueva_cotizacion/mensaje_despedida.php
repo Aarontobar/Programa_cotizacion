@@ -14,7 +14,7 @@ BPPJ
 
 <!-- TITULO: ARCHIVO CSS -->
     <!-- llama la archivo css -->
-    <link rel="stylesheet" href="../../../../css/menu_principal/crear_nuevo/nueva_cotizacion/mensaje_despedida.css">
+    <link rel="stylesheet" href="../../../../../css/menu_principal/crear_nuevo/menu_2_programas/boton1_nueva_cotizacion/mensaje_despedida.css">
 
 <fieldset class="mensaje_despedida-box">
     <div class="form-group">
@@ -35,7 +35,7 @@ BPPJ
 <!-- TITULO: ARCHIVO JS -->
 
     <!-- llama al archivo JS -->
-    <script src="../../../../js/menu_principal/crear_nuevo/nueva_cotizacion/mensaje_despedida.js"></script> 
+    <script src="../../../../../js/menu_principal/crear_nuevo/menu_2_programas/boton1_nueva_cotizacion/mensaje_despedida.js"></script> 
 
 
 

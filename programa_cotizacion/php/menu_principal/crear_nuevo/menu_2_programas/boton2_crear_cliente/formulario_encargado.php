@@ -30,7 +30,7 @@ BPPJ
 <!-- TITULO: IMPORTACION DE ARCHIVO .JS -->
     
     <!-- Llama al archivo CSS -->
-    <link rel="stylesheet" href="../../../../css/menu_principal/crear_nuevo/crear_cliente/formulario_encargado.css">  
+    <link rel="stylesheet" href="../../../../../css/menu_principal/crear_nuevo/menu_2_programas/boton2_crear_cliente/formulario_encargado.css">  
 
     <!-- Cierra el elemento de cabecera -->
 </head> 
@@ -124,7 +124,7 @@ BPPJ
 <!-- TITULO: IMPORTACION DE ARCHIVO .JS -->
 
     <!-- Llama al archivo JS -->
-    <script src="../../../../js/menu_principal/crear_nuevo/crear_cliente/formulario_encargado.js"></script> 
+    <script src="../../../../../js/menu_principal/crear_nuevo/menu_2_programas/boton2_crear_cliente/formulario_encargado.js"></script> 
 
 <?php
 // Comprueba si el formulario ha sido enviado mediante el método POST

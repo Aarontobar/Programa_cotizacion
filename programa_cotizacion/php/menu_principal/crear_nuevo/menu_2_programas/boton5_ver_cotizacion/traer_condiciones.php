@@ -114,7 +114,7 @@ if ($stmt_seleccionadas = $mysqli->prepare($query_condiciones_seleccionadas)) {
 <!-- TÍTULO: IMPORTACIÓN DE ARCHIVO .CSS -->
 
     <!-- llama al archivo CSS -->
-    <link rel="stylesheet" href="../../../../css/menu_principal/crear_nuevo/ver_cotizacion/traer_condiciones.css">
+    <link rel="stylesheet" href="../../../../../css/menu_principal/crear_nuevo/ver_cotizacion/traer_condiciones.css">
 
 <!-- TÍTULO: CHECKBOX PARA MOSTRAR/OCULTAR CONDICIONES GENERALES -->
 
@@ -177,7 +177,7 @@ if ($stmt_seleccionadas = $mysqli->prepare($query_condiciones_seleccionadas)) {
 <!-- TÍTULO: IMPORTACIÓN DE ARCHIVO .JS -->
     
     <!-- llama al archivo JS -->
-    <script src="../../../../js/menu_principal/crear_nuevo/ver_cotizacion/traer_condiciones.js"></script> 
+    <script src="../../../../../js/menu_principal/crear_nuevo/ver_cotizacion/traer_condiciones.js"></script> 
 
 
 <?php

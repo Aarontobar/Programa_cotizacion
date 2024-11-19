@@ -102,7 +102,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <!-- TÍTULO: IMPORTACIÓN DE ARCHIVO .CSS -->
 
     <!-- llama al archivo CSS -->
-    <link rel="stylesheet" href="../../../../css/menu_principal/crear_nuevo/ver_cotizacion/traer_pago.css">
+    <link rel="stylesheet" href="../../../../../css/menu_principal/crear_nuevo/ver_cotizacion/traer_pago.css">
 
 
 <!-- TÍTULO: SECCIÓN DE INFORMACIÓN DE PAGOS -->
@@ -206,7 +206,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <!-- TÍTULO: IMPORTACIÓN DE ARCHIVO .JS -->
 
     <!-- llama al archivo JS -->
-    <script src="../../../../js/menu_principal/crear_nuevo/ver_cotizacion/traer_pago.js"></script>
+    <script src="../../../../../js/menu_principal/crear_nuevo/ver_cotizacion/traer_pago.js"></script>
 
 
 <!-- ------------------------------------------------------------------------------------------------------------

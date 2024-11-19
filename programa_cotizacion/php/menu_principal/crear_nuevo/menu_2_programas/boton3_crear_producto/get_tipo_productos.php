@@ -62,11 +62,11 @@ $conn->close();
 
 <!-- TÍTULO: IMPORTACIÓN DE ARCHIVO .CSS -->
     <!-- Llama al archivo CSS -->
-    <link rel="stylesheet" href="../../../../css/menu_principal/crear_nuevo/crear_producto/get_tipo_productos.css">
+    <link rel="stylesheet" href="../../../../../css/menu_principal/crear_nuevo/menu_2_programas/boton3_crear_producto/get_tipo_productos.css">
 
 <!-- TÍTULO: IMPORTACIÓN DE ARCHIVO .JS -->
     <!-- Llama al archivo JS -->
-    <script src="../../../../js/menu_principal/crear_nuevo/crear_producto/get_tipo_productos.js"></script>
+    <script src="../../../../../js/menu_principal/crear_nuevo/crear_producto/get_tipo_productos.js"></script>
 
 <!-- ------------------------------------------------------------------------------------------------------------
     -------------------------------------- FIN ITred Spa Get Tipo Productos .PHP ----------------------------------------

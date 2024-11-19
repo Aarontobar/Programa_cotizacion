@@ -119,7 +119,7 @@ if ($tipo_firma) {
 <!-- TÍTULO: ARCHIVO CSS -->
 
     <!--------------Archivo JS--------------->
-    <script src="../../../../js/menu_principal/crear_nuevo/nueva_cotizacion/firma.js"></script> 
+    <script src="../../../../../js/menu_principal/crear_nuevo/menu_2_programas/boton1_nueva_cotizacion/firma.js"></script> 
 
      <!-- ------------------------------------------------------------------------------------------------------------
     -------------------------------------- FIN ITred Spa Firma  .PHP ----------------------------------------

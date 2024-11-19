@@ -180,7 +180,7 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
 <!-- TÍTULO: IMPORTACIÓN DE ARCHIVO .CSS -->
 
     <!-- llama al archivo CSS -->
-    <link rel="stylesheet" href="../../../../css/menu_principal/crear_nuevo/ver_cotizacion/ver_listado.css">
+    <link rel="stylesheet" href="../../../../../css/menu_principal/crear_nuevo/ver_cotizacion/ver_listado.css">
 
 
 </head>
@@ -228,7 +228,7 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
 
 <!-- TÍTULO: IMPORTACIÓN DE ARCHIVO .JS -->
     <!-- llama al archivo JS -->
-    <script src="../../../../js/menu_principal/crear_nuevo/ver_cotizacion/ver_listado.js"></script>
+    <script src="../../../../../js/menu_principal/crear_nuevo/ver_cotizacion/ver_listado.js"></script>
 
 
 

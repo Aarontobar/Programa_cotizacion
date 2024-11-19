@@ -31,7 +31,7 @@ BPPJ
 <!-- TITULO: ARCHIVO CSS -->
 
     <!-- llama al archivo css -->
-    <link rel="stylesheet" href="../../../../css/menu_principal/crear_nuevo/nueva_cotizacion/detalle_proyecto.css">
+    <link rel="stylesheet" href="../../../../../css/menu_principal/crear_nuevo/menu_2_programas/boton1_nueva_cotizacion/detalle_proyecto.css">
 
 
 

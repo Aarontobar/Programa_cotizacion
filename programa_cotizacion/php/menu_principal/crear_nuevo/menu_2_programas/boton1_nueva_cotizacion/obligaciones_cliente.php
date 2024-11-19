@@ -31,7 +31,7 @@ BPPJ
 <!-- Checkbox para mostrar/ocultar obligaciones del cliente --> 
     
     <!-- llama archivo obligaciones_clientes.css -->
-    <link rel="stylesheet" href="../../../../css/menu_principal/crear_nuevo/nueva_cotizacion/obligaciones_cliente.css">
+    <link rel="stylesheet" href="../../../../../css/menu_principal/crear_nuevo/menu_2_programas/boton1_nueva_cotizacion/obligaciones_cliente.css">
 
 
 <!-- TÍTULO: CHECKBOX PARA MOSTRAR OBLIGACIONES DEL CLIENTE -->
@@ -68,7 +68,7 @@ BPPJ
 <!-- TITULO: ARCHIVO JS -->
     
     <!-- llama al archivo js -->
-    <script src="../../../../js/menu_principal/crear_nuevo/nueva_cotizacion/obligaciones_cliente.js"></script> 
+    <script src="../../../../../js/menu_principal/crear_nuevo/menu_2_programas/boton1_nueva_cotizacion/obligaciones_cliente.js"></script> 
 
 
 

@@ -84,7 +84,7 @@ if ($row !== null) {
  <!-- TÍTULO: AQUÍ SE CARGA EL JS DEL ARCHIVO -->
 
     <!-- llama al archivo JS -->
-    <script src="../../../../js/menu_principal/crear_nuevo/nueva_cotizacion/condiciones_generales.js"></script> 
+    <script src="../../../../../js/menu_principal/crear_nuevo/menu_2_programas/boton1_nueva_cotizacion/condiciones_generales.js"></script> 
 
      <!-- ------------------------------------------------------------------------------------------------------------
     -------------------------------------- FIN ITred Spa condiciones generales.PHP ----------------------------------------

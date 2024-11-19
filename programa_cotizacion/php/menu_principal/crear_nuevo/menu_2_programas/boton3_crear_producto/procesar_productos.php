@@ -77,7 +77,7 @@ foreach ($_POST['nombre_producto'] as $index => $nombre_producto) {
 
     $empresa_id_foto = null; // Inicializa la variable para el ID de la foto
     if (isset($_FILES['foto_producto']['error'][$index]) && $_FILES['foto_producto']['error'][$index] == UPLOAD_ERR_OK) {
-        $upload_dir = '../../../../imagenes/menu_principal/crear_nuevo/menu 2 programas/programa_cotizacion/'; // Ruta relativa para subir imágenes
+        $upload_dir = '../../../../../imagenes/menu_principal/crear_nuevo/menu 2 programas/programa_cotizacion/'; // Ruta relativa para subir imágenes
         $tmp_name = $_FILES['foto_producto']['tmp_name'][$index]; // Ruta temporal del archivo subido
         $name = basename($_FILES['foto_producto']['name'][$index]); // Nombre del archivo
 
@@ -163,11 +163,11 @@ echo "Productos guardados correctamente.";
 
 <!-- TÍTULO: IMPORTACIÓN DE ARCHIVO .CSS -->
     <!-- Llama al archivo CSS -->
-    <link rel="stylesheet" href="../../../../css/menu_principal/crear_nuevo/crear_producto/procesar_productos.css">
+    <link rel="stylesheet" href="../../../../../css/menu_principal/crear_nuevo/menu_2_programas/boton3_crear_producto/procesar_productos.css">
 
 <!-- TÍTULO: IMPORTACIÓN DE ARCHIVO .JS -->
     <!-- Llama al archivo JS -->
-    <script src="../../../../js/menu_principal/crear_nuevo/crear_producto/get_tipo_productos.js"></script>
+    <script src="../../../../../js/menu_principal/crear_nuevo/crear_producto/get_tipo_productos.js"></script>
 
 <!-- ------------------------------------------------------------------------------------------------------------
 -------------------------------------- FIN ITred Spa Procesar Creacion producto .PHP -----------------------------------

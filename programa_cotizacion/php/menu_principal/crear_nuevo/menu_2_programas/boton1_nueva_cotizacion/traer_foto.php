@@ -13,7 +13,7 @@ BPPJ
     ------------------------------------------------------------------------------------------------------------- -->
 <!-- TITULO ARCHIVO CSS -->
     <!-- llama al archivo css -->
-    <link rel="stylesheet" href="../../../../css/menu_principal/crear_nuevo/nueva_cotizacion/traer_foto.css">
+    <link rel="stylesheet" href="../../../../../css/menu_principal/crear_nuevo/menu_2_programas/boton1_nueva_cotizacion/traer_foto.css">
 
 
 <!-- TÍTULO: SECCIÓN PARA CARGAR LOGO DE EMPRESA -->
@@ -45,7 +45,7 @@ BPPJ
     </div>
 <!-- TITULO: ARCHIVO JS -->
     <!-- llama al archivo JS -->
-    <script src="../../../../js/menu_principal/crear_nuevo/nueva_cotizacion/traer_foto.js"></script> 
+    <script src="../../../../../js/menu_principal/crear_nuevo/menu_2_programas/boton1_nueva_cotizacion/traer_foto.js"></script> 
      <!-- ------------------------------------------------------------------------------------------------------------
     -------------------------------------- FIN ITred Spa Traer foto.PHP ----------------------------------------
     ------------------------------------------------------------------------------------------------------------- -->

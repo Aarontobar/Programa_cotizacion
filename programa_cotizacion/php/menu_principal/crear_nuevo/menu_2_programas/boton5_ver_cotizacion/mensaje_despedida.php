@@ -28,7 +28,7 @@ $stmt->close();
 <head>
     <!-- TÍTULO: IMPORTACIÓN DE ARCHIVO .CSS -->
         <!-- Llama al archivo CSS -->
-    <link rel="stylesheet" href="../../../../css/menu_principal/crear_nuevo/ver_cotizacion/mensaje_despedida.css">
+    <link rel="stylesheet" href="../../../../../css/menu_principal/crear_nuevo/ver_cotizacion/mensaje_despedida.css">
 </head>
 
 <!-- TÍTULO: MENSAJE DE DESPEDIDA -->
@@ -48,7 +48,7 @@ $stmt->close();
 
 <!-- TITULO: IMPORTACION DE ARCHIVO .JS -->
     <!-- Llama al archivo JS -->
-    <script src="../../../../js/menu_principal/crear_nuevo/ver_cotizacion/mensaje_despedida.js"></script>
+    <script src="../../../../../js/menu_principal/crear_nuevo/ver_cotizacion/mensaje_despedida.js"></script>
 
 <!-- ------------------------------------------------------------------------------------------------------------
     -------------------------------------- FIN ITred Spa  mensaje despedida .PHP -----------------------------------

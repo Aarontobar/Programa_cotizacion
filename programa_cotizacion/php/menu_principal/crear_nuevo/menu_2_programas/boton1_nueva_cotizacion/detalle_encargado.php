@@ -15,7 +15,7 @@ BPPJ
 <!-- TITULO: Llama al CSS -->
 
 <!-- llama al Archivo css -->
-<link rel="stylesheet" href="../../../../css/menu_principal/crear_nuevo/nueva_cotizacion/detalle_encargado.css">
+<link rel="stylesheet" href="../../../../../css/menu_principal/crear_nuevo/menu_2_programas/boton1_nueva_cotizacion/detalle_encargado.css">
 
 <!-- Crea una fila para organizar los elementos en una disposición horizontal -->
 <fieldset class="row"> 
@@ -193,7 +193,7 @@ BPPJ
 
 </fieldset> 
 
-<script src="../../../../js/menu_principal/crear_nuevo/nueva_cotizacion/detalle_encargado.js"></script> 
+<script src="../../../../../js/menu_principal/crear_nuevo/menu_2_programas/boton1_nueva_cotizacion/detalle_encargado.js"></script> 
 
 <?php
 

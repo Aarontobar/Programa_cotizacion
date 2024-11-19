@@ -19,7 +19,7 @@ BPPJ
 <!-- TITULO: IMPORTACIÓN DE ARCHIVO .CSS -->
 
     <!-- Llama al archivo CSS -->
-    <link rel="stylesheet" href="../../../../css/menu_principal/crear_nuevo/crear_empresa/condiciones_generales.css"> <!-- Enlaza una hoja de estilo externa que se encuentra en la ruta especificada para estilizar el contenido de la página -->
+    <link rel="stylesheet" href="../../../../../css/menu_principal/crear_nuevo/crear_empresa/condiciones_generales.css"> <!-- Enlaza una hoja de estilo externa que se encuentra en la ruta especificada para estilizar el contenido de la página -->
 
 <!-- TÍTULO: SECCIÓN DE CONDICIONES GENERALES -->
     <!-- Conidiciones generales -->
@@ -46,7 +46,7 @@ BPPJ
 
 <!-- TITULO: IMPORTACIÓN DE ARCHIVO .CSS -->
     <!-- Llama al archivo JS -->
-    <script src="../../../../js/menu_principal/crear_nuevo/crear_empresa/condiciones_generales.js"></script>
+    <script src="../../../../../js/menu_principal/crear_nuevo/crear_empresa/condiciones_generales.js"></script>
 
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {

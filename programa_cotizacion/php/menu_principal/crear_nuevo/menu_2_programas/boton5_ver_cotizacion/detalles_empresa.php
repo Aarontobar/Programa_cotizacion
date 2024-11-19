@@ -16,7 +16,7 @@ BPPJ
 <!-- TITULO: IMPORTACIÓN DE ARCHIVO .CSS -->
 
     <!-- Llama al archivo CSS -->
-    <link rel="stylesheet" href="../../../../css/menu_principal/crear_nuevo/ver_cotizacion/detalles_empresa.css">
+    <link rel="stylesheet" href="../../../../../css/menu_principal/crear_nuevo/ver_cotizacion/detalles_empresa.css">
 
 <div class="section">
     <h3>DETALLES DE LA EMPRESA</h3>
@@ -33,7 +33,7 @@ BPPJ
 <!-- TITULO: IMPORTACION DE ARCHIVO .JS -->
 
     <!-- Llama al archivo JS -->
-    <script src="../../../../js/menu_principal/crear_nuevo/ver_cotizacion/detalles_empresa.js"></script>
+    <script src="../../../../../js/menu_principal/crear_nuevo/ver_cotizacion/detalles_empresa.js"></script>
 
 <!-- ------------------------------------------------------------------------------------------------------------
     -------------------------------------- FIN ITred Spa Detalle empresa .PHP -----------------------------------

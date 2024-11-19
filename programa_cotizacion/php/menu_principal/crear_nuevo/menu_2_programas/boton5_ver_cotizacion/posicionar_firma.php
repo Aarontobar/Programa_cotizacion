@@ -16,7 +16,7 @@ BPPJ
     <!-- TÍTULO: IMPORTACIÓN DE ARCHIVO .CSS -->
 
         <!-- llama al archivo css -->
-        <link rel="stylesheet" href="../../../../css/menu_principal/crear_nuevo/ver_cotizacion/posicionar_firma.css">
+        <link rel="stylesheet" href="../../../../../css/menu_principal/crear_nuevo/ver_cotizacion/posicionar_firma.css">
     <div id="firma-container" style="text-align: left;"> <!-- Aseguramos que inicie a la izquierda -->
 
     <!-- TÍTULO: VERIFICACIÓN DE TIPO DE FIRMA -->
@@ -148,7 +148,7 @@ BPPJ
 <!-- TÍTULO: IMPORTACIÓN DE ARCHIVO .JS -->
     
     <!-- llama la archivo js -->
-    <script src="../../../../js/menu_principal/crear_nuevo/ver_cotizacion/posicionar_firma.js"></script>
+    <script src="../../../../../js/menu_principal/crear_nuevo/ver_cotizacion/posicionar_firma.js"></script>
 
 <!-------------------------------------------------------------------------->
 

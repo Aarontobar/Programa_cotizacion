@@ -84,7 +84,7 @@ $stmt_obligaciones_seleccionadas->close();
 
 <!-- TÍTULO: IMPORTACIÓN DE ARCHIVO .CSS -->
     <!-- Llama al archivo JS -->
-    <link rel="stylesheet" href="../../../../css/menu_principal/crear_nuevo/ver_cotizacion/obligaciones_cliente.css">
+    <link rel="stylesheet" href="../../../../../css/menu_principal/crear_nuevo/ver_cotizacion/obligaciones_cliente.css">
 
 <!-------------------------------------------------------------------------->
 
@@ -146,7 +146,7 @@ $stmt_obligaciones_seleccionadas->close();
 <!-- TÍTULO: IMPORTACIÓN DE ARCHIVO .JS -->
 
     <!-- Llama al archivo JS -->
-    <script src="../../../../js/menu_principal/crear_nuevo/ver_cotizacion/obligaciones_cliente.js"></script> 
+    <script src="../../../../../js/menu_principal/crear_nuevo/ver_cotizacion/obligaciones_cliente.js"></script> 
 
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {

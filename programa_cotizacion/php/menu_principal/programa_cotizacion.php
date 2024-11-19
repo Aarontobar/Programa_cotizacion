@@ -36,13 +36,13 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
 
     <body>
     <!-- Incluye el menú de navegación desde un archivo PHP externo -->
-    <?php include 'crear_nuevo/programa_cotizacion/menu.php'; ?>
+    <?php include 'crear_nuevo/menu_2_programas/programa_cotizacion/menu.php'; ?>
 
     <!-- Formulario para seleccionar la Empresa -->
     <form method="POST" action="">
 
         <!-- Incluye el archivo PHP que maneja la selección de empresas -->
-        <?php include 'crear_nuevo/programa_cotizacion/seleccionar_empresa.php'; ?>
+        <?php include 'crear_nuevo/menu_2_programas/programa_cotizacion/seleccionar_empresa.php'; ?>
 
             <!-- boton seleccionar empresa -->
             <input type="hidden" id="selected-empresa" name="empresa" />
@@ -51,7 +51,7 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
 
         
         <!-- Carga el archivo JavaScript para la funcionalidad del formulario -->
-        <script src="../../js/menu_principal/crear_nuevo/crear_nuevo/programa_cotizacion/crear_nuevo/programa_cotizacion.js"></script> 
+        <script src="../../js/menu_principal/crear_nuevo/programa_cotizacion/crear_nuevo/programa_cotizacion.js"></script> 
 
     </body>
 </html>

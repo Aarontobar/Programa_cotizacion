@@ -73,7 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         <!-- redirige al archivo nueva_cotizacion.PHP -->
         <li>
-            <a href="crear_nuevo/menu_2_programas/boton1_nueva_cotizacion/nueva_cotizacion.php?id=<?php echo isset($_SESSION['id_empresa']) ? $_SESSION['id_empresa'] : ''; ?>" class="<?php echo $empresaEncontrada ? '' : 'disabled'; ?>">
+            <a href="crear_nuevo/menu_2_programas/boton1_nueva_cotizacion/nueva_cotizacion_principal.php?id=<?php echo isset($_SESSION['id_empresa']) ? $_SESSION['id_empresa'] : ''; ?>" class="<?php echo $empresaEncontrada ? '' : 'disabled'; ?>">
                 Nueva Cotización
             </a>
         </li>
@@ -81,9 +81,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         <!-- TÍTULO: ENLACE PARA CREAR CLIENTE -->
 
-        <!-- redirige al archivo crear_cliente.php -->
+        <!-- redirige al archivo crear_cliente_principal.php -->
         <li>
-            <a href="crear_nuevo/menu_2_programas/boton2_crear_cliente/crear_cliente.php?id=<?php echo isset($_SESSION['id_empresa']) ? $_SESSION['id_empresa'] : ''; ?>" class="<?php echo $empresaEncontrada ? '' : 'disabled'; ?>">
+            <a href="crear_nuevo/menu_2_programas/boton2_crear_cliente/crear_cliente_principal.php?id=<?php echo isset($_SESSION['id_empresa']) ? $_SESSION['id_empresa'] : ''; ?>" class="<?php echo $empresaEncontrada ? '' : 'disabled'; ?>">
                 Crear Cliente
             </a>
         </li>
@@ -92,9 +92,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         
         <!-- TÍTULO: ENLACE PARA CREAR PRODUCTO -->
 
-        <!-- redirige al archivo crear_producto.php -->
+        <!-- redirige al archivo crear_producto_principal.php -->
         <li>
-            <a href="crear_nuevo/menu_2_programas/boton3_crear_producto/crear_producto.php?id=<?php echo isset($_SESSION['id_empresa']) ? $_SESSION['id_empresa'] : ''; ?>" class="<?php echo $empresaEncontrada ? '' : 'disabled'; ?>">
+            <a href="crear_nuevo/menu_2_programas/boton3_crear_producto/crear_producto_principal.php?id=<?php echo isset($_SESSION['id_empresa']) ? $_SESSION['id_empresa'] : ''; ?>" class="<?php echo $empresaEncontrada ? '' : 'disabled'; ?>">
                 Crear Producto
             </a>
         </li>
@@ -103,25 +103,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         <!-- redirige al archivo crear_proveedor -->
         <li>
-            <a href="crear_nuevo/menu_2_programas/boton4_crear_proveedor/crear_proveedor.php" class="<?php echo $empresaEncontrada ? '' : 'disabled'; ?>">
+            <a href="crear_nuevo/menu_2_programas/boton4_crear_proveedor/crear_proveedor_principal.php" class="<?php echo $empresaEncontrada ? '' : 'disabled'; ?>">
                 Crear Proveedor
             </a>
         </li>
       
         <!-- TÍTULO: ENLACE PARA VER LISTADO DE COTIZACIÓN -->
 
-        <!-- redirige al archivo ver_listado.php -->
+        <!-- redirige al archivo ver_cotizacion_principal.php -->
         <li>
-            <a href="crear_nuevo/menu_2_programas/boton5_ver_cotizacion/ver_listado.php?id=<?php echo isset($_SESSION['id_empresa']) ? $_SESSION['id_empresa'] : ''; ?>" class="<?php echo $empresaEncontrada ? '' : 'disabled'; ?>">
+            <a href="crear_nuevo/menu_2_programas/boton5_ver_cotizacion/ver_cotizacion_principal.php?id=<?php echo isset($_SESSION['id_empresa']) ? $_SESSION['id_empresa'] : ''; ?>" class="<?php echo $empresaEncontrada ? '' : 'disabled'; ?>">
                 Ver listado Cotización
             </a>
         </li>
         
         <!-- TÍTULO: ENLACE PARA CREAR NUEVA EMPRESA -->
 
-        <!-- redirige al archivo crear_empresa.php -->
+        <!-- redirige al archivo crear_empresa_principal.php -->
         <li>
-            <a href="crear_nuevo/menu_2_programas/boton6_crear_empresa/crear_empresa.php">
+            <a href="crear_nuevo/menu_2_programas/boton6_crear_empresa/crear_empresa_principal.php">
                 Crear nueva empresa
             </a>
         </li>

@@ -80,7 +80,7 @@ BPPJ
                 <!-- TÍTULO: CAMPO PARA EL ÁREA DE TRABAJO -->
                 <label for="area_trabajo">Área de Trabajo:</label>
                 <select id="area_trabajo" name="area_trabajo" required>
-                    <option value="" disabled selected>Selecciona un área</option>
+                <option value="" disabled selected>Selecciona un área</option>
                     <?php
                     $sql_tp_trabajo = "SELECT id_area, nombre_area FROM tp_area";
                     $result_tp_trabajo = $mysqli->query($sql_tp_trabajo);
@@ -115,10 +115,17 @@ BPPJ
             <!-- TÍTULO: CAMPO PARA EL RIESGO -->
             <label for="riesgo">Riesgo:</label>
             <select id="riesgo" name="riesgo" required>
-                <option value="" disabled selected>Selecciona un nivel de riesgo</option>
-                <option value="alto">Alto</option>
-                <option value="medio">Medio</option>
-                <option value="bajo">Bajo</option>
+                <option value="" disabled selected>Selecciona un riesgo</option>
+                <?php
+                    $sql_tp_riesgo = "SELECT id_tp_riesgo, nombre_riesgo FROM tp_riesgo";
+                    $result_tp_riesgo = $mysqli->query($sql_tp_riesgo);
+                    if ($result_tp_riesgo === false) {
+                        die("Error en la consulta: " . $mysqli->error);
+                    }
+                    while ($row_tp_riesgo = $result_tp_riesgo->fetch_assoc()) {
+                        echo '<option value="' . $row_tp_riesgo['id_tp_riesgo'] . '">' . htmlspecialchars($row_tp_riesgo['nombre_riesgo']) . '</option>';
+                    }
+                ?>
             </select>
         </div>
         <div class="form-group">

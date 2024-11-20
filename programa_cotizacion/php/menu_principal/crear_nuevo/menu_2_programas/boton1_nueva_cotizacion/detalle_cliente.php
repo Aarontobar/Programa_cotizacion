@@ -115,6 +115,17 @@ if ($result->num_rows > 0) {
                     <!-- TÍTULO: CAMPO PARA SELECCIONAR EL LUGAR DEL CLIENTE -->
                     <!-- Campo de selección PARA el lugar del cliente. Este campo es obligatorio -->
                     <select id="cliente_lugar" name="cliente_lugar" required> 
+                        <option value="" disabled selected>Selecciona un lugar</option>
+                        <?php
+                            $sql_tp_lugar = "SELECT id, nombre_lugar FROM tp_lugar";
+                            $result_tp_lugar = $mysqli->query($sql_tp_lugar);
+                            if ($result_tp_lugar === false) {
+                                die("Error en la consulta: " . $mysqli->error);
+                            }
+                            while ($row_tp_lugar = $result_tp_lugar->fetch_assoc()) {
+                                echo '<option value="' . $row_tp_lugar['id'] . '">' . htmlspecialchars($row_tp_lugar['nombre_lugar']) . '</option>';
+                            }
+                        ?>
                     </select>
                 </div>
             </div>
@@ -202,7 +213,17 @@ if ($result->num_rows > 0) {
                 <!-- TÍTULO: CAMPO PARA SELECCIONAR EL CARGO DEL CLIENTE -->
                 <!-- Campo de selección PARA el cargo del cliente. Este campo es obligatorio -->
                 <select id="cliente_cargo" name="cliente_cargo" required>
-                    <!-- Opción por defecto -->
+                    <option value="" disabled selected>Selecciona un cargo</option>
+                    <?php
+                        $sql_tp_cargo = "SELECT id_tp_cargo, nombre_cargo FROM tp_cargo";
+                        $result_tp_cargo = $mysqli->query($sql_tp_cargo);
+                        if ($result_tp_cargo === false) {
+                            die("Error en la consulta: " . $mysqli->error);
+                        }
+                        while ($row_tp_cargo = $result_tp_cargo->fetch_assoc()) {
+                            echo '<option value="' . $row_tp_cargo['id_tp_cargo'] . '">' . htmlspecialchars($row_tp_cargo['nombre_cargo']) . '</option>';
+                        }
+                    ?>
                 </select>
             </div>
             <div class="form-group">
@@ -212,7 +233,17 @@ if ($result->num_rows > 0) {
                 <!-- TÍTULO: CAMPO PARA SELECCIONAR EL GIRO DEL CLIENTE -->
                 <!-- Campo de selección PARA el giro del cliente. Este campo es obligatorio -->
                 <select id="cliente_giro" name="cliente_giro" required> 
-                    <!-- Opción por defecto -->
+                    <option value="" disabled selected>Selecciona un giro</option>
+                    <?php
+                        $sql_tp_giro = "SELECT id, tipo FROM tp_giro";
+                        $result_tp_giro = $mysqli->query($sql_tp_giro);
+                        if ($result_tp_giro === false) {
+                            die("Error en la consulta: " . $mysqli->error);
+                        }
+                        while ($row_tp_giro = $result_tp_giro->fetch_assoc()) {
+                            echo '<option value="' . $row_tp_giro['id'] . '">' . htmlspecialchars($row_tp_giro['tipo']) . '</option>';
+                        }
+                    ?>
                 </select>
             </div>
             <div class="form-group-inline">
@@ -254,14 +285,17 @@ if ($result->num_rows > 0) {
                 <!-- TÍTULO: CAMPO PARA SELECCIONAR EL TIPO DE CLIENTE -->
                 <!-- Campo de selección PARA el tipo de cliente. Este campo es obligatorio -->
                 <select id="cliente_tipo" name="cliente_tipo" required> 
-                    <!-- Opción por defecto -->
-                    <option value="" disabled selected>Selecciona un tipo de cliente</option> 
-                    <option value="persona_natural">Persona Natural</option>
-                    <option value="empresa">Empresa</option>
-                    <option value="organizacion_sin_fines_de_lucro">Organización Sin Fines de Lucro</option>
-                    <option value="institucion_gubernamental">Institución Gubernamental</option>
-                    <option value="institucion_educativa">Institución Educativa</option>
-                    <option value="multinacional">Multinacional</option>
+                    <option value="" disabled selected>Selecciona un tipo de cliente</option>
+                    <?php
+                        $sql_tp_cliente = "SELECT id, tipo FROM tp_cliente";
+                        $result_tp_cliente = $mysqli->query($sql_tp_cliente);
+                        if ($result_tp_cliente === false) {
+                            die("Error en la consulta: " . $mysqli->error);
+                        }
+                        while ($row_tp_cliente = $result_tp_cliente->fetch_assoc()) {
+                            echo '<option value="' . $row_tp_cliente['id'] . '">' . htmlspecialchars($row_tp_cliente['tipo']) . '</option>';
+                        }
+                    ?>
                 </select>
             </div>
         </div>
@@ -288,6 +322,7 @@ function toggleFormulario() {
         document.getElementById('cliente_comuna').value = '';
         document.getElementById('cliente_ciudad').value = '';
         document.getElementById('cliente_tipo').value = '';
+        document.getElementById('cliente_cargo').value = '';
         document.getElementById('rut_encargado_cliente').value = '';
     } else if (select.value !== '') {
         formulario.style.display = 'block';
@@ -297,13 +332,14 @@ function toggleFormulario() {
         document.getElementById('cliente_nombre').value = empresa.nombre_encargado_cliente;
         document.getElementById('cliente_empresa').value = empresa.nombre_empresa_cliente;
         document.getElementById('cliente_direccion').value = empresa.direccion_empresa_cliente;
-        document.getElementById('cliente_lugar').value = empresa.lugar_empresa_cliente;
+        document.getElementById('cliente_lugar').value = empresa.id_lugar;
         document.getElementById('cliente_fono').value = empresa.telefono_empresa_cliente;
         document.getElementById('cliente_email').value = empresa.email_empresa_cliente;
-        document.getElementById('cliente_giro').value = empresa.giro_empresa_cliente;
+        document.getElementById('cliente_giro').value = empresa.id_giro;
         document.getElementById('cliente_comuna').value = empresa.comuna_empresa_cliente;
         document.getElementById('cliente_ciudad').value = empresa.ciudad_empresa_cliente;
-        document.getElementById('cliente_tipo').value = empresa.tipo_empresa_cliente;
+        document.getElementById('cliente_tipo').value = empresa.id_tipo_empresa;
+        document.getElementById('cliente_cargo').value = empresa.id_cargo;
         document.getElementById('rut_encargado_cliente').value = empresa.rut_encargado_cliente;
     } else {
         formulario.style.display = 'none';

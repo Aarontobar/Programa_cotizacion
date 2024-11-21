@@ -23,7 +23,7 @@ $empresaEncontrada = false; // Variable para controlar si se ha seleccionado una
 // Verifica si el formulario se ha enviado, es necesario en este lugar para habilitar el menu (NAV)
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $id_empresa = $_POST['empresa']; // Obtiene el ID de la empresa seleccionada
-
+    
     // Comprueba si el ID de la empresa no está vacío
     if (!empty($id_empresa)) {
         $_SESSION['id_empresa'] = $id_empresa; // Guarda el ID de la empresa en la sesión
@@ -53,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     <!-- Formulario para seleccionar la Empresa -->
     <form method="POST" action="">
-        <?php include 'crear_nuevo/menu_2_programas/programa_cotizacion/seleccionar_empresa.php'; ?>
+        <?php include_once 'crear_nuevo/menu_2_programas/programa_cotizacion/seleccionar_empresa.php'; ?>
         <input type="hidden" id="selected-empresa" name="empresa" />
         <button type="submit">Seleccionar</button>
     </form>

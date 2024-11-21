@@ -188,7 +188,7 @@ if ($id > 0) {
 <!-- ARCHIVO CSS -->
 
 <!-- llama al archivo CSS -->
-<link rel="stylesheet" href="../../../../../css/menu_principal/crear_nuevo/menu_2_programas/boton1_nueva_cotizacion/cargar_logo_empresa.css">
+<link rel="stylesheet" href="../../css/menu_principal/crear_nuevo/menu_2_programas/boton1_nueva_cotizacion/cargar_logo_empresa.css">
 
 <div class="box-6 caja-logo">
 <?php
@@ -196,7 +196,7 @@ if ($id > 0) {
 // Procesar la subida de la imagen cuando se envía el formulario
 
 // Ruta relativa desde el archivo PHP
-$upload_dir = '../../../../../imagenes/menu_principal/crear_nuevo/cotizacion/'; 
+$upload_dir = '../../imagenes/menu_principal/crear_nuevo/cotizacion/'; 
 $empresa_id_foto = null;
 
 // Verificar si se ha enviado el formulario
@@ -260,7 +260,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <!-- Mostrar la imagen de perfil si existe -->
 
-            <img src="<?php echo htmlspecialchars('../../../../../imagenes/menu_principal/crear_nuevo/programa_cotizacion/' . $ruta_foto, ENT_QUOTES, 'UTF-8'); ?>" alt="Foto de perfil" id="Previsualizar-logo" class="logo" onclick="document.getElementById('subir-logo').click();" />
+            <img src="<?php echo htmlspecialchars('../../imagenes/menu_principal/crear_nuevo/programa_cotizacion/' . $ruta_foto, ENT_QUOTES, 'UTF-8'); ?>" alt="Foto de perfil" id="Previsualizar-logo" class="logo" onclick="document.getElementById('subir-logo').click();" />
         <?php else: ?>
 
             <!-- TÍTULO: CARGAR LOGO SI NO HAY IMAGEN -->
@@ -281,7 +281,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
  <!-- TÍTULO: AQUÍ SE CARGA EL JS DEL ARCHIVO -->
 
     <!-- llama al archivo JS -->
-    <script src="../../../../../js/menu_principal/crear_nuevo/menu_2_programas/boton1_nueva_cotizacion/cargar_logo_empresa.js"></script> 
+    <script src="../../js/menu_principal/crear_nuevo/menu_2_programas/boton1_nueva_cotizacion/cargar_logo_empresa.js"></script> 
 
 
      

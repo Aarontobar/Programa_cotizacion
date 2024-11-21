@@ -28,7 +28,7 @@ BPPJ
 <!-- TITULO: IMPORTACIÓN DE ARCHIVO .CSS -->
 
     <!-- Llama al archivo CSS -->
-    <link rel="stylesheet" href="../../../../../css/menu_principal/crear_nuevo/menu_2_programas/boton5_ver_cotizacion/filtros_busqueda.css">
+    <link rel="stylesheet" href="../../css/menu_principal/crear_nuevo/menu_2_programas/boton5_ver_cotizacion/filtros_busqueda.css">
 
 </head>
 
@@ -78,7 +78,7 @@ BPPJ
 <!-- TITULO: IMPORTACION DE ARCHIVO .JS -->
 
     <!-- Llama al archivo JS -->
-    <script src="../../../../../js/menu_principal/crear_nuevo/ver_cotizacion/filtros_busqueda.js"></script>
+    <script src="../../js/menu_principal/crear_nuevo/ver_cotizacion/filtros_busqueda.js"></script>
 
 <!-- ------------------------------------------------------------------------------------------------------------
     -------------------------------------- FIN ITred Spa Filtro Busqueda .PHP -----------------------------------

@@ -14,7 +14,7 @@ BPPJ
  <!--TITULO: ARCHIVO CSS  -->
     
     <!-- llama al archivo css -->
-    <link rel="stylesheet" href="../../../../../css/menu_principal/crear_nuevo/menu_2_programas/boton1_nueva_cotizacion/observaciones.css">
+    <link rel="stylesheet" href="../../css/menu_principal/crear_nuevo/menu_2_programas/boton1_nueva_cotizacion/observaciones.css">
 
 <!-- TÍTULO: SECCIÓN DE OBSERVACIONES -->
 
@@ -33,7 +33,7 @@ BPPJ
 
 <!-- TITULO: llama al archivo JS -->
     <!--------archivo JS------------------------>
-    <script src="../../../../../js/menu_principal/crear_nuevo/menu_2_programas/boton1_nueva_cotizacion/observaciones.js"></script> 
+    <script src="../../js/menu_principal/crear_nuevo/menu_2_programas/boton1_nueva_cotizacion/observaciones.js"></script> 
 
 
 

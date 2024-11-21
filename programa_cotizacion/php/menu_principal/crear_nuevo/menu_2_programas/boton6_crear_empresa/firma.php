@@ -32,7 +32,7 @@ BPPJ
 <!-- TITULO: IMPORTACIÓN DE ARCHIVO .CSS -->
 
     <!-- Llama al archivo CSS -->
-    <link rel="stylesheet" href="../../../../../css/menu_principal/crear_nuevo/menu_2_programas/boton6_crear_empresa/firma.css">
+    <link rel="stylesheet" href="../../css/menu_principal/crear_nuevo/menu_2_programas/boton6_crear_empresa/firma.css">
 
     <!-- Define el título de la página que se muestra en la pestaña del navegador -->
     <title>Firma</title>
@@ -228,7 +228,7 @@ BPPJ
 <!-- TITULO: IMPORTACION DE ARCHIVO .JS -->
 
     <!-- Llama al archivo JS -->
-    <script src="../../../../../js/menu_principal/crear_nuevo/menu_2_programas/boton6_crear_empresa/firma.js"></script>
+    <script src="../../js/menu_principal/crear_nuevo/menu_2_programas/boton6_crear_empresa/firma.js"></script>
 
 </body>
 </html>
@@ -354,7 +354,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
              // Firma digital (subida de imagen)
              
              if (isset($_FILES['firma-imagen']) && $_FILES['firma-imagen']['error'] === UPLOAD_ERR_OK) {
-                $target_dir = "../../../../../imagenes/menu_principal/crear_nuevo/crear_empresa/firma/";
+                $target_dir = "../../imagenes/menu_principal/crear_nuevo/crear_empresa/firma/";
                 $target_file = $target_dir . basename($_FILES["firma-imagen"]["name"]);
                 $uploadOk = 1;
                 $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));

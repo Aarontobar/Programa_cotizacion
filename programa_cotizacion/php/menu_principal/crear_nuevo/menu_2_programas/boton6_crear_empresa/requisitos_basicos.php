@@ -18,7 +18,7 @@ BPPJ
 <!-- TITULO: IMPORTACIÓN DE ARCHIVO .CSS -->
 
     <!-- Llama al archivo CSS -->
-    <link rel="stylesheet" href="../../../../../css/menu_principal/crear_nuevo/menu_2_programas/boton6_crear_empresa/requisitos_basicos.css">
+    <link rel="stylesheet" href="../../css/menu_principal/crear_nuevo/menu_2_programas/boton6_crear_empresa/requisitos_basicos.css">
 
     <!-- Tag de la sección de obligaciones del cliente -->     
     <h2>Requisitos básicos</h2>
@@ -54,7 +54,7 @@ BPPJ
 
 <!-- TITULO: IMPORTACION DE ARCHIVO .JS -->
     <!-- Llama al archivo JS -->
-    <script src="../../../../../js/menu_principal/crear_nuevo/menu_2_programas/boton6_crear_empresa/requisitos_basicos.js"></script>
+    <script src="../../js/menu_principal/crear_nuevo/menu_2_programas/boton6_crear_empresa/requisitos_basicos.js"></script>
 
 <?php
 // Verifica si el método de la solicitud es POST

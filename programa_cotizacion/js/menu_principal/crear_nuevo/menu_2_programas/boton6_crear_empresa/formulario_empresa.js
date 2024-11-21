@@ -79,7 +79,7 @@ BPPJ
     // Función para cargar las áreas de la empresa
     function CargarAreasEmpresa() {
         // Realiza una solicitud para obtener la lista de áreas de empresa desde el servidor
-        fetch('../../../../../php/menu_principal/crear_nuevo/crear_empresa/get_area_empresa.php')
+        fetch('../../php/menu_principal/crear_nuevo/crear_empresa/get_area_empresa.php')
             .then(response => response.text())
             .then(data => {
                 const select = document.getElementById('empresa_area'); // Obtener el elemento select por su ID
@@ -125,7 +125,7 @@ BPPJ
     document.getElementById('countryCode').addEventListener('change', function() {
         const selectedOption = this.options[this.selectedIndex];
         const flag = selectedOption.getAttribute('data-flag');
-        this.style.backgroundImage = 'url(../../../../../imagenes/menu_principal/crear_nuevo/nueva_cotizacion/banderas/' + flag + '.png)';
+        this.style.backgroundImage = 'url(../../imagenes/menu_principal/crear_nuevo/nueva_cotizacion/banderas/' + flag + '.png)';
         this.style.backgroundSize = '20px 15px'; // Ajusta el tamaño de la bandera
     });
     

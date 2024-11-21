@@ -15,7 +15,7 @@ BPPJ
 <!-- TITULO: IMPORTACIÓN DE ARCHIVO .CSS -->
 
     <!-- Llama al archivo CSS -->
-    <link rel="stylesheet" href="../../../../../css/menu_principal/crear_nuevo/menu_2_programas/boton6_crear_empresa/upload_logo.css">
+    <link rel="stylesheet" href="../../css/menu_principal/crear_nuevo/menu_2_programas/boton6_crear_empresa/upload_logo.css">
 
 <h3>EJEMPLO: </h3>
 
@@ -64,7 +64,7 @@ BPPJ
 <!-- TITULO: IMPORTACION DE ARCHIVO .JS -->
 
     <!-- Llama al archivo JS -->
-    <script src="../../../../../js/menu_principal/crear_nuevo/menu_2_programas/boton6_crear_empresa/upload_logo.js"></script>
+    <script src="../../js/menu_principal/crear_nuevo/menu_2_programas/boton6_crear_empresa/upload_logo.js"></script>
 
 
 
@@ -72,7 +72,7 @@ BPPJ
 // Verificar si el archivo fue subido sin errores
 
 if (isset($_FILES['logo_upload']) && $_FILES['logo_upload']['error'] == UPLOAD_ERR_OK) {
-    $upload_dir = '../../../../../imagenes/menu_principal/crear_nuevo/crear_empresa/logo/';
+    $upload_dir = '../../imagenes/menu_principal/crear_nuevo/crear_empresa/logo/';
     $tmp_name = $_FILES['logo_upload']['tmp_name'];
     $name = basename($_FILES['logo_upload']['name']);
 

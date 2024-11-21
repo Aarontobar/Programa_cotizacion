@@ -95,7 +95,7 @@ if (isset($_GET['id']) && intval($_GET['id']) > 0) {
 <!-- TÍTULO: IMPORTACIÓN DE ARCHIVO .CSS -->
 
     <!-- llama al archivo CSS -->
-    <link rel="stylesheet" href="../../../../../css/menu_principal/crear_nuevo/menu_2_programas/boton5_ver_cotizacion/traer_proyecto.css">
+    <link rel="stylesheet" href="../../css/menu_principal/crear_nuevo/menu_2_programas/boton5_ver_cotizacion/traer_proyecto.css">
 
 <!-- TÍTULO: SECCIÓN DE DETALLE DEL PROYECTO -->
 
@@ -355,7 +355,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <!-- TÍTULO: IMPORTACIÓN DE ARCHIVO .JS -->
  
     <!-- llama al archivo JS -->
-    <script src="../../../../../js/menu_principal/crear_nuevo/ver_cotizacion/traer_proyecto.js"></script>
+    <script src="../../js/menu_principal/crear_nuevo/ver_cotizacion/traer_proyecto.js"></script>
 
 <!-------------------------------------------------------------->
 

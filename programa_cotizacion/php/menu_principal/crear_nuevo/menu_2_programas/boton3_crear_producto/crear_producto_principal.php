@@ -35,7 +35,7 @@ $conn = new mysqli('localhost', 'root', '', 'ITredSpa_bd');
 
 <!-- TÍTULO: IMPORTACIÓN DE ARCHIVO .CSS -->
     <!-- Llama al archivo CSS -->
-    <link rel="stylesheet" href="../../../../../css/menu_principal/crear_nuevo/menu_2_programas/boton3_crear_producto/crear_producto.css">
+    <link rel="stylesheet" href="../../css/menu_principal/crear_nuevo/menu_2_programas/boton3_crear_producto/crear_producto.css">
 
 </head>
 <body>
@@ -55,7 +55,7 @@ $conn = new mysqli('localhost', 'root', '', 'ITredSpa_bd');
 
 <!-- TÍTULO: IMPORTACIÓN DE ARCHIVO .JS -->
     <!-- Llama al archivo JS -->
-    <script src="../../../../../../js/menu_principal/crear_nuevo/menu_2_programas/boton3_crear_producto/crear_producto_principal.js"></script>
+    <script src="js/menu_principal/crear_nuevo/menu_2_programas/boton3_crear_producto/crear_producto_principal.js"></script>
 
 <!-- ------------------------------------------------------------------------------------------------------------
 -------------------------------------- FIN ITred Spa Creacion producto .PHP -----------------------------------

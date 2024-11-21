@@ -15,7 +15,7 @@ BPPJ
 <!-- TITULO IMPORT ARCHIVO CSS -->
 
     <!-- Enlaza el archivo CSS para estilizar el cuadro de cotización -->
-    <link rel="stylesheet" href="../../../../../css/menu_principal/crear_nuevo/menu_2_programas/boton1_nueva_cotizacion/cuadro_rojo_cotizacion.css">
+    <link rel="stylesheet" href="../../css/menu_principal/crear_nuevo/menu_2_programas/boton1_nueva_cotizacion/cuadro_rojo_cotizacion.css">
 
 <!-- Ejecuta la función calcularFechaValidez al cargar la página -->
 <body onload="calcularFechaValidez();"> 
@@ -90,7 +90,7 @@ BPPJ
  <!-- TÍTULO: AQUÍ SE CARGA EL JS DEL ARCHIVO -->
 
     <!-- llama al archivo JS -->
-    <script src="../../../../../js/menu_principal/crear_nuevo/menu_2_programas/boton1_nueva_cotizacion/cuadro_rojo_cotizacion.js"></script> 
+    <script src="../../js/menu_principal/crear_nuevo/menu_2_programas/boton1_nueva_cotizacion/cuadro_rojo_cotizacion.js"></script> 
 
 
 <!-- ------------------------------------------------------------------------------------------------------------

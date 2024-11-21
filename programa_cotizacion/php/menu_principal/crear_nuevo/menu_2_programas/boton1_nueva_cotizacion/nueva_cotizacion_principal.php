@@ -128,25 +128,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
             <!-- Fila 3 -->
+             
+            <!-- TÍTULO: DETALLE DEL CLIENTE -->
 
-            <!-- Crea una fila para organizar los elementos en una disposición horizontal -->
-            <div class="row"> 
+                <!-- llama al detalle del cliente.php -->
+                <?php include 'detalle_cliente.php'; ?>
+
+                <!-- Crea una fila para organizar los elementos en una disposición horizontal -->
+                <div class="row"> 
                 
-        <!-- TÍTULO: DETALLE DEL PROYECTO -->
 
-                <!-- llama al detalle del proyecto.php -->
-                <?php include 'detalle_proyecto.php'; ?> 
-
-
-            </div>
 
             <!-- Fila 4 -->
 
-        <!-- TÍTULO: DETALLE DEL CLIENTE -->
+            <!-- TÍTULO: DETALLE DEL PROYECTO -->
 
-            <!-- llama al detalle del cliente.php -->
-            <?php include 'detalle_cliente.php'; ?>
+                    <!-- llama al detalle del proyecto.php -->
+                    <?php include 'detalle_proyecto.php'; ?> 
 
+
+                </div>
 
             <!-- Fila 5 -->
 

@@ -36,8 +36,8 @@ BPPJ
 
         // Función para ajustar la ruta de la imagen
         function ajustarRuta($ruta) {
-            // Elimina los primeros niveles "../" y añade la ruta base
-            $rutaAjustada = '../../' . preg_replace('/^(\.\.\/)+/', '', $ruta);
+            // Reemplaza la ruta para que incluya "crear_nuevo"
+            $rutaAjustada = str_replace('../../imagenes/', '../../imagenes/crear_nuevo/', $ruta);
             return $rutaAjustada;
         }
 

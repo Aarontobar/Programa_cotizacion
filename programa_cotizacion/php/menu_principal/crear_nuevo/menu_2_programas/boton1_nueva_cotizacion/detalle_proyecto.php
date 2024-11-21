@@ -39,6 +39,13 @@ BPPJ
 <fieldset class="box-6 cuadro-datos">
     <legend>Datos proyecto</legend>
 
+    <!-- Barra de búsqueda para filtrar proyectos -->
+    <div class="form-group">
+        <label for="buscar_proyecto">Buscar Proyecto:</label>
+        <input type="text" id="buscar_proyecto" oninput="filtrarProyectos()" placeholder="Ingresa el nombre del proyecto">
+    </div>
+
+
     <!-- Select para elegir la opción "Nuevo" o un proyecto existente -->
     <div class="form-group">
         <label for="opcion_formulario">Selecciona una opción</label>
@@ -51,6 +58,25 @@ BPPJ
         </select>
     </div>
 
+
+    <script>
+    function filtrarProyectos() {
+        var input = document.getElementById('buscar_proyecto');
+        var filter = input.value.toLowerCase();
+        var select = document.getElementById('opcion_formulario');
+        var options = select.getElementsByTagName('option');
+
+        for (var i = 0; i < options.length; i++) {
+            var option = options[i];
+            var text = option.textContent || option.innerText;
+            if (text.toLowerCase().indexOf(filter) > -1 || option.value === "") {
+                option.style.display = "";
+            } else {
+                option.style.display = "none";
+            }
+        }
+    }
+    </script>
     <!-- Div que contiene el formulario, inicialmente oculto -->
     <div id="formulario_proyecto" style="display: none;">
         <div class="form-group-inline">
@@ -198,6 +224,18 @@ function mostrarFormulario() {
     var formulario = document.getElementById('formulario_proyecto');
     if (select.value === 'nuevo') {
         formulario.style.display = 'block';
+        document.getElementById('proyecto_nombre').value = '';
+        document.getElementById('proyecto_codigo').value = '';
+        document.getElementById('area_trabajo').value = '';
+        document.getElementById('tipo_trabajo').value = '';
+        document.getElementById('riesgo').value = '';
+        document.getElementById('riesgo_descripcion').value = '';
+        document.getElementById('dias_compra').value = '';
+        document.getElementById('dias_trabajo').value = '';
+        document.getElementById('trabajadores').value = '';
+        document.getElementById('horario').value = '';
+        document.getElementById('colacion').value = '';
+        document.getElementById('entrega').value = '';
     } else {
         var proyecto = null;
         <?php foreach ($proyectos as $proyecto): ?>

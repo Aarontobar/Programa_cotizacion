@@ -253,13 +253,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <!-- TÍTULO: CARGAR LOGO DE EMPRESA -->
 
     <label for="subir-logo" class="contenedor-logo">
-        <?php if (isset($row['ruta_foto']) && !empty($row['ruta_foto'])): ?>
+        <?php if (isset($row['ruta_foto']) && !empty($row['ruta_foto'])): 
+            $ruta_foto = basename($row['ruta_foto']); ?>
 
             <!-- TÍTULO: MOSTRAR IMAGEN DE PERFIL -->
 
             <!-- Mostrar la imagen de perfil si existe -->
 
-            <img src="<?php echo htmlspecialchars($row['ruta_foto'], ENT_QUOTES, 'UTF-8'); ?>" alt="Foto de perfil" id="Previsualizar-logo" class="logo" onclick="document.getElementById('subir-logo').click();" />
+            <img src="<?php echo htmlspecialchars('../../../../../imagenes/menu_principal/crear_nuevo/programa_cotizacion/' . $ruta_foto, ENT_QUOTES, 'UTF-8'); ?>" alt="Foto de perfil" id="Previsualizar-logo" class="logo" onclick="document.getElementById('subir-logo').click();" />
         <?php else: ?>
 
             <!-- TÍTULO: CARGAR LOGO SI NO HAY IMAGEN -->

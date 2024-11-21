@@ -178,181 +178,218 @@ BPPJ
     }
 
 
-// TÍTULO: AGREGAR LÍNEA DE DETALLE
+// TÍTULO: CAPTURAR TIPO Y CAMBIAR COLUMNAS VISIBLES
+// Función para capturar el tipo seleccionado y mostrar/ocultar columnas de la fila correspondiente
+function CapturarTipoYCambiar(selectElement) {
+    const row = selectElement.closest('tr'); // Obtener la fila más cercana al elemento select
+    const ColumnasOcultas = row.querySelectorAll('.hidden-column'); // Seleccionar todas las columnas ocultas en la fila
+    const PrimeraCelda = row.firstElementChild; // Se refiere a la celda del select
 
-    // Función para agregar una nueva línea de detalle a la tabla dentro de la sección de detalle
-    function AgregarLineaDeDetalle(button) { 
-        const section = button.closest('.seccion-detalle'); // Obtener la sección del detalle
-        const CuerpoTabla = section.querySelector('.detalle-contenido'); // Obtener el cuerpo de la tabla
-        const CabeceraTabla = section.querySelector('thead'); // Obtener la cabecera de la tabla
-        const IndiceTitulo = section.dataset.IndiceTitulo; // Obtener el índice del título
-
-        // Verificar si ya existe una cabecera
-        const existeCabecera = section.querySelector('thead tr');
-
-        // Obtener el índice del subtítulo
-        const subIndiceTitulo = subtituloContador[IndiceTitulo];
-
-        // Obtener la última fila del tbody
-        const UltimaFila = CuerpoTabla.lastElementChild;
-
-        // Si no hay cabecera y no es un subtítulo, agregarla
-        if (!existeCabecera && (!UltimaFila || !UltimaFila.classList.contains('subtitulo'))) {
-            AgregarCabeza(button); // Llamar a la función para agregar la cabecera
-        }
-
-        // Si el último elemento es un subtítulo, agregar cabecera después de él
-        if (UltimaFila && UltimaFila.classList.contains('subtitulo')) {
-            const NuevaLineaDeCabecera = document.createElement('tr');
-            NuevaLineaDeCabecera.innerHTML = `    
-                <th>Tipo</th>
-                <th>Nombre producto</th>
-                <th>DESCRIPCIÓN</th>
-                <th>CANTIDAD</th>
-                <th>PRECIO UNI.</th>
-                <th>DESCUENTO %</th>
-                <th>TOTAL</th>
-                <th>COLOR</th>
-                <th>ACCIÓN</th>
-                <th></th> <!-- Espacio para el botón de eliminar cabecera -->
-            `;
-            // Insertar la cabecera después del subtítulo
-            CuerpoTabla.insertBefore(NuevaLineaDeCabecera, UltimaFila.nextSibling);  
-        }
-
-        // Crear una nueva fila de detalle
-        const NuevaFila = document.createElement('tr');
-        NuevaFila.innerHTML = `
-            <td colspan="9">
-                <select name="tipo_producto[${IndiceTitulo}][${subIndiceTitulo}][]" onchange="CapturarTipoYCambiar(this)">
-                    <option value="">Seleccione un tipo</option>
-                    <optgroup label="Productos">
-                        <option value="nuevo">Nuevo</option>
-                        <option value="insumo">Insumo</option>
-                        <option value="producto">Producto</option>
-                        <option value="material">Material</option>
-                        <option value="ferreteria">Ferretería</option>
-                    </optgroup>
-                    <optgroup label="Personal">
-                        <option value="profesional">Profesional</option>
-                        <option value="tecnico">Técnico</option>
-                        <option value="maestro">Maestro</option>
-                        <option value="ayudante">Ayudante</option>
-                    </optgroup>
-                    <optgroup label="Otros productos">
-                        <option value="producto_imagen">Producto con Imagen</option>
-                        <option value="otros">Otros</option>
-                        <option value="extras_proyecto">Extras del Proyecto</option>
-                    </optgroup>
-                    <optgroup label="Costos adicionales">
-                        <option value="horas_extras">Horas Extras</option>
-                        <option value="seguro">Seguro</option>
-                        <option value="viatico">Viático</option>
-                        <option value="bodega">Bodega</option>
-                        <option value="gastos_generales">Gastos Generales</option>
-                        <option value="utilidades_empresa">Utilidades de la Empresa</option>
-                        <option value="garantias">Garantías</option>
-                        <option value="eventos_perdidas">Eventos o Pérdidas</option>
-                        <option value="asesoria">Asesoría</option>
-                    </optgroup>
-                </select>
-            </td>
-            <td class="hidden-column"><input type="text" name="nombre_producto[${IndiceTitulo}][${subIndiceTitulo}][]" oninput="QuitarCaracteresInvalidos(this)"></td>
-            <td class="hidden-column"><input type="checkbox" onclick="MostrarDescripcion(this)"></td>
-            <td class="hidden-column"><input type="number" name="detalle_cantidad[${IndiceTitulo}][${subIndiceTitulo}][]" step="1" min="1" required oninput="ActualizarTotal(this)" oninput="QuitarCaracteresInvalidos(this)"></td>
-            <td class="hidden-column"><input type="number" name="detalle_precio_unitario[${IndiceTitulo}][${subIndiceTitulo}][]" step="0" min="0" required oninput="ActualizarTotal(this)" oninput="QuitarCaracteresInvalidos(this)"></td>
-            <td class="hidden-column"><input type="number" name="detalle_descuento[${IndiceTitulo}][${subIndiceTitulo}][]" step="1" min="0" required oninput="ActualizarTotal(this)" oninput="QuitarCaracteresInvalidos(this)"></td>
-            <td class="hidden-column"><input type="number" name="detalle_total[${IndiceTitulo}][${subIndiceTitulo}][]" step="0" min="0" readonly></td>
-            <td class="hidden-column">
-                <select name="color[${IndiceTitulo}][${subIndiceTitulo}][]">
-                    <option value="negro" style="color: black;" selected>Negro</option>
-                    <option value="verde" style="color: green;">Verde</option>
-                    <option value="naranjo" style="color: orange;">Naranjo</option>
-                    <option value="rojo" style="color: red;">Rojo</option>
-                </select>
-            </td>
-            <td colspan="2" class="hidden-column">
-                <button type="button" class="btn-eliminar" onclick="QuitarLineaDeDetalle(this)">Eliminar</button>
-            </td>
-        `;
-
-        // Agregar la nueva fila de detalle al final del cuerpo de la tabla
-        CuerpoTabla.appendChild(NuevaFila);
-
-        // Fila opcional de descripción, oculta inicialmente
-        const LineaDeDescripcion = document.createElement('tr');
-        LineaDeDescripcion.className = 'descripcion-row';
-        LineaDeDescripcion.style.display = 'none';
-        LineaDeDescripcion.innerHTML = `
-            <td colspan="9">
-                <textarea name="detalle_descripcion[${IndiceTitulo}][${subIndiceTitulo}][]" placeholder="Ingrese sólo si requiere ingresar una descripción extendida del producto o servicio" oninput="QuitarCaracteresInvalidos(this)"></textarea>
-            </td>
-        `;
-        CuerpoTabla.appendChild(LineaDeDescripcion);
-
-        // Asegurarse de que las columnas adicionales estén ocultas desde el principio
-        const ColumnasOcultas = NuevaFila.querySelectorAll('.hidden-column');
+    // Verificar si el valor seleccionado no está vacío
+    if (selectElement.value !== "") {
+        PrimeraCelda.setAttribute('colspan', '1'); // Cambiar colspan a 1
         ColumnasOcultas.forEach(column => {
-            column.style.display = 'none';
+            column.style.display = "none"; // Ocultar todas las columnas ocultas
         });
 
-        CalcularTotales(); // Calcular totales después de agregar la nueva línea
-    }
+        // Mostrar solo los campos específicos para "otros" o "extras del proyecto"
+        if (selectElement.value === "otros" || selectElement.value === "extras_proyecto") {
+            row.querySelector('td.hidden-column:nth-of-type(2)').style.display = "table-cell"; // Nombre producto
+            row.querySelector('td.hidden-column:nth-of-type(3)').style.display = "table-cell"; // Checkbox descripción
+            row.querySelector('td.hidden-column:nth-of-type(4)').style.display = "table-cell"; // Cantidad
 
-// TÍTULO: CAPTURAR TIPO Y CAMBIAR COLUMNAS VISIBLES
-    // Función para capturar el tipo seleccionado y mostrar/ocultar columnas de la fila correspondiente
-    function CapturarTipoYCambiar(selectElement) {
-        const row = selectElement.closest('tr'); // Obtener la fila más cercana al elemento select
-        const ColumnasOcultas = row.querySelectorAll('.hidden-column'); // Seleccionar todas las columnas ocultas en la fila
-        const PrimeraCelda = row.firstElementChild; // Se refiere a la celda del select
+            // Ocultar Precio Unitario y asignar 0
+            const priceInput = row.querySelector('input[name^="detalle_precio_unitario"]');
+            priceInput.value = 0; // Asignar 0 al precio unitario
+            row.querySelector('td.hidden-column:nth-of-type(5)').style.display = "none"; // Ocultar Precio Unitario
 
-        // Verificar si el valor seleccionado no está vacío
-        if (selectElement.value !== "") {
-            PrimeraCelda.setAttribute('colspan', '1'); // Cambiar colspan a 1
-            ColumnasOcultas.forEach(column => {
-                column.style.display = "none"; // Ocultar todas las columnas ocultas
-            });
+            row.querySelector('td.hidden-column:nth-of-type(6)').style.display = "table-cell"; // Descuento
+            row.querySelector('td.hidden-column:nth-of-type(7)').style.display = "table-cell"; // Total
+            row.querySelector('td.hidden-column:nth-of-type(8)').style.display = "table-cell"; // Acción (Eliminar)
+            row.querySelector('td.hidden-column:nth-of-type(9)').style.display = "table-cell"; // Total
 
-            // Mostrar solo los campos específicos para "otros" o "extras del proyecto"
-            if (selectElement.value === "otros" || selectElement.value === "extras_proyecto") {
-                row.querySelector('td.hidden-column:nth-of-type(2)').style.display = "table-cell"; // Nombre producto
-                row.querySelector('td.hidden-column:nth-of-type(3)').style.display = "table-cell"; // Checkbox descripción
-                row.querySelector('td.hidden-column:nth-of-type(4)').style.display = "table-cell"; // Cantidad
-
-                // Ocultar Precio Unitario y asignar 0
-                const priceInput = row.querySelector('input[name^="detalle_precio_unitario"]');
-                priceInput.value = 0; // Asignar 0 al precio unitario
-                row.querySelector('td.hidden-column:nth-of-type(5)').style.display = "none"; // Ocultar Precio Unitario
-
-                row.querySelector('td.hidden-column:nth-of-type(6)').style.display = "table-cell"; // Descuento
-                row.querySelector('td.hidden-column:nth-of-type(7)').style.display = "table-cell"; // Total
-                row.querySelector('td.hidden-column:nth-of-type(8)').style.display = "table-cell"; // Acción (Eliminar)
-                row.querySelector('td.hidden-column:nth-of-type(9)').style.display = "table-cell"; // Total
-
-                // Si existe la columna vacía, elimínala
-                const emptyPriceCell = row.querySelector('td.hidden-column:nth-of-type(9)'); // Asumiendo que la columna vacía es la 9
-                if (emptyPriceCell) {
-                    row.removeChild(emptyPriceCell); // Eliminar la columna vacía
-                }
-            } else {
-                // Mostrar todas las columnas ocultas si no es "otros" ni "extras"
-                ColumnasOcultas.forEach(column => {
-                    column.style.display = "table-cell"; // Mostrar columnas ocultas
-                });
+            // Si existe la columna vacía, elimínala
+            const emptyPriceCell = row.querySelector('td.hidden-column:nth-of-type(9)'); // Asumiendo que la columna vacía es la 9
+            if (emptyPriceCell) {
+                row.removeChild(emptyPriceCell); // Eliminar la columna vacía
             }
         } else {
-            PrimeraCelda.setAttribute('colspan', '9'); // Cambiar colspan de vuelta a 9
+            // Mostrar todas las columnas ocultas si no es "otros" ni "extras"
             ColumnasOcultas.forEach(column => {
-                column.style.display = "none"; // Ocultar las columnas si se vuelve a seleccionar "Seleccione un tipo"
+                column.style.display = "table-cell"; // Mostrar columnas ocultas
             });
         }
 
-        // Asegurarse de que las otras partes del head de la tabla estén visibles
-        const CeldasCabecera = document.querySelectorAll('thead th');
-        CeldasCabecera.forEach(cell => {
-            cell.style.display = ""; // Mostrar todas las celdas del encabezado
+        // Mostrar el select de proyecto
+        const selectProyecto = row.querySelector('.select-proyecto');
+        if (selectProyecto) {
+            selectProyecto.style.display = "inline-block";
+        }
+
+        // Llamar a la API para obtener los productos del tipo seleccionado
+        fetch(`obtener_productos.php?tipo=${selectElement.value}`)
+            .then(response => response.json())
+            .then(data => {
+                const selectProducto = row.querySelector('.select-producto');
+                selectProducto.innerHTML = '<option value="nuevo" selected>Nuevo</option>'; // Limpiar el select y agregar la opción "Nuevo"
+                data.forEach(producto => {
+                    const option = document.createElement('option');
+                    option.value = producto.id_producto;
+                    option.textContent = producto.nombre_producto;
+                    selectProducto.appendChild(option);
+                });
+                selectProducto.style.display = "inline-block"; // Mostrar el select de productos
+
+                // Agregar evento para cargar los detalles del producto seleccionado
+                selectProducto.addEventListener('change', function() {
+                    if (this.value !== 'nuevo') {
+                        fetch(`obtener_detalles_producto.php?id=${this.value}`)
+                            .then(response => response.json())
+                            .then(producto => {
+                                row.querySelector('input[name^="nombre_producto"]').value = producto.nombre_producto;
+                                row.querySelector('input[name^="detalle_precio_unitario"]').value = producto.precio;
+                                row.querySelector('input[name^="detalle_cantidad"]').value = producto.cantidad;
+                                row.querySelector('textarea[name^="detalle_descripcion"]').value = producto.descripcion;
+                                ActualizarTotal(row.querySelector('input[name^="detalle_precio_unitario"]'));
+                            })
+                            .catch(error => console.error('Error al obtener los detalles del producto:', error));
+                    }
+                });
+            })
+            .catch(error => console.error('Error al obtener los productos:', error));
+    } else {
+        PrimeraCelda.setAttribute('colspan', '9'); // Cambiar colspan de vuelta a 9
+        ColumnasOcultas.forEach(column => {
+            column.style.display = "none"; // Ocultar las columnas si se vuelve a seleccionar "Seleccione un tipo"
         });
+
+        // Ocultar el select de proyecto y el select de productos
+        const selectProyecto = row.querySelector('.select-proyecto');
+        if (selectProyecto) {
+            selectProyecto.style.display = "none";
+        }
+        const selectProducto = row.querySelector('.select-producto');
+        if (selectProducto) {
+            selectProducto.style.display = "none";
+        }
     }
+
+    // Asegurarse de que las otras partes del head de la tabla estén visibles
+    const CeldasCabecera = document.querySelectorAll('thead th');
+    CeldasCabecera.forEach(cell => {
+        cell.style.display = ""; // Mostrar todas las celdas del encabezado
+    });
+}
+
+// TÍTULO: AGREGAR LÍNEA DE DETALLE
+
+// Función para agregar una nueva línea de detalle a la tabla dentro de la sección de detalle
+function AgregarLineaDeDetalle(button) { 
+    const section = button.closest('.seccion-detalle'); // Obtener la sección del detalle
+    const CuerpoTabla = section.querySelector('.detalle-contenido'); // Obtener el cuerpo de la tabla
+    const CabeceraTabla = section.querySelector('thead'); // Obtener la cabecera de la tabla
+    const IndiceTitulo = section.dataset.IndiceTitulo; // Obtener el índice del título
+
+    // Verificar si ya existe una cabecera
+    const existeCabecera = section.querySelector('thead tr');
+
+    // Obtener el índice del subtítulo
+    const subIndiceTitulo = subtituloContador[IndiceTitulo];
+
+    // Obtener la última fila del tbody
+    const UltimaFila = CuerpoTabla.lastElementChild;
+
+    // Si no hay cabecera y no es un subtítulo, agregarla
+    if (!existeCabecera && (!UltimaFila || !UltimaFila.classList.contains('subtitulo'))) {
+        AgregarCabeza(button); // Llamar a la función para agregar la cabecera
+    }
+
+    // Si el último elemento es un subtítulo, agregar cabecera después de él
+    if (UltimaFila && UltimaFila.classList.contains('subtitulo')) {
+        const NuevaLineaDeCabecera = document.createElement('tr');
+        NuevaLineaDeCabecera.innerHTML = `    
+            <th>Tipo</th>
+            <th>Nombre producto</th>
+            <th>DESCRIPCIÓN</th>
+            <th>CANTIDAD</th>
+            <th>PRECIO UNI.</th>
+            <th>DESCUENTO %</th>
+            <th>TOTAL</th>
+            <th>COLOR</th>
+            <th>ACCIÓN</th>
+            <th></th> <!-- Espacio para el botón de eliminar cabecera -->
+        `;
+        // Insertar la cabecera después del subtítulo
+        CuerpoTabla.insertBefore(NuevaLineaDeCabecera, UltimaFila.nextSibling);  
+    }
+
+    // Crear una nueva fila de detalle
+    const NuevaFila = document.createElement('tr');
+    NuevaFila.innerHTML = `
+        <td colspan="9">
+            <select name="tipo_producto[${IndiceTitulo}][${subIndiceTitulo}][]" class="select-tipo-producto" onchange="CapturarTipoYCambiar(this)">
+                <option value="">Seleccione un tipo</option>
+            </select>
+            <select name="producto[${IndiceTitulo}][${subIndiceTitulo}][]" class="select-producto" style="display: none;">
+                <option value="nuevo" selected>Nuevo</option>
+                <!-- Aquí se agregarán las opciones de productos obtenidas de la base de datos -->
+            </select>
+        </td>
+        <td class="hidden-column"><input type="text" name="nombre_producto[${IndiceTitulo}][${subIndiceTitulo}][]" oninput="QuitarCaracteresInvalidos(this)"></td>
+        <td class="hidden-column"><input type="checkbox" onclick="MostrarDescripcion(this)"></td>
+        <td class="hidden-column"><input type="number" name="detalle_cantidad[${IndiceTitulo}][${subIndiceTitulo}][]" step="1" min="1" required oninput="ActualizarTotal(this)" oninput="QuitarCaracteresInvalidos(this)"></td>
+        <td class="hidden-column"><input type="number" name="detalle_precio_unitario[${IndiceTitulo}][${subIndiceTitulo}][]" step="0" min="0" required oninput="ActualizarTotal(this)" oninput="QuitarCaracteresInvalidos(this)"></td>
+        <td class="hidden-column"><input type="number" name="detalle_descuento[${IndiceTitulo}][${subIndiceTitulo}][]" step="1" min="0" required oninput="ActualizarTotal(this)" oninput="QuitarCaracteresInvalidos(this)"></td>
+        <td class="hidden-column"><input type="number" name="detalle_total[${IndiceTitulo}][${subIndiceTitulo}][]" step="0" min="0" readonly></td>
+        <td class="hidden-column">
+            <select name="color[${IndiceTitulo}][${subIndiceTitulo}][]">
+                <option value="negro" style="color: black;" selected>Negro</option>
+                <option value="verde" style="color: green;">Verde</option>
+                <option value="naranjo" style="color: orange;">Naranjo</option>
+                <option value="rojo" style="color: red;">Rojo</option>
+            </select>
+        </td>
+        <td colspan="2" class="hidden-column">
+            <button type="button" class="btn-eliminar" onclick="QuitarLineaDeDetalle(this)">Eliminar</button>
+        </td>
+    `;
+
+    // Agregar la nueva fila de detalle al final del cuerpo de la tabla
+    CuerpoTabla.appendChild(NuevaFila);
+
+    // Fila opcional de descripción, oculta inicialmente
+    const LineaDeDescripcion = document.createElement('tr');
+    LineaDeDescripcion.className = 'descripcion-row';
+    LineaDeDescripcion.style.display = 'none';
+    LineaDeDescripcion.innerHTML = `
+        <td colspan="9">
+            <textarea name="detalle_descripcion[${IndiceTitulo}][${subIndiceTitulo}][]" placeholder="Ingrese sólo si requiere ingresar una descripción extendida del producto o servicio" oninput="QuitarCaracteresInvalidos(this)"></textarea>
+        </td>
+    `;
+    CuerpoTabla.appendChild(LineaDeDescripcion);
+
+    // Asegurarse de que las columnas adicionales estén ocultas desde el principio
+    const ColumnasOcultas = NuevaFila.querySelectorAll('.hidden-column');
+    ColumnasOcultas.forEach(column => {
+        column.style.display = 'none';
+    });
+
+    // Llamar a la API para obtener los tipos de productos y actualizar el select
+    fetch('obtener_tipos_producto.php')
+        .then(response => response.json())
+        .then(data => {
+            const selectTipoProducto = NuevaFila.querySelector('.select-tipo-producto');
+            data.forEach(tipo => {
+                const option = document.createElement('option');
+                option.value = tipo.id_tipo_producto;
+                option.textContent = tipo.tipo_producto;
+                selectTipoProducto.appendChild(option);
+            });
+        })
+        .catch(error => console.error('Error al obtener los tipos de productos:', error));
+
+    CalcularTotales(); // Calcular totales después de agregar la nueva línea
+}
 
 // TÍTULO: AGREGAR SUBTÍTULO
     // Función para agregar un nuevo subtítulo a la sección de detalles

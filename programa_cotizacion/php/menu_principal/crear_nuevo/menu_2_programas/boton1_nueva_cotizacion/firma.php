@@ -32,7 +32,7 @@ if ($tipo_firma) {
             // Mostrar la imagen de la firma si está disponible
 
             if (!empty($ruta_foto)) {
-                echo "<img src='$ruta_foto' alt='Logo de la Empresa' class='imagen-firma' style='max-width: 150px; vertical-align: middle;'>";
+                $nombre_archivo = basename($ruta_foto);
             }
 
 
@@ -40,7 +40,7 @@ if ($tipo_firma) {
 
             echo "<div id='texto-firma-container' style='display: inline-block; vertical-align: middle;'>";
             echo "<p class='texto-firma'><strong>FIRMA DEL REPRESENTANTE:</strong></p>";
-            echo "<img class='imagen-firma' src='" . htmlspecialchars($row['ruta_foto']) . "' alt='Firma' style='width:300px; height:auto;'>";
+            echo "<img class='imagen-firma' src='../../../../../imagenes/menu_principal/crear_nuevo/programa_cotizacion/" . htmlspecialchars($nombre_archivo, ENT_QUOTES, 'UTF-8') . "' alt='Firma' style='width:300px; height:auto;'>";
             echo "<p class='texto-firma'>" . htmlspecialchars($firma['nombre_encargado_firma']) . "</p>";
             echo "<p class='texto-firma'>" . htmlspecialchars($firma['cargo_encargado_firma']) . " - " . htmlspecialchars($firma['nombre_empresa_firma']) . "</p>";
             echo "<p class='texto-firma'>" . htmlspecialchars($firma['direccion_firma']) . "</p>";

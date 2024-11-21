@@ -32,7 +32,7 @@ if ($result->num_rows > 0) {
 
 <!-- Select para mostrar u ocultar el formulario -->
 <div class="form-group">
-    <label for="formulario_opcion_cli">Seleccione una opción:</label>
+    <label for="formulario_opcion_cli">Seleccione un encargado</label>
     <select id="formulario_opcion_cli" name="formulario_opcion_cli" onchange="toggleFormulario_cli()">
         <option value="" disabled selected>Seleccione una opción</option>
         <option value="nuevo">Nuevo</option>

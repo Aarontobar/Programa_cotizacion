@@ -646,6 +646,20 @@ CREATE TABLE p_tipo_producto (
 ) ENGINE=InnoDB ;
 
 -- ----------------------------------------------------------
+-- Estructura de tabla para la tabla `productos`-------
+-- --------------------------------------------------------
+
+CREATE TABLE productos (
+    id_producto INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    nombre_producto VARCHAR(255) NOT NULL,
+    tipo_producto INT NOT NULL,
+    precio DECIMAL(10, 2) NOT NULL,
+    descripcion TEXT,
+    cantidad INT NOT NULL,
+    FOREIGN KEY (tipo_producto) REFERENCES p_tipo_producto(id_tipo_producto)
+) ENGINE=InnoDB;
+
+-- ----------------------------------------------------------
 -- Estructura de tabla para la tabla `C_pago`----------------
 -- ----------------------------------------------------------
 
@@ -1027,15 +1041,70 @@ INSERT INTO Tp_Cuenta (tipocuenta, descripcion) VALUES
 ('Cuenta Nómina', 'Cuenta para recibir pagos de nómina'),
 ('Cuenta de Inversión', 'Cuenta asociada a productos de inversión');
 
-INSERT INTO p_tipo_producto (tipo_producto) VALUES ('nuevo');
-INSERT INTO p_tipo_producto (tipo_producto) VALUES ('insumo');
-INSERT INTO p_tipo_producto (tipo_producto) VALUES ('producto');
-INSERT INTO p_tipo_producto (tipo_producto) VALUES ('materia');
-INSERT INTO p_tipo_producto (tipo_producto) VALUES ('ferreteria');
-INSERT INTO p_tipo_producto (tipo_producto) VALUES ('profesional');
-INSERT INTO p_tipo_producto (tipo_producto) VALUES ('tecnico');
-INSERT INTO p_tipo_producto (tipo_producto) VALUES ('maestro');
-INSERT INTO p_tipo_producto (tipo_producto) VALUES ('ayudante');
+INSERT INTO p_tipo_producto (tipo_producto) VALUES ('Nuevo');
+INSERT INTO p_tipo_producto (tipo_producto) VALUES ('Insumo');
+INSERT INTO p_tipo_producto (tipo_producto) VALUES ('Producto');
+INSERT INTO p_tipo_producto (tipo_producto) VALUES ('Material');
+INSERT INTO p_tipo_producto (tipo_producto) VALUES ('Ferretería');
+INSERT INTO p_tipo_producto (tipo_producto) VALUES ('Profesional');
+INSERT INTO p_tipo_producto (tipo_producto) VALUES ('Técnico');
+INSERT INTO p_tipo_producto (tipo_producto) VALUES ('Maestro');
+INSERT INTO p_tipo_producto (tipo_producto) VALUES ('Ayudante');
+INSERT INTO p_tipo_producto (tipo_producto) VALUES ('Producto con Imagen');
+INSERT INTO p_tipo_producto (tipo_producto) VALUES ('Otros');
+INSERT INTO p_tipo_producto (tipo_producto) VALUES ('Extras del Proyecto');
+INSERT INTO p_tipo_producto (tipo_producto) VALUES ('Horas Extras');
+INSERT INTO p_tipo_producto (tipo_producto) VALUES ('Seguro');
+INSERT INTO p_tipo_producto (tipo_producto) VALUES ('Viático');
+INSERT INTO p_tipo_producto (tipo_producto) VALUES ('Bodega');
+INSERT INTO p_tipo_producto (tipo_producto) VALUES ('Gastos Generales');
+INSERT INTO p_tipo_producto (tipo_producto) VALUES ('Utilidades de la Empresa');
+INSERT INTO p_tipo_producto (tipo_producto) VALUES ('Garantías');
+INSERT INTO p_tipo_producto (tipo_producto) VALUES ('Eventos o Pérdidas');
+INSERT INTO p_tipo_producto (tipo_producto) VALUES ('Asesoría');
+
+INSERT INTO productos (nombre_producto, tipo_producto, precio, descripcion, cantidad) VALUES ('Producto Nuevo 1', 1, 100.00, 'Descripción del Producto Nuevo 1', 10);
+INSERT INTO productos (nombre_producto, tipo_producto, precio, descripcion, cantidad) VALUES ('Producto Nuevo 2', 1, 150.00, 'Descripción del Producto Nuevo 2', 20);
+INSERT INTO productos (nombre_producto, tipo_producto, precio, descripcion, cantidad) VALUES ('Producto Insumo 1', 2, 200.00, 'Descripción del Producto Insumo 1', 30);
+INSERT INTO productos (nombre_producto, tipo_producto, precio, descripcion, cantidad) VALUES ('Producto Insumo 2', 2, 250.00, 'Descripción del Producto Insumo 2', 40);
+INSERT INTO productos (nombre_producto, tipo_producto, precio, descripcion, cantidad) VALUES ('Producto Producto 1', 3, 300.00, 'Descripción del Producto Producto 1', 50);
+INSERT INTO productos (nombre_producto, tipo_producto, precio, descripcion, cantidad) VALUES ('Producto Producto 2', 3, 350.00, 'Descripción del Producto Producto 2', 60);
+INSERT INTO productos (nombre_producto, tipo_producto, precio, descripcion, cantidad) VALUES ('Producto Material 1', 4, 400.00, 'Descripción del Producto Material 1', 70);
+INSERT INTO productos (nombre_producto, tipo_producto, precio, descripcion, cantidad) VALUES ('Producto Material 2', 4, 450.00, 'Descripción del Producto Material 2', 80);
+INSERT INTO productos (nombre_producto, tipo_producto, precio, descripcion, cantidad) VALUES ('Producto Ferretería 1', 5, 500.00, 'Descripción del Producto Ferretería 1', 90);
+INSERT INTO productos (nombre_producto, tipo_producto, precio, descripcion, cantidad) VALUES ('Producto Ferretería 2', 5, 550.00, 'Descripción del Producto Ferretería 2', 100);
+INSERT INTO productos (nombre_producto, tipo_producto, precio, descripcion, cantidad) VALUES ('Producto Profesional 1', 6, 600.00, 'Descripción del Producto Profesional 1', 110);
+INSERT INTO productos (nombre_producto, tipo_producto, precio, descripcion, cantidad) VALUES ('Producto Profesional 2', 6, 650.00, 'Descripción del Producto Profesional 2', 120);
+INSERT INTO productos (nombre_producto, tipo_producto, precio, descripcion, cantidad) VALUES ('Producto Técnico 1', 7, 700.00, 'Descripción del Producto Técnico 1', 130);
+INSERT INTO productos (nombre_producto, tipo_producto, precio, descripcion, cantidad) VALUES ('Producto Técnico 2', 7, 750.00, 'Descripción del Producto Técnico 2', 140);
+INSERT INTO productos (nombre_producto, tipo_producto, precio, descripcion, cantidad) VALUES ('Producto Maestro 1', 8, 800.00, 'Descripción del Producto Maestro 1', 150);
+INSERT INTO productos (nombre_producto, tipo_producto, precio, descripcion, cantidad) VALUES ('Producto Maestro 2', 8, 850.00, 'Descripción del Producto Maestro 2', 160);
+INSERT INTO productos (nombre_producto, tipo_producto, precio, descripcion, cantidad) VALUES ('Producto Ayudante 1', 9, 900.00, 'Descripción del Producto Ayudante 1', 170);
+INSERT INTO productos (nombre_producto, tipo_producto, precio, descripcion, cantidad) VALUES ('Producto Ayudante 2', 9, 950.00, 'Descripción del Producto Ayudante 2', 180);
+INSERT INTO productos (nombre_producto, tipo_producto, precio, descripcion, cantidad) VALUES ('Producto con Imagen 1', 10, 1000.00, 'Descripción del Producto con Imagen 1', 190);
+INSERT INTO productos (nombre_producto, tipo_producto, precio, descripcion, cantidad) VALUES ('Producto con Imagen 2', 10, 1050.00, 'Descripción del Producto con Imagen 2', 200);
+INSERT INTO productos (nombre_producto, tipo_producto, precio, descripcion, cantidad) VALUES ('Producto Otros 1', 11, 1100.00, 'Descripción del Producto Otros 1', 210);
+INSERT INTO productos (nombre_producto, tipo_producto, precio, descripcion, cantidad) VALUES ('Producto Otros 2', 11, 1150.00, 'Descripción del Producto Otros 2', 220);
+INSERT INTO productos (nombre_producto, tipo_producto, precio, descripcion, cantidad) VALUES ('Producto Extras del Proyecto 1', 12, 1200.00, 'Descripción del Producto Extras del Proyecto 1', 230);
+INSERT INTO productos (nombre_producto, tipo_producto, precio, descripcion, cantidad) VALUES ('Producto Extras del Proyecto 2', 12, 1250.00, 'Descripción del Producto Extras del Proyecto 2', 240);
+INSERT INTO productos (nombre_producto, tipo_producto, precio, descripcion, cantidad) VALUES ('Producto Horas Extras 1', 13, 1300.00, 'Descripción del Producto Horas Extras 1', 250);
+INSERT INTO productos (nombre_producto, tipo_producto, precio, descripcion, cantidad) VALUES ('Producto Horas Extras 2', 13, 1350.00, 'Descripción del Producto Horas Extras 2', 260);
+INSERT INTO productos (nombre_producto, tipo_producto, precio, descripcion, cantidad) VALUES ('Producto Seguro 1', 14, 1400.00, 'Descripción del Producto Seguro 1', 270);
+INSERT INTO productos (nombre_producto, tipo_producto, precio, descripcion, cantidad) VALUES ('Producto Seguro 2', 14, 1450.00, 'Descripción del Producto Seguro 2', 280);
+INSERT INTO productos (nombre_producto, tipo_producto, precio, descripcion, cantidad) VALUES ('Producto Viático 1', 15, 1500.00, 'Descripción del Producto Viático 1', 290);
+INSERT INTO productos (nombre_producto, tipo_producto, precio, descripcion, cantidad) VALUES ('Producto Viático 2', 15, 1550.00, 'Descripción del Producto Viático 2', 300);
+INSERT INTO productos (nombre_producto, tipo_producto, precio, descripcion, cantidad) VALUES ('Producto Bodega 1', 16, 1600.00, 'Descripción del Producto Bodega 1', 310);
+INSERT INTO productos (nombre_producto, tipo_producto, precio, descripcion, cantidad) VALUES ('Producto Bodega 2', 16, 1650.00, 'Descripción del Producto Bodega 2', 320);
+INSERT INTO productos (nombre_producto, tipo_producto, precio, descripcion, cantidad) VALUES ('Producto Gastos Generales 1', 17, 1700.00, 'Descripción del Producto Gastos Generales 1', 330);
+INSERT INTO productos (nombre_producto, tipo_producto, precio, descripcion, cantidad) VALUES ('Producto Gastos Generales 2', 17, 1750.00, 'Descripción del Producto Gastos Generales 2', 340);
+INSERT INTO productos (nombre_producto, tipo_producto, precio, descripcion, cantidad) VALUES ('Producto Utilidades de la Empresa 1', 18, 1800.00, 'Descripción del Producto Utilidades de la Empresa 1', 350);
+INSERT INTO productos (nombre_producto, tipo_producto, precio, descripcion, cantidad) VALUES ('Producto Utilidades de la Empresa 2', 18, 1850.00, 'Descripción del Producto Utilidades de la Empresa 2', 360);
+INSERT INTO productos (nombre_producto, tipo_producto, precio, descripcion, cantidad) VALUES ('Producto Garantías 1', 19, 1900.00, 'Descripción del Producto Garantías 1', 370);
+INSERT INTO productos (nombre_producto, tipo_producto, precio, descripcion, cantidad) VALUES ('Producto Garantías 2', 19, 1950.00, 'Descripción del Producto Garantías 2', 380);
+INSERT INTO productos (nombre_producto, tipo_producto, precio, descripcion, cantidad) VALUES ('Producto Eventos o Pérdidas 1', 20, 2000.00, 'Descripción del Producto Eventos o Pérdidas 1', 390);
+INSERT INTO productos (nombre_producto, tipo_producto, precio, descripcion, cantidad) VALUES ('Producto Eventos o Pérdidas 2', 20, 2050.00, 'Descripción del Producto Eventos o Pérdidas 2', 400);
+INSERT INTO productos (nombre_producto, tipo_producto, precio, descripcion, cantidad) VALUES ('Producto Asesoría 1', 21, 2100.00, 'Descripción del Producto Asesoría 1', 410);
+INSERT INTO productos (nombre_producto, tipo_producto, precio, descripcion, cantidad) VALUES ('Producto Asesoría 2', 21, 2150.00, 'Descripción del Producto Asesoría 2', 420);
 
 -- Insertar datos en la tabla E_FotosPerfil
 INSERT INTO FP_FotosPerfil (id_foto, ruta_foto, fecha_subida)

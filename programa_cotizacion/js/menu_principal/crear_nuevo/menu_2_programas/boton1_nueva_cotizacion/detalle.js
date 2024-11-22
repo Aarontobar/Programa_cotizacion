@@ -242,8 +242,15 @@ function CapturarTipoYCambiar(selectElement) {
 
                 // Agregar evento para cargar los detalles del producto seleccionado
                 selectProducto.addEventListener('change', function() {
-                    if (this.value !== 'nuevo') {
-                        fetch(`obtener_detalles_producto.php?id=${this.value}`)
+                    if (this.value === 'nuevo') {
+                        // Limpiar los campos del formulario
+                        row.querySelector('input[name^="nombre_producto"]').value = '';
+                        row.querySelector('input[name^="detalle_precio_unitario"]').value = '';
+                        row.querySelector('input[name^="detalle_cantidad"]').value = '';
+                        row.querySelector('textarea[name^="detalle_descripcion"]').value = '';
+                        ActualizarTotal(row.querySelector('input[name^="detalle_precio_unitario"]'));
+                    } else {
+                        fetch(`obtener_detalles.php?id=${this.value}`)
                             .then(response => response.json())
                             .then(producto => {
                                 row.querySelector('input[name^="nombre_producto"]').value = producto.nombre_producto;

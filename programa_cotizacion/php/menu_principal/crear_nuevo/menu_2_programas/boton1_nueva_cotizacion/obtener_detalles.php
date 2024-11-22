@@ -1,9 +1,9 @@
 <?php
 $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
 
-$nombre_producto = isset($_GET['nombre']) ? $mysqli->real_escape_string($_GET['nombre']) : '';
+$id_producto = isset($_GET['id']) ? $mysqli->real_escape_string($_GET['id']) : '';
 
-$sql = "SELECT * FROM productos WHERE nombre_producto = '$nombre_producto'";
+$sql = "SELECT * FROM productos WHERE id_producto = '$id_producto'";
 $result = $mysqli->query($sql);
 
 $producto = [];

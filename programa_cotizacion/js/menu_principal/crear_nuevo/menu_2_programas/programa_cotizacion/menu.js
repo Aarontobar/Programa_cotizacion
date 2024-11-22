@@ -20,6 +20,7 @@ BPPJ
         const empresa_id = document.querySelector('[name="empresa"]')?.value || '';
         let archivo = '';
     
+        // Mapeo de tipos a archivos
         switch(tipo) {
             case 'nueva_cotizacion':
                 archivo = 'boton1_nueva_cotizacion/nueva_cotizacion_principal.php';
@@ -42,8 +43,10 @@ BPPJ
         }
     
         if (archivo) {
+            // Mostrar indicador de carga
             contenedor.innerHTML = '<div class="loading">Cargando...</div>';
     
+            // Realizar la petición AJAX
             fetch(`crear_nuevo/menu_2_programas/${archivo}?id=${empresa_id}`)
                 .then(response => {
                     if (!response.ok) {
@@ -53,6 +56,15 @@ BPPJ
                 })
                 .then(html => {
                     contenedor.innerHTML = html;
+                    // Ejecutar scripts si los hay
+                    Array.from(contenedor.getElementsByTagName('script')).forEach(oldScript => {
+                        const newScript = document.createElement('script');
+                        Array.from(oldScript.attributes).forEach(attr => {
+                            newScript.setAttribute(attr.name, attr.value);
+                        });
+                        newScript.appendChild(document.createTextNode(oldScript.innerHTML));
+                        oldScript.parentNode.replaceChild(newScript, oldScript);
+                    });
                 })
                 .catch(error => {
                     contenedor.innerHTML = `<div class="error">Error al cargar el contenido: ${error}</div>`;

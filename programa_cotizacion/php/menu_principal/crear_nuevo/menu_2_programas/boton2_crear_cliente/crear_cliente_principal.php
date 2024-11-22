@@ -43,12 +43,6 @@ BPPJ
     <!-- Llama al archivo CSS -->
     <link rel="stylesheet" href="../../css/menu_principal/crear_nuevo/menu_2_programas/boton2_crear_cliente/crear_cliente_principal.css"> 
     
-    <!-- TITULO: ENLAZADO DE PHP  -->
-    
-    <!-- Llama al archivo programa cotizacion PHP  -->
-     
-    <a href="../../programa_cotizacion.php" class="boton-fijado">Volver</a>
-
     <!-- Cierra el elemento de cabecera -->
 </head> 
 

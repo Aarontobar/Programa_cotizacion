@@ -38,10 +38,7 @@ BPPJ
     <!-- llama al archivo CSS -->
     <link rel="stylesheet" href="../../css/menu_principal/crear_nuevo/menu_2_programas/boton4_crear_proveedor/crear_proveedor.css"> 
 
-    <!-- TÍTULO: IMPORTACIÓN DE ARCHIVO .PHP -->
 
-    <!-- llama al archivo PHP -->
-    <a href="../../programa_cotizacion.php" class="boton-fijado">Volver</a>
 </head> 
 
 <body> 

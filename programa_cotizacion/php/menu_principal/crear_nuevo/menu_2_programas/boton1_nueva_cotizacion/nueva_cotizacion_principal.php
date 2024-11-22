@@ -88,11 +88,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="contenedor"> 
         <!-- Contenedor principal que puede ayudar a centrar y organizar el contenido en la página -->
         <form id="formulario-cotizacion" method="POST" action="" enctype="multipart/form-data">
-            
-        <!-- Formulario con ID "formulario-cotizacion". Usa el método POST para enviar los datos al servidor. El atributo "action" define el archivo al que se enviarán los datos. "enctype" especifica que el formulario puede enviar archivos -->
-            <a href="javascript:history.back()" class="boton-fijado">Volver</a>
 
-        <!-- TÍTULO: ENLACE PARA VOLVER -->
             
             <!-- Fila 1 -->
             <div class="row"> <!-- Crea una fila para organizar los elementos en una disposición horizontal -->

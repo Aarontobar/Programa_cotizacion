@@ -63,8 +63,7 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
         <!-- TÍTULO: FORMULARIO DE COTIZACIÓN -->
             <form id="formulario-cotizacion" method="POST" action="" enctype="multipart/form-data">
             
-                <!-- TÍTULO: ENLACE PARA VOLVER A LA PÁGINA ANTERIOR -->
-                    <a href="../../programa_cotizacion.php" class="boton-fijado">Volver</a>
+
                 
                 <!-- Fila 1 -->
 

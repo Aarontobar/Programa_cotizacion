@@ -209,15 +209,6 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
         <li>
             <a href="../nueva_cotizacion/nueva_cotizacion.php?id=<?php echo $id_empresa; ?>">Crear Cotización</a>
         </li>
-        
-     
-
-    <!-- TÍTULO: OPCIÓN PARA VOLVER AL MENÚ -->
-
-        <!-- llama al archivo PHP -->
-        <li>
-            <a href="../../programa_cotizacion.php">Volver al Menú</a>
-        </li>
 
 
     </ul>

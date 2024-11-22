@@ -17,7 +17,6 @@ BPPJ
 
 $id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 
-
 // Verificar si el ID es mayor que 0
 
 if ($id > 0) {

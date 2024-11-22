@@ -51,11 +51,8 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
             <button type="submit">Seleccionar</button>
     </form>
 
-    
-
-
         <!-- Carga el archivo JavaScript para la funcionalidad del formulario -->
-        <script src="../../js/menu_principal/crear_nuevo/menu_2_programas/programa_cotizacion/crear_nuevo/programa_cotizacion.js"></script> 
+        <script src="..\..\js\menu_principal\crear_nuevo\menu_2_programas\programa_cotizacion\programa_cotizacion.js"></script> 
 
     </body>
 </html>

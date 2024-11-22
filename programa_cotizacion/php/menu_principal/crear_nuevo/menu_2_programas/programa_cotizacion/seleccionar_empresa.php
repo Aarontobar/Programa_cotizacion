@@ -23,7 +23,7 @@ BPPJ
 
 <!-- Combo Box seleccionar empresa -->
 
-<div class="custom-select"> 
+<div class="custom-select" > 
     <div class="selected-option">Seleccione una empresa</div>
     <select id="empresa" name="empresa" required>
         <option value="">Seleccione</option>

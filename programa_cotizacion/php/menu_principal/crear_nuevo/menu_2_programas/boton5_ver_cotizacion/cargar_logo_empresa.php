@@ -158,7 +158,7 @@ if ($id_empresa > 0) {
 <!-- TÍTULO: IMPORTACIÓN DE ARCHIVO .CSS -->
  
     <!-- Llama al archivo CSS -->
-    <link rel="stylesheet" href="../../../../../css/menu_principal/crear_nuevo/menu_2_programas/boton5_ver_cotizacion/cargar_logo_empresa.css">
+    <link rel="stylesheet" href="../../css/menu_principal/crear_nuevo/menu_2_programas/boton5_ver_cotizacion/cargar_logo_empresa.css">
 
 <!-- TÍTULO: SECCIÓN DE CÓDIGO PARA LA CARGA DE LOGO -->
 
@@ -169,7 +169,7 @@ if ($id_empresa > 0) {
     // TÍTULO: PROCESAMIENTO DE LA SUBIDA DE IMAGEN
 
     // Procesar la subida de la imagen cuando se envía el formulario
-    $upload_dir = '../../../../../imagenes/menu_principal/crear_nuevo/cotizacion/'; // Ruta relativa desde el archivo PHP
+    $upload_dir = '../../imagenes/menu_principal/crear_nuevo/cotizacion/'; // Ruta relativa desde el archivo PHP
     $empresa_id_foto = null;
 
     //----------------------------------------------------------------------//
@@ -259,7 +259,7 @@ if ($id_empresa > 0) {
 
 <!-- TÍTULO: IMPORTACIÓN DE ARCHIVO .JS -->
     <!-- Llama al archivo JS -->
-    <script src="../../../../../js/menu_principal/crear_nuevo/ver_cotizacion/cargar_logo_empresa.js"></script> 
+    <script src="../../js/menu_principal/crear_nuevo/ver_cotizacion/cargar_logo_empresa.js"></script> 
      
      <!-- ------------------------------------------------------------------------------------------------------------
     -------------------------------------- FIN ITred Spa Cargar Logo .PHP ----------------------------------------

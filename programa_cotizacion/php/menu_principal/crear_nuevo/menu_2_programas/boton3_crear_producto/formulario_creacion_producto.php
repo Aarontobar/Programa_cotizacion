@@ -57,7 +57,7 @@ $conn->close();
 ?>
 <!-- TÍTULO: IMPORTACIÓN DE ARCHIVO .CSS -->
     <!-- Llama al archivo CSS -->
-    <link rel="stylesheet" href="../../../../../css/menu_principal/crear_nuevo/menu_2_programas/boton3_crear_producto/formulario_creacion_producto.css">
+    <link rel="stylesheet" href="../../css/menu_principal/crear_nuevo/menu_2_programas/boton3_crear_producto/formulario_creacion_producto.css">
 
     <!-- Tag de subtitulo de crear producto -->
     <h2>Crear Productos</h2>
@@ -163,7 +163,7 @@ $conn->close();
 
 <!-- TÍTULO: IMPORTACIÓN DE ARCHIVO .JS -->
     <!-- Llama al archivo JS -->
-    <script src="../../../../../js/menu_principal/crear_nuevo/menu_2_programas/boton3_crear_producto/formulario_creacion_producto.js"></script>
+    <script src="../../js/menu_principal/crear_nuevo/menu_2_programas/boton3_crear_producto/formulario_creacion_producto.js"></script>
 
 
 <!-- ------------------------------------------------------------------------------------------------------------

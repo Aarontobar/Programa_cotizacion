@@ -64,7 +64,7 @@ BPPJ
 <!-- TITULO LLAMA AL ARCHIVO JS -->
  
     <!-- llama al archivo js -->
-    <script src="../../../../../js/menu_principal/crear_nuevo/menu_2_programas/boton1_nueva_cotizacion/requisitos_basicos.js"></script> 
+    <script src="../../js/menu_principal/crear_nuevo/menu_2_programas/boton1_nueva_cotizacion/requisitos_basicos.js"></script> 
 
      <!-- ------------------------------------------------------------------------------------------------------------
     -------------------------------------- FIN ITred Spa Requisitos basicos.PHP ----------------------------------------

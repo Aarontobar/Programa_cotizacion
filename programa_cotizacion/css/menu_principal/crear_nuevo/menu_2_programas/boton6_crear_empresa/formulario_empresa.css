@@ -138,87 +138,87 @@ BPPJ
     padding-left: 25px;
 }
     .custom-select option[data-flag="us"] {
-      background-image: url('../../../../../imagenes/menu_principal/crear_nuevo/nueva_cotizacion/banderas/us.png');
+      background-image: url('../../imagenes/menu_principal/crear_nuevo/nueva_cotizacion/banderas/us.png');
       background-size: 20px 15px; /* Ajusta el tamaño de la bandera */
     }
     .custom-select option[data-flag="ca"] {
-      background-image: url('../../../../../imagenes/menu_principal/crear_nuevo/nueva_cotizacion/banderas/ca.png');
+      background-image: url('../../imagenes/menu_principal/crear_nuevo/nueva_cotizacion/banderas/ca.png');
       background-size: 20px 15px; /* Ajusta el tamaño de la bandera */
     }
     .custom-select option[data-flag="mx"] {
-      background-image: url('../../../../../imagenes/menu_principal/crear_nuevo/nueva_cotizacion/banderas/mx.png');
+      background-image: url('../../imagenes/menu_principal/crear_nuevo/nueva_cotizacion/banderas/mx.png');
       background-size: 20px 15px; /* Ajusta el tamaño de la bandera */
     }
     .custom-select option[data-flag="br"] {
-      background-image: url('../../../../../imagenes/menu_principal/crear_nuevo/nueva_cotizacion/banderas/br.png');
+      background-image: url('../../imagenes/menu_principal/crear_nuevo/nueva_cotizacion/banderas/br.png');
       background-size: 20px 15px; /* Ajusta el tamaño de la bandera */
     }
     .custom-select option[data-flag="ar"] {
-      background-image: url('../../../../../imagenes/menu_principal/crear_nuevo/nueva_cotizacion/banderas/ar.png');
+      background-image: url('../../imagenes/menu_principal/crear_nuevo/nueva_cotizacion/banderas/ar.png');
       background-size: 20px 15px; /* Ajusta el tamaño de la bandera */
     }
     .custom-select option[data-flag="cl"] {
-      background-image: url('../../../../../imagenes/menu_principal/crear_nuevo/nueva_cotizacion/banderas/cl.png');
+      background-image: url('../../imagenes/menu_principal/crear_nuevo/nueva_cotizacion/banderas/cl.png');
       background-size: 20px 15px; /* Ajusta el tamaño de la bandera */
     }
     .custom-select option[data-flag="co"] {
-      background-image: url('../../../../../imagenes/menu_principal/crear_nuevo/nueva_cotizacion/banderas/co.png');
+      background-image: url('../../imagenes/menu_principal/crear_nuevo/nueva_cotizacion/banderas/co.png');
       background-size: 20px 15px; /* Ajusta el tamaño de la bandera */
     }
     .custom-select option[data-flag="pe"] {
-      background-image: url('../../../../../imagenes/menu_principal/crear_nuevo/nueva_cotizacion/banderas/pe.png');
+      background-image: url('../../imagenes/menu_principal/crear_nuevo/nueva_cotizacion/banderas/pe.png');
       background-size: 20px 15px; /* Ajusta el tamaño de la bandera */
     }
     .custom-select option[data-flag="ve"] {
-      background-image: url('../../../../../imagenes/menu_principal/crear_nuevo/nueva_cotizacion/banderas/ve.png');
+      background-image: url('../../imagenes/menu_principal/crear_nuevo/nueva_cotizacion/banderas/ve.png');
       background-size: 20px 15px; /* Ajusta el tamaño de la bandera */
     }
     .custom-select option[data-flag="uy"] {
-      background-image: url('../../../../../imagenes/menu_principal/crear_nuevo/nueva_cotizacion/banderas/uy.png');
+      background-image: url('../../imagenes/menu_principal/crear_nuevo/nueva_cotizacion/banderas/uy.png');
       background-size: 20px 15px; /* Ajusta el tamaño de la bandera */
     }
     .custom-select option[data-flag="py"] {
-      background-image: url('../../../../../imagenes/menu_principal/crear_nuevo/nueva_cotizacion/banderas/py.png');
+      background-image: url('../../imagenes/menu_principal/crear_nuevo/nueva_cotizacion/banderas/py.png');
       background-size: 20px 15px; /* Ajusta el tamaño de la bandera */
     }
     .custom-select option[data-flag="bo"] {
-      background-image: url('../../../../../imagenes/menu_principal/crear_nuevo/nueva_cotizacion/banderas/bo.png');
+      background-image: url('../../imagenes/menu_principal/crear_nuevo/nueva_cotizacion/banderas/bo.png');
       background-size: 20px 15px; /* Ajusta el tamaño de la bandera */
     }
     .custom-select option[data-flag="ec"] {
-      background-image: url('../../../../../imagenes/menu_principal/crear_nuevo/nueva_cotizacion/banderas/ec.png');
+      background-image: url('../../imagenes/menu_principal/crear_nuevo/nueva_cotizacion/banderas/ec.png');
       background-size: 20px 15px; /* Ajusta el tamaño de la bandera */
     }
     .custom-select option[data-flag="es"] {
-      background-image: url('../../../../../imagenes/menu_principal/crear_nuevo/nueva_cotizacion/banderas/es.png');
+      background-image: url('../../imagenes/menu_principal/crear_nuevo/nueva_cotizacion/banderas/es.png');
       background-size: 20px 15px; /* Ajusta el tamaño de la bandera */
     }
     .custom-select option[data-flag="fr"] {
-      background-image: url('../../../../../imagenes/menu_principal/crear_nuevo/nueva_cotizacion/banderas/fr.png');
+      background-image: url('../../imagenes/menu_principal/crear_nuevo/nueva_cotizacion/banderas/fr.png');
       background-size: 20px 15px; /* Ajusta el tamaño de la bandera */
     }
     .custom-select option[data-flag="gb"] {
-      background-image: url('../../../../../imagenes/menu_principal/crear_nuevo/nueva_cotizacion/banderas/gb.png');
+      background-image: url('../../imagenes/menu_principal/crear_nuevo/nueva_cotizacion/banderas/gb.png');
       background-size: 20px 15px; /* Ajusta el tamaño de la bandera */
     }
     .custom-select option[data-flag="it"] {
-      background-image: url('../../../../../imagenes/menu_principal/crear_nuevo/nueva_cotizacion/banderas/it.png');
+      background-image: url('../../imagenes/menu_principal/crear_nuevo/nueva_cotizacion/banderas/it.png');
       background-size: 20px 15px; /* Ajusta el tamaño de la bandera */
     }
     .custom-select option[data-flag="de"] {
-      background-image: url('../../../../../imagenes/menu_principal/crear_nuevo/nueva_cotizacion/banderas/de.png');
+      background-image: url('../../imagenes/menu_principal/crear_nuevo/nueva_cotizacion/banderas/de.png');
       background-size: 20px 15px; /* Ajusta el tamaño de la bandera */
     }
     .custom-select option[data-flag="jp"] {
-      background-image: url('../../../../../imagenes/menu_principal/crear_nuevo/nueva_cotizacion/banderas/jp.png');
+      background-image: url('../../imagenes/menu_principal/crear_nuevo/nueva_cotizacion/banderas/jp.png');
       background-size: 20px 15px; /* Ajusta el tamaño de la bandera */
     }
     .custom-select option[data-flag="cn"] {
-      background-image: url('../../../../../imagenes/menu_principal/crear_nuevo/nueva_cotizacion/banderas/cn.png');
+      background-image: url('../../imagenes/menu_principal/crear_nuevo/nueva_cotizacion/banderas/cn.png');
       background-size: 20px 15px; /* Ajusta el tamaño de la bandera */
     }
     .custom-select option[data-flag="kr"] {
-      background-image: url('../../../../../imagenes/menu_principal/crear_nuevo/nueva_cotizacion/banderas/kr.png');
+      background-image: url('../../imagenes/menu_principal/crear_nuevo/nueva_cotizacion/banderas/kr.png');
       background-size: 20px 15px; /* Ajusta el tamaño de la bandera */
     }
 

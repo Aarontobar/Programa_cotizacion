@@ -14,7 +14,7 @@ BPPJ
 <!-- TITULO: ARCHIVO CSS -->
 
 <!-- llama archivo css -->
-<link rel="stylesheet" href="../../../../../css/menu_principal/crear_nuevo/menu_2_programas/boton1_nueva_cotizacion/detalle_vendedor.css">
+<link rel="stylesheet" href="../../css/menu_principal/crear_nuevo/menu_2_programas/boton1_nueva_cotizacion/detalle_vendedor.css">
 
 <?php
 // Obtener todos los datos de los vendedores
@@ -199,7 +199,7 @@ function toggleFormulario_ven() {
 }
 </script>
 
-<script src="../../../../../js/menu_principal/crear_nuevo/menu_2_programas/boton1_nueva_cotizacion/detalle_vendedor.js"></script> 
+<script src="../../js/menu_principal/crear_nuevo/menu_2_programas/boton1_nueva_cotizacion/detalle_vendedor.js"></script> 
 
 <?php
 // Verifica si el formulario ha sido enviado

@@ -38,7 +38,7 @@ BPPJ
         ventanaImpresion.document.write(`
             <html>
             <head>
-                <link rel="stylesheet" href="../../../../../css/menu_principal/crear_nuevo/menu_2_programas/boton5_ver_cotizacion/ver.css"> <!-- Vincular la hoja de estilos -->
+                <link rel="stylesheet" href="../../css/menu_principal/crear_nuevo/menu_2_programas/boton5_ver_cotizacion/ver.css"> <!-- Vincular la hoja de estilos -->
                 <title>Imprimir</title>
                 <style>
                     @media print {

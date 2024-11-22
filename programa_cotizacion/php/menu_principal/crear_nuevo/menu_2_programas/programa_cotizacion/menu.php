@@ -12,131 +12,109 @@ BPPJ
     ------------------------------------- INICIO ITred Spa Menu.PHP --------------------------------------
     ------------------------------------------------------------------------------------------------------------- -->
 
+    <?php
+// Establece la conexión a la base de datos de ITred Spa
+$mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
+session_start();
 
-    
-     <h1>Menú Principal - Cotización ITred Spa</h1>
-
-<!-- Sección para mostrar errores -->
-
-<?php
 $error = ''; // Variable para almacenar mensajes de error
 $empresaEncontrada = false; // Variable para controlar si se ha seleccionado una empresa
 
-
 // Verifica si el formulario se ha enviado, es necesario en este lugar para habilitar el menu (NAV)
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $id_empresa = $_POST['empresa']; // Obtiene el ID de la empresa seleccionada
-
+    
     // Comprueba si el ID de la empresa no está vacío
-
     if (!empty($id_empresa)) {
         $_SESSION['id_empresa'] = $id_empresa; // Guarda el ID de la empresa en la sesión
         $empresaEncontrada = true; // Marca que la empresa ha sido encontrada
     } else {
         $error = "Por favor, seleccione una empresa."; // Mensaje de error si no se selecciona una empresa
     }
-
 }
-
 ?>
 
-<!-- Muestra el mensaje de error, si existe -->
-
-<?php if ($error): ?>
-    <p style="color:red;"><?php echo $error; ?></p>
-<?php endif; ?>
-
-
-
-<!-- Menú de navegación -->
-
-<!-- Inicio HTML -->
-
+<!DOCTYPE html>
+<html lang="es">
 <head>
-
-<!-- llama al archivo CSS -->
-<link rel="stylesheet" href="../../css/menu_principal/crear_nuevo/menu_2_programas/programa_cotizacion/menu.css">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú Principal - Cotización ITred Spa</title>
+    <!-- llama al archivo CSS -->
+    <link rel="stylesheet" href="../../css/menu_principal/crear_nuevo/menu_2_programas/programa_cotizacion/menu.css">
 </head>
+<body>
+    <h1>Menú Principal - Cotización ITred Spa</h1>
 
+    <!-- Muestra el mensaje de error, si existe -->
+    <?php if ($error): ?>
+        <p style="color:red;"><?php echo $error; ?></p>
+    <?php endif; ?>
 
+    <!-- TÍTULO: NAVEGACIÓN PRINCIPAL -->
+    <!-- formato de botones para navegar entre paginas -->
+    <nav>  
+        <ul class="menu">
+            <!-- TÍTULO: ENLACE PARA NUEVA COTIZACIÓN -->
+            <li>
+                <a href="javascript:void(0);" onclick="mostrarContenido('nueva_cotizacion');" 
+                   class="<?php echo $empresaEncontrada ? '' : 'disabled'; ?>">
+                    Nueva Cotización
+                </a>
+            </li>
 
-<!-- TÍTULO: NAVEGACIÓN PRINCIPAL -->
+            <!-- TÍTULO: ENLACE PARA CREAR CLIENTE -->
+            <li>
+                <a href="javascript:void(0);" onclick="mostrarContenido('crear_cliente');" 
+                   class="<?php echo $empresaEncontrada ? '' : 'disabled'; ?>">
+                    Crear Cliente
+                </a>
+            </li>
 
-<!-- formato de botones para navegar entre paginas -->
+            <!-- TÍTULO: ENLACE PARA CREAR PRODUCTO -->
+            <li>
+                <a href="javascript:void(0);" onclick="mostrarContenido('crear_producto');" 
+                   class="<?php echo $empresaEncontrada ? '' : 'disabled'; ?>">
+                    Crear Producto
+                </a>
+            </li>
 
-<nav>  
-    <ul class="menu">
+            <!-- TÍTULO: ENLACE PARA CREAR PROVEEDOR -->
+            <li>
+                <a href="javascript:void(0);" onclick="mostrarContenido('crear_proveedor');" 
+                   class="<?php echo $empresaEncontrada ? '' : 'disabled'; ?>">
+                    Crear Proveedor
+                </a>
+            </li>
 
-        <!-- TÍTULO: ENLACE PARA NUEVA COTIZACIÓN -->
+            <!-- TÍTULO: ENLACE PARA VER LISTADO DE COTIZACIÓN -->
+            <li>
+                <a href="javascript:void(0);" onclick="mostrarContenido('ver_cotizacion');" 
+                   class="<?php echo $empresaEncontrada ? '' : 'disabled'; ?>">
+                    Ver listado Cotización
+                </a>
+            </li>
 
-        <!-- redirige al archivo nueva_cotizacion.PHP -->
-        <li>
-            <a href="crear_nuevo/menu_2_programas/boton1_nueva_cotizacion/nueva_cotizacion_principal.php?id=<?php echo isset($_SESSION['id_empresa']) ? $_SESSION['id_empresa'] : ''; ?>" class="<?php echo $empresaEncontrada ? '' : 'disabled'; ?>">
-                Nueva Cotización
-            </a>
-        </li>
-    
+            <!-- TÍTULO: ENLACE PARA CREAR NUEVA EMPRESA -->
+            <li>
+                <a href="javascript:void(0);" onclick="mostrarContenido('crear_empresa');">
+                    Crear nueva empresa
+                </a>
+            </li>
+        </ul>
+    </nav>
 
-        <!-- TÍTULO: ENLACE PARA CREAR CLIENTE -->
-
-        <!-- redirige al archivo crear_cliente_principal.php -->
-        <li>
-            <a href="crear_nuevo/menu_2_programas/boton2_crear_cliente/crear_cliente_principal.php?id=<?php echo isset($_SESSION['id_empresa']) ? $_SESSION['id_empresa'] : ''; ?>" class="<?php echo $empresaEncontrada ? '' : 'disabled'; ?>">
-                Crear Cliente
-            </a>
-        </li>
-
-
-        
-        <!-- TÍTULO: ENLACE PARA CREAR PRODUCTO -->
-
-        <!-- redirige al archivo crear_producto_principal.php -->
-        <li>
-            <a href="crear_nuevo/menu_2_programas/boton3_crear_producto/crear_producto_principal.php?id=<?php echo isset($_SESSION['id_empresa']) ? $_SESSION['id_empresa'] : ''; ?>" class="<?php echo $empresaEncontrada ? '' : 'disabled'; ?>">
-                Crear Producto
-            </a>
-        </li>
-
-        <!-- TÍTULO: ENLACE PARA CREAR PROVEEDOR -->
-
-        <!-- redirige al archivo crear_proveedor -->
-        <li>
-            <a href="crear_nuevo/menu_2_programas/boton4_crear_proveedor/crear_proveedor_principal.php" class="<?php echo $empresaEncontrada ? '' : 'disabled'; ?>">
-                Crear Proveedor
-            </a>
-        </li>
-      
-        <!-- TÍTULO: ENLACE PARA VER LISTADO DE COTIZACIÓN -->
-
-        <!-- redirige al archivo ver_cotizacion_principal.php -->
-        <li>
-            <a href="crear_nuevo/menu_2_programas/boton5_ver_cotizacion/ver_cotizacion_principal.php?id=<?php echo isset($_SESSION['id_empresa']) ? $_SESSION['id_empresa'] : ''; ?>" class="<?php echo $empresaEncontrada ? '' : 'disabled'; ?>">
-                Ver listado Cotización
-            </a>
-        </li>
-        
-        <!-- TÍTULO: ENLACE PARA CREAR NUEVA EMPRESA -->
-
-        <!-- redirige al archivo crear_empresa_principal.php -->
-        <li>
-            <a href="crear_nuevo/menu_2_programas/boton6_crear_empresa/crear_empresa_principal.php">
-                Crear nueva empresa
-            </a>
-        </li>
-
-    </ul>
-</nav>
+    <!-- TÍTULO: CONTENEDOR PARA MOSTRAR EL CONTENIDO -->
+    <div id="contenido-dinamico"></div>
 
 
 <!-----------------Archivo JS--------------------------->
 
-<script src="../../js/menu_principal/crear_nuevo/menu_2_programas/programa_cotizacion/menu.js"></script> 
+<script src="../../js/menu_principal/crear_nuevo/menu_2_programas/programa_cotizacion/menu.js"></script>
 
      <!-- ------------------------------------------------------------------------------------------------------------
-    -------------------------------------- FIN ITred Spa Menu .PHP ----------------------------------------
-    ------------------------------------------------------------------------------------------------------------- -->
+-------------------------------------- FIN ITred Spa Menu .PHP ----------------------------------------
+------------------------------------------------------------------------------------------------------------- -->
 
 <!--
 Sitio Web Creado por ITred Spa.

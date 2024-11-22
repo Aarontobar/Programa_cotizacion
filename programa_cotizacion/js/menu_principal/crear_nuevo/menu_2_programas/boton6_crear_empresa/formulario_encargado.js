@@ -173,7 +173,7 @@ BPPJ
     // Función para cargar los tipo de cargo
     function CargarCargoEncargadO(idSelect) {
         // Realiza una solicitud para obtener la lista de cargos desde el servidor
-        fetch('../../../../../php/menu_principal/crear_nuevo/crear_empresa/get_cargo_encargado.php')
+        fetch('../../php/menu_principal/crear_nuevo/crear_empresa/get_cargo_encargado.php')
             .then(response => response.text())
             .then(data => {
                 const select = document.getElementById(idSelect); // Obtener el elemento select por su ID único

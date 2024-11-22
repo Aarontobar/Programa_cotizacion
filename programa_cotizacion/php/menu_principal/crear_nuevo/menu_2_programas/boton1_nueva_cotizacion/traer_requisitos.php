@@ -28,7 +28,7 @@ BPPJ
 ?> 
 <!-- TITULO ARCHIVO -->
     <!-- llama al archivo css -->
-    <link rel="stylesheet" href="../../../../../css/menu_principal/crear_nuevo/menu_2_programas/boton1_nueva_cotizacion/traer_requisitos.css">
+    <link rel="stylesheet" href="../../css/menu_principal/crear_nuevo/menu_2_programas/boton1_nueva_cotizacion/traer_requisitos.css">
 
 <!-- TÍTULO: CHECKBOX PARA MOSTRAR/OCULTAR REQUISITOS GENERALES -->
 
@@ -66,7 +66,7 @@ BPPJ
 
 <!-- TITUO: ARCHIVO JS -->
     <!-- llama al archivo traer_requisito.js -->
-    <script src="../../../../../js/menu_principal/crear_nuevo/menu_2_programas/boton1_nueva_cotizacion/traer_requisitos.js"></script> 
+    <script src="../../js/menu_principal/crear_nuevo/menu_2_programas/boton1_nueva_cotizacion/traer_requisitos.js"></script> 
 
 <?php
 

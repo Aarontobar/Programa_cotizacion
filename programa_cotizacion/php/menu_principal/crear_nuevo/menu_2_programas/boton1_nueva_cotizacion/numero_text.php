@@ -31,7 +31,7 @@ BPPJ
 
 <!-- TÍTULO: SCRIPT PARA CONVERTIR NÚMERO A TEXTO -->
 
-    <script src="../../../../../js/menu_principal/crear_nuevo/menu_2_programas/boton1_nueva_cotizacion/numero_text.js"></script>
+    <script src="../../js/menu_principal/crear_nuevo/menu_2_programas/boton1_nueva_cotizacion/numero_text.js"></script>
 
 <!-- Enlaza el script para convertir el número a texto -->
      <!-- ------------------------------------------------------------------------------------------------------------

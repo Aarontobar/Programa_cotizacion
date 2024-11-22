@@ -53,7 +53,7 @@ if (isset($_GET['id']) && intval($_GET['id']) > 0) {
 <!-- TÍTULO: IMPORTACIÓN DE ARCHIVO .CSS -->
 
     <!-- llama al archivo CSS -->
-    <link rel="stylesheet" href="../../../../../css/menu_principal/crear_nuevo/menu_2_programas/boton5_ver_cotizacion/traer_totales.css">
+    <link rel="stylesheet" href="../../css/menu_principal/crear_nuevo/menu_2_programas/boton5_ver_cotizacion/traer_totales.css">
 
 
 <div class="form-contenedor">
@@ -134,7 +134,7 @@ if (isset($_GET['id']) && intval($_GET['id']) > 0) {
 <!-- TÍTULO: IMPORTACIÓN DE ARCHIVO .JS -->
 
     <!-- llama al archivo JS -->
-    <script src="../../../../../js/menu_principal/crear_nuevo/menu_2_programas/boton1_nueva_cotizacion/detalle_total.js"></script>
+    <script src="../../js/menu_principal/crear_nuevo/menu_2_programas/boton1_nueva_cotizacion/detalle_total.js"></script>
 
 <?php
 

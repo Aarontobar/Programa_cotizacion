@@ -15,7 +15,7 @@ BPPJ
     <link rel="stylesheet" href="../../css/menu_principal/crear_nuevo/menu_2_programas/programa_cotizacion/seleccionar_empresa.css">
     <!----------------------------------------------------->
 
-<!-- TÍTUZLO: SELECCIÓN DE EMPRESA -->
+<!-- TÍTULO: SELECCIÓN DE EMPRESA -->
 
 <!-- NOMBRE DEL FORMULARIO -->
 
@@ -32,13 +32,15 @@ BPPJ
         // Definir la ruta manual para la prueba
 
         // ruta de la imagen del formulario
-        $rutaPrueba = '../../../../../imagenes/menu_principal/crear_nuevo/programa_cotizacion/Captura de pantalla 2024-08-27 141315.png'; // Ruta manual para probar
+        $rutaPrueba = '../../imagenes/menu_principal/crear_nuevo/programa_cotizacion/Captura de pantalla 2024-08-27 141315.png'; // Ruta manual para probar
 
         // Función para ajustar la ruta de la imagen
-        function ajustarRuta($ruta) {
-            // Reemplaza la ruta para que incluya "crear_nuevo"
-            $rutaAjustada = str_replace('../../imagenes/', '../../imagenes/crear_nuevo/', $ruta);
-            return $rutaAjustada;
+        if (!function_exists('ajustarRuta')) {
+            function ajustarRuta($ruta) {
+                // Reemplaza la ruta para que incluya "crear_nuevo"
+                $rutaAjustada = str_replace('../../imagenes/', '../../imagenes/crear_nuevo/', $ruta);
+                return $rutaAjustada;
+            }
         }
 
         // Consulta SQL para obtener empresas y sus respectivas imágenes
@@ -115,6 +117,3 @@ https://www.itred.cl
 Creado, Programado y Diseñado por ITred Spa.
 BPPJ
 -->
-
-
-

@@ -51,13 +51,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <p style="color:red;"><?php echo $error; ?></p>
     <?php endif; ?>
 
-    <!-- Formulario para seleccionar la Empresa -->
-    <form method="POST" action="">
-        <?php include_once 'crear_nuevo/menu_2_programas/programa_cotizacion/seleccionar_empresa.php'; ?>
-        <input type="hidden" id="selected-empresa" name="empresa" />
-        <button type="submit">Seleccionar</button>
-    </form>
-
     <!-- TÍTULO: NAVEGACIÓN PRINCIPAL -->
     <!-- formato de botones para navegar entre paginas -->
     <nav>  

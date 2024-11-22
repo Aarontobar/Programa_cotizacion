@@ -28,10 +28,10 @@ BPPJ
 
   /* Define el ancho y el relleno del contenedor principal */
   .contenedor {
-    width: 100%; /* Ancho del contenedor */
     padding: 20px; /* Relleno interno */
     box-sizing: border-box; /* Incluye el padding en el ancho total */
   }
+
 
 /* TÍTULO: ESTILO PARA EL CONTENEDOR DEL LOGO */
 

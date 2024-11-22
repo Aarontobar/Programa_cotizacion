@@ -116,8 +116,10 @@ BPPJ
         border: 1px solid #ddd; /* Borde del formulario */
         padding: 20px; /* Relleno interno del formulario */
         margin: 0 auto 20px; /* Margen automático en los lados y margen inferior */
-        width: 300px; /* Ancho del formulario */
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra del formulario */
+        margin-top: 60px; /* Ajustar el margen superior para que no quede cubierto */
+        z-index: 1; /* Asegurarse de que el formulario esté sobre cualquier contenido de fondo */
+        position: relative; /* Posición relativa para el formulario */
     }
 
 /* TÍTULO: ESTILO PARA LAS ETIQUETAS DE LOS CAMPOS DEL FORMULARIO */
@@ -230,15 +232,6 @@ BPPJ
     .menu li a:not(.disabled):hover {
         background-color: #f0f0f0; /* Cambiar color de fondo al pasar el cursor */
         color: #000; /* Cambiar color del texto al pasar el cursor */
-    }
-
-/* TÍTULO: ASEGURAR QUE EL FORMULARIO ESTÉ POR DEBAJO DEL MENÚ */
-
-    /* Define el margen superior del formulario para que no quede cubierto por el menú */
-    form {
-        margin-top: 60px; /* Ajustar el margen superior para que no quede cubierto */
-        z-index: 1; /* Asegurarse de que el formulario esté sobre cualquier contenido de fondo */
-        position: relative; /* Posición relativa para el formulario */
     }
 
 /* --------------------------------------------------------------------------------------------------------------

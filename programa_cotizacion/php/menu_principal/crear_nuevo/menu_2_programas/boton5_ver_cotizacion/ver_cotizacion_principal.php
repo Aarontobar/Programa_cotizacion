@@ -190,20 +190,6 @@ BPPJ
     <!-- envia mensaje de estado -->
     <?php echo $mensaje; ?>
 
-
-<!-- TÍTULO: LISTA DE ACCIONES -->
-
-    <ul>
-
-    <!-- TÍTULO: OPCIÓN PARA CREAR NUEVA COTIZACIÓN -->
-        
-        <!-- llama al archivo PHP -->
-        <li>
-            <a href="../nueva_cotizacion/nueva_cotizacion.php?id=<?php echo $id_empresa; ?>">Crear Cotización</a>
-        </li>
-
-
-    </ul>
     </div>
 </body>
 </html>

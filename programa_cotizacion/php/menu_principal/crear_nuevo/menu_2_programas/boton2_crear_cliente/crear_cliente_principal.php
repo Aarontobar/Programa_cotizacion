@@ -12,6 +12,7 @@ BPPJ
     ------------------------------------- INICIO ITred Spa crear cliente.PHP --------------------------------------
     ------------------------------------------------------------------------------------------------------------- -->
 
+
 <!DOCTYPE html>
 <html lang="es">
     <head> 
@@ -39,9 +40,8 @@ BPPJ
     <!-- TÍTULO: LISTADO DE CLIENTES -->
 
         <!-- Llama la lista de cliente -->
+            <?php include 'nuevo_cliente.php'; ?>
             <?php include 'mostrar_clientes.php'; ?>
-        <a href="crear_nuevo/menu_2_programas/boton2_crear_cliente/nuevo_cliente.php" class="boton-opcion">Crear nuevo cliente</a>
-
 
 </body>
 

@@ -12,19 +12,6 @@ BPPJ
     ------------------------------------- INICIO ITred Spa crear proveedor.PHP --------------------------------------
     ------------------------------------------------------------------------------------------------------------- -->
 
-<!-- ------------------------
-    -- INICIO CONEXION BD --
-    ------------------------ -->
-
-    <?php
-    // Establece la conexión a la base de datos de ITred Spa
-    $mysqli = new mysqli('localhost', 'root', '', 'ITredSpa_bd');
-?>
-<!-- ---------------------
-     -- FIN CONEXION BD --
-     ----------------------- -->
-
-
 <!-- INICIO HTML -->
 <!DOCTYPE html>
 <html lang="es">
@@ -38,10 +25,7 @@ BPPJ
     <!-- llama al archivo CSS -->
     <link rel="stylesheet" href="../../css/menu_principal/crear_nuevo/menu_2_programas/boton4_crear_proveedor/crear_proveedor.css"> 
 
-    <!-- TÍTULO: IMPORTACIÓN DE ARCHIVO .PHP -->
 
-    <!-- llama al archivo PHP -->
-    <a href="../../programa_cotizacion.php" class="boton-fijado">Volver</a>
 </head> 
 
 <body> 
@@ -96,13 +80,3 @@ BPPJ
 
 <!--------------------------------------------------------------------->
 </html>
-
-<!-- ---------------------
--- INICIO CIERRE CONEXION BD --
---------------------- -->
-<?php
-    $mysqli->close();
-?>
-<!-- ---------------------
-     -- FIN CIERRE CONEXION BD --
-     --------------------- -->

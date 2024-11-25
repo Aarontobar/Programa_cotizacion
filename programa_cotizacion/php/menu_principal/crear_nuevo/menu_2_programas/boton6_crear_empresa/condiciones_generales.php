@@ -49,7 +49,7 @@ BPPJ
     <script src="../../js/menu_principal/crear_nuevo/menu_2_programas/boton6_crear_empresa/condiciones_generales.js"></script>
 
 <?php
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['formulario']) && $_POST['formulario'] === 'empresa') {
 
     // Se verifica si el formulario ha sido enviado
 

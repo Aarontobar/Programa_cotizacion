@@ -30,7 +30,7 @@ BPPJ
 <!-- TITULO: IMPORTACION DE ARCHIVO .JS -->
     
     <!-- Llama al archivo CSS -->
-    <link rel="stylesheet" href="../../css/menu_principal/crear_nuevo/menu_2_programas/boton2_crear_cliente/formulario_encargado.css">  
+    <link rel="stylesheet" href="../../../../../css/menu_principal/crear_nuevo/menu_2_programas/boton2_crear_cliente/formulario_encargado.css">  
 
     <!-- Cierra el elemento de cabecera -->
 </head> 

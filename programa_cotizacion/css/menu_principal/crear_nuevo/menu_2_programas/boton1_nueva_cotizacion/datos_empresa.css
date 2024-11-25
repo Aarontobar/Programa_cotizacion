@@ -16,103 +16,93 @@ BPPJ
 
 /* TÍTULO: ESTILOS GENERALES PARA CUADROS DE DATOS */
 
-  /* Estilo general para cuadros de datos */
-  .cuadro-datos {
-    border: 1px solid #ddd; /* Borde gris claro de 1px */
-    padding: 15px; /* Espaciado interno de 15px */
-    background-color: #fff; /* Fondo blanco */
-  }
+.datos_empresa_nueva_cotizacion .cuadro-datos {
+  border: 1px solid #ddd; /* Borde gris claro de 1px */
+  padding: 15px; /* Espaciado interno de 15px */
+  background-color: #fff; /* Fondo blanco */
+}
 
 /* TÍTULO: ESTILOS PARA CONTENEDORES FLEXIBLES DE DIFERENTES TAMAÑOS */
 
-  /* Estilos para contenedores flexibles de diferentes tamaños */
-  .box-6,
-  .box-12 {
-    display: flex; /* Usa flexbox para organizar los elementos */
-    flex-direction: column; /* Disposición vertical de los elementos */
-  }
+.datos_empresa_nueva_cotizacion .box-6,
+.datos_empresa_nueva_cotizacion .box-12 {
+  display: flex; /* Usa flexbox para organizar los elementos */
+  flex-direction: column; /* Disposición vertical de los elementos */
+}
 
 /* TÍTULO: ESTILOS ESPECÍFICOS PARA LA CAJA DE TAMAÑO 12 */
 
-  /* Estilo específico para la caja de tamaño 12 */
-  .box-12 {
-    flex: 1; /* Permite que esta caja ocupe el espacio disponible */
-    max-width: 100%; /* Asegura que no exceda el ancho del contenedor */
-    padding: 10px; /* Espaciado interno de 10px */
-  }
+.datos_empresa_nueva_cotizacion .box-12 {
+  flex: 1; /* Permite que esta caja ocupe el espacio disponible */
+  max-width: 100%; /* Asegura que no exceda el ancho del contenedor */
+  padding: 10px; /* Espaciado interno de 10px */
+}
 
 /* TÍTULO: ESTILOS PARA ETIQUETAS EN EL GRUPO DE FORMULARIOS */
 
-  /* Estilo para etiquetas en el grupo de formularios */
-  .form-group label {
-    width: 20%; /* Ancho del label */
-    font-size: 14px; /* Tamaño de fuente */
-    background-color: #d4d4d4; /* Fondo gris claro para el label */
-    padding: 5px; /* Espaciado interno del label */
-    border-radius: 3px 0px 0px 3px; /* Bordes redondeados a la izquierda */
-    text-align: left; /* Alineación del texto a la izquierda */
-  }
+.datos_empresa_nueva_cotizacion .form-group label {
+  width: 20%; /* Ancho del label */
+  font-size: 14px; /* Tamaño de fuente */
+  background-color: #d4d4d4; /* Fondo gris claro para el label */
+  padding: 5px; /* Espaciado interno del label */
+  border-radius: 3px 0px 0px 3px; /* Bordes redondeados a la izquierda */
+  text-align: left; /* Alineación del texto a la izquierda */
+}
 
 /* TÍTULO: ESTILOS PARA EL CONTENIDO DENTRO DEL GRUPO DE FORMULARIOS */
 
-  /* Estilo para el contenido dentro del grupo de formularios */
-  .form-group label,
-  .form-group select,
-  .form-group input {
-    display: flex; /* Usa flexbox para organizar el contenido */
-    align-items: center; /* Centra el contenido de los label e input */
-  }
+.datos_empresa_nueva_cotizacion .form-group label,
+.datos_empresa_nueva_cotizacion .form-group select,
+.datos_empresa_nueva_cotizacion .form-group input {
+  display: flex; /* Usa flexbox para organizar el contenido */
+  align-items: center; /* Centra el contenido de los label e input */
+}
 
 /* TÍTULO: ESTILOS PARA SELECTORES E INPUTS EN EL GRUPO DE FORMULARIOS */
 
-  /* Estilo para selectores e inputs en el grupo de formularios */
-  .form-group select,
-  .form-group input {
-    flex: 2; /* Hace que el input ocupe 2 partes del espacio disponible */
-    padding: 5px; /* Espaciado interno de 5px */
-    border: 1px solid #ddd; /* Borde gris claro de 1px */
-    border-radius: 0px 3px 3px 0px; /* Bordes redondeados a la derecha */
-    font-size: 14px; /* Tamaño de fuente */
-    text-align: left; /* Alineación del texto a la izquierda */
-    background-color: #fff; /* Fondo blanco */
-    box-sizing: border-box; /* Asegura que el padding y el borde se incluyan en el tamaño total del input */
-  }
+.datos_empresa_nueva_cotizacion .form-group select,
+.datos_empresa_nueva_cotizacion .form-group input {
+  flex: 2; /* Hace que el input ocupe 2 partes del espacio disponible */
+  padding: 5px; /* Espaciado interno de 5px */
+  border: 1px solid #ddd; /* Borde gris claro de 1px */
+  border-radius: 0px 3px 3px 0px; /* Bordes redondeados a la derecha */
+  font-size: 14px; /* Tamaño de fuente */
+  text-align: left; /* Alineación del texto a la izquierda */
+  background-color: #fff; /* Fondo blanco */
+  box-sizing: border-box; /* Asegura que el padding y el borde se incluyan en el tamaño total del input */
+}
 
 /* TÍTULO: ESTILOS PARA EL LEGEND DE LOS FIELDSETS */
 
-  /* Estilo para el legend de los fieldsets */
-  fieldset legend {
-    font-size: 1.2em; /* Tamaño de fuente para el legend */
-    padding: 0 10px; /* Espaciado lateral del legend */
-    color: #333; /* Color del texto */
-    font-weight: bold; /* Negrita para el texto */
-  }
+.datos_empresa_nueva_cotizacion fieldset legend {
+  font-size: 1.2em; /* Tamaño de fuente para el legend */
+  padding: 0 10px; /* Espaciado lateral del legend */
+  color: #333; /* Color del texto */
+  font-weight: bold; /* Negrita para el texto */
+}
 
 /* TÍTULO: ASEGURAR LA ALTURA UNIFORME DE LABELS E INPUTS */
 
-  /* Asegura que los label y input tengan la misma altura */
-  .form-group {
-    display: flex; /* Usa flexbox para alinear elementos */
-    align-items: stretch; /* Estira los elementos para que tengan la misma altura */
-    justify-content: space-between; /* Alinea el label y el input a los extremos */
-    margin-bottom: 10px; /* Espaciado inferior de 10px */
-  }
+.datos_empresa_nueva_cotizacion .form-group {
+  display: flex; /* Usa flexbox para alinear elementos */
+  align-items: stretch; /* Estira los elementos para que tengan la misma altura */
+  justify-content: space-between; /* Alinea el label y el input a los extremos */
+  margin-bottom: 10px; /* Espaciado inferior de 10px */
+}
 
 /* TÍTULO: ESTILOS PARA GRUPOS DE CAMPOS EN LÍNEA */
 
-  /* Estilo para grupos de campos en línea */
-  .form-group-inline {
-    display: flex; /* Usa flexbox para organizar elementos en línea */
-    justify-content: space-between; /* Alinea los elementos a los extremos */
-    gap: 10px; /* Espacio entre los elementos */
-  }
+.datos_empresa_nueva_cotizacion .form-group-inline {
+  display: flex; /* Usa flexbox para organizar elementos en línea */
+  justify-content: space-between; /* Alinea los elementos a los extremos */
+  gap: 10px; /* Espacio entre los elementos */
+}
 
 /* TÍTULO: DISTRIBUCIÓN DEL ESPACIO EN GRUPOS DE FORMULARIOS EN LÍNEA */
 
-  /* Hace que cada form-group dentro de form-group-inline ocupe el mismo espacio */
-  .form-group-inline .form-group {
-    flex: 1; /* Distribuye el espacio equitativamente entre los grupos */
-  }
+.datos_empresa_nueva_cotizacion .form-group-inline .form-group {
+  flex: 1; /* Distribuye el espacio equitativamente entre los grupos */
+}
 
 /* --------------------------------------------------------------------------------------------------------------
     ---------------------------------------- FIN ITred Spa Datos empresa.CSS ---------------------------------------

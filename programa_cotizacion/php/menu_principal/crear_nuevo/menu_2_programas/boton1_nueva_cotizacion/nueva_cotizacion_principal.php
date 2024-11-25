@@ -11,26 +11,12 @@ BPPJ
 <!-- ------------------------------------------------------------------------------------------------------------
     ------------------------------------- INICIO ITred Spa Nueva cotizacion .PHP --------------------------------------
     ------------------------------------------------------------------------------------------------------------- -->
-
-<!-- ------------------------
-    -- INICIO CONEXION BD --
-    ------------------------ -->
-
-<?php
-    // Establece la conexión a la base de datos de ITred Spa
-    $mysqli = new mysqli('localhost', 'root', '', 'ITredSpa_bd');
-    session_start();
-?>
-<!-- ---------------------
-     -- FIN CONEXION BD --
-     ----------------------- -->
-
      <?php
 
 // Redirigir a la página de visualización de la cotización usando un formulario oculto
 
 // TÍTULO: PROCESAMIENTO DEL FORMULARIO
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['formulario']) && $_POST['formulario'] === 'cotizacion') {
     try {
         // TÍTULO: VALIDACIÓN Y PROCESAMIENTO DE DATOS
         // Aquí va tu código existente para procesar los datos del formulario
@@ -85,15 +71,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <!-- Abre el elemento del cuerpo de la página donde se coloca el contenido visible -->
 
-    <div class="contenedor"> 
+    <div class="nueva-cotizacion"> 
         <!-- Contenedor principal que puede ayudar a centrar y organizar el contenido en la página -->
         <form id="formulario-cotizacion" method="POST" action="" enctype="multipart/form-data">
-            
-        <!-- Formulario con ID "formulario-cotizacion". Usa el método POST para enviar los datos al servidor. El atributo "action" define el archivo al que se enviarán los datos. "enctype" especifica que el formulario puede enviar archivos -->
-            <a href="javascript:history.back()" class="boton-fijado">Volver</a>
 
-        <!-- TÍTULO: ENLACE PARA VOLVER -->
-            
+            <input type="hidden" name="formulario" value="cotizacion">
             <!-- Fila 1 -->
             <div class="row"> <!-- Crea una fila para organizar los elementos en una disposición horizontal -->
 
@@ -253,59 +235,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <!-- TÍTULO: SCRIPT DE PROCESAMIENTO DEL FORMULARIO -->
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    // TÍTULO: CONFIGURACIÓN DEL FORMULARIO
-    const form = document.getElementById('formulario-cotizacion');
-    
-    // TÍTULO: MANEJADOR DE ENVÍO DEL FORMULARIO
-    form.addEventListener('submit', async function(event) {
-        event.preventDefault();
-        
-        // TÍTULO: VALIDACIÓN DE CAMPOS
-        if (validateForm()) {
-            try {
-                // TÍTULO: ENVÍO DE DATOS AL SERVIDOR
-                const formData = new FormData(form);
-                const response = await fetch('nueva_cotizacion.php', {
-                    method: 'POST',
-                    body: formData
-                });
 
-                // TÍTULO: PROCESAMIENTO DE LA RESPUESTA
-                if (!response.ok) {
-                    throw new Error(`Error HTTP: ${response.status}`);
-                }
-
-                const result = await response.json();
-                console.log('Respuesta del servidor:', result); // Para depuración
-
-                // TÍTULO: MANEJO DE LA RESPUESTA
-                if (result.success) {
-                    alert('Cotización creada exitosamente');
-                    window.location.href = `ver.php?id=${result.cotizacion_id}`;
-                } else {
-                    alert('Error al crear la cotización: ' + result.message);
-                }
-            } catch (error) {
-                // TÍTULO: MANEJO DE ERRORES
-                console.error('Error detallado:', error);
-                alert('Error al procesar la solicitud. Por favor, intente nuevamente.');
-            }
-        }
-    });
-});
 </script>
 </html>
-
-<!-- ---------------------
--- INICIO CIERRE CONEXION BD --
-     --------------------- -->
-
-$mysqli->close();
-
-<!-- ---------------------
-     -- FIN CIERRE CONEXION BD --
-     --------------------- -->
 
 <!-- ------------------------------------------------------------------------------------------------------------
     -------------------------------------- FIN ITred Spa nueva cotizacion .PHP -----------------------------------

@@ -118,7 +118,7 @@ BPPJ
     <script src="../../js/menu_principal/crear_nuevo/menu_2_programas/boton6_crear_empresa/formulario_encargado.js"></script>
 
 <?php
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['formulario']) && $_POST['formulario'] === 'empresa') {
     $encargados_rut = $_POST['encargado_rut'];
     $encargados_nombre = $_POST['encargado_nombre'];
     $encargados_cargo = $_POST['cargo_encargado'];

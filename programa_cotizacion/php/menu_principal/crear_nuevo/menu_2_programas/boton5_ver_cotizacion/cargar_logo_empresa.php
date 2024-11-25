@@ -160,6 +160,7 @@ if ($id_empresa > 0) {
     <!-- Llama al archivo CSS -->
     <link rel="stylesheet" href="../../css/menu_principal/crear_nuevo/menu_2_programas/boton5_ver_cotizacion/cargar_logo_empresa.css">
 
+    <div class=cargar_logo_empresa>
 <!-- TÍTULO: SECCIÓN DE CÓDIGO PARA LA CARGA DE LOGO -->
 
     <!-- Tabla de carga para los logos -->
@@ -255,6 +256,7 @@ if ($id_empresa > 0) {
         <input type="file" id="subir-logo" name="logo_upload" accept="image/*" style="display:none;" onchange="previewImage(event)">
 
     </label>
+</div>
 </div>
 
 <!-- TÍTULO: IMPORTACIÓN DE ARCHIVO .JS -->

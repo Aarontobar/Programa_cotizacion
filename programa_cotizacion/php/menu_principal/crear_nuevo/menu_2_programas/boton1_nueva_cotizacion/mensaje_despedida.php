@@ -41,7 +41,7 @@ BPPJ
 
     <?php
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['formulario']) && $_POST['formulario'] === 'cotizacion') {
     $mensaje_despedida = $_POST['mensaje_despedida'] ?? '';
     
     echo "ID Cotización: " . $id_cotizacion . "<br>";

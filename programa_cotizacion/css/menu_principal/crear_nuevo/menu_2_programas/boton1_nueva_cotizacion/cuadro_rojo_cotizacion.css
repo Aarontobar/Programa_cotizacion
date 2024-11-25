@@ -14,14 +14,15 @@ BPPJ
     -------------------------------------- INICIO ITred Spa Cuandro rojo cotizacion.CSS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
 
-/* TÍTULO: ESTILOS PARA CUADROS DE DATOS CON BORDE ROJO */
+.cuadro_rojo_nueva_cotizacion {
+  /* TÍTULO: ESTILOS PARA CUADROS DE DATOS CON BORDE ROJO */
 
   /* Estilo para cuadros de datos con borde rojo */
   .cuadro-datos-rojo {
     border-color: red; /* Establece el color del borde en rojo */
   }
 
-/* TÍTULO: ESTILOS GENERALES PARA CUADROS DE DATOS */
+  /* TÍTULO: ESTILOS GENERALES PARA CUADROS DE DATOS */
 
   /* Estilo general para cuadros de datos */
   .cuadro-datos {
@@ -30,7 +31,7 @@ BPPJ
     background-color: #fff; /* Fondo blanco */
   }
 
-/* TÍTULO: ESTILOS PARA CONTENEDORES FLEXIBLES */
+  /* TÍTULO: ESTILOS PARA CONTENEDORES FLEXIBLES */
 
   /* Estilos para contenedores flexibles */
   .box-6,
@@ -39,7 +40,7 @@ BPPJ
     flex-direction: column; /* Disposición vertical de los elementos */
   }
 
-/* TÍTULO: ESTILOS ESPECÍFICOS PARA LA CAJA DE TAMAÑO 6 */
+  /* TÍTULO: ESTILOS ESPECÍFICOS PARA LA CAJA DE TAMAÑO 6 */
 
   /* Estilo específico para la caja de tamaño 6 */
   .box-6 {
@@ -47,7 +48,7 @@ BPPJ
     padding: 10px; /* Espaciado interno de 10px */
   }
 
-/* TÍTULO: ESTILOS PARA GRUPOS DE CAMPOS EN FORMULARIO */
+  /* TÍTULO: ESTILOS PARA GRUPOS DE CAMPOS EN FORMULARIO */
 
   /* Asegura que los label y input tengan la misma altura */
   .form-group {
@@ -57,7 +58,7 @@ BPPJ
     margin-bottom: 10px; /* Espaciado inferior de 10px */
   }
 
-/* TÍTULO: ESTILOS PARA GRUPOS DE CAMPOS EN LÍNEA */
+  /* TÍTULO: ESTILOS PARA GRUPOS DE CAMPOS EN LÍNEA */
 
   /* Estilo para grupos de campos en línea */
   .form-group-inline {
@@ -66,12 +67,13 @@ BPPJ
     gap: 10px; /* Espacio entre los elementos */
   }
 
-/* TÍTULO: DISTRIBUCIÓN DEL ESPACIO EN GRUPOS DE FORMULARIO EN LÍNEA */
+  /* TÍTULO: DISTRIBUCIÓN DEL ESPACIO EN GRUPOS DE FORMULARIO EN LÍNEA */
 
   /* Hace que cada form-group dentro de form-group-inline ocupe el mismo espacio */
   .form-group-inline .form-group {
     flex: 1; /* Distribuye el espacio equitativamente entre los grupos */
   }
+}
 
 /* --------------------------------------------------------------------------------------------------------------
     ---------------------------------------- FIN ITred Spa Cuadro rojo cotizacion.CSS ---------------------------------------

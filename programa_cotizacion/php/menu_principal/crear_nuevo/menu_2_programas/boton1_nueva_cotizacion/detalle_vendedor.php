@@ -203,7 +203,7 @@ function toggleFormulario_ven() {
 
 <?php
 // Verifica si el formulario ha sido enviado
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['formulario']) && $_POST['formulario'] === 'cotizacion') {
     // Recibir datos del formulario vendedor
 
     $vendedor_rut = isset($_POST['vendedor_rut']) ? trim($_POST['vendedor_rut']) : null;

@@ -354,7 +354,7 @@ function toggleFormulario() {
 
 <?php
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['formulario']) && $_POST['formulario'] === 'cotizacion') {
     // datos de la empresa 
     $rut_empresa_cliente = isset($_POST['cliente_rut']) ? $_POST['cliente_rut'] : null;
     $nombre_empresa_cliente = isset($_POST['cliente_empresa']) ? $_POST['cliente_empresa'] : null;

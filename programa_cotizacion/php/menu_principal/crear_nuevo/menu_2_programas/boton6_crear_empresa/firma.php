@@ -237,7 +237,7 @@ BPPJ
 
 
 <?php
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['formulario']) && $_POST['formulario'] === 'empresa') {
     // Procesar campos de la empresa
     $empresa_nombre = $_POST['empresa_nombre'];
     $empresa_area = $_POST['empresa_area'];

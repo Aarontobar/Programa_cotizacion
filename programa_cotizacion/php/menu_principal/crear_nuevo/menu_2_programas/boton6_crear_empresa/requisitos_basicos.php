@@ -59,7 +59,7 @@ BPPJ
 <?php
 // Verifica si el método de la solicitud es POST
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['formulario']) && $_POST['formulario'] === 'empresa') {
 
     // Obtiene la cadena de requisitos desde el formulario
 

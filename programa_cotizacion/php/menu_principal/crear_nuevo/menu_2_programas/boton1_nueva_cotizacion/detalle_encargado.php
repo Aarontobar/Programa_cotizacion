@@ -182,7 +182,7 @@ function toggleFormulario_cli() {
 <script src="../../js/menu_principal/crear_nuevo/menu_2_programas/boton1_nueva_cotizacion/detalle_encargado.js"></script> 
 
 <?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['formulario']) && $_POST['formulario'] === 'cotizacion') {
     // Recibir datos del formulario encargado
     $enc_rut = isset($_POST['encargado_rut']) ? trim($_POST['encargado_rut']) : null;
     $enc_nombre = isset($_POST['enc_nombre']) ? trim($_POST['enc_nombre']) : null;

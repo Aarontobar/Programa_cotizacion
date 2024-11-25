@@ -16,12 +16,6 @@ BPPJ
      -- INICIO CONEXION BD --
      ------------------------ -->
      <?php
-// Establece la conexión a la base de datos
-
-$mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
-
-
-
 // Verifica si el formulario de actualización de estado ha sido enviado
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['cotizacion_id'], $_POST['nuevo_estado'])) {
@@ -141,10 +135,10 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
             $mensaje .= "<td>" . htmlspecialchars($row['vendedor_nombre']) . "</td>";
             $mensaje .= "<td class='estado-" . strtolower($row['estado']) . "'>" . htmlspecialchars($row['estado']) . "</td>";
             $mensaje .= "<td>
-            <a href='ver.php?id=" . $row['cotizacion_id'] . "&id_empresa=" . $id_empresa . "'>| Ver</a> |
+            <a href='crear_nuevo/menu_2_programas/boton5_ver_cotizacion/ver.php?id=" . $row['cotizacion_id'] . "&id_empresa=" . $id_empresa . "'>| Ver</a> |
 
-                    <a href='modificar_cotizacion.php?id=" . $row['cotizacion_id'] . "'>Modificar</a> |
-                    <a href='eliminar_cotizacion.php?id=" . $row['cotizacion_id'] . "&id_empresa=" . $id_empresa . "'>Eliminar</a> |
+                    <a href='crear_nuevo/menu_2_programas/boton5_ver_cotizacion/modificar_cotizacion.php?id=" . $row['cotizacion_id'] . "'>Modificar</a> |
+                    <a href='crear_nuevo/menu_2_programas/boton5_ver_cotizacion/eliminar_cotizacion.php?id=" . $row['cotizacion_id'] . "&id_empresa=" . $id_empresa . "'>Eliminar</a> |
                             <form method='POST'>
                                 <input type='hidden' name='cotizacion_id' value='" . $row['cotizacion_id'] . "'>
                                 <select name='nuevo_estado'>
@@ -164,9 +158,6 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
         $mensaje = "<p>No hay cotizaciones que coincidan con los filtros.</p>";
     }
 
-// Cierra la conexión a la base de datos
-
-    $mysqli->close();
     ?>
 
 <!-- INICIO HTML -->
@@ -185,6 +176,7 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
 
 </head>
 <body>
+    <div class="ver_cotizacion_principal">
 
 <!-- TÍTULO: CONTENEDOR DE FILTROS DE BÚSQUEDA -->
 
@@ -209,18 +201,10 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
         <li>
             <a href="../nueva_cotizacion/nueva_cotizacion.php?id=<?php echo $id_empresa; ?>">Crear Cotización</a>
         </li>
-        
-     
-
-    <!-- TÍTULO: OPCIÓN PARA VOLVER AL MENÚ -->
-
-        <!-- llama al archivo PHP -->
-        <li>
-            <a href="../../programa_cotizacion.php">Volver al Menú</a>
-        </li>
 
 
     </ul>
+    </div>
 </body>
 </html>
 

@@ -14,39 +14,6 @@ BPPJ
 
 // TÍTULO: ESTABLECER FECHA DE EMISIÓN
 
-document.addEventListener('DOMContentLoaded', function() {
-    const form = document.getElementById('formulario-cotizacion');
-    
-    // Set the current date as the emission date
-    document.getElementById('fecha_emision').value = new Date().toISOString().split('T')[0];
-
-    form.addEventListener('submit', async function(event) {
-        event.preventDefault();
-        
-        if (validateForm()) {
-            try {
-                const formData = new FormData(form);
-                
-                const response = await fetch('nueva_cotizacion.php', {
-                    method: 'POST',
-                    body: formData
-                });
-
-                const result = await response.json();
-
-                if (result.success) {
-                    alert('Cotización creada exitosamente');
-                    window.location.href = `ver.php?id=${result.cotizacion_id}`;
-                } else {
-                    alert('Error al crear la cotización: ' + result.message);
-                }
-            } catch (error) {
-                console.error('Error:', error);
-                alert('Error al procesar la solicitud');
-            }
-        }
-    });
-});
     
     function validateForm() {
         let isValid = true;

@@ -57,7 +57,7 @@ BPPJ
 
 <?php
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['formulario']) && $_POST['formulario'] === 'cotizacion') {
     
     // Asegúrate de que los datos sean arrays y no estén vacíos
     

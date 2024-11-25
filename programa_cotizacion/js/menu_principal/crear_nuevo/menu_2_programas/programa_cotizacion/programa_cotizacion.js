@@ -14,6 +14,18 @@ BPPJ
     -------------------------------------- INICIO ITred Spa Programa Cotizacion .JS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
 
+    document.getElementById('formulario-seleccionar-empresa').addEventListener('submit', function(event) {
+        event.preventDefault(); // Evita el envío del formulario por defecto
+        // Aquí puedes agregar cualquier lógica adicional antes de enviar el formulario
+        this.submit(); // Envía el formulario
+    });
+
+    document.getElementById('formulario-cotizacion').addEventListener('submit', function(event) {
+        event.preventDefault(); // Evita el envío del formulario por defecto
+        // Aquí puedes agregar cualquier lógica adicional antes de enviar el formulario
+        this.submit(); // Envía el formulario
+    });
+
 /* --------------------------------------------------------------------------------------------------------------
     ---------------------------------------- FIN ITred Spa Programa Cotizacion .JS ---------------------------------------
     ------------------------------------------------------------------------------------------------------------- */

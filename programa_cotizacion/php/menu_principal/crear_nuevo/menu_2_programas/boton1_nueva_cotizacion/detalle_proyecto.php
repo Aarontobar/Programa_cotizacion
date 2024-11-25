@@ -277,7 +277,7 @@ function mostrarFormulario() {
 </script>
 
 <?php
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['formulario']) && $_POST['formulario'] === 'cotizacion') {
 
     // Recibir datos del formulario para C_Proyectos
 

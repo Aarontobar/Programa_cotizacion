@@ -18,142 +18,142 @@ BPPJ
     <link rel="stylesheet" href="../../css/menu_principal/crear_nuevo/menu_2_programas/boton1_nueva_cotizacion/datos_empresa.css"> 
 
     <!-- Crea una fila para organizar los elementos en una disposición horizontal -->
+<div class="datos_empresa_nueva_cotizacion">
+    <div class="row"> 
 
-<div class="row"> 
+        <!-- TÍTULO: CAJA PARA INGRESAR DATOS DE LA EMPRESA -->
 
-    <!-- TÍTULO: CAJA PARA INGRESAR DATOS DE LA EMPRESA -->
+        <!-- Crea una caja para ingresar datos, ocupando las 12 columnas disponibles en el diseño. Esta caja contiene varios campos de entrada de datos -->
 
-    <!-- Crea una caja para ingresar datos, ocupando las 12 columnas disponibles en el diseño. Esta caja contiene varios campos de entrada de datos -->
-
-    <fieldset class="box-12 cuadro-datos"> 
-    
-        <!-- TÍTULO: ENCABEZADO DE MI EMPRESA -->
-
-        <legend>Mi Empresa</legend> <!-- TÍTULO DEL CAMPO DE DATOS -->
-
-        <!-- TÍTULO: CAMPO PARA EL ID DE LA EMPRESA -->
-
-        <!-- Campo de texto para ingresar el ID de la empresa. Este campo está oculto -->
-
-        <input type="text" id="empresa-id" name="empresa_id" value="<?php echo htmlspecialchars($id); ?>" hidden> 
+        <fieldset class="box-12 cuadro-datos"> 
         
-        <div class="form-group">
+            <!-- TÍTULO: ENCABEZADO DE MI EMPRESA -->
 
-            <!-- TÍTULO: CAMPO PARA EL NOMBRE DE LA EMPRESA -->
+            <legend>Mi Empresa</legend> <!-- TÍTULO DEL CAMPO DE DATOS -->
 
-            <!-- Etiqueta para el campo de entrada del nombre de la empresa -->
+            <!-- TÍTULO: CAMPO PARA EL ID DE LA EMPRESA -->
 
-            <label for="empresa_nombre">Nombre</label> 
+            <!-- Campo de texto para ingresar el ID de la empresa. Este campo está oculto -->
+
+            <input type="text" id="empresa-id" name="empresa_id" value="<?php echo htmlspecialchars($id); ?>" hidden> 
+            
+            <div class="form-group">
+
+                <!-- TÍTULO: CAMPO PARA EL NOMBRE DE LA EMPRESA -->
+
+                <!-- Etiqueta para el campo de entrada del nombre de la empresa -->
+
+                <label for="empresa_nombre">Nombre</label> 
 
 
-            <!-- TÍTULO: CAMPO PARA INGRESAR EL NOMBRE DE LA EMPRESA -->
+                <!-- TÍTULO: CAMPO PARA INGRESAR EL NOMBRE DE LA EMPRESA -->
 
-            <!-- Campo de texto para ingresar el nombre de la empresa. El atributo "required" hace que el campo sea obligatorio -->
+                <!-- Campo de texto para ingresar el nombre de la empresa. El atributo "required" hace que el campo sea obligatorio -->
 
-            <input type="text" id="empresa_nombre" name="empresa_nombre" value="<?php echo htmlspecialchars($row['EmpresaNombre']); ?>" oninput="QuitarCaracteresInvalidos(this)"> 
+                <input type="text" id="empresa_nombre" name="empresa_nombre" value="<?php echo htmlspecialchars($row['EmpresaNombre']); ?>" oninput="QuitarCaracteresInvalidos(this)"> 
 
-        </div>
+            </div>
 
-        <div class="form-group">
+            <div class="form-group">
 
-            <!-- TÍTULO: CAMPO PARA EL ÁREA DE LA EMPRESA -->
+                <!-- TÍTULO: CAMPO PARA EL ÁREA DE LA EMPRESA -->
 
-            <!-- Etiqueta para el campo de selección del área de la empresa -->
+                <!-- Etiqueta para el campo de selección del área de la empresa -->
 
-            <label for="empresa_area">Área</label>
+                <label for="empresa_area">Área</label>
 
-            <!-- TÍTULO: SELECT PARA SELECCIONAR EL ÁREA DE LA EMPRESA -->
+                <!-- TÍTULO: SELECT PARA SELECCIONAR EL ÁREA DE LA EMPRESA -->
 
-            <!-- Campo select para elegir el área de la empresa, cargado dinámicamente desde la base de datos -->
+                <!-- Campo select para elegir el área de la empresa, cargado dinámicamente desde la base de datos -->
 
-            <select id="empresa_area" name="empresa_area">
-                <?php
+                <select id="empresa_area" name="empresa_area">
+                    <?php
 
-                // Consulta para obtener las áreas desde tp_area
+                    // Consulta para obtener las áreas desde tp_area
 
-                $areas_query = "SELECT id_area, nombre_area FROM Tp_Area";
-                $result = $mysqli->query($areas_query);
+                    $areas_query = "SELECT id_area, nombre_area FROM Tp_Area";
+                    $result = $mysqli->query($areas_query);
 
-                if ($result->num_rows > 0) {
-                    while($area = $result->fetch_assoc()) {
-                        
-                        // Verifica si es el área seleccionada
+                    if ($result->num_rows > 0) {
+                        while($area = $result->fetch_assoc()) {
+                            
+                            // Verifica si es el área seleccionada
 
-                        $selected = ($area['id_area'] == $row['EmpresaArea']) ? 'selected' : '';
-                        echo "<option value='" . htmlspecialchars($area['id_area']) . "' $selected>" . htmlspecialchars($area['nombre_area']) . "</option>";
+                            $selected = ($area['id_area'] == $row['EmpresaArea']) ? 'selected' : '';
+                            echo "<option value='" . htmlspecialchars($area['id_area']) . "' $selected>" . htmlspecialchars($area['nombre_area']) . "</option>";
 
+                        }
                     }
-                }
-                ?>
-            </select>
-        </div>
+                    ?>
+                </select>
+            </div>
 
-        <div class="form-group">
+            <div class="form-group">
 
-            <!-- TÍTULO: CAMPO PARA LA DIRECCIÓN DE LA EMPRESA -->
+                <!-- TÍTULO: CAMPO PARA LA DIRECCIÓN DE LA EMPRESA -->
 
-            <!-- Etiqueta para el campo de entrada de la dirección de la empresa -->
+                <!-- Etiqueta para el campo de entrada de la dirección de la empresa -->
 
-            <label for="empresa_direccion">Dirección</label> 
+                <label for="empresa_direccion">Dirección</label> 
 
-            <!-- TÍTULO: CAMPO PARA INGRESAR LA DIRECCIÓN DE LA EMPRESA -->
+                <!-- TÍTULO: CAMPO PARA INGRESAR LA DIRECCIÓN DE LA EMPRESA -->
 
-            <!-- Campo de texto para ingresar la dirección de la empresa. Este campo no es obligatorio -->
+                <!-- Campo de texto para ingresar la dirección de la empresa. Este campo no es obligatorio -->
 
-            <input type="text" id="empresa_direccion" name="empresa_direccion" value="<?php echo htmlspecialchars($row['EmpresaDireccion']); ?>" oninput="QuitarCaracteresInvalidos(this)"> 
-        </div>
-                
-        <div class="form-group" style="display: flex; align-items: center;">
+                <input type="text" id="empresa_direccion" name="empresa_direccion" value="<?php echo htmlspecialchars($row['EmpresaDireccion']); ?>" oninput="QuitarCaracteresInvalidos(this)"> 
+            </div>
+                    
+            <div class="form-group" style="display: flex; align-items: center;">
 
-            <!-- TÍTULO: CAMPO PARA EL TELÉFONO DE LA EMPRESA -->
+                <!-- TÍTULO: CAMPO PARA EL TELÉFONO DE LA EMPRESA -->
 
-            <!-- Etiqueta para el campo de entrada del teléfono de la empresa -->
+                <!-- Etiqueta para el campo de entrada del teléfono de la empresa -->
 
-            <label for="empresa_telefono" style="margin-right: 10px;">Teléfono</label>
+                <label for="empresa_telefono" style="margin-right: 10px;">Teléfono</label>
 
-            <!-- TÍTULO: IMAGEN DE LA BANDERA -->
+                <!-- TÍTULO: IMAGEN DE LA BANDERA -->
 
-            <!-- Imagen de la bandera -->
+                <!-- Imagen de la bandera -->
 
-            <img id="flag" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Flag_of_None.svg/32px-Flag_of_None.svg.png" 
-                alt="Bandera" style="display: none; margin-right: 10px;" width="32" height="20">
+                <img id="flag" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Flag_of_None.svg/32px-Flag_of_None.svg.png" 
+                    alt="Bandera" style="display: none; margin-right: 10px;" width="32" height="20">
 
-            <!-- TÍTULO: CAMPO PARA INGRESAR EL TELÉFONO DE LA EMPRESA -->
+                <!-- TÍTULO: CAMPO PARA INGRESAR EL TELÉFONO DE LA EMPRESA -->
 
-            <!-- Campo de entrada de texto para el teléfono de la empresa -->
+                <!-- Campo de entrada de texto para el teléfono de la empresa -->
 
-            <input type="text" id="empresa_telefono" name="empresa_telefono" 
-                value="<?php echo htmlspecialchars($row['EmpresaTelefono']); ?>"
-                placeholder="+56 9 1234 1234" 
-                maxlength="13" 
-                required 
-                title="Formato válido: +56 9 1234 1234 (código de país, seguido de número)"
-                oninput="AgregarMasYDetectarPais(this)"> 
-        </div>
+                <input type="text" id="empresa_telefono" name="empresa_telefono" 
+                    value="<?php echo htmlspecialchars($row['EmpresaTelefono']); ?>"
+                    placeholder="+56 9 1234 1234" 
+                    maxlength="13" 
+                    required 
+                    title="Formato válido: +56 9 1234 1234 (código de país, seguido de número)"
+                    oninput="AgregarMasYDetectarPais(this)"> 
+            </div>
 
-        <div class="form-group">
+            <div class="form-group">
 
-            <!-- TÍTULO: CAMPO PARA EL EMAIL DE LA EMPRESA -->
+                <!-- TÍTULO: CAMPO PARA EL EMAIL DE LA EMPRESA -->
 
-            <!-- Etiqueta para el campo de entrada del email de la empresa -->
+                <!-- Etiqueta para el campo de entrada del email de la empresa -->
 
-            <label for="empresa_email">Email</label> 
+                <label for="empresa_email">Email</label> 
 
-            <!-- TÍTULO: CAMPO PARA INGRESAR EL EMAIL DE LA EMPRESA -->
+                <!-- TÍTULO: CAMPO PARA INGRESAR EL EMAIL DE LA EMPRESA -->
 
-            <!-- Campo de correo electrónico para ingresar el email de la empresa. El tipo "email" valida que el texto ingresado sea una dirección de correo electrónico -->
+                <!-- Campo de correo electrónico para ingresar el email de la empresa. El tipo "email" valida que el texto ingresado sea una dirección de correo electrónico -->
 
-            <input type="email" id="empresa_email" name="empresa_email" value="<?php echo htmlspecialchars($row['EmpresaEmail']); ?>" oninput="QuitarCaracteresInvalidos(this)"> 
-        </div>
+                <input type="email" id="empresa_email" name="empresa_email" value="<?php echo htmlspecialchars($row['EmpresaEmail']); ?>" oninput="QuitarCaracteresInvalidos(this)"> 
+            </div>
 
-        <!-- Cierra la caja de datos -->
+            <!-- Cierra la caja de datos -->
 
-    </fieldset> 
+        </fieldset> 
 
-<!-- Cierra la fila -->
+    <!-- Cierra la fila -->
 
-</div> 
-
+    </div> 
+</div>
 <!-- TITULO: ARCHIVO JS -->
 
 <!-- Enlaza el archivo JavaScript para manejar la lógica del formulario de datos de la empresa -->
@@ -164,7 +164,7 @@ BPPJ
 
 // Verifica si el formulario fue enviado
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['formulario']) && $_POST['formulario'] === 'cotizacion') {
 
     // Obtiene los valores del formulario
 

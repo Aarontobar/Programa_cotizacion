@@ -15,7 +15,7 @@ BPPJ
 
 
     <?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['formulario']) && $_POST['formulario'] === 'cotizacion') {
     // Initialize $id_cotizacion at the start
     $id_cotizacion = null;
     

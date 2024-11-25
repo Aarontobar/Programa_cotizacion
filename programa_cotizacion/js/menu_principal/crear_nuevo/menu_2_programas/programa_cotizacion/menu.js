@@ -16,49 +16,9 @@ BPPJ
 
     // TÍTULO: FUNCIÓN PARA MOSTRAR CONTENIDO
     function mostrarContenido(tipo) {
-        const contenedor = document.getElementById('contenido-dinamico');
-        const empresa_id = document.querySelector('[name="empresa"]')?.value || '';
-        let archivo = '';
-    
-        switch(tipo) {
-            case 'nueva_cotizacion':
-                archivo = 'boton1_nueva_cotizacion/nueva_cotizacion_principal.php';
-                break;
-            case 'crear_cliente':
-                archivo = 'boton2_crear_cliente/crear_cliente_principal.php';
-                break;
-            case 'crear_producto':
-                archivo = 'boton3_crear_producto/crear_producto_principal.php';
-                break;
-            case 'crear_proveedor':
-                archivo = 'boton4_crear_proveedor/crear_proveedor_principal.php';
-                break;
-            case 'ver_cotizacion':
-                archivo = 'boton5_ver_cotizacion/ver_cotizacion_principal.php';
-                break;
-            case 'crear_empresa':
-                archivo = 'boton6_crear_empresa/crear_empresa_principal.php';
-                break;
-        }
-    
-        if (archivo) {
-            contenedor.innerHTML = '<div class="loading">Cargando...</div>';
-    
-            fetch(`crear_nuevo/menu_2_programas/${archivo}?id=${empresa_id}`)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Error en la respuesta del servidor');
-                    }
-                    return response.text();
-                })
-                .then(html => {
-                    contenedor.innerHTML = html;
-                })
-                .catch(error => {
-                    contenedor.innerHTML = `<div class="error">Error al cargar el contenido: ${error}</div>`;
-                    console.error('Error:', error);
-                });
-        }
+        const empresa_id = document.getElementById('selected-empresa').value || '';
+        let url = `programa_cotizacion.php?page=${tipo}&id=${empresa_id}`;
+        window.location.href = url;
     }
     
     /* --------------------------------------------------------------------------------------------------------------

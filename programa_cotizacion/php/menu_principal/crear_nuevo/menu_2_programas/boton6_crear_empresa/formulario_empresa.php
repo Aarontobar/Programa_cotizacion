@@ -34,23 +34,22 @@ BPPJ
             
             <!-- Define el nombre de la empresa -->
             <div class="form-group">
-                    <label for="empresa_nombre">Nombre de la Empresa:</label>
-                    <input type="text" id="empresa_nombre" name="empresa_nombre" required minlength="3" maxlength="100" 
-                        pattern="^[A-Za-zÀ-ÿ0-9\s&.-]+$" 
-                        title="Por favor, ingrese solo letras, números y caracteres como &,-."
-                        placeholder="Ejemplo: Mi Empresa S.A.">
-                </div>
+                <label for="empresa_nombre">Nombre de la Empresa:</label>
+                <input type="text" id="empresa_nombre" name="empresa_nombre" required minlength="3" maxlength="100" 
+                    pattern="^[A-Za-zÀ-ÿ0-9\s&.-]+$" 
+                    title="Por favor, ingrese solo letras, números y caracteres como &,-."
+                    placeholder="Ejemplo: Mi Empresa S.A.">
+            </div>
 
-                <div class="form-group-inline">
-                    <div class="form-group">
+            <div class="form-group-inline">
+                <div class="form-group">
 
-                    <!-- TÍTULO: ETIQUETA PARA EL CAMPO DE SELECCIÓN DEL ÁREA DE LA EMPRESA -->
-                        <!-- Define el área de la empresa -->
-                        <label for="empresa_area">Área de la Empresa:</label>
-                        <select id="empresa_area" name="empresa_area" required>
-                            
-                        </select>
-                    </div>
+                <!-- TÍTULO: ETIQUETA PARA EL CAMPO DE SELECCIÓN DEL ÁREA DE LA EMPRESA -->
+                    <!-- Define el área de la empresa -->
+                    <label for="empresa_area">Área de la Empresa:</label>
+                    <select id="empresa_area" name="empresa_area" required>
+                        
+                    </select>
                 </div>
 
                 <div class="form-group">
@@ -201,7 +200,7 @@ BPPJ
     <script src="../../js/menu_principal/crear_nuevo/menu_2_programas/boton6_crear_empresa/formulario_empresa.js"></script>
 
 <?php
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['formulario']) && $_POST['formulario'] === 'empresa') {
     $mensaje = ""; // Inicializa el mensaje
 
     // Obtener el tipo de firma seleccionado

@@ -141,7 +141,7 @@ BPPJ
 
 
 <?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['formulario']) && $_POST['formulario'] === 'cotizacion') {
     $sub_total = isset($_POST['sub_total']) ? floatval($_POST['sub_total']) : 0;
     $descuento_global = isset($_POST['descuento_global_porcentaje']) ? floatval($_POST['descuento_global_porcentaje']) : 0;
     $monto_neto = isset($_POST['monto_neto']) ? floatval($_POST['monto_neto']) : 0;

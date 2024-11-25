@@ -12,18 +12,6 @@ BPPJ
     ------------------------------------- INICIO ITred Spa Crear Empresa .PHP --------------------------------------
     ------------------------------------------------------------------------------------------------------------- -->
 
-<!-- ------------------------
-     -- INICIO CONEXION BD --
-     ------------------------ -->
-
-     <?php
-// Establece la conexión a la base de datos de ITred Spa
-$mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
-?>
-<!-- ---------------------
-     -- FIN CONEXION BD --
-     --------------------- -->
-
 <!-- TITULO: AQUÍ INICIA EL HTML -->
 
     <!-- INICIO HTML -->
@@ -62,9 +50,8 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
         
         <!-- TÍTULO: FORMULARIO DE COTIZACIÓN -->
             <form id="formulario-cotizacion" method="POST" action="" enctype="multipart/form-data">
-            
-                <!-- TÍTULO: ENLACE PARA VOLVER A LA PÁGINA ANTERIOR -->
-                    <a href="../../programa_cotizacion.php" class="boton-fijado">Volver</a>
+            <input type="hidden" name="formulario" value="empresa">
+
                 
                 <!-- Fila 1 -->
 
@@ -167,20 +154,6 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
     
 </body>
 </html>
-
-<!-- ---------------------
-     -- INICIO CIERRE CONEXION BD --
-     --------------------- -->
-<?php
-// Cierra la conexión a la base de datos
-$mysqli->close();
-?>
-<!-- ---------------------
-     -- FIN CIERRE CONEXION BD --
-     --------------------- -->
-
-
-
 
 
 

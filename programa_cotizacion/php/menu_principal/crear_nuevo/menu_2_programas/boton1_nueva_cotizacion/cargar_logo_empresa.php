@@ -17,7 +17,6 @@ BPPJ
 
 $id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 
-
 // Verificar si el ID es mayor que 0
 
 if ($id > 0) {
@@ -201,7 +200,7 @@ $empresa_id_foto = null;
 
 // Verificar si se ha enviado el formulario
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['formulario']) && $_POST['formulario'] === 'cotizacion') {
 
     // Verificar si se ha cargado una imagen sin errores
 

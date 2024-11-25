@@ -12,19 +12,6 @@ BPPJ
     ------------------------------------- INICIO ITred Spa crear cliente.PHP --------------------------------------
     ------------------------------------------------------------------------------------------------------------- -->
 
-<!-- ------------------------
-    -- INICIO CONEXION BD --
-    ------------------------ -->
-
-    <?php
-    // Establece la conexión a la base de datos de ITred Spa
-    $mysqli = new mysqli('localhost', 'root', '', 'ITredSpa_bd');
-?>
-<!-- ---------------------
-     -- FIN CONEXION BD --
-     ----------------------- -->
-
-
 <!DOCTYPE html>
 <html lang="es">
     <head> 
@@ -43,12 +30,6 @@ BPPJ
     <!-- Llama al archivo CSS -->
     <link rel="stylesheet" href="../../css/menu_principal/crear_nuevo/menu_2_programas/boton2_crear_cliente/crear_cliente_principal.css"> 
     
-    <!-- TITULO: ENLAZADO DE PHP  -->
-    
-    <!-- Llama al archivo programa cotizacion PHP  -->
-     
-    <a href="../../programa_cotizacion.php" class="boton-fijado">Volver</a>
-
     <!-- Cierra el elemento de cabecera -->
 </head> 
 
@@ -59,7 +40,7 @@ BPPJ
 
         <!-- Llama la lista de cliente -->
             <?php include 'mostrar_clientes.php'; ?>
-        <a href="nuevo_cliente.php" class="boton-opcion">Crear nuevo cliente</a>
+        <a href="crear_nuevo/menu_2_programas/boton2_crear_cliente/nuevo_cliente.php" class="boton-opcion">Crear nuevo cliente</a>
 
 
 </body>
@@ -69,19 +50,6 @@ BPPJ
 <!-- Llama al archivo JS -->
     <script src="../../js/menu_principal/crear_nuevo/menu_2_programas/boton2_crear_cliente/crear_cliente.js"></script> 
 </html>
-
-
-
-     <!-- ---------------------
--- INICIO CIERRE CONEXION BD --
-     --------------------- -->
-<?php
-    $mysqli->close();
-?>
-<!-- ---------------------
-     -- FIN CIERRE CONEXION BD --
-     --------------------- -->
-
 
 <!-- ------------------------------------------------------------------------------------------------------------
     -------------------------------------- FIN ITred Spa crear cliente .PHP ----------------------------------------

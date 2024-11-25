@@ -150,7 +150,7 @@ BPPJ
         const section = button.closest('.seccion-detalle'); // Encuentra la sección contenedora
         const CabeceraTabla = section.querySelector('thead'); // Obtiene el elemento thead de la tabla
         const CuerpoTabla = section.querySelector('.detalle-contenido'); // Obtiene el cuerpo de la tabla
-
+    
         // Verifica si ya hay un encabezado para evitar duplicados
         if (!CabeceraTabla.querySelector('tr')) {
             // Crear la fila del encabezado con solo la columna 'Tipo' visible inicialmente
@@ -164,11 +164,12 @@ BPPJ
                 <th class="hidden-column">DESCUENTO %</th>
                 <th class="hidden-column">TOTAL</th>
                 <th class="hidden-column">COLOR</th>
+                <th class="hidden-column">FOTO</th> <!-- Nueva columna de foto -->
                 <th class="hidden-column">ACCIÓN</th>
                 <th class="hidden-column"></th> <!-- Espacio para el botón de eliminar cabecera -->
             `;
             CabeceraTabla.appendChild(NuevaLineaDeCabecera); // Añade la nueva fila al thead
-
+    
             // Asegúrate de que solo las columnas con la clase 'hidden-column' estén ocultas
             const ColumnasOcultas = CabeceraTabla.querySelectorAll('.hidden-column'); // Selecciona columnas ocultas
             ColumnasOcultas.forEach(column => {
@@ -179,6 +180,7 @@ BPPJ
 
 
 // TÍTULO: CAPTURAR TIPO Y CAMBIAR COLUMNAS VISIBLES
+// Función para capturar el tipo seleccionado y mostrar/ocultar columnas de la fila correspondiente
 function CapturarTipoYCambiar(selectElement) {
     const row = selectElement.closest('tr'); // Obtener la fila más cercana al elemento select
     const ColumnasOcultas = row.querySelectorAll('.hidden-column'); // Seleccionar todas las columnas ocultas en la fila
@@ -205,10 +207,11 @@ function CapturarTipoYCambiar(selectElement) {
             row.querySelector('td.hidden-column:nth-of-type(6)').style.display = "table-cell"; // Descuento
             row.querySelector('td.hidden-column:nth-of-type(7)').style.display = "table-cell"; // Total
             row.querySelector('td.hidden-column:nth-of-type(8)').style.display = "table-cell"; // Acción (Eliminar)
-            row.querySelector('td.hidden-column:nth-of-type(9)').style.display = "table-cell"; // Total
+            row.querySelector('td.hidden-column:nth-of-type(9)').style.display = "table-cell"; // Foto
+            row.querySelector('td.hidden-column:nth-of-type(10)').style.display = "table-cell"; // Total
 
             // Si existe la columna vacía, elimínala
-            const emptyPriceCell = row.querySelector('td.hidden-column:nth-of-type(9)'); // Asumiendo que la columna vacía es la 9
+            const emptyPriceCell = row.querySelector('td.hidden-column:nth-of-type(10)'); // Asumiendo que la columna vacía es la 10
             if (emptyPriceCell) {
                 row.removeChild(emptyPriceCell); // Eliminar la columna vacía
             }
@@ -241,15 +244,18 @@ function CapturarTipoYCambiar(selectElement) {
 
                 // Agregar evento para cargar los detalles del producto seleccionado
                 selectProducto.addEventListener('change', function() {
-                    const productoImagen = row.querySelector('.producto-imagen');
+                    const fotoInput = row.querySelector('input[name^="foto"]');
+                    const fotoPreview = row.querySelector('.foto-preview');
                     if (this.value === 'nuevo') {
                         // Limpiar los campos del formulario
                         row.querySelector('input[name^="nombre_producto"]').value = '';
                         row.querySelector('input[name^="detalle_precio_unitario"]').value = '';
                         row.querySelector('input[name^="detalle_cantidad"]').value = '';
                         row.querySelector('textarea[name^="detalle_descripcion"]').value = '';
-                        productoImagen.src = ''; // Limpiar la imagen
-                        productoImagen.style.display = 'none'; // Ocultar la imagen
+                        fotoInput.style.display = 'block'; // Mostrar el campo de foto
+                        fotoInput.value = ''; // Limpiar el campo de foto
+                        fotoPreview.style.display = 'none'; // Ocultar la vista previa de la foto
+                        fotoPreview.src = ''; // Limpiar la vista previa de la foto
                         ActualizarTotal(row.querySelector('input[name^="detalle_precio_unitario"]'));
                     } else {
                         fetch(`crear_nuevo/menu_2_programas/boton1_nueva_cotizacion/obtener_detalles.php?id=${this.value}`)
@@ -257,9 +263,16 @@ function CapturarTipoYCambiar(selectElement) {
                             .then(producto => {
                                 row.querySelector('input[name^="nombre_producto"]').value = producto.nombre_producto;
                                 row.querySelector('input[name^="detalle_precio_unitario"]').value = producto.precio;
-                                row.querySelector('textarea[name^="detalle_descripcion"]').value = producto.descripcion;
-                                productoImagen.src = producto.ruta_foto; // Mostrar la imagen del producto
-                                productoImagen.style.display = 'block'; // Mostrar la imagen
+                                row.querySelector('input[name^="detalle_cantidad"]').value = producto.cantidad;
+                                if (producto.ruta_foto) {
+                                    fotoInput.style.display = 'none'; // Ocultar el campo de foto
+                                    fotoPreview.style.display = 'block'; // Mostrar la vista previa de la foto
+                                    fotoPreview.src = producto.ruta_foto; // Asignar la ruta de la foto
+                                } else {
+                                    fotoInput.style.display = 'block'; // Mostrar el campo de foto
+                                    fotoPreview.style.display = 'none'; // Ocultar la vista previa de la foto
+                                    fotoPreview.src = ''; // Limpiar la vista previa de la foto
+                                }
                                 ActualizarTotal(row.querySelector('input[name^="detalle_precio_unitario"]'));
                             })
                             .catch(error => console.error('Error al obtener los detalles del producto:', error));
@@ -268,7 +281,7 @@ function CapturarTipoYCambiar(selectElement) {
             })
             .catch(error => console.error('Error al obtener los productos:', error));
     } else {
-        PrimeraCelda.setAttribute('colspan', '9'); // Cambiar colspan de vuelta a 9
+        PrimeraCelda.setAttribute('colspan', '10'); // Cambiar colspan de vuelta a 10
         ColumnasOcultas.forEach(column => {
             column.style.display = "none"; // Ocultar las columnas si se vuelve a seleccionar "Seleccione un tipo"
         });
@@ -291,6 +304,7 @@ function CapturarTipoYCambiar(selectElement) {
     });
 }
 
+// TÍTULO: AGREGAR LÍNEA DE DETALLE
 function AgregarLineaDeDetalle(button) { 
     const section = button.closest('.seccion-detalle'); // Obtener la sección del detalle
     const CuerpoTabla = section.querySelector('.detalle-contenido'); // Obtener el cuerpo de la tabla
@@ -316,7 +330,6 @@ function AgregarLineaDeDetalle(button) {
         const NuevaLineaDeCabecera = document.createElement('tr');
         NuevaLineaDeCabecera.innerHTML = `    
             <th>Tipo</th>
-            <th>Foto</th>
             <th>Nombre producto</th>
             <th>DESCRIPCIÓN</th>
             <th>CANTIDAD</th>
@@ -324,6 +337,7 @@ function AgregarLineaDeDetalle(button) {
             <th>DESCUENTO %</th>
             <th>TOTAL</th>
             <th>COLOR</th>
+            <th>FOTO</th> <!-- Nueva columna de foto -->
             <th>ACCIÓN</th>
             <th></th> <!-- Espacio para el botón de eliminar cabecera -->
         `;
@@ -334,7 +348,7 @@ function AgregarLineaDeDetalle(button) {
     // Crear una nueva fila de detalle
     const NuevaFila = document.createElement('tr');
     NuevaFila.innerHTML = `
-        <td colspan="9">
+        <td colspan="10">
             <select name="tipo_producto[${IndiceTitulo}][${subIndiceTitulo}][]" class="select-tipo-producto" onchange="CapturarTipoYCambiar(this)">
                 <option value="">Seleccione un tipo</option>
             </select>
@@ -342,7 +356,6 @@ function AgregarLineaDeDetalle(button) {
                 <option value="nuevo" selected>Nuevo</option>
                 <!-- Aquí se agregarán las opciones de productos obtenidas de la base de datos -->
             </select>
-            <img src="" alt="Imagen del producto" class="producto-imagen" style="display: none; width: 50px; height: 50px; margin-right: 10px;">
         </td>
         <td class="hidden-column"><input type="text" name="nombre_producto[${IndiceTitulo}][${subIndiceTitulo}][]" oninput="QuitarCaracteresInvalidos(this)"></td>
         <td class="hidden-column"><input type="checkbox" onclick="MostrarDescripcion(this)"></td>
@@ -358,6 +371,10 @@ function AgregarLineaDeDetalle(button) {
                 <option value="rojo" style="color: red;">Rojo</option>
             </select>
         </td>
+        <td class="hidden-column">
+            <input type="file" name="foto[${IndiceTitulo}][${subIndiceTitulo}][]" accept="image/*" style="display: none;">
+            <img class="foto-preview" style="display: none; max-width: 100px; max-height: 100px;" />
+        </td> <!-- Campo de entrada de foto y vista previa -->
         <td colspan="2" class="hidden-column">
             <button type="button" class="btn-eliminar" onclick="QuitarLineaDeDetalle(this)">Eliminar</button>
         </td>
@@ -371,7 +388,7 @@ function AgregarLineaDeDetalle(button) {
     LineaDeDescripcion.className = 'descripcion-row';
     LineaDeDescripcion.style.display = 'none';
     LineaDeDescripcion.innerHTML = `
-        <td colspan="9">
+        <td colspan="10">
             <textarea name="detalle_descripcion[${IndiceTitulo}][${subIndiceTitulo}][]" placeholder="Ingrese sólo si requiere ingresar una descripción extendida del producto o servicio" oninput="QuitarCaracteresInvalidos(this)"></textarea>
         </td>
     `;

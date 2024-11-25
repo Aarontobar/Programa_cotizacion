@@ -9,6 +9,8 @@ $result = $mysqli->query($sql);
 $producto = [];
 if ($result->num_rows > 0) {
     $producto = $result->fetch_assoc();
+    // Modificar la ruta de la foto
+    $producto['ruta_foto'] = preg_replace('/^(?:\.\.\/){4}/', '../', $producto['ruta_foto']);
 }
 
 echo json_encode($producto);

@@ -9,10 +9,8 @@ $result = $mysqli->query($sql);
 $productos = [];
 if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
-        // Eliminar los primeros tres ../../../ de la ruta_foto
-        if (strpos($row['ruta_foto'], '../../../') === 0) {
-            $row['ruta_foto'] = substr($row['ruta_foto'], 9);
-        }
+        // Obtener solo el nombre del archivo de ruta_foto y guardarlo en una variable diferente
+        $row['nombre_archivo_foto'] = basename($row['ruta_foto']);
         $productos[] = $row;
     }
 }

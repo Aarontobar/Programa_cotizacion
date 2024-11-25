@@ -31,23 +31,28 @@ $id_empresa = isset($_GET['id']) ? intval($_GET['id']) : 0;
 
 // Consultar los tipos de productos disponibles en la base de datos
 
-$sql = "SELECT id_tipo_producto, tipo_producto FROM p_tipo_producto";
+$sql = "SELECT id_tipo_producto, tipo_producto, titulo FROM p_tipo_producto ORDER BY titulo, tipo_producto";
 $result = $conn->query($sql);
 
 // Preparar opciones para el select de tipos de productos
-
 $options = "";
+$currentTitulo = "";
+
 if ($result->num_rows > 0) {
-
-    // Si hay tipos de productos, agregar cada uno como una opción en el select
-
     while ($row = $result->fetch_assoc()) {
+        if ($currentTitulo != $row["titulo"]) {
+            if ($currentTitulo != "") {
+                $options .= "</optgroup>";
+            }
+            $currentTitulo = $row["titulo"];
+            $options .= "<optgroup label=\"" . htmlspecialchars($currentTitulo) . "\">";
+        }
         $options .= "<option value=\"" . $row["id_tipo_producto"] . "\">" . htmlspecialchars($row["tipo_producto"]) . "</option>";
     }
+    if ($currentTitulo != "") {
+        $options .= "</optgroup>";
+    }
 } else {
-
-    // Si no hay tipos de productos, mostrar un mensaje en la opción
-
     $options = "<option value=\"\">No hay tipos de productos disponibles</option>";
 }
 
@@ -64,7 +69,7 @@ $conn->close();
 
 <!-- TITULO: FORMULARIO -->
     <!-- Formulario de los productos a crear -->
-<form id="productos-form" action="procesar_productos.php" method="post" enctype="multipart/form-data">
+<form id="productos-form" action="crear_nuevo/menu_2_programas/boton3_crear_producto/procesar_productos.php" method="post" enctype="multipart/form-data">
     <fieldset>
 
         <!-- TÍTULO PARA LOS DETALLES DEL PRODUCTO -->

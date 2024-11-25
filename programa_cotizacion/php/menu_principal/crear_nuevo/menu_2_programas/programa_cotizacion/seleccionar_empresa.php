@@ -37,9 +37,12 @@ BPPJ
         // Función para ajustar la ruta de la imagen
         if (!function_exists('ajustarRuta')) {
             function ajustarRuta($ruta) {
-                // Reemplaza la ruta para que incluya "crear_nuevo"
-                $rutaAjustada = str_replace('../../imagenes/', '../../imagenes/crear_nuevo/', $ruta);
-                return $rutaAjustada;
+            // Define la ruta manualmente
+            $rutaManual = '../../imagenes/menu_principal/crear_nuevo/programa_cotizacion/';
+            // Extrae el nombre del archivo de la ruta original
+            $nombreArchivo = basename($ruta);
+            // Retorna la ruta manual con el nombre del archivo
+            return $rutaManual . $nombreArchivo;
             }
         }
 

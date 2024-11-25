@@ -248,21 +248,6 @@ if ($result->num_rows > 0) {
             </div>
             <div class="form-group-inline">
                 <div class="form-group">
-                    <!-- TÍTULO: CAMPO PARA LA COMUNA DEL CLIENTE -->
-                    <!-- Etiqueta PARA el campo de entrada de la comuna del cliente -->
-                    <label for="cliente_comuna">Comuna:</label> 
-                    <!-- TÍTULO: CAMPO PARA INGRESAR LA COMUNA DEL CLIENTE -->
-                    <!-- datos Cliente_comuna -->
-                    <input type="text" id="cliente_comuna" name="cliente_comuna" 
-                        placeholder="Ej: La Reina, Providencia" 
-                        required 
-                        minlength="3" 
-                        maxlength="50" 
-                        pattern="^[a-zA-ZÀ-ÿ\s]+$" 
-                        oninput="QuitarCaracteresInvalidos(this)"
-                        title="Ingresa una comuna válida (Ej: La Reina, Providencia). Solo se permiten letras y espacios."> <!-- Campo de texto PARA ingresar la comuna del cliente. Este campo no es obligatorio -->
-                </div>
-                <div class="form-group">
                     <!-- TÍTULO: CAMPO PARA LA CIUDAD DEL CLIENTE -->
                     <!-- Etiqueta PARA el campo de entrada de la ciudad del cliente -->
                     <label for="cliente_ciudad">Ciudad:</label> 
@@ -276,6 +261,21 @@ if ($result->num_rows > 0) {
                         pattern="^[a-zA-ZÀ-ÿ\s]+$" 
                         oninput="QuitarCaracteresInvalidos(this)"
                         title="Ingresa una ciudad válida (Ej: Santiago, Valparaíso). Solo se permiten letras y espacios."> <!-- Campo de texto PARA ingresar la ciudad del cliente. Este campo no es obligatorio -->
+                </div>
+                <div class="form-group">
+                    <!-- TÍTULO: CAMPO PARA LA COMUNA DEL CLIENTE -->
+                    <!-- Etiqueta PARA el campo de entrada de la comuna del cliente -->
+                    <label for="cliente_comuna">Comuna:</label> 
+                    <!-- TÍTULO: CAMPO PARA INGRESAR LA COMUNA DEL CLIENTE -->
+                    <!-- datos Cliente_comuna -->
+                    <input type="text" id="cliente_comuna" name="cliente_comuna" 
+                        placeholder="Ej: La Reina, Providencia" 
+                        required 
+                        minlength="3" 
+                        maxlength="50" 
+                        pattern="^[a-zA-ZÀ-ÿ\s]+$" 
+                        oninput="QuitarCaracteresInvalidos(this)"
+                        title="Ingresa una comuna válida (Ej: La Reina, Providencia). Solo se permiten letras y espacios."> <!-- Campo de texto PARA ingresar la comuna del cliente. Este campo no es obligatorio -->
                 </div>
             </div>
             <div class="form-group">

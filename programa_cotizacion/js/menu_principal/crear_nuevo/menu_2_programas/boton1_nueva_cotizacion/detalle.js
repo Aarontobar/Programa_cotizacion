@@ -179,7 +179,6 @@ BPPJ
 
 
 // TÍTULO: CAPTURAR TIPO Y CAMBIAR COLUMNAS VISIBLES
-// Función para capturar el tipo seleccionado y mostrar/ocultar columnas de la fila correspondiente
 function CapturarTipoYCambiar(selectElement) {
     const row = selectElement.closest('tr'); // Obtener la fila más cercana al elemento select
     const ColumnasOcultas = row.querySelectorAll('.hidden-column'); // Seleccionar todas las columnas ocultas en la fila
@@ -242,12 +241,15 @@ function CapturarTipoYCambiar(selectElement) {
 
                 // Agregar evento para cargar los detalles del producto seleccionado
                 selectProducto.addEventListener('change', function() {
+                    const productoImagen = row.querySelector('.producto-imagen');
                     if (this.value === 'nuevo') {
                         // Limpiar los campos del formulario
                         row.querySelector('input[name^="nombre_producto"]').value = '';
                         row.querySelector('input[name^="detalle_precio_unitario"]').value = '';
                         row.querySelector('input[name^="detalle_cantidad"]').value = '';
                         row.querySelector('textarea[name^="detalle_descripcion"]').value = '';
+                        productoImagen.src = ''; // Limpiar la imagen
+                        productoImagen.style.display = 'none'; // Ocultar la imagen
                         ActualizarTotal(row.querySelector('input[name^="detalle_precio_unitario"]'));
                     } else {
                         fetch(`crear_nuevo/menu_2_programas/boton1_nueva_cotizacion/obtener_detalles.php?id=${this.value}`)
@@ -255,8 +257,9 @@ function CapturarTipoYCambiar(selectElement) {
                             .then(producto => {
                                 row.querySelector('input[name^="nombre_producto"]').value = producto.nombre_producto;
                                 row.querySelector('input[name^="detalle_precio_unitario"]').value = producto.precio;
-                                row.querySelector('input[name^="detalle_cantidad"]').value = producto.cantidad;
                                 row.querySelector('textarea[name^="detalle_descripcion"]').value = producto.descripcion;
+                                productoImagen.src = producto.ruta_foto; // Mostrar la imagen del producto
+                                productoImagen.style.display = 'block'; // Mostrar la imagen
                                 ActualizarTotal(row.querySelector('input[name^="detalle_precio_unitario"]'));
                             })
                             .catch(error => console.error('Error al obtener los detalles del producto:', error));
@@ -288,9 +291,6 @@ function CapturarTipoYCambiar(selectElement) {
     });
 }
 
-// TÍTULO: AGREGAR LÍNEA DE DETALLE
-
-// Función para agregar una nueva línea de detalle a la tabla dentro de la sección de detalle
 function AgregarLineaDeDetalle(button) { 
     const section = button.closest('.seccion-detalle'); // Obtener la sección del detalle
     const CuerpoTabla = section.querySelector('.detalle-contenido'); // Obtener el cuerpo de la tabla
@@ -316,6 +316,7 @@ function AgregarLineaDeDetalle(button) {
         const NuevaLineaDeCabecera = document.createElement('tr');
         NuevaLineaDeCabecera.innerHTML = `    
             <th>Tipo</th>
+            <th>Foto</th>
             <th>Nombre producto</th>
             <th>DESCRIPCIÓN</th>
             <th>CANTIDAD</th>
@@ -341,6 +342,7 @@ function AgregarLineaDeDetalle(button) {
                 <option value="nuevo" selected>Nuevo</option>
                 <!-- Aquí se agregarán las opciones de productos obtenidas de la base de datos -->
             </select>
+            <img src="" alt="Imagen del producto" class="producto-imagen" style="display: none; width: 50px; height: 50px; margin-right: 10px;">
         </td>
         <td class="hidden-column"><input type="text" name="nombre_producto[${IndiceTitulo}][${subIndiceTitulo}][]" oninput="QuitarCaracteresInvalidos(this)"></td>
         <td class="hidden-column"><input type="checkbox" onclick="MostrarDescripcion(this)"></td>
@@ -386,11 +388,16 @@ function AgregarLineaDeDetalle(button) {
         .then(response => response.json())
         .then(data => {
             const selectTipoProducto = NuevaFila.querySelector('.select-tipo-producto');
-            data.forEach(tipo => {
-                const option = document.createElement('option');
-                option.value = tipo.id_tipo_producto;
-                option.textContent = tipo.tipo_producto;
-                selectTipoProducto.appendChild(option);
+            data.forEach(grupo => {
+                const optgroup = document.createElement('optgroup');
+                optgroup.label = grupo.titulo;
+                grupo.productos.forEach(producto => {
+                    const option = document.createElement('option');
+                    option.value = producto.id_tipo_producto;
+                    option.textContent = producto.tipo_producto;
+                    optgroup.appendChild(option);
+                });
+                selectTipoProducto.appendChild(optgroup);
             });
         })
         .catch(error => console.error('Error al obtener los tipos de productos:', error));

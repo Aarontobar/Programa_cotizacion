@@ -642,7 +642,8 @@ CREATE TABLE C_Totales (
 
 CREATE TABLE p_tipo_producto (
     id_tipo_producto INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    tipo_producto VARCHAR(255) NOT NULL
+    tipo_producto VARCHAR(255) NOT NULL,
+    titulo VARCHAR(255)
 ) ENGINE=InnoDB ;
 
 -- ----------------------------------------------------------
@@ -656,6 +657,7 @@ CREATE TABLE productos (
     precio DECIMAL(10, 2) NOT NULL,
     descripcion TEXT,
     cantidad INT NOT NULL,
+    ruta_foto VARCHAR(255),
     FOREIGN KEY (tipo_producto) REFERENCES p_tipo_producto(id_tipo_producto)
 ) ENGINE=InnoDB;
 
@@ -1041,27 +1043,28 @@ INSERT INTO Tp_Cuenta (tipocuenta, descripcion) VALUES
 ('Cuenta Nómina', 'Cuenta para recibir pagos de nómina'),
 ('Cuenta de Inversión', 'Cuenta asociada a productos de inversión');
 
-INSERT INTO p_tipo_producto (tipo_producto) VALUES ('Nuevo');
-INSERT INTO p_tipo_producto (tipo_producto) VALUES ('Insumo');
-INSERT INTO p_tipo_producto (tipo_producto) VALUES ('Producto');
-INSERT INTO p_tipo_producto (tipo_producto) VALUES ('Material');
-INSERT INTO p_tipo_producto (tipo_producto) VALUES ('Ferretería');
-INSERT INTO p_tipo_producto (tipo_producto) VALUES ('Profesional');
-INSERT INTO p_tipo_producto (tipo_producto) VALUES ('Técnico');
-INSERT INTO p_tipo_producto (tipo_producto) VALUES ('Maestro');
-INSERT INTO p_tipo_producto (tipo_producto) VALUES ('Ayudante');
-INSERT INTO p_tipo_producto (tipo_producto) VALUES ('Producto con Imagen');
-INSERT INTO p_tipo_producto (tipo_producto) VALUES ('Otros');
-INSERT INTO p_tipo_producto (tipo_producto) VALUES ('Extras del Proyecto');
-INSERT INTO p_tipo_producto (tipo_producto) VALUES ('Horas Extras');
-INSERT INTO p_tipo_producto (tipo_producto) VALUES ('Seguro');
-INSERT INTO p_tipo_producto (tipo_producto) VALUES ('Viático');
-INSERT INTO p_tipo_producto (tipo_producto) VALUES ('Bodega');
-INSERT INTO p_tipo_producto (tipo_producto) VALUES ('Gastos Generales');
-INSERT INTO p_tipo_producto (tipo_producto) VALUES ('Utilidades de la Empresa');
-INSERT INTO p_tipo_producto (tipo_producto) VALUES ('Garantías');
-INSERT INTO p_tipo_producto (tipo_producto) VALUES ('Eventos o Pérdidas');
-INSERT INTO p_tipo_producto (tipo_producto) VALUES ('Asesoría');
+-- Título para la sección tipos de productos
+INSERT INTO p_tipo_producto (tipo_producto, titulo) VALUES ('Nuevo', 'Título: Productos');
+INSERT INTO p_tipo_producto (tipo_producto, titulo) VALUES ('Insumo', 'Título: Productos');
+INSERT INTO p_tipo_producto (tipo_producto, titulo) VALUES ('Producto', 'Título: Productos');
+INSERT INTO p_tipo_producto (tipo_producto, titulo) VALUES ('Material', 'Título: Productos');
+INSERT INTO p_tipo_producto (tipo_producto, titulo) VALUES ('Ferretería', 'Título: Productos');
+INSERT INTO p_tipo_producto (tipo_producto, titulo) VALUES ('Profesional', 'Título: Profesionales');
+INSERT INTO p_tipo_producto (tipo_producto, titulo) VALUES ('Técnico', 'Título: Profesionales');
+INSERT INTO p_tipo_producto (tipo_producto, titulo) VALUES ('Maestro', 'Título: Profesionales');
+INSERT INTO p_tipo_producto (tipo_producto, titulo) VALUES ('Ayudante', 'Título: Profesionales');
+INSERT INTO p_tipo_producto (tipo_producto, titulo) VALUES ('Producto con Imagen', 'Título: Productos con Imagen');
+INSERT INTO p_tipo_producto (tipo_producto, titulo) VALUES ('Otros', 'Título: Otros');
+INSERT INTO p_tipo_producto (tipo_producto, titulo) VALUES ('Extras del Proyecto', 'Título: Otros');
+INSERT INTO p_tipo_producto (tipo_producto, titulo) VALUES ('Horas Extras', 'Título: Otros');
+INSERT INTO p_tipo_producto (tipo_producto, titulo) VALUES ('Seguro', 'Título: Otros');
+INSERT INTO p_tipo_producto (tipo_producto, titulo) VALUES ('Viático', 'Título: Otros');
+INSERT INTO p_tipo_producto (tipo_producto, titulo) VALUES ('Bodega', 'Título: Otros');
+INSERT INTO p_tipo_producto (tipo_producto, titulo) VALUES ('Gastos Generales', 'Título: Otros');
+INSERT INTO p_tipo_producto (tipo_producto, titulo) VALUES ('Utilidades de la Empresa', 'Título: Otros');
+INSERT INTO p_tipo_producto (tipo_producto, titulo) VALUES ('Garantías', 'Título: Otros');
+INSERT INTO p_tipo_producto (tipo_producto, titulo) VALUES ('Eventos o Pérdidas', 'Título: Otros');
+INSERT INTO p_tipo_producto (tipo_producto, titulo) VALUES ('Asesoría', 'Título: Otros');
 
 INSERT INTO productos (nombre_producto, tipo_producto, precio, descripcion, cantidad) VALUES ('Producto Nuevo 1', 1, 100.00, 'Descripción del Producto Nuevo 1', 10);
 INSERT INTO productos (nombre_producto, tipo_producto, precio, descripcion, cantidad) VALUES ('Producto Nuevo 2', 1, 150.00, 'Descripción del Producto Nuevo 2', 20);

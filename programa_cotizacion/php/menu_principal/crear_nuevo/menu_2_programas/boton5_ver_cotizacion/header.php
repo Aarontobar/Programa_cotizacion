@@ -197,7 +197,7 @@ if ($stmt_firma = $mysqli->prepare($sql_firma)) {
 <!-- TITULO: IMPORTACIÓN DE ARCHIVO .CSS -->
 
     <!-- Llama al archivo CSS -->
-    <link rel="stylesheet" href="../../../../../css/menu_principal/crear_nuevo/menu_2_programas/boton5_ver_cotizacion/header.css">
+    <link rel="stylesheet" href="../../css/menu_principal/crear_nuevo/menu_2_programas/boton5_ver_cotizacion/header.css">
 
 
 <!-- TÍTULO: CONTENEDOR DEL ENCABEZADO -->
@@ -252,7 +252,7 @@ if ($stmt_firma = $mysqli->prepare($sql_firma)) {
 <!-- TITULO: IMPORTACION DE ARCHIVO .JS -->
 
     <!-- Llama al archivo JS -->
-    <script src="../../../../../js/menu_principal/crear_nuevo/ver_cotizacion/header.js"></script>
+    <script src="../../js/menu_principal/crear_nuevo/menu_2_programas/boton5_ver_cotizacion/header.js"></script>
 
 <!-- ------------------------------------------------------------------------------------------------------------
     -------------------------------------- FIN ITred Spa  header .PHP -----------------------------------

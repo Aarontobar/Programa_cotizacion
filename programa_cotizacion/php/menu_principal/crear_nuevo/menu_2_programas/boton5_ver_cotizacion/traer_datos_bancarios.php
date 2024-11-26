@@ -153,7 +153,7 @@ BPPJ
 <!-- TÍTULO: IMPORTACIÓN DE ARCHIVO .JS -->
 
     <!-- llama al archivo JS -->
-    <script src="../../js/menu_principal/crear_nuevo/ver_cotizacion/traer_datos_bancarios.js"></script> 
+    <script src="../../js/menu_principal/crear_nuevo/menu_2_programas/boton5_ver_cotizacion/traer_datos_bancarios.js"></script> 
 
 
      <!-- ------------------------------------------------------------------------------------------------------------

@@ -14,14 +14,13 @@ BPPJ
     ------------------------------------------------------------------------------------------------------------- */
 
 /* ESTILO GENERAL PARA EL CUERPO DEL DOCUMENTO */
-
+.ver{
     /* Configura la fuente, tamaño, márgenes y rellenos del cuerpo */
-    body {
-        font-family: Arial, sans-serif; /* Fuente utilizada */
-        font-size: 12px; /* Tamaño de la fuente */
-        margin: 0; /* Sin márgenes */
-        padding: 0; /* Sin relleno */
-    }
+    font-family: Arial, sans-serif; /* Fuente utilizada */
+    font-size: 12px; /* Tamaño de la fuente */
+    margin: 0; /* Sin márgenes */
+    padding: 0; /* Sin relleno */
+
 
 /* ESTILO PARA LAS TABLAS */
 
@@ -496,7 +495,7 @@ BPPJ
             display: block !important; /* Asegúrate de que la marca de agua se imprima */
         }
     }
-
+}
 
 /* --------------------------------------------------------------------------------------------------------------
     ---------------------------------------- FIN ITred Spa Ver .CSS ---------------------------------------

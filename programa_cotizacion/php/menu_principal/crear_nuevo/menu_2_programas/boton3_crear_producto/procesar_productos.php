@@ -54,7 +54,7 @@ foreach ($_POST['nombre_producto'] as $index => $nombre_producto) {
     // Verificar si se ha subido una imagen
     $ruta_foto = null; // Inicializa la variable para la ruta de la foto
     if (isset($_FILES['foto_producto']['error'][$index]) && $_FILES['foto_producto']['error'][$index] == UPLOAD_ERR_OK) {
-        $upload_dir = '../../../../../imagenes/menu_principal/crear_nuevo/crear_producto/'; // Ruta relativa para subir imágenes
+        $upload_dir = '../../imagenes/menu_principal/crear_nuevo/crear_producto/'; // Ruta relativa para subir imágenes
         $tmp_name = $_FILES['foto_producto']['tmp_name'][$index]; // Ruta temporal del archivo subido
         $name = basename($_FILES['foto_producto']['name'][$index]); // Nombre del archivo
 

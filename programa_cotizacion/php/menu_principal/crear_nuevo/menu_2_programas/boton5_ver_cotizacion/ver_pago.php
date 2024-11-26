@@ -96,13 +96,13 @@ $stmt_pagos->close();
 <!-- TÍTULO: IMPORTACIÓN DE ARCHIVO .CSS -->
 
     <!-- llama al archivo CSS -->
-    <link rel="stylesheet" href="../../../../../css/menu_principal/crear_nuevo/ver_pago/.css">
+    <link rel="stylesheet" href="../../css/menu_principal/crear_nuevo/ver_pago/.css">
 
 
 <!-- TÍTULO: IMPORTACIÓN DE ARCHIVO .JS -->
 
     <!-- llama al archivo JS -->
-    <script src="../../../../../js/menu_principal/crear_nuevo/ver_cotizacion/ver_pago.js"></script>
+    <script src="../../js/menu_principal/crear_nuevo/menu_2_programas/boton5_ver_cotizacion/ver_pago.js"></script>
 
     <!-------------------------------------------------------------------------->
 

@@ -42,6 +42,7 @@ BPPJ
                 <title>Imprimir</title>
                 <style>
                     @media print {
+                    .ver{
                         body {
                             font-family: Arial, sans-serif; /* Establecer fuente */
                             margin: 0; /* Sin márgenes */
@@ -57,6 +58,7 @@ BPPJ
                             size: legal; /* Tamaño oficio (legal) */
                             margin: 0; /* Sin márgenes */
                         }
+                    }
                     }
                 </style>
             </head>

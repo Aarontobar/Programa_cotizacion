@@ -120,7 +120,7 @@ if ($result->num_rows > 0) {
 <!-- TITULO: IMPORTACIÓN DE ARCHIVO .CSS -->
 
     <!-- Llama al archivo CSS -->
-    <link rel="stylesheet" href="../../../../../css/menu_principal/crear_nuevo/menu_2_programas/boton5_ver_cotizacion/marca_de_agua.css">
+    <link rel="stylesheet" href="../../css/menu_principal/crear_nuevo/menu_2_programas/boton5_ver_cotizacion/marca_de_agua.css">
 
 <!-- Clase por defecto -->
 <div class="marca_de_agua"></div> 
@@ -335,7 +335,7 @@ if ($result->num_rows > 0) {
 <!-- TITULO: IMPORTACION DE ARCHIVO .JS -->
 
     <!-- Llama al archivo JS -->
-    <script src="../../../../../js/menu_principal/crear_nuevo/ver_cotizacion/marca_de_agua.js"></script>
+    <script src="../../js/menu_principal/crear_nuevo/menu_2_programas/boton5_ver_cotizacion/marca_de_agua.js"></script>
 
 
 <!-- ------------------------------------------------------------------------------------------------------------

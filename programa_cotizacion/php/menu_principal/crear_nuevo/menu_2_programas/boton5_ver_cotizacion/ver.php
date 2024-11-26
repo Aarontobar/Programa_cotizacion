@@ -12,19 +12,6 @@ BPPJ
     ------------------------------------- INICIO ITred Spa Ver .PHP --------------------------------------
     ------------------------------------------------------------------------------------------------------------- -->
 
-<!-- ------------------------
-     -- INICIO CONEXION BD --
-     ------------------------ -->
-
-<?php
-// Establece la conexión a la base de datos de ITred Spa
-$mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
-?>
-
-<!-- ------------------------
-     -- FINAL CONEXION BD --
-     ------------------------ -->
-     
      <?php
 // Establece la conexión a la base de datos
 
@@ -32,8 +19,8 @@ if ($mysqli->connect_error) {
     die("Connection failed: " . $mysqli->connect_error);
 }
 
-if (isset($_GET['id']) && is_numeric($_GET['id'])) {
-    $id_cotizacion = (int) $_GET['id'];
+if (isset($_GET['ver_cotizacion_id']) && is_numeric($_GET['ver_cotizacion_id'])) {
+    $id_cotizacion = (int) $_GET['ver_cotizacion_id'];
 } else {
     // If no ID is provided, get the most recent cotización
     $sql = "SELECT id_cotizacion FROM C_Cotizaciones ORDER BY id_cotizacion DESC LIMIT 1";
@@ -56,9 +43,6 @@ $result = $stmt->get_result();
 
 if ($result->num_rows > 0) {
     $cotizacion = $result->fetch_assoc();
-    // Explaya los detalles de la cotización
-    echo "Número de cotización: " . htmlspecialchars($cotizacion['numero_cotizacion']) . "<br>";
-    echo "Fecha de emisión: " . htmlspecialchars($cotizacion['fecha_emision']) . "<br>";
 } else {
     echo "No se encontró la cotización con ID: " . $id_cotizacion;
 }
@@ -72,10 +56,11 @@ $stmt->close();
         <!-- TÍTULO: IMPORTACIÓN DE ARCHIVO .CSS -->
 
             <!-- llama al archivo CSS -->
-            <link rel="stylesheet" href="../../../../../css/menu_principal/crear_nuevo/menu_2_programas/boton5_ver_cotizacion/ver.css">
+            <link rel="stylesheet" href="../../css/menu_principal/crear_nuevo/menu_2_programas/boton5_ver_cotizacion/ver.css">
     
     </head>
 <body>
+<div class="ver">
 
     <!-- TÍTULO: CONTENEDOR DE BOTONES -->
 
@@ -214,18 +199,13 @@ $stmt->close();
     </div>
 
     
-
+</div>
 <!-- TÍTULO: IMPORTACIÓN DE ARCHIVO .JS -->
 
     <!-- llama al archivo JS -->
-    <script src="../../../../../js/menu_principal/crear_nuevo/ver_cotizacion/ver.js"></script>
+    <script src="../../js/menu_principal/crear_nuevo/menu_2_programas/boton5_ver_cotizacion/ver_principal.js"></script>
 </body>
 </html>
-
-<?php 
-// Cerrar la conexión principal al final
-$mysqli->close();
-?>
 <!-- ------------------------------------------------------------------------------------------------------------
     -------------------------------------- FIN ITred Spa Ver .PHP -----------------------------------
     ------------------------------------------------------------------------------------------------------------- -->

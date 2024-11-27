@@ -30,21 +30,16 @@ $conn = new mysqli('localhost', 'root', '', 'ITredSpa_bd');
 
 // Verificar la conexión
 
+// Verificar la conexión
 if ($conn->connect_error) {
     die("Conexión fallida: " . $conn->connect_error);
 }
 
-//--------------------------------------------------------------------//
-
 // Obtener los tipos de productos
-
 $sql = "SELECT id_tipo_producto, tipo_producto FROM p_tipo_producto";
 $result = $conn->query($sql);
 
-//--------------------------------------------------------------------//
-
 // Preparar opciones para el select
-
 $options = "";
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {

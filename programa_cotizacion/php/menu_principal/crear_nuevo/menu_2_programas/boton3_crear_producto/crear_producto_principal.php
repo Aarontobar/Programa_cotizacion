@@ -33,30 +33,21 @@ $conn = new mysqli('localhost', 'root', '', 'ITredSpa_bd');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario de Creación de Productos</title>
 
-<!-- TÍTULO: IMPORTACIÓN DE ARCHIVO .CSS -->
-    <!-- Llama al archivo CSS -->
+    <!-- TÍTULO: IMPORTACIÓN DE ARCHIVO .CSS -->
     <link rel="stylesheet" href="../../css/menu_principal/crear_nuevo/menu_2_programas/boton3_crear_producto/crear_producto.css">
-
 </head>
 <body>
     <div class="contenedor">
         <div class="form-contenedor">
-            
             <!-- TÍTULO: INCLUYE EL FORMULARIO DE CREACIÓN DE PRODUCTO -->
-
-                <!-- Incluye el formulario de creación de producto -->
-                <?php include 'formulario_creacion_producto.php'; ?>
-                
+            <?php include 'formulario_creacion_producto.php'; ?>
         </div>
     </div>
+
+    <!-- TÍTULO: IMPORTACIÓN DE ARCHIVO .JS -->
+    <script src="../../js/menu_principal/crear_nuevo/menu_2_programas/boton3_crear_producto/crear_producto_principal.js"></script>
 </body>
 </html>
-
-
-<!-- TÍTULO: IMPORTACIÓN DE ARCHIVO .JS -->
-    <!-- Llama al archivo JS -->
-    <script src="js/menu_principal/crear_nuevo/menu_2_programas/boton3_crear_producto/crear_producto_principal.js"></script>
-
 <!-- ------------------------------------------------------------------------------------------------------------
 -------------------------------------- FIN ITred Spa Creacion producto .PHP -----------------------------------
 ------------------------------------------------------------------------------------------------------------- -->

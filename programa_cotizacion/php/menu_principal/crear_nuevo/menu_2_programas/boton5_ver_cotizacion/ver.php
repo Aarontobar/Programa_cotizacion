@@ -67,19 +67,11 @@ $stmt->close();
     <!-- Contenedor de botones -->
     <div class="button-contenedor">
 
-        <!-- TÍTULO: BOTÓN VOLVER -->
-
-        <button class="button volver" onclick="window.history.back()">Volver</button>
 
 
         <!-- TÍTULO: BOTÓN IMPRIMIR -->
 
         <button class="button imprimir" onclick="imprimir()">Imprimir</button>
-
-
-        <!-- TÍTULO: BOTÓN VOLVER AL LISTADO -->
-
-        <button class="button volver listado" onclick="location.href='ver_listado.php?id=<?php echo $id_empresa; ?>'">Volver al listado</button>
         
 
         <!-- TÍTULO: BOTÓN MODIFICAR COTIZACIÓN -->

@@ -210,30 +210,26 @@ if ($result->num_rows > 0) {
         const marca_de_agua = document.querySelector('.marca_de_agua');
         const textoPersonalizadoDiv = document.getElementById('textoPersonalizado');
 
-        //-------------------------------------------------------------------------//
+        // Obtener el contenedor principal
+        const contenedor = document.querySelector('.ver');
+
+        // Ajustar el tamaño de la marca de agua al tamaño del contenedor
+        marca_de_agua.style.width = contenedor.offsetWidth + 'px';
+        marca_de_agua.style.height = contenedor.offsetHeight + 'px';
 
         // Ocultar todas las marcas de agua
-
         marca_de_agua.style.display = 'none'; 
         textoPersonalizadoDiv.style.display = 'none'; // Ocultar texto personalizado inicialmente
 
-        //-------------------------------------------------------------------------//
-
         // Limpiar el fondo de la marca de agua, excepto si es imagen personalizada
-
         if (marcaAguaSeleccionada !== 'imagen_personalizada') {
             marca_de_agua.style.backgroundImage = 'none';
             imagenSubida = null; // Reiniciar la variable si se cambia a otra opción
         }
 
-        //-------------------------------------------------------------------------//
-        
         textoPersonalizadoDiv.innerHTML = ''; // Limpiar texto personalizado
 
-        //-------------------------------------------------------------------------//
-
         // Establecer la marca de agua según la opción seleccionada
-
         if (marcaAguaSeleccionada === 'nombre_empresa') {
             textoPersonalizadoDiv.innerHTML = '<?php echo $items[0]["nombre_empresa"]; ?>';
             textoPersonalizadoDiv.style.display = 'block'; // Mostrar texto
@@ -249,10 +245,7 @@ if ($result->num_rows > 0) {
             marca_de_agua.style.display = 'block'; // Mostrar la marca de agua con la imagen personalizada
         }
 
-        //-------------------------------------------------------------------------//
-
         // Aplicar disposición
-
         if (disposicionSeleccionada === 'patron') {
             marca_de_agua.style.backgroundRepeat = 'repeat'; // Repetir el fondo
         } else if (disposicionSeleccionada === 'centro') {
@@ -260,17 +253,11 @@ if ($result->num_rows > 0) {
             marca_de_agua.style.backgroundRepeat = 'no-repeat'; // No repetir la imagen
         }
 
-        //-------------------------------------------------------------------------//
-
         // Aplicar rotación y centrado
-
         marca_de_agua.style.transform = 'rotate(' + anguloRotacion + 'deg)'; // Aplicar la rotación
         textoPersonalizadoDiv.style.transform = 'translate(-50%, -50%) rotate(' + anguloRotacion + 'deg)'; // Centrar y rotar el texto
 
-        //-------------------------------------------------------------------------//
-
         // Mostrar la marca de agua
-
         marca_de_agua.style.display = 'block';
         actualizarTamano(document.getElementById('tamano').value); // Aplicar tamaño
     }

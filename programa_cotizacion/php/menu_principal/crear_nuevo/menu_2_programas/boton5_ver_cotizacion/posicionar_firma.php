@@ -108,39 +108,26 @@ BPPJ
     ?>
 </div>
 
-
-<!-- Contenedor de Alineación -->
-<div>
-
 <!-- TÍTULO: ALINEACIÓN DE LA FIRMA -->
 
+<div>
     <label>
-
-    <!-- TÍTULO: OPCIÓN DE ALINEACIÓN IZQUIERDA -->
-
+        <!-- TÍTULO: OPCIÓN DE ALINEACIÓN IZQUIERDA -->
         <!-- alinea a la izquierda -->
-        <input type="radio" name="alineacion" value="izquierda" checked onchange="cambiarAlineacion('izquierda')"> Izquierda
+        <input type="radio" name="alineacion" value="Izquierda" checked onchange="cambiarAlineacion('izquierda')"> <span>Izquierda</span>
     </label>
 
-
     <label>
-        
-    <!-- TÍTULO: OPCIÓN DE ALINEACIÓN CENTRO -->
-
+        <!-- TÍTULO: OPCIÓN DE ALINEACIÓN CENTRO -->
         <!-- alinea al centro -->
-        <input type="radio" name="alineacion" value="centro" onchange="cambiarAlineacion('centro')"> Centro
+        <input type="radio" name="alineacion" value="Centro" onchange="cambiarAlineacion('centro')"> <span>Centro</span>
     </label>
-
 
     <label>
-        
-    <!-- TÍTULO: OPCIÓN DE ALINEACIÓN DERECHA -->
-
+        <!-- TÍTULO: OPCIÓN DE ALINEACIÓN DERECHA -->
         <!-- alinea a la derecha -->
-        <input type="radio" name="alineacion" value="derecha" onchange="cambiarAlineacion('derecha')"> Derecha
+        <input type="radio" name="alineacion" value="Derecha" onchange="cambiarAlineacion('derecha')"> <span>Derecha</span>
     </label>
-
-
 </div>
 
 

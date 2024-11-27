@@ -25,12 +25,6 @@ BPPJ
         // Clonar el contenido del contenedor para no alterar el original
         const contenidoClonado = contenedor.cloneNode(true);
         
-        // Ocultar los elementos que no deseas imprimir
-        const elementosAHidear = document.querySelectorAll('.marca_de_agua, #textoPersonalizado, #form-marca-agua, input[type="radio"], select');
-        elementosAHidear.forEach(elemento => {
-            elemento.style.display = 'none'; // Ocultar los elementos
-        });
-
         // Crear una nueva ventana para la impresión
         const ventanaImpresion = window.open('', '', 'width=850,height=1300'); // Ajusta el tamaño para hoja oficio
         
@@ -42,8 +36,7 @@ BPPJ
                 <title>Imprimir</title>
                 <style>
                     @media print {
-                    .ver{
-                        body {
+                        .ver {
                             font-family: Arial, sans-serif; /* Establecer fuente */
                             margin: 0; /* Sin márgenes */
                             padding: 0; /* Sin relleno */
@@ -54,16 +47,18 @@ BPPJ
                             page-break-after: always; /* Saltar página después de cada contenedor */
                         }
                         button { display: none; } /* Oculta el botón al imprimir */
+                        label, input[type="radio"], span { display: none; } /* Oculta los elementos específicos */
                         @page {
                             size: legal; /* Tamaño oficio (legal) */
                             margin: 0; /* Sin márgenes */
                         }
                     }
-                    }
                 </style>
             </head>
             <body>
-                <div class="contenedor">${contenidoClonado.innerHTML}</div> <!-- Incluir el contenido a imprimir -->
+                <div class="ver">
+                    <div class="contenedor">${contenidoClonado.innerHTML}</div> <!-- Incluir el contenido a imprimir -->
+                </div>
                 <script>
                     window.onload = function() {
                         window.print(); // Imprimir cuando la ventana se carga
@@ -75,11 +70,6 @@ BPPJ
         `);
         
         ventanaImpresion.document.close(); // Cerrar el documento para que se renderice
-
-        // Restaurar el estado de visibilidad de los elementos después de la impresión
-        elementosAHidear.forEach(elemento => {
-            elemento.style.display = ''; // Mostrar nuevamente los elementos
-        });
     }
 
 /* --------------------------------------------------------------------------------------------------------------

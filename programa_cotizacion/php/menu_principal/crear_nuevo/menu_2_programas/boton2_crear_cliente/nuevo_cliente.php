@@ -43,7 +43,7 @@ BPPJ
 
             <!-- Formulario para añadir cliente -->
             <form id="formulario-cliente" method="POST" action="" enctype="multipart/form-data">
-                <h1>Título: Rellena el formulario para agregar un nuevo cliente</h1>
+                <h1>Rellena el formulario para agregar un nuevo cliente</h1>
 
                 <!-- TÍTULO: CONTENEDOR SECUNDARIO QUE ORGANIZA LOS FORMULARIOS -->
 
@@ -54,7 +54,7 @@ BPPJ
                         
                             <!-- Información del negocio -->
                             <div class="formulario-empresa">
-                                <h3>Título: Información del Negocio / Empresa</h3>
+                                <h3>Información del Negocio / Empresa</h3>
 
                         <!-- TÍTULO: FORMULARIO DE EMPRESA DEL CLIENTE -->
                             <!-- Importación del formulario del cliente -->
@@ -64,7 +64,7 @@ BPPJ
                         <!-- TÍTULO: INFORMACIÓN DEL ENCARGADO / CLIENTE -->
                             <!-- Información del Encargado -->
                             <div class="formulario-encargado">
-                                <h3>Título: Información del Encargado / Cliente</h3>
+                                <h3>Información del Encargado / Cliente</h3>
 
                             <!-- TÍTULO: FORMULARIO DEL ENCARGADO DE LA EMPRESA -->
                                 <!-- Importación del formulario del encargado -->
@@ -83,7 +83,7 @@ BPPJ
 
                 <!-- TÍTULO: BOTÓN PARA CREAR CLIENTE -->
                         <!-- Botón para subir la información del cliente -->
-                    <button type="submit" class="submit">Título: Crear Cliente</button> 
+                    <button type="submit" class="submit">Crear Cliente</button> 
             </form> 
     </div>
 

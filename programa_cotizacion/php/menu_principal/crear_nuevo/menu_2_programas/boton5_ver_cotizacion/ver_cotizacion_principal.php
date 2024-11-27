@@ -121,8 +121,8 @@ if ($result->num_rows > 0) {
         $mensaje .= "<td>" . htmlspecialchars($row['vendedor_nombre']) . "</td>";
         $mensaje .= "<td class='estado-" . strtolower($row['estado']) . "'>" . htmlspecialchars($row['estado']) . "</td>";
         $mensaje .= "<td>";
-        $mensaje .= "<a href='?page=ver_cotizacion&action=ver&ver_cotizacion_id=" . $row['cotizacion_id'] . "&id=" . $id_empresa . "'>| Ver</a> | ";
-        $mensaje .= "<a href='crear_nuevo/menu_2_programas/boton5_ver_cotizacion/modificar_cotizacion.php?id=" . $row['cotizacion_id'] . "'>Modificar</a> | ";
+        $mensaje .= "<a href='?page=ver_cotizacion&action=ver&ver_cotizacion_id=" . $row['cotizacion_id'] . "&id=" . $id_empresa . "'>| Ver</a> | ";    
+        $mensaje .= "<a href='javascript:void(0);' onclick='cargarModificarCotizacion(" . $row['cotizacion_id'] . ")'>Modificar</a> | ";
         $mensaje .= "<a href='crear_nuevo/menu_2_programas/boton5_ver_cotizacion/eliminar_cotizacion.php?id=" . $row['cotizacion_id'] . "&id_empresa=" . $id_empresa . "'>Eliminar</a> | ";
         $mensaje .= "<form method='POST'>";
         $mensaje .= "<input type='hidden' name='cotizacion_id' value='" . $row['cotizacion_id'] . "'>";

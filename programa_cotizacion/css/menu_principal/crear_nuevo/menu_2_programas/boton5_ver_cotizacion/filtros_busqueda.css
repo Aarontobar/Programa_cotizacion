@@ -41,9 +41,9 @@ BPPJ
 /* TÍTULO: ESTILO DEL BOTÓN DE ENVÍO DEL FORMULARIO */
 
     /* Define el espaciado interno, color de fondo, color del texto y comportamiento del botón */
-    button[type="submit"] {
+    #tabla-cotizaciones button[type="submit"] {
         padding: 5px 15px; /* Espaciado interno del botón */
-        background-color: #4CAF50; /* Color de fondo del botón */
+        background-color: #555; /* Color de fondo del botón */
         color: white; /* Color del texto del botón */
         border: none; /* Sin borde en el botón */
         cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
@@ -53,7 +53,7 @@ BPPJ
 
     /* Define el color de fondo del botón al pasar el ratón */
     button[type="submit"]:hover {
-        background-color: #45a049; /* Color de fondo del botón al pasar el ratón */
+        background-color: #494949; /* Color de fondo del botón al pasar el ratón */
     }
 /* --------------------------------------------------------------------------------------------------------------
     ---------------------------------------- FIN ITred Spa Load Filtro Busqueda .CSS ---------------------------------------

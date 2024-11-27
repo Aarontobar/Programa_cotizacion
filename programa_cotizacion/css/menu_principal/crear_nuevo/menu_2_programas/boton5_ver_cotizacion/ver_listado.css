@@ -58,7 +58,7 @@ BPPJ
 
     /* Estilo para las cabeceras de la tabla, con fondo colorido y texto en mayúsculas */
     table th {
-        background-color: #4CAF50; /* Color de fondo de las cabeceras */
+        background-color: #555; /* Color de fondo de las cabeceras */
         color: #fff; /* Color del texto de las cabeceras */
         text-transform: uppercase; /* Texto en mayúsculas */
         font-size: 12px; /* Tamaño de letra más pequeño para las cabeceras */
@@ -90,7 +90,7 @@ BPPJ
 
     /* Estilo para los enlaces en las celdas, con color específico y sin subrayado */
     table td a {
-        color: #4CAF50; /* Color del enlace en la tabla */
+        color: #555 /* Color del enlace en la tabla */
         text-decoration: none; /* Sin subrayado en el enlace */
         font-weight: normal; /* Peso de fuente normal */
         font-size: 13px; /* Tamaño de letra más pequeño para enlaces */
@@ -125,7 +125,7 @@ BPPJ
 
     /* Define el color y estilo de los enlaces dentro de las listas */
     ul li a {
-        color: #4CAF50; /* Color del enlace en la lista */
+        color: 555; /* Color del enlace en la lista */
         text-decoration: none; /* Sin subrayado en el enlace */
         font-weight: normal; /* Peso de fuente normal */
         font-size: 14px; /* Tamaño de letra reducido para enlaces */
@@ -166,6 +166,7 @@ BPPJ
         background-color: rgb(233, 233, 233); /* Fondo gris claro */
     }
 }
+
 
 
 /* --------------------------------------------------------------------------------------------------------------

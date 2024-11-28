@@ -79,7 +79,7 @@ BPPJ
     // Función para cargar las áreas de la empresa
     function CargarAreasEmpresa() {
         // Realiza una solicitud para obtener la lista de áreas de empresa desde el servidor
-        fetch('../../php/menu_principal/crear_nuevo/crear_empresa/get_area_empresa.php')
+        fetch('../../php/menu_principal/crear_nuevo/menu_2_programas/boton6_crear_empresa/get_area_empresa.php')
             .then(response => response.text())
             .then(data => {
                 const select = document.getElementById('empresa_area'); // Obtener el elemento select por su ID

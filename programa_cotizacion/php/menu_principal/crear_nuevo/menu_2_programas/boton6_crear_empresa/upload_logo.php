@@ -31,7 +31,7 @@ BPPJ
 
                 <!-- Etiqueta para el campo de carga de imagen. El atributo "for" enlaza con el input de archivo -->
 
-                <img src="http://localhost/programa_cotizacion/imagenes/menu_principal/crear_nuevo/crear_empresa/generic-logo.png" alt="tamaño recomendado: 800x200 pixeles" class="logo" id="Previsualizar-logo"> 
+                <img src="../../imagenes/menu_principal/crear_nuevo/crear_empresa_principal/generic-logo.png" alt="tamaño recomendado: 800x200 pixeles" class="logo" id="Previsualizar-logo"> 
 
 
             <!-- TÍTULO: MUESTRA UNA IMAGEN PREVIA DEL LOGO CON UN TEXTO ALTERNATIVO EN CASO DE QUE NO SE CARGUE LA IMAGEN -->

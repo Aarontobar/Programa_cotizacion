@@ -184,7 +184,7 @@ BPPJ
         // Función para llenar el select de bancos
         function CargarBancos() {
             // Realiza una solicitud para obtener la lista de bancos desde el servidor
-            fetch('../../php/menu_principal/crear_nuevo/crear_empresa/get_bancos.php')
+            fetch('../../php/menu_principal/crear_nuevo/menu_2_programas/boton6_crear_empresa/get_bancos.php')
                 .then(response => response.text())  // Leer el contenido de la respuesta como texto (HTML)
                 .then(data => {
                     const select = document.getElementById('id-banco'); // Obtener el elemento select por su ID
@@ -202,7 +202,7 @@ BPPJ
         // Función para cargar los tipos de cuenta
         function CargarTipoCuenta() {
             // Realiza una solicitud para obtener la lista de tipos de cuenta desde el servidor
-            fetch('../../php/menu_principal/crear_nuevo/crear_empresa/get_tipos_cuenta.php')
+            fetch('../../php/menu_principal/crear_nuevo/menu_2_programas/boton6_crear_empresa/get_tipos_cuenta.php')
                 .then(response => response.text())  // Leer el contenido de la respuesta como texto (HTML)
                 .then(data => {
                     const select = document.getElementById('id-tipocuenta'); // Obtener el elemento select por su ID

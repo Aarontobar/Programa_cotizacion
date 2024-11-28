@@ -211,17 +211,19 @@ BPPJ
 
             <!-- TÍTULO: SELECCIONAR FIRMA DIGITAL -->
 
-                <h4>Seleccionar Firma Digital</h4>
+            <h4>Seleccionar Firma Digital</h4>
 
-                <!-- Botón de opción para seleccionar firma digital -->
-                <input type="radio" id="digital-signature" name="opcion-firma" value="digital">
-                <label for="digital-signature">Firma Digital</label>
+            <!-- Botón de opción para seleccionar firma digital -->
+            <input type="radio" id="digital-signature" name="opcion-firma" value="digital">
+            <label for="digital-signature">Firma Digital</label>
 
-                <!-- Contenedor para el mensaje relacionado con la firma digital, inicialmente oculto -->
-                <div id="Mensaje-Firma-Digital" class="desplegar-firma" style="display: none;">
-                    <h5>Mensaje sobre Firma Digital</h5>
-                    <p>Su firma se generará en su cotización.</p>
-                </div>
+            <!-- TÍTULO: CAMPO PARA SUBIR IMAGEN -->
+
+            <h5>Campo para Subir Imagen de Firma:</h5>
+            <input type="file" id="firma-digital" name="firma-digital" accept="image/png">
+
+            <!-- Previsualización de la imagen de la firma, inicialmente oculta -->
+            <img id="previsualizacion-firma-digital" src="" alt="Previsualización de firma" style="display: none;">
         </div>
     </div>
 

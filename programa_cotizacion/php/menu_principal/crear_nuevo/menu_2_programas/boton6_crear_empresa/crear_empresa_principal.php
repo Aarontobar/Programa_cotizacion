@@ -148,7 +148,7 @@ BPPJ
 
     <!-- Enlaza un archivo JavaScript externo para actualizar el logo o realizar otras actualizaciones -->
 
-    <script src="../../js/menu_principal/crear_nuevo/menu_2_programas/boton6_crear_empresa/crear_empresa.js"></script> 
+    <script src="../../js/menu_principal/crear_nuevo/menu_2_programas/boton6_crear_empresa/crear_empresa_principal.js"></script> 
 
     <!--------------------------------------------------------------------------------------------------->
     

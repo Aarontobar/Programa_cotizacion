@@ -125,6 +125,8 @@ BPPJ
 
     </div>
 
+    <input type="hidden" id="total_final_hidden" value="0">
+
     <label>Son:</label> 
 
 <!-- TÍTULO: INCLUSIÓN DEL ARCHIVO NUMERO_TEXT.PHP -->

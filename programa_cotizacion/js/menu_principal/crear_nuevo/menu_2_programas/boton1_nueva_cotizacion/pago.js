@@ -1,4 +1,3 @@
-
 /* 
 Sitio Web Creado por ITred Spa.
 Direccion: Guido Reni #4190
@@ -8,7 +7,6 @@ https://www.itred.cl
 Creado, Programado y Diseñado por ITred Spa.
 BPPJ 
 */
-
 
 /* --------------------------------------------------------------------------------------------------------------
     -------------------------------------- INICIO ITred Spa Adelanto.JS --------------------------------------
@@ -46,8 +44,7 @@ function AgregarPago() {
             </select>
         </td>
         <td>
-            <input type="number" name="porcentaje_pago[]" required min="0" max="100" 
-                   onchange="calcularMontoPago(this)">
+            <input type="number" name="porcentaje_pago[]" required min="0" max="100" onchange="calcularMontoPago(this); verificarTotalPorcentajes(this);">
         </td>
         <td>
             <input type="number" name="monto_pago[]" required readonly>
@@ -108,15 +105,34 @@ function calcularMontoPago(input) {
 
 // TÍTULO: FUNCIÓN PARA OBTENER MONTO TOTAL
 function obtenerMontoTotal() {
-    // Implementa esta función para obtener el monto total de la cotización
-    // Por ahora retornamos un valor de ejemplo
-    return 1000000;
+    // Obtiene el monto total de la cotización desde el elemento oculto
+    const totalFinal = parseFloat(document.getElementById('total_final_hidden').value) || 0;
+    return totalFinal;
+}
+
+// TÍTULO: FUNCIÓN PARA VERIFICAR EL TOTAL DE PORCENTAJES
+function verificarTotalPorcentajes(input) {
+    const contenedor = document.getElementById('payments-contenedor');
+    const porcentajeInputs = contenedor.querySelectorAll('input[name="porcentaje_pago[]"]');
+    let totalPorcentaje = 0;
+
+    // Sumar todos los porcentajes existentes
+    porcentajeInputs.forEach(porcentajeInput => {
+        totalPorcentaje += parseFloat(porcentajeInput.value) || 0;
+    });
+
+    // Si el total supera el 100%, restablecer el valor del campo actual para no exceder el 100%
+    if (totalPorcentaje > 100) {
+        const porcentajeActual = parseFloat(input.value);
+        const maxValorPermitido = 100 - (totalPorcentaje - porcentajeActual);
+        input.value = maxValorPermitido.toFixed(2);
+        alert("El total de los porcentajes no puede exceder el 100%");
+    }
 }
 
 /* --------------------------------------------------------------------------------------------------------------
     ---------------------------------------- FIN ITred Spa Adelanto.JS ---------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
-
 
 /*
 Sitio Web Creado por ITred Spa.

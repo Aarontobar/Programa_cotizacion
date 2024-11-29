@@ -65,11 +65,6 @@ BPPJ
     }
 
 
-
-    document.addEventListener('DOMContentLoaded', () => {
-        CargarTipoCliente(); // Llamar a la función para cargar los tipos de cliente
-    });
-
     document.getElementById('countryCode').addEventListener('change', function() {
         const countryCode = this.value;
         const phoneNumberInput = document.getElementById('cliente_fono');

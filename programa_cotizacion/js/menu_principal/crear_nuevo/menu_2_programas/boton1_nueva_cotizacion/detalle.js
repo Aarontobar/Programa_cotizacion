@@ -281,7 +281,7 @@ function CapturarTipoYCambiar(selectElement) {
             })
             .catch(error => console.error('Error al obtener los productos:', error));
     } else {
-        PrimeraCelda.setAttribute('colspan', '10'); // Cambiar colspan de vuelta a 10
+        PrimeraCelda.setAttribute('colspan', '1'); // Cambiar colspan de vuelta a 10
         ColumnasOcultas.forEach(column => {
             column.style.display = "none"; // Ocultar las columnas si se vuelve a seleccionar "Seleccione un tipo"
         });
@@ -348,7 +348,7 @@ function AgregarLineaDeDetalle(button) {
     // Crear una nueva fila de detalle
     const NuevaFila = document.createElement('tr');
     NuevaFila.innerHTML = `
-        <td colspan="10">
+        <td colspan="1">
             <select name="tipo_producto[${IndiceTitulo}][${subIndiceTitulo}][]" class="select-tipo-producto" onchange="CapturarTipoYCambiar(this)">
                 <option value="">Seleccione un tipo</option>
             </select>
@@ -438,7 +438,7 @@ function AgregarLineaDeDetalle(button) {
 
         // Definir el contenido HTML de la nueva fila, manteniendo la estructura de antes
         NuevoSubtitulo.innerHTML = `
-            <td colspan="9">
+            <td colspan="10">
                 <label for="subtitulo">Subtítulo:</label>
                 <input type="text" name="detalle_subtitulo[${IndiceTitulo}][${subtituloContador[IndiceTitulo]}]" style="margin-right: 10px;" oninput="QuitarCaracteresInvalidos(this)">
                 <select name="color_subtitulo[${IndiceTitulo}][${subtituloContador[IndiceTitulo]}]" class="color-subtitulo" required style="margin-left: 10px;">

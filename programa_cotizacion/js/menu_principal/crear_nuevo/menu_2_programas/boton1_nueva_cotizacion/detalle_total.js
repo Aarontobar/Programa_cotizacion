@@ -65,7 +65,8 @@ BPPJ
     document.getElementById('total_iva').value = ivaValor;
     document.getElementById('total_final').value = totalFinal;
 
-    
+    document.getElementById('total_final_hidden').value = totalFinal;
+
 // TÍTULO PARA EL CÁLCULO DEL PAGO TOTAL
 
     // Llama a la función para calcular el pago total

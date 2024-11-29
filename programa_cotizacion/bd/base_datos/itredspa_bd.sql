@@ -388,13 +388,14 @@ DROP TABLE IF EXISTS C_Encargados;-- elimina  la tabla si ya existe
 -- -----------------------------------------------------------
 CREATE TABLE C_Encargados (
     id_encargado int NOT NULL AUTO_INCREMENT, -- Identificador único del encargado
-    rut_encargado varchar(20) , -- RUT del cliente (debe ser único)
+    rut_encargado varchar(20), -- RUT del cliente (debe ser único)
     nombre_encargado varchar(255) NOT NULL, -- Nombre del encargado
     email_encargado varchar(100), -- Email del encargado
     fono_encargado varchar(20), -- Teléfono del encargado
     celular_encargado varchar(20), -- Celular del encargado
+    proyecto_asignado varchar(255), -- Proyecto asignado al encargado
     PRIMARY KEY (id_encargado) -- Definición de la clave primaria
-) ENGINE=InnoDB ;
+) ENGINE=InnoDB;
 
 -- ----------------------------------------------------------
 -- Estructura de tabla para la tabla `Em_Vendedores`---------

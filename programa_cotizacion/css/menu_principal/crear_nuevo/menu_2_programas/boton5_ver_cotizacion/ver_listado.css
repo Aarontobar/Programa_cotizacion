@@ -14,160 +14,159 @@ BPPJ
     -------------------------------------- INICIO ITred Spa Ver Listado .CSS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
 
+/* TÍTULO: CONTENEDOR PRINCIPAL */
 .ver_cotizacion_principal {
-    /* TÍTULO: ESTILOS GENERALES PARA EL CUERPO DEL DOCUMENTO */
-
-    /* Aplica formato general al cuerpo, con tipografía, fondo y espaciados */
-    font-family: 'Arial', sans-serif; /* Fuente utilizada en el cuerpo del documento */
-    background-color: #f7f7f7; /* Color de fondo */
-    color: #666; /* Color gris para el texto */
-    margin: 0; /* Sin márgenes en el cuerpo */
-    padding: 20px; /* Espaciado interno del cuerpo */
-    font-size: 14px; /* Tamaño de letra más pequeño */
-
-    /* TÍTULO: ENCABEZADO PRINCIPAL */
-
-    /* Estilo aplicado al h1 con alineación centrada y márgenes */
-    h1 {
-        text-align: center; /* Alineación centrada del encabezado */
-        color: #333; /* Color del texto del encabezado */
-        margin-bottom: 20px; /* Margen inferior del encabezado */
-    }
-
-    /* TÍTULO: ESTILO DE LA TABLA */
-
-    /* Define la apariencia general de las tablas, con sombra y colapso de bordes */
-    table {
-        width: 100%; /* Ancho completo de la tabla */
-        border-collapse: collapse; /* Colapsa los bordes de las celdas */
-        margin: 20px 0; /* Margen superior e inferior de la tabla */
-        background-color: #fff; /* Color de fondo de la tabla */
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra de la tabla */
-    }
-
-    /* TÍTULO: ESTILOS DE CELDAS */
-
-    /* Define el relleno, tamaño de letra y alineación del texto dentro de las celdas */
-    table th, table td {
-        padding: 10px 12px; /* Espaciado reducido en las celdas */
-        text-align: left; /* Alineación a la izquierda del texto */
-        font-size: 13px; /* Tamaño de letra más pequeño */
-    }
-
-    /* TÍTULO: ENCABEZADOS DE TABLA */
-
-    /* Estilo para las cabeceras de la tabla, con fondo colorido y texto en mayúsculas */
-    table th {
-        background-color: #555; /* Color de fondo de las cabeceras */
-        color: #fff; /* Color del texto de las cabeceras */
-        text-transform: uppercase; /* Texto en mayúsculas */
-        font-size: 12px; /* Tamaño de letra más pequeño para las cabeceras */
-    }
-
-    /* TÍTULO: FILAS DE LA TABLA */
-
-    /* Estilo aplicado a las filas de la tabla, con borde inferior */
-    table tr {
-        border-bottom: 1px solid #ddd; /* Línea inferior entre filas */
-    }
-
-    /* TÍTULO: ESTILO DE FILAS ALTERNADAS */
-
-    /* Aplica un color de fondo distinto para las filas pares */
-    table tr:nth-child(even) {
-        background-color: #f2f2f2; /* Color de fondo para filas pares */
-    }
-
-    /* TÍTULO: EFECTO HOVER EN FILAS */
-
-    /* Cambia el color de fondo al pasar el ratón sobre una fila */
-    table tr:hover {
-        background-color: #f1f1f1; /* Color de fondo al pasar el ratón sobre una fila */
-        transition: background-color 0.2s ease-in-out; /* Transición suave del color de fondo */
-    }
-
-    /* TÍTULO: ENLACES DENTRO DE LA TABLA */
-
-    /* Estilo para los enlaces en las celdas, con color específico y sin subrayado */
-    table td a {
-        color: #555 /* Color del enlace en la tabla */
-        text-decoration: none; /* Sin subrayado en el enlace */
-        font-weight: normal; /* Peso de fuente normal */
-        font-size: 13px; /* Tamaño de letra más pequeño para enlaces */
-    }
-
-    /* TÍTULO: EFECTO HOVER EN ENLACES DE TABLA */
-
-    /* Añade subrayado al pasar el ratón sobre los enlaces dentro de la tabla */
-    table td a:hover {
-        text-decoration: underline; /* Subrayado al pasar el ratón sobre el enlace */
-    }
-
-    /* TÍTULO: ESTILO DE LISTAS */
-
-    /* Aplica formato a las listas sin viñetas y con alineación centrada */
-    ul {
-        list-style-type: none; /* Sin viñetas en la lista */
-        padding: 0; /* Sin espaciado interno */
-        text-align: center; /* Alineación centrada de la lista */
-        margin-top: 20px; /* Margen superior de la lista */
-    }
-
-    /* TÍTULO: ESTILO DE LOS ELEMENTOS DE LISTA */
-
-    /* Estilo para los elementos de la lista, con formato en línea y espaciado */
-    ul li {
-        display: inline-block; /* Elementos de la lista en línea */
-        margin: 0 10px; /* Espaciado lateral entre elementos de la lista */
-    }
-
-    /* TÍTULO: ESTILO DE ENLACES EN LA LISTA */
-
-    /* Define el color y estilo de los enlaces dentro de las listas */
-    ul li a {
-        color: 555; /* Color del enlace en la lista */
-        text-decoration: none; /* Sin subrayado en el enlace */
-        font-weight: normal; /* Peso de fuente normal */
-        font-size: 14px; /* Tamaño de letra reducido para enlaces */
-    }
-
-    /* TÍTULO: EFECTO HOVER EN ENLACES DE LISTA */
-
-    /* Añade subrayado al pasar el ratón sobre los enlaces de la lista */
-    ul li a:hover {
-        text-decoration: underline; /* Subrayado al pasar el ratón sobre el enlace */
-    }
-
-    /* TÍTULO: COLORES DE ESTADOS */
-
-    /* Estilos aplicados a diferentes estados: aprobada, rechazada, pendiente */
-    .estado-aprobada {
-        color: rgb(40, 170, 40); /* Color verde para estado aprobado */
-        font-weight: bold; /* Negrita */
-        background-color: rgb(233, 233, 233); /* Fondo gris claro */
-    }
-
-    /* TÍTULO: ESTADO RECHAZADO */
-
-    /* Estilos aplicados cuando el estado es 'rechazado', destacando en rojo */
-    .estado-rechazada {
-        color: red; /* Color rojo para estado rechazado */
-        font-weight: bold; /* Negrita */
-        background-color: rgb(233, 233, 233); /* Fondo gris claro */
-    }
-
-    /* TÍTULO: ESTADO PENDIENTE */
-
-    /* Estilos aplicados cuando el estado es 'pendiente', con color amarillo y sombra */
-    .estado-pendiente {
-        color: rgba(173, 173, 0, 0.87); /* Color amarillo para estado pendiente */
-        font-weight: Arial; /* Tipo de letra */
-        text-shadow: 0px 0px 0px rgb(70, 70, 70); /* Contorno negro */
-        background-color: rgb(233, 233, 233); /* Fondo gris claro */
-    }
+    /* SUBTÍTULO: ESTILOS BASE */
+    font-family: 'Arial', sans-serif; /* Tipo de letra principal */
+    background-color: #f7f7f7; /* Color de fondo del contenedor */
+    color: #666; /* Color del texto general */
+    margin: 0; /* Sin márgenes externos */
+    padding: 20px; /* Espaciado interno */
+    font-size: 14px; /* Tamaño de letra base */
 }
 
+/* TÍTULO: ENCABEZADO DE PÁGINA */
+.ver_cotizacion_principal h1 {
+    text-align: center; /* Centrado del texto */
+    color: #333; /* Color del título */
+    margin-bottom: 20px; /* Espacio inferior */
+    font-size: 24px; /* Tamaño del título */
+}
 
+/* TÍTULO: TABLA DE COTIZACIONES */
+.ver_cotizacion_principal table {
+    width: 100%; /* Ancho completo */
+    border-collapse: collapse; /* Bordes colapsados */
+    margin: 20px 0; /* Márgenes verticales */
+    background-color: #fff; /* Fondo blanco */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+/* TÍTULO: CELDAS Y ENCABEZADOS */
+.ver_cotizacion_principal th,
+.ver_cotizacion_principal td {
+    padding: 12px; /* Espaciado interno */
+    text-align: left; /* Alineación del texto */
+    font-size: 13px; /* Tamaño de letra */
+    border-bottom: 1px solid #ddd; /* Línea separadora */
+}
+
+/* TÍTULO: ENCABEZADOS DE COLUMNA */
+.ver_cotizacion_principal th {
+    background-color: #555; /* Color de fondo */
+    color: #fff; /* Color del texto */
+    text-transform: uppercase; /* Texto en mayúsculas */
+    font-weight: 600; /* Grosor de la fuente */
+}
+
+/* TÍTULO: FILAS ALTERNAS */
+.ver_cotizacion_principal tr:nth-child(even) {
+    background-color: #f9f9f9; /* Color de fondo alterno */
+}
+
+/* TÍTULO: EFECTO HOVER EN FILAS */
+.ver_cotizacion_principal tr:hover {
+    background-color: #f5f5f5; /* Color al pasar el mouse */
+    transition: background-color 0.2s ease-in-out; /* Transición suave */
+}
+
+/* TÍTULO: ENLACES DE ACCIÓN GENERALES */
+.ver_cotizacion_principal td a {
+    display: inline-block; /* Mostrar como bloque en línea */
+    padding: 6px 12px; /* Espaciado interno */
+    border-radius: 4px; /* Bordes redondeados */
+    text-decoration: none; /* Sin subrayado */
+    color: #fff !important; /* Color del texto forzado */
+    font-weight: 500; /* Grosor de la fuente */
+    transition: all 0.2s ease; /* Transición suave */
+    margin: 0 2px; /* Espaciado entre botones */
+}
+
+/* TÍTULO: BOTÓN VER */
+.ver_cotizacion_principal td a[href*="action=ver"] {
+    background-color: #555; /* Color de fondo gris */
+}
+
+.ver_cotizacion_principal td a[href*="action=ver"]:hover {
+    background-color: #444; /* Color de fondo gris oscuro al hover */
+}
+
+/* TÍTULO: BOTÓN MODIFICAR */
+.ver_cotizacion_principal td a[onclick*="cargarModificarCotizacion"] {
+    background-color: #4CAF50; /* Color de fondo verde */
+}
+
+.ver_cotizacion_principal td a[onclick*="cargarModificarCotizacion"]:hover {
+    background-color: #45a049; /* Color de fondo verde oscuro al hover */
+}
+
+/* TÍTULO: BOTÓN ELIMINAR */
+.ver_cotizacion_principal td a[href*="eliminar_cotizacion"] {
+    background-color: #f44336; /* Color de fondo rojo */
+}
+
+.ver_cotizacion_principal td a[href*="eliminar_cotizacion"]:hover {
+    background-color: #da190b; /* Color de fondo rojo oscuro al hover */
+}
+
+/* TÍTULO: ESTADOS DE COTIZACIÓN */
+.ver_cotizacion_principal .estado-aprobada {
+    color: #2ecc71; /* Verde para aprobado */
+    font-weight: bold;
+    background-color: #e8f5e9;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+.ver_cotizacion_principal .estado-rechazada {
+    color: #e74c3c; /* Rojo para rechazado */
+    font-weight: bold;
+    background-color: #fde8e7;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+.ver_cotizacion_principal .estado-pendiente {
+    color: #f39c12; /* Amarillo para pendiente */
+    font-weight: bold;
+    background-color: #fff3e0;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+/* TÍTULO: FORMULARIO DE ACTUALIZACIÓN */
+.ver_cotizacion_principal form {
+    display: inline-flex; /* Alineación en línea */
+    gap: 8px; /* Espacio entre elementos */
+    align-items: center; /* Alineación vertical */
+    margin-left: 8px; /* Margen izquierdo */
+}
+
+/* TÍTULO: SELECT DE ESTADO */
+.ver_cotizacion_principal select {
+    padding: 6px; /* Espaciado interno */
+    border: 1px solid #ddd; /* Borde del select */
+    border-radius: 4px; /* Bordes redondeados */
+    font-size: 13px; /* Tamaño de letra */
+    background-color: #fff; /* Fondo blanco */
+}
+
+/* TÍTULO: BOTÓN DE ACTUALIZAR */
+.ver_cotizacion_principal button[type="submit"] {
+    background-color: #008CBA; /* Color de fondo azul */
+    color: white; /* Color del texto */
+    border: none; /* Sin borde */
+    padding: 6px 12px; /* Espaciado interno */
+    border-radius: 4px; /* Bordes redondeados */
+    cursor: pointer; /* Cursor tipo puntero */
+    font-size: 13px; /* Tamaño de letra */
+    transition: background-color 0.2s; /* Transición suave */
+}
+
+/* TÍTULO: HOVER EN BOTÓN DE ACTUALIZAR */
+.ver_cotizacion_principal button[type="submit"]:hover {
+    background-color: #007095; /* Color de fondo azul oscuro al hover */
+}
 
 /* --------------------------------------------------------------------------------------------------------------
     ---------------------------------------- FIN ITred Spa Ver Listado .CSS ---------------------------------------

@@ -19,68 +19,90 @@ BPPJ
 // Establece la conexión a la base de datos de ITred Spa
 $conn = new mysqli('localhost', 'root', '', 'ITredSpa_bd');
 
+// Verificar la conexión
+if ($conn->connect_error) {
+    die("Error de conexión: " . $conn->connect_error);
+}
+
+// TÍTULO: CONFIGURACIÓN DE DIRECTORIOS
+// Define la ruta base para las imágenes
+$base_upload_dir = dirname(dirname(dirname(dirname(__DIR__)))) . '/imagenes/menu_principal/crear_nuevo/crear_producto/';
+
+// Crear el directorio si no existe
+if (!file_exists($base_upload_dir)) {
+    mkdir($base_upload_dir, 0777, true);
+}
+
+// TÍTULO: VERIFICACIÓN DE PERMISOS
+// Verificar permisos de escritura
+if (!is_writable($base_upload_dir)) {
+    chmod($base_upload_dir, 0777);
+}
+
+// TÍTULO: PROCESAMIENTO DE PRODUCTOS
 // Obtener el ID de la empresa desde el formulario
 $id_empresa = isset($_POST['id_empresa']) ? intval($_POST['id_empresa']) : 0;
 
-// Verificar si el ID de la empresa existe en la tabla e_empresa
+// Verificar si el ID de la empresa existe
 $check_query = $conn->prepare("SELECT id_empresa FROM e_empresa WHERE id_empresa = ?");
 $check_query->bind_param("i", $id_empresa);
 $check_query->execute();
 $check_query->store_result();
 
-// Si no se encuentra el ID de la empresa, mostrar un error y detener la ejecución
 if ($check_query->num_rows === 0) {
-    die("El ID de la empresa no existe en la base de datos.");
+    die("Error: ID de empresa inválido.");
 }
-
-// Cierra la consulta de verificación
 $check_query->close();
 
-// Preparar la consulta de inserción para los productos
+// TÍTULO: PREPARACIÓN DE LA CONSULTA
+// Preparar la consulta de inserción
 $stmt = $conn->prepare("INSERT INTO productos (nombre_producto, descripcion, precio, ruta_foto, tipo_producto) VALUES (?, ?, ?, ?, ?)");
 
-// Verificar si la preparación de la consulta fue exitosa
 if ($stmt === false) {
     die("Error en la preparación de la consulta: " . $conn->error);
 }
 
-// Procesar cada producto del formulario
+// TÍTULO: PROCESAMIENTO DE CADA PRODUCTO
 foreach ($_POST['nombre_producto'] as $index => $nombre_producto) {
-    // Obtener los datos del producto del formulario
     $descripcion_producto = $_POST['descripcion_producto'][$index];
     $precio_producto = $_POST['precio_producto'][$index];
     $id_tipo_producto = $_POST['id_tipo_producto'][$index];
+    $ruta_foto = null;
 
-    // Verificar si se ha subido una imagen
-    $ruta_foto = null; // Inicializa la variable para la ruta de la foto
+    // TÍTULO: PROCESAMIENTO DE IMAGEN
     if (isset($_FILES['foto_producto']['error'][$index]) && $_FILES['foto_producto']['error'][$index] == UPLOAD_ERR_OK) {
-        $upload_dir = '../../imagenes/menu_principal/crear_nuevo/crear_producto/'; // Ruta relativa para subir imágenes
-        $tmp_name = $_FILES['foto_producto']['tmp_name'][$index]; // Ruta temporal del archivo subido
-        $name = basename($_FILES['foto_producto']['name'][$index]); // Nombre del archivo
+        $tmp_name = $_FILES['foto_producto']['tmp_name'][$index];
+        $original_name = $_FILES['foto_producto']['name'][$index];
+        
+        // Generar nombre único para el archivo
+        $file_extension = pathinfo($original_name, PATHINFO_EXTENSION);
+        $new_filename = uniqid() . '_' . time() . '.' . $file_extension;
+        $upload_file = $base_upload_dir . $new_filename;
 
-        // Validar el tipo de archivo de imagen
+        // Validar tipo de archivo
         $allowed_types = ['image/jpeg', 'image/png', 'image/gif'];
-        if (!in_array($_FILES['foto_producto']['type'][$index], $allowed_types)) {
-            die("Error: Tipo de archivo no permitido.");
+        $finfo = finfo_open(FILEINFO_MIME_TYPE);
+        $mime_type = finfo_file($finfo, $tmp_name);
+        finfo_close($finfo);
+
+        if (!in_array($mime_type, $allowed_types)) {
+            continue; // Salta este archivo si no es una imagen válida
         }
 
-        $upload_file = $upload_dir . $name; // Ruta completa donde se guardará la imagen
-
-        // Mover el archivo cargado al directorio de destino
+        // Mover el archivo
         if (move_uploaded_file($tmp_name, $upload_file)) {
-            echo "Imagen subida correctamente.";
-            $ruta_foto = $upload_file; // Asigna la ruta de la foto
+            $ruta_foto = 'imagenes/menu_principal/crear_nuevo/crear_producto/' . $new_filename;
         } else {
-            die("Error al subir la imagen.");
+            error_log("Error al mover el archivo: " . error_get_last()['message']);
+            continue;
         }
     }
 
-    // Insertar el producto con la posible imagen (ruta_foto)
+    // TÍTULO: INSERCIÓN EN LA BASE DE DATOS
     $stmt->bind_param("ssdsi", $nombre_producto, $descripcion_producto, $precio_producto, $ruta_foto, $id_tipo_producto);
-
-    // Ejecutar la inserción del producto
+    
     if (!$stmt->execute()) {
-        echo "Error al insertar producto: " . $stmt->error;
+        error_log("Error al insertar producto: " . $stmt->error);
     }
 }
 
@@ -92,6 +114,10 @@ $conn->close();
 
 // Mensaje de éxito al guardar los productos
 echo "Productos guardados correctamente.";
+
+// TÍTULO: REDIRECCIÓN
+header("Location: crear_producto_principal.php?success=1");
+exit()
 ?>
 
 <!-- TÍTULO: IMPORTACIÓN DE ARCHIVO .CSS -->

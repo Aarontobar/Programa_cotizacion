@@ -20,7 +20,7 @@ BPPJ
     // Función para obtener las opciones del select desde el servidor
     function loadSelectOptions(callback) {
         var xhr = new XMLHttpRequest(); // Crea un nuevo objeto XMLHttpRequest
-        xhr.open('GET', '../../php/menu_principal/crear_nuevo/crear_producto/get_tipo_productos.php', true); // Configura la solicitud GET
+        xhr.open('GET', '../../php/menu_principal/crear_nuevo/menu_2_programas/boton3_crear_producto/get_tipo_productos.php', true); // Configura la solicitud GET
         xhr.onload = function () {
             if (xhr.status === 200) {
                 callback(xhr.responseText); // Llama a la función callback con la respuesta del servidor

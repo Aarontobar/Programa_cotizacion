@@ -101,6 +101,64 @@ BPPJ
     
     // Trigger the change event to set the initial background image
     document.getElementById('countryCode').dispatchEvent(new Event('change'));
+
+    function actualizarCiudades() {
+        var paisId = document.getElementById('cliente_pais').value;
+        var ciudadSelect = document.getElementById('cliente_ciudad');
+        var comunaSelect = document.getElementById('cliente_comuna');
+    
+        // Limpiar los selects de ciudad y comuna
+        ciudadSelect.innerHTML = '<option value="" disabled selected>Selecciona una ciudad</option>';
+        comunaSelect.innerHTML = '<option value="" disabled selected>Selecciona una comuna</option>';
+    
+        if (paisId) {
+            // Hacer una solicitud AJAX para obtener las ciudades del país seleccionado
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', '../../php/menu_principal/crear_nuevo/editor_menu2/menu2/boton1_nueva_cotizacion/obtener_ciudades.php?id_pais=' + paisId, true);
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    var ciudades = JSON.parse(xhr.responseText);
+                    ciudades.forEach(function(ciudad) {
+                        var option = document.createElement('option');
+                        option.value = ciudad.id_ciudad;
+                        option.textContent = ciudad.nombre_ciudad;
+                        ciudadSelect.appendChild(option);
+                    });
+                } else {
+                    console.error('Error al obtener las ciudades');
+                }
+            };
+            xhr.send();
+        }
+    }
+    
+    function actualizarComunas() {
+        var ciudadId = document.getElementById('cliente_ciudad').value;
+        var comunaSelect = document.getElementById('cliente_comuna');
+    
+        // Limpiar el select de comuna
+        comunaSelect.innerHTML = '<option value="" disabled selected>Selecciona una comuna</option>';
+    
+        if (ciudadId) {
+            // Hacer una solicitud AJAX para obtener las comunas de la ciudad seleccionada
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', '../../php/menu_principal/crear_nuevo/editor_menu2/menu2/boton1_nueva_cotizacion/obtener_comunas.php?id_ciudad=' + ciudadId, true);
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    var comunas = JSON.parse(xhr.responseText);
+                    comunas.forEach(function(comuna) {
+                        var option = document.createElement('option');
+                        option.value = comuna.id_comuna;
+                        option.textContent = comuna.nombre_comuna;
+                        comunaSelect.appendChild(option);
+                    });
+                } else {
+                    console.error('Error al obtener las comunas');
+                }
+            };
+            xhr.send();
+        }
+    }
 /* --------------------------------------------------------------------------------------------------------------
     ---------------------------------------- FIN ITred Spa Detalle cliente.JS ---------------------------------------
     ------------------------------------------------------------------------------------------------------------- */

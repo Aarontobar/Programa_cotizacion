@@ -60,6 +60,49 @@ CREATE TABLE Tp_Giro (
     id INT AUTO_INCREMENT PRIMARY KEY,
     tipo VARCHAR(50) NOT NULL UNIQUE
 ) ENGINE=InnoDB;
+
+-- ----------------------------------------------------------
+-- Estructura de tabla para la tabla `pais`
+-- ----------------------------------------------------------
+
+-- ----------------------------------------------------------
+-- CREAR LA TABLA pais----------------------------------
+-- ----------------------------------------------------------
+CREATE TABLE pais (
+    id_pais INT NOT NULL AUTO_INCREMENT, -- Identificador único del país
+    nombre_pais VARCHAR(255) NOT NULL, -- Nombre del país
+    PRIMARY KEY (id_pais) -- Definición de la clave primaria
+) ENGINE=InnoDB;
+
+-- ----------------------------------------------------------
+-- Estructura de tabla para la tabla `ciudades`
+-- ----------------------------------------------------------
+
+-- ----------------------------------------------------------
+-- CREAR LA TABLA ciudades----------------------------------
+-- ----------------------------------------------------------
+CREATE TABLE ciudades (
+    id_ciudad INT NOT NULL AUTO_INCREMENT, -- Identificador único de la ciudad
+    nombre_ciudad VARCHAR(255) NOT NULL, -- Nombre de la ciudad
+    id_pais INT NOT NULL, -- Identificador del país (clave foránea)
+    PRIMARY KEY (id_ciudad), -- Definición de la clave primaria
+    FOREIGN KEY (id_pais) REFERENCES pais(id_pais) ON DELETE CASCADE -- Clave foránea para referenciar el país
+) ENGINE=InnoDB;
+
+-- ----------------------------------------------------------
+-- Estructura de tabla para la tabla `comuna`
+-- ----------------------------------------------------------
+
+-- ----------------------------------------------------------
+-- CREAR LA TABLA comuna----------------------------------
+-- ----------------------------------------------------------
+CREATE TABLE comuna (
+    id_comuna INT NOT NULL AUTO_INCREMENT, -- Identificador único de la comuna
+    nombre_comuna VARCHAR(255) NOT NULL, -- Nombre de la comuna
+    id_ciudad INT NOT NULL, -- Identificador de la ciudad (clave foránea)
+    PRIMARY KEY (id_comuna), -- Definición de la clave primaria
+    FOREIGN KEY (id_ciudad) REFERENCES ciudades(id_ciudad) ON DELETE CASCADE -- Clave foránea para referenciar la ciudad
+) ENGINE=InnoDB;
 -- ----------------------------------------------------------
 -- Estructura de tabla para la tabla `Tp_Pago`
 -- ----------------------------------------------------------
@@ -937,6 +980,58 @@ INSERT INTO Tp_Riesgo (nombre_riesgo) VALUES ('sin riesgo'),
                                               ('bajo riesgo'),
                                                ('medio riesgo'),
                                                 ('alto riesgo');
+
+-- Insertar datos en la tabla pais
+INSERT INTO pais (nombre_pais) VALUES 
+('Chile'),
+('Argentina'),
+('Brasil'),
+('Perú'),
+('Colombia'),
+('México'),
+('Estados Unidos'),
+('Canadá'),
+('España'),
+('Francia');
+
+-- Insertar datos en la tabla ciudades
+INSERT INTO ciudades (nombre_ciudad, id_pais) VALUES 
+('Santiago', 1), -- Chile
+('Valparaíso', 1), -- Chile
+('Concepción', 1), -- Chile
+('Buenos Aires', 2), -- Argentina
+('São Paulo', 3), -- Brasil
+('Lima', 4), -- Perú
+('Bogotá', 5), -- Colombia
+('Ciudad de México', 6), -- México
+('Nueva York', 7), -- Estados Unidos
+('Toronto', 8); -- Canadá
+
+-- Insertar datos en la tabla comuna para la ciudad de Santiago
+INSERT INTO comuna (nombre_comuna, id_ciudad) VALUES 
+('Las Condes', 1), -- Santiago
+('Providencia', 1), -- Santiago
+('Ñuñoa', 1), -- Santiago
+('La Florida', 1), -- Santiago
+('Santiago Centro', 1), -- Santiago
+('Vitacura', 1), -- Santiago
+('Recoleta', 1), -- Santiago
+('Macul', 1), -- Santiago
+('Peñalolén', 1), -- Santiago
+('Lo Barnechea', 1); -- Santiago
+
+-- Insertar datos en la tabla comuna para otras ciudades
+INSERT INTO comuna (nombre_comuna, id_ciudad) VALUES 
+('Valparaíso', 2), -- Valparaíso
+('Concepción', 3), -- Concepción
+('Palermo', 4), -- Buenos Aires
+('Jardins', 5), -- São Paulo
+('Miraflores', 6), -- Lima
+('Chapinero', 7), -- Bogotá
+('Polanco', 8), -- Ciudad de México
+('Manhattan', 9), -- Nueva York
+('Downtown', 10); -- Toronto
+                                                
 -- Insertar datos en la tabla+ tp_pago
 
 INSERT INTO Tp_Pago (tipo) VALUES ('Efectivo');

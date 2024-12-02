@@ -16,11 +16,16 @@ BPPJ
 // TÍTULO: VALIDAR CARACTERES PERMITIDOS EN EL NOMBRE DE LA EMPRESA
 
     // Restringe la entrada a solo letras, números, espacios, '&', '.', y '-' mientras el usuario escribe.
-    document.getElementById('empresa_nombre').addEventListener('input', function () {
-        const input = this; // Se refiere al campo de entrada donde el usuario está escribiendo
-
-        // Elimina cualquier carácter que no sea letras, números, espacios, '&', '.', o '-'
-        input.value = input.value.replace(/[^A-Za-zÀ-ÿ0-9\s&.-]/g, '');
+    document.addEventListener('DOMContentLoaded', function() {
+        const empresaNombreInput = document.getElementById('empresa_nombre');
+        if (empresaNombreInput) {
+            empresaNombreInput.addEventListener('input', function () {
+                const input = this; // Se refiere al campo de entrada donde el usuario está escribiendo
+    
+                // Elimina cualquier carácter que no sea letras, números, espacios, '&', '.', o '-'
+                input.value = input.value.replace(/[^A-Za-zÀ-ÿ0-9\s&.-]/g, '');
+            });
+        }
     });
     
 /* --------------------------------------------------------------------------------------------------------------

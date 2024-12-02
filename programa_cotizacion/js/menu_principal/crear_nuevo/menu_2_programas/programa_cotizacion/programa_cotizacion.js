@@ -20,10 +20,15 @@ BPPJ
         this.submit(); // Envía el formulario
     });
 
-    document.getElementById('formulario-cotizacion').addEventListener('submit', function(event) {
-        event.preventDefault(); // Evita el envío del formulario por defecto
-        // Aquí puedes agregar cualquier lógica adicional antes de enviar el formulario
-        this.submit(); // Envía el formulario
+    document.addEventListener('DOMContentLoaded', function() {
+        const formularioCotizacion = document.getElementById('formulario-cotizacion');
+        if (formularioCotizacion) {
+            formularioCotizacion.addEventListener('submit', function(event) {
+                event.preventDefault(); // Evita el envío del formulario por defecto
+                // Aquí puedes agregar cualquier lógica adicional antes de enviar el formulario
+                this.submit(); // Envía el formulario
+            });
+        }
     });
 
 /* --------------------------------------------------------------------------------------------------------------

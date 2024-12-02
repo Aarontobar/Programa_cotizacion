@@ -1,0 +1,61 @@
+<!--
+Sitio Web Creado por ITred Spa.
+Direccion: Guido Reni #4190
+Pedro Aguirre Cerda - Santiago - Chile
+contacto@itred.cl o itred.spa@gmail.com
+https://www.itred.cl
+Creado, Programado y Diseñado por ITred Spa.
+BPPJ
+-->
+
+<!-- ------------------------------------------------------------------------------------------------------------
+    ------------------------------------- INICIO ITred Spa Traer foto.PHP --------------------------------------
+    ------------------------------------------------------------------------------------------------------------- -->
+<!-- TITULO ARCHIVO CSS -->
+    <!-- llama al archivo css -->
+    <link rel="stylesheet" href="../../css/menu_principal/crear_nuevo/editor_menu2/menu2/boton1_nueva_cotizacion/traer_foto.css">
+
+
+<!-- TÍTULO: SECCIÓN PARA CARGAR LOGO DE EMPRESA -->
+
+
+    <div class="box-6 caja-logo">
+        <label for="subir-logo" class="contenedor-logo">
+            <?php if (isset($row['ruta_foto']) && !empty($row['ruta_foto'])): ?>
+
+
+                <!-- TÍTULO: IMAGEN DE LOGO DE EMPRESA -->
+
+
+                <img src="<?php echo htmlspecialchars($row['ruta_foto'], ENT_QUOTES, 'UTF-8'); ?>" alt="Foto de perfil" id="Previsualizar-logo" class="logo" onclick="document.getElementById('subir-logo').click();" />
+            <?php else: ?>
+
+                <!-- TÍTULO: TEXTO PARA CARGAR LOGO -->
+
+
+                <span id="logo-text" onclick="document.getElementById('subir-logo').click();">Cargar Logo de Empresa</span>
+            <?php endif; ?>
+
+            <!-- TÍTULO: INPUT PARA SUBIR LOGO -->
+
+            <input type="file" id="subir-logo" name="logo_upload" accept="image/*" style="display:none;" onchange="previewImage(event)">
+
+
+        </label>
+    </div>
+<!-- TITULO: ARCHIVO JS -->
+    <!-- llama al archivo JS -->
+    <script src="../../js/menu_principal/crear_nuevo/editor_menu2/menu2/boton1_nueva_cotizacion/traer_foto.js"></script> 
+     <!-- ------------------------------------------------------------------------------------------------------------
+    -------------------------------------- FIN ITred Spa Traer foto.PHP ----------------------------------------
+    ------------------------------------------------------------------------------------------------------------- -->
+
+<!--
+Sitio Web Creado por ITred Spa.
+Direccion: Guido Reni #4190
+Pedro Aguirre Cerda - Santiago - Chile
+contacto@itred.cl o itred.spa@gmail.com
+https://www.itred.cl
+Creado, Programado y Diseñado por ITred Spa.
+BPPJ
+-->

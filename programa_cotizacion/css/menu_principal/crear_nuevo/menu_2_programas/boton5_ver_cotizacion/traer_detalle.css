@@ -26,9 +26,10 @@ BPPJ
 
 /* TÍTULO: CONTENEDOR PARA BOTONES FIJOS */
 
-    /* Define el estilo para el contenedor de botones fijos */
+    /* TÍTULO: CONTENEDOR PARA BOTONES FIJOS */
+
     .fixed-button-contenedor {
-        position: absolute; /* Posición absoluta */
+        position: relative; /* Cambiar a relative para mantener el botón dentro del contenedor */
         bottom: 10px; /* Espaciado desde la parte inferior */
         left: 0; /* Alineado a la izquierda */
         right: 0; /* Alineado a la derecha */

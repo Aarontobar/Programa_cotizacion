@@ -229,7 +229,7 @@ function CapturarTipoYCambiar(selectElement) {
         }
 
         // Llamar a la API para obtener los productos del tipo seleccionado
-        fetch(`crear_nuevo/menu_2_programas/boton1_nueva_cotizacion/obtener_productos.php?tipo=${selectElement.value}`)
+        fetch(`crear_nuevo/editor_menu2/menu2/boton1_nueva_cotizacion/obtener_productos.php?tipo=${selectElement.value}`)
             .then(response => response.json())
             .then(data => {
                 const selectProducto = row.querySelector('.select-producto');
@@ -258,7 +258,7 @@ function CapturarTipoYCambiar(selectElement) {
                         fotoPreview.src = ''; // Limpiar la vista previa de la foto
                         ActualizarTotal(row.querySelector('input[name^="detalle_precio_unitario"]'));
                     } else {
-                        fetch(`crear_nuevo/menu_2_programas/boton1_nueva_cotizacion/obtener_detalles.php?id=${this.value}`)
+                        fetch(`crear_nuevo/editor_menu2/menu2/boton1_nueva_cotizacion/obtener_detalles.php?id=${this.value}`)
                             .then(response => response.json())
                             .then(producto => {
                                 row.querySelector('input[name^="nombre_producto"]').value = producto.nombre_producto;
@@ -401,7 +401,7 @@ function AgregarLineaDeDetalle(button) {
     });
 
     // Llamar a la API para obtener los tipos de productos y actualizar el select
-    fetch('crear_nuevo/menu_2_programas/boton1_nueva_cotizacion/obtener_tipos_producto.php')
+    fetch('crear_nuevo/editor_menu2/menu2/boton1_nueva_cotizacion/obtener_tipos_producto.php')
         .then(response => response.json())
         .then(data => {
             const selectTipoProducto = NuevaFila.querySelector('.select-tipo-producto');

@@ -8,11 +8,7 @@ Creado, Programado y Diseñado por ITred Spa.
 BPPJ
 -->
 
-<!-- ------------------------------------------------------------------------------------------------------------
-    ------------------------------------- INICIO ITred Spa Menu.PHP --------------------------------------
-    ------------------------------------------------------------------------------------------------------------- -->
-
-    <?php
+<?php
 // Establece la conexión a la base de datos de ITred Spa
 $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
 session_start();
@@ -20,8 +16,8 @@ session_start();
 $error = ''; // Variable para almacenar mensajes de error
 $empresaEncontrada = false; // Variable para controlar si se ha seleccionado una empresa
 
-// Verifica si el formulario se ha enviado, es necesario en este lugar para habilitar el menu (NAV)
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+// Verifica si el formulario se ha enviado
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['empresa'])) {
     $id_empresa = $_POST['empresa']; // Obtiene el ID de la empresa seleccionada
     
     // Comprueba si el ID de la empresa no está vacío
@@ -31,6 +27,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     } else {
         $error = "Por favor, seleccione una empresa."; // Mensaje de error si no se selecciona una empresa
     }
+}
+
+// Si hay una empresa en la sesión, márcala como encontrada
+if (isset($_SESSION['id_empresa']) && !empty($_SESSION['id_empresa'])) {
+    $empresaEncontrada = true;
 }
 ?>
 

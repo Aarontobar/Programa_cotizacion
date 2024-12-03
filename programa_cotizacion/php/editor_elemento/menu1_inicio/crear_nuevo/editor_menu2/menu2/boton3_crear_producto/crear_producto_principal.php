@@ -45,7 +45,7 @@ $conn = new mysqli('localhost', 'root', '', 'ITredSpa_bd');
     </div>
 
     <!-- TÍTULO: IMPORTACIÓN DE ARCHIVO .JS -->
-    <script src="../../js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton3_crear_producto/crear_producto_principal.js"></script>
+    <script src="../../../js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton3_crear_producto/crear_producto_principal.js"></script>
 </body>
 </html>
 <!-- ------------------------------------------------------------------------------------------------------------

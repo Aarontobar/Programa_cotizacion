@@ -322,7 +322,7 @@ if ($result->num_rows > 0) {
 <!-- TITULO: IMPORTACION DE ARCHIVO .JS -->
 
     <!-- Llama al archivo JS -->
-    <script src="../../js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton5_ver_cotizacion/marca_de_agua.js"></script>
+    <script src="../../../js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton5_ver_cotizacion/marca_de_agua.js"></script>
 
 
 <!-- ------------------------------------------------------------------------------------------------------------

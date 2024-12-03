@@ -204,7 +204,7 @@ BPPJ
     document.getElementById('countryCode2').addEventListener('change', function() {
         const selectedOption = this.options[this.selectedIndex];
         const flag = selectedOption.getAttribute('data-flag');
-        this.style.backgroundImage = 'url(../../imagenes/menu_principal/crear_nuevo/nueva_cotizacion/banderas/' + flag + '.png)';
+        this.style.backgroundImage = 'url(../../../imagenes/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/nueva_cotizacion/banderas/' + flag + '.png)';
         this.style.backgroundSize = '20px 15px'; // Ajusta el tamaño de la bandera
     });
     
@@ -243,7 +243,7 @@ BPPJ
     document.getElementById('countryCode3').addEventListener('change', function() {
         const selectedOption = this.options[this.selectedIndex];
         const flag = selectedOption.getAttribute('data-flag');
-        this.style.backgroundImage = 'url(../../imagenes/menu_principal/crear_nuevo/nueva_cotizacion/banderas/' + flag + '.png)';
+        this.style.backgroundImage = 'url(../../../imagenes/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/nueva_cotizacion/banderas/' + flag + '.png)';
         this.style.backgroundSize = '20px 15px'; // Ajusta el tamaño de la bandera
     });
     

@@ -230,7 +230,7 @@ BPPJ
 <!-- TITULO: IMPORTACION DE ARCHIVO .JS -->
 
     <!-- Llama al archivo JS -->
-    <script src="../../js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton6_crear_empresa/firma.js"></script>
+    <script src="../../../js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton6_crear_empresa/firma.js"></script>
 
 </body>
 </html>
@@ -356,7 +356,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['formulario']) && $_POS
              // Firma digital (subida de imagen)
              
              if (isset($_FILES['firma-imagen']) && $_FILES['firma-imagen']['error'] === UPLOAD_ERR_OK) {
-                $target_dir = "../../imagenes/menu_principal/crear_nuevo/crear_empresa/firma/";
+                $target_dir = "../../imagenes/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/crear_empresa/firma/";
                 $target_file = $target_dir . basename($_FILES["firma-imagen"]["name"]);
                 $uploadOk = 1;
                 $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));

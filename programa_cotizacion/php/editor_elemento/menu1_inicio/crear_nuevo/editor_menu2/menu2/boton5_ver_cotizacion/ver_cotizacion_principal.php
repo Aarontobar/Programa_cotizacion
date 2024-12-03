@@ -123,7 +123,7 @@ if ($result->num_rows > 0) {
         $mensaje .= "<td>";
         $mensaje .= "<a href='?page=ver_cotizacion&action=ver&ver_cotizacion_id=" . $row['cotizacion_id'] . "&id=" . $id_empresa . "'>Ver</a> | ";    
         $mensaje .= "<a href='?page=ver_cotizacion&action=modificar&ver_cotizacion_id=" . $row['cotizacion_id'] . "&id=" . $id_empresa . "'>Modificar</a> | ";
-        $mensaje .= "<a href='crear_nuevo/menu_2_programas/boton5_ver_cotizacion/eliminar_cotizacion.php?id=" . $row['cotizacion_id'] . "&id_empresa=" . $id_empresa . "'>Eliminar</a> | ";
+        $mensaje .= "<a href='crear_nuevo/editor_menu2/menu2/boton5_ver_cotizacion/eliminar_cotizacion.php?id=" . $row['cotizacion_id'] . "&id_empresa=" . $id_empresa . "'>Eliminar</a> | ";
         $mensaje .= "<form method='POST'>";
         $mensaje .= "<input type='hidden' name='cotizacion_id' value='" . $row['cotizacion_id'] . "'>";
         $mensaje .= "<select name='nuevo_estado'>";
@@ -178,10 +178,10 @@ if ($result->num_rows > 0) {
             // Incluye el archivo PHP correspondiente según el valor de 'action'
             switch ($action) {
                 case 'ver':
-                    include 'crear_nuevo/menu_2_programas/boton5_ver_cotizacion/ver.php';
+                    include 'crear_nuevo/editor_menu2/menu2/boton5_ver_cotizacion/ver.php';
                     break;
                 case 'modificar':
-                    include 'crear_nuevo/menu_2_programas/boton5_ver_cotizacion/modificar_cotizacion.php';
+                    include 'crear_nuevo/editor_menu2/menu2/boton5_ver_cotizacion/modificar_cotizacion.php';
                     break;
                 default:
                     echo '<p>Acción no encontrada.</p>';
@@ -195,7 +195,7 @@ if ($result->num_rows > 0) {
 </body>
 </html>
 
-<script src="../../js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton5_ver_cotizacion/ver_listado.js"></script>
+<script src="../../../js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton5_ver_cotizacion/ver_listado.js"></script>
 
 
 

@@ -210,7 +210,7 @@ $conn->close();
 <link rel="stylesheet" href="../../../css/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton5_ver_cotizacion/procesar_modificacion.css">
 
 <!-- TÍTULO: IMPORTACIÓN DE ARCHIVO .JS -->
-<script src="../../js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton5_ver_cotizacion/procesar_modificacion.js"></script>
+<script src="../../../js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton5_ver_cotizacion/procesar_modificacion.js"></script>
 
 <!-- ------------------------------------------------------------------------------------------------------------
     -------------------------------------- FIN ITred Spa Procesar Modificacion .PHP ----------------------------------------

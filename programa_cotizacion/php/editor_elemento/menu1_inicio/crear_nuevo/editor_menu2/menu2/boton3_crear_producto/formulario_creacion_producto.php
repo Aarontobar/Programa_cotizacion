@@ -168,7 +168,7 @@ $conn->close();
 
 <!-- TÍTULO: IMPORTACIÓN DE ARCHIVO .JS -->
     <!-- Llama al archivo JS -->
-    <script src="../../js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton3_crear_producto/formulario_creacion_producto.js"></script>
+    <script src="../../../js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton3_crear_producto/formulario_creacion_producto.js"></script>
 
 
 <!-- ------------------------------------------------------------------------------------------------------------

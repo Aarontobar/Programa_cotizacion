@@ -177,7 +177,7 @@ if ($stmt_firma = $mysqli->prepare($sql_firma)) {
 
 // Procesar la subida de la imagen cuando se envía el formulario
 
-$upload_dir = '../../imagenes/menu_principal/crear_nuevo/cotizacion/'; // Ruta relativa desde el archivo PHP
+$upload_dir = '../../imagenes/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/cotizacion/'; // Ruta relativa desde el archivo PHP
 $empresa_id_foto = null;
 
 //-------------------------------------------------------------------------//
@@ -361,11 +361,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           
 <!-- TÍTULO: IMPORTACIÓN DE ARCHIVOS .JS -->
 <!-- Llama al archivo JS -->
-<script src="../../js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton1_nueva_cotizacion/nueva_cotizacion_principal.js"></script>    
-<script src="../../js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton6_crear_empresa/upload_logo.js"></script>
-<script src="../../js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton1_nueva_cotizacion/cargar_logo_empresa.js"></script> 
-<script src="../../js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton1_nueva_cotizacion/cuadro_rojo_cotizacion.js"></script> 
-<script src="../../js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton1_nueva_cotizacion/pago.js"></script> 
+<script src="../../../js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton1_nueva_cotizacion/nueva_cotizacion_principal.js"></script>    
+<script src="../../../js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton6_crear_empresa/upload_logo.js"></script>
+<script src="../../../js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton1_nueva_cotizacion/cargar_logo_empresa.js"></script> 
+<script src="../../../js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton1_nueva_cotizacion/cuadro_rojo_cotizacion.js"></script> 
+<script src="../../../js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton1_nueva_cotizacion/pago.js"></script> 
 </body>
 </html>
 

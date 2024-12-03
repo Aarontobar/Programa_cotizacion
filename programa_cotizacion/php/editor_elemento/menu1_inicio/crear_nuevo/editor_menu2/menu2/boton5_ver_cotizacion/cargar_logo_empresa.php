@@ -170,7 +170,7 @@ if ($id_empresa > 0) {
     // TÍTULO: PROCESAMIENTO DE LA SUBIDA DE IMAGEN
 
     // Procesar la subida de la imagen cuando se envía el formulario
-    $upload_dir = '../../imagenes/menu_principal/crear_nuevo/cotizacion/'; // Ruta relativa desde el archivo PHP
+    $upload_dir = '../../imagenes/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/cotizacion/'; // Ruta relativa desde el archivo PHP
     $empresa_id_foto = null;
 
     //----------------------------------------------------------------------//
@@ -261,7 +261,7 @@ if ($id_empresa > 0) {
 
 <!-- TÍTULO: IMPORTACIÓN DE ARCHIVO .JS -->
     <!-- Llama al archivo JS -->
-    <script src="../../js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton5_ver_cotizacion/cargar_logo_empresa.js"></script> 
+    <script src="../../../js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton5_ver_cotizacion/cargar_logo_empresa.js"></script> 
      
      <!-- ------------------------------------------------------------------------------------------------------------
     -------------------------------------- FIN ITred Spa Cargar Logo .PHP ----------------------------------------

@@ -31,7 +31,7 @@ BPPJ
 
                 <!-- Etiqueta para el campo de carga de imagen. El atributo "for" enlaza con el input de archivo -->
 
-                <img src="../../imagenes/menu_principal/crear_nuevo/crear_empresa_principal/generic-logo.png" alt="tamaño recomendado: 800x200 pixeles" class="logo" id="Previsualizar-logo"> 
+                <img src="../../imagenes/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/crear_empresa_principal/generic-logo.png" alt="tamaño recomendado: 800x200 pixeles" class="logo" id="Previsualizar-logo"> 
 
 
             <!-- TÍTULO: MUESTRA UNA IMAGEN PREVIA DEL LOGO CON UN TEXTO ALTERNATIVO EN CASO DE QUE NO SE CARGUE LA IMAGEN -->
@@ -64,7 +64,7 @@ BPPJ
 <!-- TITULO: IMPORTACION DE ARCHIVO .JS -->
 
     <!-- Llama al archivo JS -->
-    <script src="../../js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton6_crear_empresa/upload_logo.js"></script>
+    <script src="../../../js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton6_crear_empresa/upload_logo.js"></script>
 
 
 
@@ -72,7 +72,7 @@ BPPJ
 // Verificar si el archivo fue subido sin errores
 
 if (isset($_FILES['logo_upload']) && $_FILES['logo_upload']['error'] == UPLOAD_ERR_OK) {
-    $upload_dir = '../../imagenes/menu_principal/crear_nuevo/crear_empresa/logo/';
+    $upload_dir = '../../imagenes/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/crear_empresa/logo/';
     $tmp_name = $_FILES['logo_upload']['tmp_name'];
     $name = basename($_FILES['logo_upload']['name']);
 

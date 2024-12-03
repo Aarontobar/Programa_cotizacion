@@ -26,7 +26,7 @@ if ($conn->connect_error) {
 
 // TÍTULO: CONFIGURACIÓN DE DIRECTORIOS
 // Define la ruta base para las imágenes
-$base_upload_dir = dirname(dirname(dirname(dirname(__DIR__)))) . '/imagenes/menu_principal/crear_nuevo/crear_producto/';
+$base_upload_dir = dirname(dirname(dirname(dirname(__DIR__)))) . '/imagenes/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/crear_producto/';
 
 // Crear el directorio si no existe
 if (!file_exists($base_upload_dir)) {

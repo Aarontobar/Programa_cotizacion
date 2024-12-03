@@ -195,7 +195,7 @@ if ($id > 0) {
 // Procesar la subida de la imagen cuando se envía el formulario
 
 // Ruta relativa desde el archivo PHP
-$upload_dir = '../../imagenes/menu_principal/crear_nuevo/cotizacion/'; 
+$upload_dir = '../../imagenes/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/cotizacion/'; 
 $empresa_id_foto = null;
 
 // Verificar si se ha enviado el formulario
@@ -259,7 +259,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['formulario']) && $_POS
 
             <!-- Mostrar la imagen de perfil si existe -->
 
-            <img src="<?php echo htmlspecialchars('../../imagenes/menu_principal/crear_nuevo/programa_cotizacion/' . $ruta_foto, ENT_QUOTES, 'UTF-8'); ?>" alt="Foto de perfil" id="Previsualizar-logo" class="logo" onclick="document.getElementById('subir-logo').click();" />
+            <img src="<?php echo htmlspecialchars('../../imagenes/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/programa_cotizacion/' . $ruta_foto, ENT_QUOTES, 'UTF-8'); ?>" alt="Foto de perfil" id="Previsualizar-logo" class="logo" onclick="document.getElementById('subir-logo').click();" />
         <?php else: ?>
 
             <!-- TÍTULO: CARGAR LOGO SI NO HAY IMAGEN -->
@@ -280,7 +280,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['formulario']) && $_POS
  <!-- TÍTULO: AQUÍ SE CARGA EL JS DEL ARCHIVO -->
 
     <!-- llama al archivo JS -->
-    <script src="../../js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton1_nueva_cotizacion/cargar_logo_empresa.js"></script> 
+    <script src="../../../js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton1_nueva_cotizacion/cargar_logo_empresa.js"></script> 
 
 
      

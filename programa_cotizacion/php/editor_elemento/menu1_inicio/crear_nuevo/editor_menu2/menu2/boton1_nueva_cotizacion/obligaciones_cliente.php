@@ -68,7 +68,7 @@ BPPJ
 <!-- TITULO: ARCHIVO JS -->
     
     <!-- llama al archivo js -->
-    <script src="../../js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton1_nueva_cotizacion/obligaciones_cliente.js"></script> 
+    <script src="../../../js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton1_nueva_cotizacion/obligaciones_cliente.js"></script> 
 
 
 

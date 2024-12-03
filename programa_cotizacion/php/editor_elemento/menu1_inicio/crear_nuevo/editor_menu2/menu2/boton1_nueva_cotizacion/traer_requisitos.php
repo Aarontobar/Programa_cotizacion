@@ -66,7 +66,7 @@ BPPJ
 
 <!-- TITUO: ARCHIVO JS -->
     <!-- llama al archivo traer_requisito.js -->
-    <script src="../../js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton1_nueva_cotizacion/traer_requisitos.js"></script> 
+    <script src="../../../js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton1_nueva_cotizacion/traer_requisitos.js"></script> 
 
 <?php
 

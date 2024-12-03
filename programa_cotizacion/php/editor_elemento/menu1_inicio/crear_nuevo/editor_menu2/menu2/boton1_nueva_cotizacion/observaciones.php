@@ -33,7 +33,7 @@ BPPJ
 
 <!-- TITULO: llama al archivo JS -->
     <!--------archivo JS------------------------>
-    <script src="../../js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton1_nueva_cotizacion/observaciones.js"></script> 
+    <script src="../../../js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton1_nueva_cotizacion/observaciones.js"></script> 
 
 
 

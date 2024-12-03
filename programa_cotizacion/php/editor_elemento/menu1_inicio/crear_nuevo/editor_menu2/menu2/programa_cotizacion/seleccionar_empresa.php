@@ -32,13 +32,13 @@ BPPJ
         // Definir la ruta manual para la prueba
 
         // ruta de la imagen del formulario
-        $rutaPrueba = '../../../imagenes/menu_principal/crear_nuevo/programa_cotizacion/Captura de pantalla 2024-08-27 141315.png'; // Ruta manual para probar
+        $rutaPrueba = '../../../imagenes/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/programa_cotizacion/Captura de pantalla 2024-08-27 141315.png'; // Ruta manual para probar
 
         // Función para ajustar la ruta de la imagen
         if (!function_exists('ajustarRuta')) {
             function ajustarRuta($ruta) {
             // Define la ruta manualmente
-            $rutaManual = '../../../imagenes/menu_principal/crear_nuevo/programa_cotizacion/';
+            $rutaManual = '../../../imagenes/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/programa_cotizacion/';
             // Extrae el nombre del archivo de la ruta original
             $nombreArchivo = basename($ruta);
             // Retorna la ruta manual con el nombre del archivo

@@ -76,7 +76,7 @@ BPPJ
 
 <!-- TÍTULO: IMPORTACIÓN DE ARCHIVO .JS -->
 
-<script src="../../js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton4_crear_proveedor/crear_proveedor_principal.js"></script> 
+<script src="../../../js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton4_crear_proveedor/crear_proveedor_principal.js"></script> 
 
 <!--------------------------------------------------------------------->
 </html>

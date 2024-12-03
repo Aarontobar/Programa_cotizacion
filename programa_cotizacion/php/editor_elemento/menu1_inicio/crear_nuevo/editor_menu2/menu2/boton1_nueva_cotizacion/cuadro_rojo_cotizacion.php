@@ -92,7 +92,7 @@ BPPJ
  <!-- TÍTULO: AQUÍ SE CARGA EL JS DEL ARCHIVO -->
 
     <!-- llama al archivo JS -->
-    <script src="../../js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton1_nueva_cotizacion/cuadro_rojo_cotizacion.js"></script> 
+    <script src="../../../js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton1_nueva_cotizacion/cuadro_rojo_cotizacion.js"></script> 
 
 
 <!-- ------------------------------------------------------------------------------------------------------------

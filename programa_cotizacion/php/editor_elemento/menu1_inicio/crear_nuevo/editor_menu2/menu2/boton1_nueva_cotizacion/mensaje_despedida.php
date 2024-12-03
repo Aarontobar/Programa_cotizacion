@@ -35,7 +35,7 @@ BPPJ
 <!-- TITULO: ARCHIVO JS -->
 
     <!-- llama al archivo JS -->
-    <script src="../../js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton1_nueva_cotizacion/mensaje_despedida.js"></script> 
+    <script src="../../../js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton1_nueva_cotizacion/mensaje_despedida.js"></script> 
 
 
 

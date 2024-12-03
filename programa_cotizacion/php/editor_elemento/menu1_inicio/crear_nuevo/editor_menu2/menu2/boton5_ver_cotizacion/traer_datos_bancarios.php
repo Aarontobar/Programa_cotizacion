@@ -48,7 +48,7 @@ BPPJ
 <!-- TÍTULO: IMPORTACIÓN DE ARCHIVO .CSS -->
 
     <!-- llama al archivo CSS -->
-    <link rel="stylesheet" href="../../css/menu_principal/crear_nuevo/menu_2_programas/boton5_ver_cotizacion/traer_datos_bancarios.css">
+    <link rel="stylesheet" href="../../../css/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton5_ver_cotizacion/traer_datos_bancarios.css">
 
 <!-- TÍTULO: SECCIÓN DE TRANSFERENCIAS BANCARIAS -->
 
@@ -153,7 +153,7 @@ BPPJ
 <!-- TÍTULO: IMPORTACIÓN DE ARCHIVO .JS -->
 
     <!-- llama al archivo JS -->
-    <script src="../../js/menu_principal/crear_nuevo/menu_2_programas/boton5_ver_cotizacion/traer_datos_bancarios.js"></script> 
+    <script src="../../js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton5_ver_cotizacion/traer_datos_bancarios.js"></script> 
 
 
      <!-- ------------------------------------------------------------------------------------------------------------

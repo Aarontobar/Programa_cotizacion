@@ -187,7 +187,7 @@ if ($id > 0) {
 <!-- ARCHIVO CSS -->
 
 <!-- llama al archivo CSS -->
-<link rel="stylesheet" href="../../css/menu_principal/crear_nuevo/editor_menu2/menu2/boton1_nueva_cotizacion/cargar_logo_empresa.css">
+<link rel="stylesheet" href="../../../css/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton1_nueva_cotizacion/cargar_logo_empresa.css">
 
 <div class="box-6 caja-logo">
 <?php
@@ -280,7 +280,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['formulario']) && $_POS
  <!-- TÍTULO: AQUÍ SE CARGA EL JS DEL ARCHIVO -->
 
     <!-- llama al archivo JS -->
-    <script src="../../js/menu_principal/crear_nuevo/editor_menu2/menu2/boton1_nueva_cotizacion/cargar_logo_empresa.js"></script> 
+    <script src="../../js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton1_nueva_cotizacion/cargar_logo_empresa.js"></script> 
 
 
      

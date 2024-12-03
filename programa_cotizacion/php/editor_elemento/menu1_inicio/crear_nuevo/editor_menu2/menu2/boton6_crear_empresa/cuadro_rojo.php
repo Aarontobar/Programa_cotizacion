@@ -19,7 +19,7 @@ BPPJ
 <!-- TITULO: IMPORTACIÓN DE ARCHIVO .CSS -->
 
     <!-- Llama al archivo CSS -->
-    <link rel="stylesheet" href="../../css/menu_principal/crear_nuevo/menu_2_programas/boton6_crear_empresa/cuadro_rojo.css">
+    <link rel="stylesheet" href="../../../css/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton6_crear_empresa/cuadro_rojo.css">
 
 
 <!-- TÍTULO: CAJA DE DATOS DE COTIZACIÓN -->
@@ -52,7 +52,7 @@ BPPJ
 <!-- TITULO: IMPORTACION DE ARCHIVO .JS -->
 
     <!-- Llama al archivo JS -->
-    <script src="../../js/menu_principal/crear_nuevo/menu_2_programas/boton6_crear_empresa/cuadro_rojo.js"></script> 
+    <script src="../../js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton6_crear_empresa/cuadro_rojo.js"></script> 
 
 <!-- ------------------------------------------------------------------------------------------------------------
     -------------------------------------- FIN ITred Spa Cuadro Rojo .PHP ----------------------------------------

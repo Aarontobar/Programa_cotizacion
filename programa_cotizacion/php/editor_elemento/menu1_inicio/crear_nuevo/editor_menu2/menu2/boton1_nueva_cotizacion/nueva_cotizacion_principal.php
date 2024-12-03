@@ -62,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['formulario']) && $_POS
     <!-- TITULO: ARCHIVO CSS -->
 
         <!-- llama al archivo CSS -->
-        <link rel="stylesheet" href="../../css/menu_principal/crear_nuevo/editor_menu2/menu2/boton1_nueva_cotizacion/nueva_cotizacion.css"> <!-- Enlaza una hoja de estilo externa que se encuentra en la ruta especificada para estilizar el contenido de la página -->
+        <link rel="stylesheet" href="../../../css/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton1_nueva_cotizacion/nueva_cotizacion.css"> <!-- Enlaza una hoja de estilo externa que se encuentra en la ruta especificada para estilizar el contenido de la página -->
 
 </head>
 
@@ -220,9 +220,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['formulario']) && $_POS
         <!-- TÍTULO: ENLAZA NUEVAMENTE EL ARCHIVO JAVASCRIPT PARA MANEJAR LA LÓGICA DEL FORMULARIO DE COTIZACIÓN -->  
 
             <!-- llama al archivo nueva_cotizacion.sj -->
-            <script src="../../js/menu_principal/crear_nuevo/editor_menu2/menu2/boton1_nueva_cotizacion/nueva_cotizacion_principal.js"></script> 
+            <script src="../../js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton1_nueva_cotizacion/nueva_cotizacion_principal.js"></script> 
              <!-- llama al archivo cuadro_rojo_cotizacion.sj -->
-            <script src="../../js/menu_principal/crear_nuevo/editor_menu2/menu2/boton1_nueva_cotizacion/cuadro_rojo_cotizacion.js"></script> 
+            <script src="../../js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton1_nueva_cotizacion/cuadro_rojo_cotizacion.js"></script> 
 
             <button type="submit" class="submit">Guardar cotizacion</button> 
 

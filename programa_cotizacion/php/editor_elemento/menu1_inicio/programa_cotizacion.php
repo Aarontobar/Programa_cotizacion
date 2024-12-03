@@ -32,7 +32,7 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Menú Principal - Cotización ITred Spa</title>
         <!-- llama al archivo CSS -->
-        <link rel="stylesheet" href="../../css/menu_principal/crear_nuevo/editor_menu2/menu2/programa_cotizacion/programa_cotizacion.css">
+        <link rel="stylesheet" href="../../../css/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/programa_cotizacion/programa_cotizacion.css">
     </head>
 
     <body>
@@ -64,19 +64,19 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
                     include 'crear_nuevo/editor_menu2/menu2/boton1_nueva_cotizacion/nueva_cotizacion_principal.php';
                     break;
                 case 'crear_cliente':
-                    include 'crear_nuevo/menu_2_programas/boton2_crear_cliente/crear_cliente_principal.php';
+                    include 'crear_nuevo/editor_menu2/menu2/boton2_crear_cliente/crear_cliente_principal.php';
                     break;
                 case 'crear_producto':
-                    include 'crear_nuevo/menu_2_programas/boton3_crear_producto/crear_producto_principal.php';
+                    include 'crear_nuevo/editor_menu2/menu2/boton3_crear_producto/crear_producto_principal.php';
                     break;
                 case 'crear_proveedor':
-                    include 'crear_nuevo/menu_2_programas/boton4_crear_proveedor/crear_proveedor_principal.php';
+                    include 'crear_nuevo/editor_menu2/menu2/boton4_crear_proveedor/crear_proveedor_principal.php';
                     break;
                 case 'ver_cotizacion':
-                    include 'crear_nuevo/menu_2_programas/boton5_ver_cotizacion/ver_cotizacion_principal.php';
+                    include 'crear_nuevo/editor_menu2/menu2/boton5_ver_cotizacion/ver_cotizacion_principal.php';
                     break;
                 case 'crear_empresa':
-                    include 'crear_nuevo/menu_2_programas/boton6_crear_empresa/crear_empresa_principal.php';
+                    include 'crear_nuevo/editor_menu2/menu2/boton6_crear_empresa/crear_empresa_principal.php';
                     break;
                 default:
                     echo '<p>Página no encontrada.</p>';
@@ -90,7 +90,7 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
     <div id="modificar-cotizacion-container"></div>
 
     <!-- Carga el archivo JavaScript para la funcionalidad del formulario -->
-    <script src="../../js/menu_principal/crear_nuevo/editor_menu2/menu2/programa_cotizacion/programa_cotizacion.js"></script> 
+    <script src="../../../js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/programa_cotizacion/programa_cotizacion.js"></script> 
 
     <script>
     document.getElementById('formulario-seleccionar-empresa').addEventListener('submit', function(event) {
@@ -101,7 +101,7 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
 
     // TÍTULO: FUNCIÓN PARA CARGAR EL FORMULARIO DE MODIFICACIÓN
     function cargarModificarCotizacion(id) {
-        fetch(`crear_nuevo/menu_2_programas/boton5_ver_cotizacion/modificar_cotizacion.php?id=${id}`)
+        fetch(`crear_nuevo/editor_menu2/menu2/boton5_ver_cotizacion/modificar_cotizacion.php?id=${id}`)
             .then(response => response.text())
             .then(html => {
                 document.getElementById('modificar-cotizacion-container').innerHTML = html;

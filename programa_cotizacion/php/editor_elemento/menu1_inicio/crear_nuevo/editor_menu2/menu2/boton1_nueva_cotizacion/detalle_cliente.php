@@ -17,7 +17,7 @@ BPPJ
 
 <!-- llama al css -->
 
-<link rel="stylesheet" href="../../css/menu_principal/crear_nuevo/editor_menu2/menu2/boton1_nueva_cotizacion/detalle_cliente.css">
+<link rel="stylesheet" href="../../../css/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton1_nueva_cotizacion/detalle_cliente.css">
 
 <?php
 // Obtener todos los datos de las empresas
@@ -340,7 +340,7 @@ function toggleFormulario() {
 <!-- TÍTULO: ARCHIVO JS -->
 
     <!-- llamado detalle_cliente.JS -->
-    <script src="../../js/menu_principal/crear_nuevo/editor_menu2/menu2/boton1_nueva_cotizacion/detalle_cliente.js"></script> 
+    <script src="../../js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton1_nueva_cotizacion/detalle_cliente.js"></script> 
 
 <?php
 

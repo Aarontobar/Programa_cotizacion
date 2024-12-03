@@ -37,7 +37,7 @@ BPPJ
 
     <!-- Enlaza una hoja de estilo externa que se encuentra en la ruta especificada para estilizar el contenido de la página -->
 
-    <link rel="stylesheet" href="../../css/menu_principal/crear_nuevo/menu_2_programas/boton6_crear_empresa/crear_empresa.css"> 
+    <link rel="stylesheet" href="../../../css/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton6_crear_empresa/crear_empresa.css"> 
 
     <!------------------------------------------------------------------------------------------------------------------------->
 
@@ -148,7 +148,7 @@ BPPJ
 
     <!-- Enlaza un archivo JavaScript externo para actualizar el logo o realizar otras actualizaciones -->
 
-    <script src="../../js/menu_principal/crear_nuevo/menu_2_programas/boton6_crear_empresa/crear_empresa_principal.js"></script> 
+    <script src="../../js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton6_crear_empresa/crear_empresa_principal.js"></script> 
 
     <!--------------------------------------------------------------------------------------------------->
     

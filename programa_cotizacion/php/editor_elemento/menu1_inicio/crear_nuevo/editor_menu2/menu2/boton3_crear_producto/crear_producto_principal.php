@@ -34,7 +34,7 @@ $conn = new mysqli('localhost', 'root', '', 'ITredSpa_bd');
     <title>Formulario de Creación de Productos</title>
 
     <!-- TÍTULO: IMPORTACIÓN DE ARCHIVO .CSS -->
-    <link rel="stylesheet" href="../../css/menu_principal/crear_nuevo/menu_2_programas/boton3_crear_producto/crear_producto.css">
+    <link rel="stylesheet" href="../../../css/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton3_crear_producto/crear_producto.css">
 </head>
 <body>
     <div class="contenedor">
@@ -45,7 +45,7 @@ $conn = new mysqli('localhost', 'root', '', 'ITredSpa_bd');
     </div>
 
     <!-- TÍTULO: IMPORTACIÓN DE ARCHIVO .JS -->
-    <script src="../../js/menu_principal/crear_nuevo/menu_2_programas/boton3_crear_producto/crear_producto_principal.js"></script>
+    <script src="../../js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton3_crear_producto/crear_producto_principal.js"></script>
 </body>
 </html>
 <!-- ------------------------------------------------------------------------------------------------------------

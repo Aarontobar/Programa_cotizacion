@@ -15,7 +15,7 @@ BPPJ
 <!-- TITULO: ARCHVIO CSS -->
 
 <!-- llama al archivo css -->
-<link rel="stylesheet" href="../../css/menu_principal/crear_nuevo/editor_menu2/menu2/boton1_nueva_cotizacion/detalle_total.css">
+<link rel="stylesheet" href="../../../css/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton1_nueva_cotizacion/detalle_total.css">
 
 <!-- INICIO HTML -->
 
@@ -139,7 +139,7 @@ BPPJ
 <!-- TITULO: LLAMA ARCHIVO PHP -->
 
 <!-- llama al archivo detalle_total.js -->
-<script src="../../js/menu_principal/crear_nuevo/editor_menu2/menu2/boton1_nueva_cotizacion/detalle_total.js"></script> 
+<script src="../../js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton1_nueva_cotizacion/detalle_total.js"></script> 
 
 
 <?php

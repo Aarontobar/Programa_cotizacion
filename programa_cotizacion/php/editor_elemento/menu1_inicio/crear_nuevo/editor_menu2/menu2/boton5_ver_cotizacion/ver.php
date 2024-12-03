@@ -56,7 +56,7 @@ $stmt->close();
         <!-- TÍTULO: IMPORTACIÓN DE ARCHIVO .CSS -->
 
             <!-- llama al archivo CSS -->
-            <link rel="stylesheet" href="../../css/menu_principal/crear_nuevo/menu_2_programas/boton5_ver_cotizacion/ver.css">
+            <link rel="stylesheet" href="../../../css/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton5_ver_cotizacion/ver.css">
     
     </head>
 <body>
@@ -195,7 +195,7 @@ $stmt->close();
 <!-- TÍTULO: IMPORTACIÓN DE ARCHIVO .JS -->
 
     <!-- llama al archivo JS -->
-    <script src="../../js/menu_principal/crear_nuevo/menu_2_programas/boton5_ver_cotizacion/ver_principal.js"></script>
+    <script src="../../js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton5_ver_cotizacion/ver_principal.js"></script>
 </body>
 </html>
 <!-- ------------------------------------------------------------------------------------------------------------

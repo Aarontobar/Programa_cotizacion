@@ -19,7 +19,7 @@ BPPJ
 <!-- TITULO: IMPORTACIÓN DE ARCHIVO .CSS -->
 
     <!-- Llama al archivo CSS -->
-    <link rel="stylesheet" href="../../css/menu_principal/crear_nuevo/menu_2_programas/boton6_crear_empresa/formulario_encargado.css">
+    <link rel="stylesheet" href="../../../css/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton6_crear_empresa/formulario_encargado.css">
 
 <!-- TÍTULO: TABLA PARA AGREGAR ENCARGADOS -->
     <fieldset class="box-12 data-box"> 
@@ -115,7 +115,7 @@ BPPJ
 
 <!-- TITULO: IMPORTACION DE ARCHIVO .JS -->
     <!-- Llama al archivo JS -->
-    <script src="../../js/menu_principal/crear_nuevo/menu_2_programas/boton6_crear_empresa/formulario_encargado.js"></script>
+    <script src="../../js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton6_crear_empresa/formulario_encargado.js"></script>
 
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['formulario']) && $_POST['formulario'] === 'empresa') {

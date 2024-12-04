@@ -37,7 +37,7 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
 
     <body>
     <div style="padding: 10px;">
-    <a href="../../../../programa_cotizacion.php" style="text-decoration: none; padding: 5px 10px; background-color: #e0e0e0; border: 1px solid #000; color: #000;">
+    <a href="../../../programa_cotizacion.php" style="text-decoration: none; padding: 5px 10px; background-color: #e0e0e0; border: 1px solid #000; color: #000;">
         Volver al Editor de Banners
     </a>
     </div>

@@ -41,6 +41,8 @@
         <a href="#">CREAR NUEVO BANNER</a>
         <a href="#">MODIFICAR BANNER</a>
         <a href="#">ELIMINAR BANNER</a>
+        <!-- New link to the internal programa_cotizacion.php -->
+        <a href="php/editor_elemento/menu1_inicio/programa_cotizacion.php">IR A COTIZACIONES</a>
     </div>
 </body>
 </html>

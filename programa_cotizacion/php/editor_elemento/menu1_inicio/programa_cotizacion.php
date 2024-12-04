@@ -36,6 +36,12 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
     </head>
 
     <body>
+    <div style="padding: 10px;">
+    <a href="../../../../programa_cotizacion.php" style="text-decoration: none; padding: 5px 10px; background-color: #e0e0e0; border: 1px solid #000; color: #000;">
+        Volver al Editor de Banners
+    </a>
+    </div>
+
     <div class="programa_cotizacion">
         <!-- Incluye el menú de navegación desde un archivo PHP externo -->
         <?php include 'crear_nuevo/editor_menu2/menu2/programa_cotizacion/menu.php'; ?>

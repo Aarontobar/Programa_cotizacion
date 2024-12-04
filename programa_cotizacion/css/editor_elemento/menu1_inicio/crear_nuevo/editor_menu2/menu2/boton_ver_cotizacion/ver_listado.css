@@ -1,0 +1,184 @@
+
+/* 
+Sitio Web Creado por ITred Spa.
+Direccion: Guido Reni #4190
+Pedro Aguirre Cerda - Santiago - Chile
+contacto@itred.cl o itred.spa@gmail.com
+https://www.itred.cl
+Creado, Programado y Diseñado por ITred Spa.
+BPPJ 
+*/
+
+
+/* --------------------------------------------------------------------------------------------------------------
+    -------------------------------------- INICIO ITred Spa Ver Listado .CSS --------------------------------------
+    ------------------------------------------------------------------------------------------------------------- */
+
+/* TÍTULO: CONTENEDOR PRINCIPAL */
+.ver_cotizacion_principal {
+    /* SUBTÍTULO: ESTILOS BASE */
+    font-family: 'Arial', sans-serif; /* Tipo de letra principal */
+    background-color: #f7f7f7; /* Color de fondo del contenedor */
+    color: #666; /* Color del texto general */
+    margin: 0; /* Sin márgenes externos */
+    padding: 20px; /* Espaciado interno */
+    font-size: 14px; /* Tamaño de letra base */
+}
+
+/* TÍTULO: ENCABEZADO DE PÁGINA */
+.ver_cotizacion_principal h1 {
+    text-align: center; /* Centrado del texto */
+    color: #333; /* Color del título */
+    margin-bottom: 20px; /* Espacio inferior */
+    font-size: 24px; /* Tamaño del título */
+}
+
+/* TÍTULO: TABLA DE COTIZACIONES */
+.ver_cotizacion_principal table {
+    width: 100%; /* Ancho completo */
+    border-collapse: collapse; /* Bordes colapsados */
+    margin: 20px 0; /* Márgenes verticales */
+    background-color: #fff; /* Fondo blanco */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+/* TÍTULO: CELDAS Y ENCABEZADOS */
+.ver_cotizacion_principal th,
+.ver_cotizacion_principal td {
+    padding: 12px; /* Espaciado interno */
+    text-align: left; /* Alineación del texto */
+    font-size: 13px; /* Tamaño de letra */
+    border-bottom: 1px solid #ddd; /* Línea separadora */
+}
+
+/* TÍTULO: ENCABEZADOS DE COLUMNA */
+.ver_cotizacion_principal th {
+    background-color: #555; /* Color de fondo */
+    color: #fff; /* Color del texto */
+    text-transform: uppercase; /* Texto en mayúsculas */
+    font-weight: 600; /* Grosor de la fuente */
+}
+
+/* TÍTULO: FILAS ALTERNAS */
+.ver_cotizacion_principal tr:nth-child(even) {
+    background-color: #f9f9f9; /* Color de fondo alterno */
+}
+
+/* TÍTULO: EFECTO HOVER EN FILAS */
+.ver_cotizacion_principal tr:hover {
+    background-color: #f5f5f5; /* Color al pasar el mouse */
+    transition: background-color 0.2s ease-in-out; /* Transición suave */
+}
+
+/* TÍTULO: ENLACES DE ACCIÓN GENERALES */
+.ver_cotizacion_principal td a {
+    display: inline-block; /* Mostrar como bloque en línea */
+    padding: 6px 12px; /* Espaciado interno */
+    border-radius: 4px; /* Bordes redondeados */
+    text-decoration: none; /* Sin subrayado */
+    color: #fff !important; /* Color del texto forzado */
+    font-weight: 500; /* Grosor de la fuente */
+    transition: all 0.2s ease; /* Transición suave */
+    margin: 0 2px; /* Espaciado entre botones */
+}
+
+/* TÍTULO: BOTÓN VER */
+.ver_cotizacion_principal td a[href*="action=ver"] {
+    background-color: #555; /* Color de fondo gris */
+}
+
+.ver_cotizacion_principal td a[href*="action=ver"]:hover {
+    background-color: #444; /* Color de fondo gris oscuro al hover */
+}
+
+/* TÍTULO: BOTÓN MODIFICAR */
+.ver_cotizacion_principal td a[onclick*="cargarModificarCotizacion"] {
+    background-color: #4CAF50; /* Color de fondo verde */
+}
+
+.ver_cotizacion_principal td a[onclick*="cargarModificarCotizacion"]:hover {
+    background-color: #45a049; /* Color de fondo verde oscuro al hover */
+}
+
+/* TÍTULO: BOTÓN ELIMINAR */
+.ver_cotizacion_principal td a[href*="eliminar_cotizacion"] {
+    background-color: #f44336; /* Color de fondo rojo */
+}
+
+.ver_cotizacion_principal td a[href*="eliminar_cotizacion"]:hover {
+    background-color: #da190b; /* Color de fondo rojo oscuro al hover */
+}
+
+/* TÍTULO: ESTADOS DE COTIZACIÓN */
+.ver_cotizacion_principal .estado-aprobada {
+    color: #2ecc71; /* Verde para aprobado */
+    font-weight: bold;
+    background-color: #e8f5e9;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+.ver_cotizacion_principal .estado-rechazada {
+    color: #e74c3c; /* Rojo para rechazado */
+    font-weight: bold;
+    background-color: #fde8e7;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+.ver_cotizacion_principal .estado-pendiente {
+    color: #f39c12; /* Amarillo para pendiente */
+    font-weight: bold;
+    background-color: #fff3e0;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+/* TÍTULO: FORMULARIO DE ACTUALIZACIÓN */
+.ver_cotizacion_principal form {
+    display: inline-flex; /* Alineación en línea */
+    gap: 8px; /* Espacio entre elementos */
+    align-items: center; /* Alineación vertical */
+    margin-left: 8px; /* Margen izquierdo */
+}
+
+/* TÍTULO: SELECT DE ESTADO */
+.ver_cotizacion_principal select {
+    padding: 6px; /* Espaciado interno */
+    border: 1px solid #ddd; /* Borde del select */
+    border-radius: 4px; /* Bordes redondeados */
+    font-size: 13px; /* Tamaño de letra */
+    background-color: #fff; /* Fondo blanco */
+}
+
+/* TÍTULO: BOTÓN DE ACTUALIZAR */
+.ver_cotizacion_principal button[type="submit"] {
+    background-color: #008CBA; /* Color de fondo azul */
+    color: white; /* Color del texto */
+    border: none; /* Sin borde */
+    padding: 6px 12px; /* Espaciado interno */
+    border-radius: 4px; /* Bordes redondeados */
+    cursor: pointer; /* Cursor tipo puntero */
+    font-size: 13px; /* Tamaño de letra */
+    transition: background-color 0.2s; /* Transición suave */
+}
+
+/* TÍTULO: HOVER EN BOTÓN DE ACTUALIZAR */
+.ver_cotizacion_principal button[type="submit"]:hover {
+    background-color: #007095; /* Color de fondo azul oscuro al hover */
+}
+
+/* --------------------------------------------------------------------------------------------------------------
+    ---------------------------------------- FIN ITred Spa Ver Listado .CSS ---------------------------------------
+    ------------------------------------------------------------------------------------------------------------- */
+
+
+/*
+Sitio Web Creado por ITred Spa.
+Direccion: Guido Reni #4190
+Pedro Aguirre Cerda - Santiago - Chile
+contacto@itred.cl o itred.spa@gmail.com
+https://www.itred.cl
+Creado, Programado y Diseñado por ITred Spa.
+BPPJ
+*/

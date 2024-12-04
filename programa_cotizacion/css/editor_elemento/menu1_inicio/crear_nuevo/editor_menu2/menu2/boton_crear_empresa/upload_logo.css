@@ -1,0 +1,76 @@
+/* 
+Sitio Web Creado por ITred Spa.
+Direccion: Guido Reni #4190
+Pedro Aguirre Cerda - Santiago - Chile
+contacto@itred.cl o itred.spa@gmail.com
+https://www.itred.cl
+Creado, Programado y Diseñado por ITred Spa.
+BPPJ 
+*/
+
+
+/* --------------------------------------------------------------------------------------------------------------
+    -------------------------------------- INICIO ITred Spa Upload Logo .CSS --------------------------------------
+    ------------------------------------------------------------------------------------------------------------- */
+
+/* TÍTULO: ESTILOS COMUNES */
+
+  /* Estilos para la caja que contiene el logo */
+  .caja-logo {
+    display: flex; /* Usar flexbox para alinear elementos */
+    align-items: center; /* Centrar verticalmente los elementos dentro de la caja */
+    justify-content: center; /* Centrar horizontalmente los elementos dentro de la caja */
+  }
+
+/* TÍTULO: ESTILOS PARA EL CONTENEDOR DEL LOGO */
+
+  /* Usar flexbox para alinear elementos y cambiar el cursor al pasar sobre el contenedor */
+  .contenedor-logo {
+    display: flex; /* Usar flexbox para alinear elementos */
+    align-items: center; /* Centrar verticalmente los elementos dentro del contenedor */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el contenedor */
+  }
+
+/* TÍTULO: ESTILOS PARA LA IMAGEN DEL LOGO */
+
+  /* Definir ancho máximo y mantener proporción de la imagen */
+  .logo {
+    max-width: 300px; /* Ancho máximo del logo */
+    height: auto; /* Altura automática para mantener la proporción */
+    margin-right: 10px; /* Margen derecho de 10px para separar del siguiente elemento */
+  }
+
+/* TÍTULO: ESTILOS PARA EL BOTÓN ASOCIADO AL LOGO */
+
+  /* Diseño del botón con fondo oscuro y texto en blanco */
+  button.logo {
+    background-color: #333; /* Color de fondo gris oscuro */
+    color: #fff; /* Color del texto en blanco */
+    padding: 10px 20px; /* Relleno interno de 10px vertical y 20px horizontal */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    width: auto; /* Ancho automático según el contenido */
+  }
+
+/* TÍTULO: EFECTO HOVER PARA EL BOTÓN ASOCIADO AL LOGO */
+
+  /* Color de fondo gris más claro al hacer hover */
+  button.logo:hover {
+    background-color: #555; /* Color de fondo gris más claro al hacer hover */
+  }
+    
+    /* --------------------------------------------------------------------------------------------------------------
+    ---------------------------------------- FIN ITred Spa Upload Logo .CSS ---------------------------------------
+    ------------------------------------------------------------------------------------------------------------- */
+
+
+/*
+Sitio Web Creado por ITred Spa.
+Direccion: Guido Reni #4190
+Pedro Aguirre Cerda - Santiago - Chile
+contacto@itred.cl o itred.spa@gmail.com
+https://www.itred.cl
+Creado, Programado y Diseñado por ITred Spa.
+BPPJ
+*/

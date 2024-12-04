@@ -1207,7 +1207,7 @@ INSERT INTO productos (nombre_producto, tipo_producto, precio, descripcion, cant
 
 -- Insertar datos en la tabla E_FotosPerfil
 INSERT INTO FP_FotosPerfil (id_foto, ruta_foto, fecha_subida)
-VALUES (1, '../../imagenes/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/programa_cotizacion/prueba2.png', '2024-09-09 17:25:20');
+VALUES (1, '../../../imagenes/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/programa_cotizacion/prueba2.png', '2024-09-09 17:25:20');
 
 
 

@@ -1,0 +1,61 @@
+
+/* 
+Sitio Web Creado por ITred Spa.
+Direccion: Guido Reni #4190
+Pedro Aguirre Cerda - Santiago - Chile
+contacto@itred.cl o itred.spa@gmail.com
+https://www.itred.cl
+Creado, Programado y Diseñado por ITred Spa.
+BPPJ 
+*/
+
+
+/* --------------------------------------------------------------------------------------------------------------
+    -------------------------------------- INICIO ITred Spa Crear Clientes .CSS --------------------------------------
+    ------------------------------------------------------------------------------------------------------------- */
+
+/* Estilo para el enlace "Crear nuevo cliente" */
+.boton-opcion {
+    color: #4CAF50; /* Color del texto */
+    text-decoration: underline; /* Subraya el texto */
+    font-size: 14px; /* Tamaño de letra */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el enlace */
+    display: block; /* Hace que el enlace sea un bloque */
+    text-align: center; /* Centra el texto */
+}
+
+.boton-opcion:hover {
+    color: #45a049; /* Color del texto al pasar el cursor */
+}
+
+/* Estilo para el botón fijado en crear_cliente.php */
+.boton-fijado {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 10px 5px;
+    font-size: 14px;
+    color: #fff;
+    background-color: #4CAF50; /* Color verde del botón */
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.boton-fijado:hover {
+    background-color: #45a049; /* Color verde del botón al pasar el cursor */
+}
+/* --------------------------------------------------------------------------------------------------------------
+    ---------------------------------------- FIN ITred Spa Crear Clientes .CSS ---------------------------------------
+    ------------------------------------------------------------------------------------------------------------- */
+
+
+/*
+Sitio Web Creado por ITred Spa.
+Direccion: Guido Reni #4190
+Pedro Aguirre Cerda - Santiago - Chile
+contacto@itred.cl o itred.spa@gmail.com
+https://www.itred.cl
+Creado, Programado y Diseñado por ITred Spa.
+BPPJ
+*/

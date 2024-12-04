@@ -1,0 +1,88 @@
+
+/* 
+Sitio Web Creado por ITred Spa.
+Direccion: Guido Reni #4190
+Pedro Aguirre Cerda - Santiago - Chile
+contacto@itred.cl o itred.spa@gmail.com
+https://www.itred.cl
+Creado, Programado y Diseñado por ITred Spa.
+BPPJ 
+*/
+
+
+/* --------------------------------------------------------------------------------------------------------------
+    -------------------------------------- INICIO ITred Spa Mostrar Clientes .CSS --------------------------------------
+    ------------------------------------------------------------------------------------------------------------- */
+
+/* Estilo aplicado al h1 con alineación centrada y márgenes */
+h1 {
+    text-align: center; /* Alineación centrada del encabezado */
+    color: #333; /* Color del texto del encabezado */
+    margin-bottom: 20px; /* Margen inferior del encabezado */
+    width: 100%; /* Asegura que el h1 ocupe todo el ancho */
+}
+
+/* TÍTULO: ESTILO DE LA TABLA */
+/* Define la apariencia general de las tablas, con sombra y colapso de bordes */
+table {
+    width: 100%; /* Ancho completo de la tabla */
+    border-collapse: collapse; /* Colapsa los bordes de las celdas */
+    margin: 20px 0; /* Margen superior e inferior de la tabla */
+    background-color: #fff; /* Color de fondo de la tabla */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra de la tabla */
+}
+
+/* TÍTULO: ESTILOS DE CELDAS */
+/* Define el relleno, tamaño de letra y alineación del texto dentro de las celdas */
+table th, table td {
+    padding: 10px 12px; /* Espaciado reducido en las celdas */
+    text-align: left; /* Alineación a la izquierda del texto */
+    font-size: 13px; /* Tamaño de letra más pequeño */
+}
+
+/* TÍTULO: ENCABEZADOS DE TABLA */
+/* Estilo para las cabeceras de la tabla, con fondo colorido y texto en mayúsculas */
+table th {
+    background-color: #4CAF50; /* Color de fondo de las cabeceras */
+    color: #fff; /* Color del texto de las cabeceras */
+    text-transform: uppercase; /* Texto en mayúsculas */
+    font-size: 12px; /* Tamaño de letra más pequeño para las cabeceras */
+}
+
+/* TÍTULO: FILAS DE LA TABLA */
+/* Estilo aplicado a las filas de la tabla, con borde inferior */
+table tr {
+    border-bottom: 1px solid #ddd; /* Línea inferior entre filas */
+}
+
+/* TÍTULO: ESTILO DE FILAS ALTERNADAS */
+/* Aplica un color de fondo distinto para las filas pares */
+table tr:nth-child(even) {
+    background-color: #f2f2f2; /* Color de fondo para filas pares */
+}
+
+/* TÍTULO: ESTILO GENERAL DEL CUERPO */
+/* Aplica formato general al cuerpo, con tipografía, fondo y espaciados */
+body {
+    font-family: 'Arial', sans-serif; /* Fuente utilizada en el cuerpo del documento */
+    background-color: #f7f7f7; /* Color de fondo */
+    color: #666; /* Color gris para el texto */
+    margin: 0; /* Sin márgenes en el cuerpo */
+    padding: 20px; /* Espaciado interno del cuerpo */
+    font-size: 14px; /* Tamaño de letra más pequeño */
+}
+
+/* --------------------------------------------------------------------------------------------------------------
+    ---------------------------------------- FIN ITred Spa Mostrar Clientes .CSS ---------------------------------------
+    ------------------------------------------------------------------------------------------------------------- */
+
+
+/*
+Sitio Web Creado por ITred Spa.
+Direccion: Guido Reni #4190
+Pedro Aguirre Cerda - Santiago - Chile
+contacto@itred.cl o itred.spa@gmail.com
+https://www.itred.cl
+Creado, Programado y Diseñado por ITred Spa.
+BPPJ
+*/

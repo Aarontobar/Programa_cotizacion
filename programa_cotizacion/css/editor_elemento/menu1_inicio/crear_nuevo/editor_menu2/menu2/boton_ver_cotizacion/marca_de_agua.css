@@ -1,0 +1,143 @@
+
+/* 
+Sitio Web Creado por ITred Spa.
+Direccion: Guido Reni #4190
+Pedro Aguirre Cerda - Santiago - Chile
+contacto@itred.cl o itred.spa@gmail.com
+https://www.itred.cl
+Creado, Programado y Diseñado por ITred Spa.
+BPPJ 
+*/
+
+
+/* --------------------------------------------------------------------------------------------------------------
+    -------------------------------------- INICIO ITred Spa Marca de agua .CSS --------------------------------------
+    ------------------------------------------------------------------------------------------------------------- */
+
+/* Estilo general para el contenedor .ver */
+.ver {
+    position: relative; /* Asegura que los elementos posicionados absolutamente se posicionen en relación a este contenedor */
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    margin: 0;
+    padding: 0;
+}
+
+.ver .contenedor {
+    position: relative;
+    overflow: hidden; /* Asegúrate de que no se salga del contenedor */
+}
+
+/* TÍTULO: ESTILO DE LA MARCA DE AGUA */
+.marca_de_agua {
+    position: absolute; /* Posiciona de forma absoluta respecto al contenedor .ver */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Coloca detrás de otros elementos */
+    opacity: 0.1; /* Controla la opacidad */
+    background-repeat: no-repeat;
+    background-size: cover;
+    pointer-events: none; /* Asegúrate de que no interfiera con clics */
+    filter: grayscale(100%);
+    overflow: hidden; /* Asegúrate de que no se salga del contenedor */
+}
+
+/* Otros estilos de la marca de agua */
+.horizontal-marca_de_agua {
+    background-size: 150px;
+    background-position: center;
+    filter: grayscale(100%);
+}
+
+.vertical-marca_de_agua {
+    background-size: 150px;
+    background-position: center;
+    transform: rotate(90deg);
+    transform-origin: center center;
+    filter: grayscale(100%);
+}
+
+.diagonal-marca_de_agua {
+    background-size: 150px;
+    background-position: center;
+    transform: rotate(-45deg);
+    transform-origin: center center;
+    filter: grayscale(100%);
+    background-repeat: repeat;
+}
+
+.texto-personalizado {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: rgba(0, 0, 0, 0.1);
+    font-size: 30px;
+    text-align: center;
+    white-space: nowrap;
+    pointer-events: none;
+}
+
+.centrado-marca_de_agua {
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: grayscale(100%);
+}
+
+.patron-texto {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.1;
+    pointer-events: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-auto-rows: 50px;
+}
+
+.patron-texto span {
+    display: block;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.patron-horizontal span {
+    transform: none;
+}
+
+.patron-vertical span {
+    transform: rotate(90deg);
+}
+
+.patron-diagonal span {
+    transform: rotate(-45deg);
+}
+
+@media print {
+    #form-marca-agua {
+        display: none;
+    }
+    .marca_de_agua {
+        display: block;
+    }
+}
+/* --------------------------------------------------------------------------------------------------------------
+    ---------------------------------------- FIN ITred Spa Marca de agua .CSS ---------------------------------------
+    ------------------------------------------------------------------------------------------------------------- */
+
+
+/*
+Sitio Web Creado por ITred Spa.
+Direccion: Guido Reni #4190
+Pedro Aguirre Cerda - Santiago - Chile
+contacto@itred.cl o itred.spa@gmail.com
+https://www.itred.cl
+Creado, Programado y Diseñado por ITred Spa.
+BPPJ
+*/

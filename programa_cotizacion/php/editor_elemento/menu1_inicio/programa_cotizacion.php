@@ -61,22 +61,22 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
             // Incluye el archivo PHP correspondiente según el valor de 'page'
             switch ($page) {
                 case 'nueva_cotizacion':
-                    include 'crear_nuevo/editor_menu2/menu2/boton1_nueva_cotizacion/nueva_cotizacion_principal.php';
+                    include 'crear_nuevo/editor_menu2/menu2/boton_nueva_cotizacion/nueva_cotizacion_pr.php';
                     break;
                 case 'crear_cliente':
-                    include 'crear_nuevo/editor_menu2/menu2/boton2_crear_cliente/crear_cliente_principal.php';
+                    include 'crear_nuevo/editor_menu2/menu2/boton_crear_cliente/crear_cliente_pr.php';
                     break;
                 case 'crear_producto':
-                    include 'crear_nuevo/editor_menu2/menu2/boton3_crear_producto/crear_producto_principal.php';
+                    include 'crear_nuevo/editor_menu2/menu2/boton_crear_producto/crear_producto_pr.php';
                     break;
                 case 'crear_proveedor':
-                    include 'crear_nuevo/editor_menu2/menu2/boton4_crear_proveedor/crear_proveedor_principal.php';
+                    include 'crear_nuevo/editor_menu2/menu2/boton_crear_proveedor/crear_proveedor_pr.php';
                     break;
                 case 'ver_cotizacion':
-                    include 'crear_nuevo/editor_menu2/menu2/boton5_ver_cotizacion/ver_cotizacion_principal.php';
+                    include 'crear_nuevo/editor_menu2/menu2/boton_ver_cotizacion/ver_cotizacion_pr.php';
                     break;
                 case 'crear_empresa':
-                    include 'crear_nuevo/editor_menu2/menu2/boton6_crear_empresa/crear_empresa_principal.php';
+                    include 'crear_nuevo/editor_menu2/menu2/boton_crear_empresa/crear_empresa_pr.php';
                     break;
                 default:
                     echo '<p>Página no encontrada.</p>';
@@ -101,7 +101,7 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
 
     // TÍTULO: FUNCIÓN PARA CARGAR EL FORMULARIO DE MODIFICACIÓN
     function cargarModificarCotizacion(id) {
-        fetch(`crear_nuevo/editor_menu2/menu2/boton5_ver_cotizacion/modificar_cotizacion.php?id=${id}`)
+        fetch(`crear_nuevo/editor_menu2/menu2/boton_ver_cotizacion/modificar_cotizacion.php?id=${id}`)
             .then(response => response.text())
             .then(html => {
                 document.getElementById('modificar-cotizacion-container').innerHTML = html;

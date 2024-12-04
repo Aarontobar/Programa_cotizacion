@@ -1,0 +1,69 @@
+
+/* 
+Sitio Web Creado por ITred Spa.
+Direccion: Guido Reni #4190
+Pedro Aguirre Cerda - Santiago - Chile
+contacto@itred.cl o itred.spa@gmail.com
+https://www.itred.cl
+Creado, Programado y Diseñado por ITred Spa.
+BPPJ 
+*/
+
+
+/* --------------------------------------------------------------------------------------------------------------
+    -------------------------------------- INICIO ITred Spa formulario empresa Clientes .CSS --------------------------------------
+    ------------------------------------------------------------------------------------------------------------- */
+    
+/* Estilo general del contenedor del formulario */
+.formulario-empresa {
+    width: 45%;
+    background-color: #f0f0f5; /* Fondo claro */
+    padding: 20px;
+    border: 2px solid #3c8dbc; /* Borde azul suave */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra elegante */
+    box-sizing: border-box; /* Asegura que el padding y el borde se incluyan en el ancho y alto total */
+}
+
+/* Estilo del título dentro del formulario */
+.formulario-empresa h3 {
+    color: #3c8dbc; /* Establece el color del texto del encabezado h3 a un azul suave (#3c8dbc) */
+    font-family: 'Arial', sans-serif; /* Utiliza la fuente Arial, con una alternativa sans-serif si no está disponible */
+    font-size: 20px; /* Define el tamaño de la fuente del título en 20 píxeles */
+    margin-bottom: 15px; /* Añade un margen inferior de 15 píxeles para separar el título de los elementos que lo siguen */
+}
+
+/* Estilo de los inputs y selects del formulario */
+.formulario-empresa input,
+.formulario-empresa select {
+    width: 100%; /* Establece el ancho de los campos de entrada y select al 100% del contenedor padre */
+    padding: 10px; /* Añade 10 píxeles de espacio interno alrededor del contenido de los campos */
+    margin: 10px 0; /* Añade un margen vertical de 10 píxeles arriba y abajo de los campos */
+    border: 1px solid #ddd; /* Aplica un borde sólido de 1 píxel de color gris claro (#ddd) */
+    border-radius: 5px; /* Redondea las esquinas de los campos con un radio de 5 píxeles */
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1); /* Aplica una sombra interna suave para dar profundidad */
+    box-sizing: border-box; /* Asegura que el padding y el borde se incluyan en el ancho y alto total */
+}
+
+/* Resalta los campos al estar enfocados */
+.formulario-empresa input:focus,
+.formulario-empresa select:focus {
+    border-color: #3c8dbc; /* Cambia el color del borde a un azul suave (#3c8dbc) cuando el campo está enfocado */
+    outline: none; /* Elimina el contorno predeterminado del navegador que aparece alrededor de los campos al recibir foco */
+}
+
+
+/* --------------------------------------------------------------------------------------------------------------
+    ---------------------------------------- FIN ITred Spa formulario  Clientes .CSS ---------------------------------------
+    ------------------------------------------------------------------------------------------------------------- */
+
+
+/*
+Sitio Web Creado por ITred Spa.
+Direccion: Guido Reni #4190
+Pedro Aguirre Cerda - Santiago - Chile
+contacto@itred.cl o itred.spa@gmail.com
+https://www.itred.cl
+Creado, Programado y Diseñado por ITred Spa.
+BPPJ
+*/

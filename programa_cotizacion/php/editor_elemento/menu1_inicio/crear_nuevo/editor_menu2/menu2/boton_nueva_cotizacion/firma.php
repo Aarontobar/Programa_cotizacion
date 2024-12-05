@@ -40,7 +40,7 @@ if ($tipo_firma) {
 
             echo "<div id='texto-firma-container' style='display: inline-block; vertical-align: middle;'>";
             echo "<p class='texto-firma'><strong>FIRMA DEL REPRESENTANTE:</strong></p>";
-            echo "<img class='imagen-firma' src='../../../imagenes/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/programa_cotizacion/" . htmlspecialchars($nombre_archivo, ENT_QUOTES, 'UTF-8') . "' alt='Firma' style='width:300px; height:auto;'>";
+            echo "<img class='imagen-firma' src='imagenes/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/programa_cotizacion/" . htmlspecialchars($nombre_archivo, ENT_QUOTES, 'UTF-8') . "' alt='Firma' style='width:300px; height:auto;'>";
             echo "<p class='texto-firma'>" . htmlspecialchars($firma['nombre_encargado_firma']) . "</p>";
             echo "<p class='texto-firma'>" . htmlspecialchars($firma['cargo_encargado_firma']) . " - " . htmlspecialchars($firma['nombre_empresa_firma']) . "</p>";
             echo "<p class='texto-firma'>" . htmlspecialchars($firma['direccion_firma']) . "</p>";
@@ -119,7 +119,7 @@ if ($tipo_firma) {
 <!-- TÍTULO: ARCHIVO CSS -->
 
     <!--------------Archivo JS--------------->
-    <script src="../../../js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_nueva_cotizacion/firma.js"></script> 
+    <script src="js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_nueva_cotizacion/firma.js"></script> 
 
      <!-- ------------------------------------------------------------------------------------------------------------
     -------------------------------------- FIN ITred Spa Firma  .PHP ----------------------------------------

@@ -206,12 +206,12 @@ BPPJ
 .programa_cotizacion .menu li a {
     text-decoration: none; /* Sin subrayado en los enlaces del menú */
     color: #fff; /* Color del texto de los enlaces del menú */
-    padding: 15px 30px; /* Relleno interno de los enlaces del menú */
-    border-radius: 20px; /* Bordes redondeados de los enlaces */
+    padding: 10px 20px; /* Relleno interno de los enlaces del menú */
+    border-radius: 5px; /* Bordes redondeados de los enlaces */
     background-color: #333; /* Color de fondo de los enlaces del menú */
     text-align: center; /* Centrar texto en los enlaces */
-    width: 100%; /* Ancho completo de los enlaces */
-    height: 100%; /* Altura completa de los enlaces */
+    width: auto; /* Ancho automático de los enlaces */
+    height: auto; /* Altura automática de los enlaces */
     display: flex; /* Usar flexbox para alinear elementos */
     align-items: center; /* Centrar verticalmente los enlaces */
     justify-content: center; /* Centrar horizontalmente los enlaces */

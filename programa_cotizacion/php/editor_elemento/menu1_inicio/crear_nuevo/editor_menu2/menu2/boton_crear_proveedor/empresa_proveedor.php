@@ -20,7 +20,7 @@ BPPJ
 
     <!-- TÍTULO: IMPORTACIÓN DE ARCHIVO .CSS -->
     <!-- llama al archivo CSS -->
-    <link rel="stylesheet" href="../../../css/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_crear_proveedor/empresa_proveedor.css"> 
+    <link rel="stylesheet" href="css/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_crear_proveedor/empresa_proveedor.css"> 
 </head> 
 
 <!-- Crea una fila para organizar los elementos en una disposición horizontal -->
@@ -101,7 +101,7 @@ BPPJ
 
 <!-- TÍTULO: IMPORTACIÓN DE ARCHIVO .JS -->
 <!-- llama al archivo JS -->
-<script src="../../../js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_crear_proveedor/empresa_proveedor.js"></script> 
+<script src="js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_crear_proveedor/empresa_proveedor.js"></script> 
 
 <!-- ------------------------------------------------------------------------------------------------------------
     -------------------------------------- FIN ITred Spa empresa proveedor .PHP ----------------------------------------

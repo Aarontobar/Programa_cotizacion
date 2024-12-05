@@ -15,7 +15,7 @@ BPPJ
 
     <!-- Enlaza el archivo CSS para estilizar los datos de la empresa -->
 
-    <link rel="stylesheet" href="../../../css/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_nueva_cotizacion/datos_empresa.css"> 
+    <link rel="stylesheet" href="css/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_nueva_cotizacion/datos_empresa.css"> 
 
     <!-- Crea una fila para organizar los elementos en una disposición horizontal -->
 <div class="datos_empresa_nueva_cotizacion">
@@ -158,7 +158,7 @@ BPPJ
 
 <!-- Enlaza el archivo JavaScript para manejar la lógica del formulario de datos de la empresa -->
 
-<script src="../../../js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_nueva_cotizacion/datos_empresa.js"></script>
+<script src="js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_nueva_cotizacion/datos_empresa.js"></script>
 
 <?php
 

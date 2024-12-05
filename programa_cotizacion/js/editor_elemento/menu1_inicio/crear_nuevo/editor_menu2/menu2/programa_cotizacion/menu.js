@@ -17,7 +17,7 @@ BPPJ
     // TÍTULO: FUNCIÓN PARA MOSTRAR CONTENIDO
     function mostrarContenido(tipo) {
         const empresa_id = document.getElementById('selected-empresa').value || '';
-        let url = `programa_cotizacion.php?page=${tipo}&id=${empresa_id}`;
+        let url = `programa_cotizacion.php?page=crear_nuevo_banner&pagina=${tipo}&id=${empresa_id}`;
         window.location.href = url;
     }
     

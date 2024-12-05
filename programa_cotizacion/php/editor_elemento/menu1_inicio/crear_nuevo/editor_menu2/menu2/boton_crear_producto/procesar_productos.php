@@ -121,7 +121,7 @@ exit()
 ?>
 
 <!-- TÍTULO: IMPORTACIÓN DE ARCHIVO .CSS -->
-<link rel="stylesheet" href="../../../css/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_crear_producto/procesar_productos.css">
+<link rel="stylesheet" href="css/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_crear_producto/procesar_productos.css">
 
 <!-- TÍTULO: IMPORTACIÓN DE ARCHIVO .JS -->
 <script src="../../js/menu_principal/crear_nuevo/crear_producto/get_tipo_productos.js"></script>

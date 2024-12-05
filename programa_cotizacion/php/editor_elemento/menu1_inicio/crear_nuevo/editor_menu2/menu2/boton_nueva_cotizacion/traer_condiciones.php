@@ -102,7 +102,7 @@ if ($row !== null) {
 <!-- TITULO: LLAMA AL ARCHIVO JS -->
 
     <!-- llama al archivo js -->
-    <script src="../../../js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_nueva_cotizacion/traer_condiciones.js"></script> 
+    <script src="js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_nueva_cotizacion/traer_condiciones.js"></script> 
 
 
 <?php

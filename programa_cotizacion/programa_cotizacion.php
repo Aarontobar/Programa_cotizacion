@@ -36,13 +36,48 @@
     </style>
 </head>
 <body>
+    <?php
+    $page = isset($_GET['page']) ? $_GET['page'] : 'banners_predisenados';
+    ?>
     <div class="navbar">
-        <a href="#" class="active">BANNERS PREDISEÑADOS</a>
-        <a href="#">CREAR NUEVO BANNER</a>
-        <a href="#">MODIFICAR BANNER</a>
-        <a href="#">ELIMINAR BANNER</a>
-        <!-- New link to the internal programa_cotizacion.php -->
-        <a href="php/editor_elemento/menu1_inicio/programa_cotizacion.php">IR A COTIZACIONES</a>
+        <a href="?page=banners_predisenados" class="<?php echo $page == 'banners_predisenados' ? 'active' : ''; ?>">PREDISEÑADOS</a>
+        <a href="?page=crear_nuevo_banner" class="<?php echo $page == 'crear_nuevo_banner' ? 'active' : ''; ?>">CREAR NUEVO</a>
+        <a href="?page=modificar_banner" class="<?php echo $page == 'modificar_banner' ? 'active' : ''; ?>">MODIFICAR</a>
+        <a href="?page=eliminar_banner" class="<?php echo $page == 'eliminar_banner' ? 'active' : ''; ?>">ELIMINAR</a>
+    </div>
+
+    <div class="content">
+        <?php
+        switch ($page) {
+            case 'banners_predisenados':
+                if (file_exists('banners_predisenados.php')) {
+                    include 'banners_predisenados.php';
+                } else {
+                    echo '<p>La página de banners prediseñados aún no está disponible.</p>';
+                }
+                break;
+            case 'crear_nuevo_banner':
+                include 'php/editor_elemento/menu1_inicio/programa_cotizacion.php';
+                break;
+            case 'modificar_banner':
+                if (file_exists('modificar_banner.php')) {
+                    include 'modificar_banner.php';
+                } else {
+                    echo '<p>La página de modificar aún no está disponible.</p>';
+                }
+                break;
+            case 'eliminar_banner':
+                if (file_exists('eliminar_banners.php')) {
+                    include 'eliminar_banners.php';
+                } else {
+                    echo '<p>La página de eliminar banners aún no está disponible.</p>';
+                }
+                break;
+            default:
+                include 'banners_predisenados.php';
+                break;
+        }
+        ?>
     </div>
 </body>
 </html>

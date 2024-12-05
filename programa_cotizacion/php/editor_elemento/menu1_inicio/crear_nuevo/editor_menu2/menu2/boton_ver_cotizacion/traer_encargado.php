@@ -122,7 +122,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <!-- TÍTULO: IMPORTACIÓN DE ARCHIVO .CSS -->
 
     <!-- llama al archivo CSS -->
-    <link rel="stylesheet" href="../../../css/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_ver_cotizacion/traer_encargado.css">
+    <link rel="stylesheet" href="css/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_ver_cotizacion/traer_encargado.css">
 
 
 <!-- TÍTULO: FILA PARA MODIFICAR DATOS DEL ENCARGADO -->
@@ -267,7 +267,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <!-- TÍTULO: IMPORTACIÓN DE ARCHIVO .JS -->
 
     <!-- llama al archivo JS -->
-    <script src="../../../js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_ver_cotizacion/traer_encargado.js"></script> 
+    <script src="js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_ver_cotizacion/traer_encargado.js"></script> 
 
 <!-------------------------------------------------------------------------->
 

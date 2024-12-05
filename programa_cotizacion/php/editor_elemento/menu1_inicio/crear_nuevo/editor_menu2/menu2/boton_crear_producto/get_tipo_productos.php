@@ -57,7 +57,7 @@ $conn->close();
 
 <!-- TÍTULO: IMPORTACIÓN DE ARCHIVO .CSS -->
     <!-- Llama al archivo CSS -->
-    <link rel="stylesheet" href="../../../css/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_crear_producto/get_tipo_productos.css">
+    <link rel="stylesheet" href="css/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_crear_producto/get_tipo_productos.css">
 
 <!-- TÍTULO: IMPORTACIÓN DE ARCHIVO .JS -->
     <!-- Llama al archivo JS -->

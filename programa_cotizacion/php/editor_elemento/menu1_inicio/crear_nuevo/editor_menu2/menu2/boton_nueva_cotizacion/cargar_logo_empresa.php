@@ -187,7 +187,7 @@ if ($id > 0) {
 <!-- ARCHIVO CSS -->
 
 <!-- llama al archivo CSS -->
-<link rel="stylesheet" href="../../../css/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_nueva_cotizacion/cargar_logo_empresa.css">
+<link rel="stylesheet" href="css/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_nueva_cotizacion/cargar_logo_empresa.css">
 
 <div class="box-6 caja-logo">
 <?php
@@ -259,7 +259,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['formulario']) && $_POS
 
             <!-- Mostrar la imagen de perfil si existe -->
 
-            <img src="<?php echo htmlspecialchars('../../../imagenes/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/programa_cotizacion/' . $ruta_foto, ENT_QUOTES, 'UTF-8'); ?>" alt="Foto de perfil" id="Previsualizar-logo" class="logo" onclick="document.getElementById('subir-logo').click();" />
+            <img src="<?php echo htmlspecialchars('imagenes/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/programa_cotizacion/' . $ruta_foto, ENT_QUOTES, 'UTF-8'); ?>" alt="Foto de perfil" id="Previsualizar-logo" class="logo" onclick="document.getElementById('subir-logo').click();" />
         <?php else: ?>
 
             <!-- TÍTULO: CARGAR LOGO SI NO HAY IMAGEN -->
@@ -280,7 +280,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['formulario']) && $_POS
  <!-- TÍTULO: AQUÍ SE CARGA EL JS DEL ARCHIVO -->
 
     <!-- llama al archivo JS -->
-    <script src="../../../js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_nueva_cotizacion/cargar_logo_empresa.js"></script> 
+    <script src="js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_nueva_cotizacion/cargar_logo_empresa.js"></script> 
 
 
      

@@ -153,7 +153,7 @@ if ($result->num_rows > 0) {
     <title>Ver Cotizaciones</title>
 
     <!-- llama al archivo CSS -->
-    <link rel="stylesheet" href="../../../css/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_ver_cotizacion/ver_listado.css">
+    <link rel="stylesheet" href="css/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_ver_cotizacion/ver_listado.css">
 </head>
 <body>
     <div class="ver_cotizacion_principal">
@@ -195,7 +195,7 @@ if ($result->num_rows > 0) {
 </body>
 </html>
 
-<script src="../../../js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_ver_cotizacion/ver_listado.js"></script>
+<script src="js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_ver_cotizacion/ver_listado.js"></script>
 
 
 

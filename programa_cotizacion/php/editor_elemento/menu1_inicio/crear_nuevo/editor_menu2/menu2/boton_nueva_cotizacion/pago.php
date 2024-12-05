@@ -15,7 +15,7 @@ BPPJ
 <!-- TITULO: ARCHIVO CSS -->
 
     <!-- llama al archivo CSS -->
-    <link rel="stylesheet" href="../../../css/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_nueva_cotizacion/pago.css">
+    <link rel="stylesheet" href="css/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_nueva_cotizacion/pago.css">
     
 <!-- TÍTULO: SECCIÓN DE INFORMACIÓN DE PAGO -->
 
@@ -53,7 +53,7 @@ BPPJ
 <!-- TITULO: ARCHIVO JS -->
     
     <!-- llama al archivo js -->
-    <script src="../../../js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_nueva_cotizacion/pago.js"></script> 
+    <script src="js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_nueva_cotizacion/pago.js"></script> 
 
 <?php
 

@@ -30,17 +30,11 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Menú Principal - Cotización ITred Spa</title>
         <!-- llama al archivo CSS -->
-        <link rel="stylesheet" href="../../../css/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/programa_cotizacion/programa_cotizacion.css">
+        <link rel="stylesheet" href="css/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/programa_cotizacion/programa_cotizacion.css">
     </head>
 
     <body>
-    <div style="padding: 10px;">
-    <a href="../../../../programa_cotizacion.php" style="text-decoration: none; padding: 5px 10px; background-color: #e0e0e0; border: 1px solid #000; color: #000;">
-        Volver al Editor de Banners
-    </a>
-    </div>
 
     <div class="programa_cotizacion">
         <!-- Incluye el menú de navegación desde un archivo PHP externo -->
@@ -60,29 +54,29 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
     <!-- Contenedor para mostrar el contenido dinámico -->
     <div id="contenido-dinamico">
         <?php
-        // Verifica si se ha pasado un parámetro 'page' en la URL
-        if (isset($_GET['page'])) {
-            $page = $_GET['page'];
+        // Verifica si se ha pasado un parámetro 'pagina' en la URL
+        if (isset($_GET['pagina'])) {
+            $pagina = $_GET['pagina'];
 
-            // Incluye el archivo PHP correspondiente según el valor de 'page'
-            switch ($page) {
+            // Incluye el archivo PHP correspondiente según el valor de 'pagina'
+            switch ($pagina) {
                 case 'nueva_cotizacion':
-                    include 'crear_nuevo/editor_menu2/menu2/boton_nueva_cotizacion/nueva_cotizacion_pr.php';
+                    include 'php/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_nueva_cotizacion/nueva_cotizacion_pr.php';
                     break;
                 case 'crear_cliente':
-                    include 'crear_nuevo/editor_menu2/menu2/boton_crear_cliente/crear_cliente_pr.php';
+                    include 'php/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_crear_cliente/crear_cliente_pr.php';
                     break;
                 case 'crear_producto':
-                    include 'crear_nuevo/editor_menu2/menu2/boton_crear_producto/crear_producto_pr.php';
+                    include 'php/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_crear_producto/crear_producto_pr.php';
                     break;
                 case 'crear_proveedor':
-                    include 'crear_nuevo/editor_menu2/menu2/boton_crear_proveedor/crear_proveedor_pr.php';
+                    include 'php/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_crear_proveedor/crear_proveedor_pr.php';
                     break;
                 case 'ver_cotizacion':
-                    include 'crear_nuevo/editor_menu2/menu2/boton_ver_cotizacion/ver_cotizacion_pr.php';
+                    include 'php/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_ver_cotizacion/ver_cotizacion_pr.php';
                     break;
                 case 'crear_empresa':
-                    include 'crear_nuevo/editor_menu2/menu2/boton_crear_empresa/crear_empresa_pr.php';
+                    include 'php/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_crear_empresa/crear_empresa_pr.php';
                     break;
                 default:
                     echo '<p>Página no encontrada.</p>';
@@ -96,7 +90,7 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
     <div id="modificar-cotizacion-container"></div>
 
     <!-- Carga el archivo JavaScript para la funcionalidad del formulario -->
-    <script src="../../../js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/programa_cotizacion/programa_cotizacion.js"></script> 
+    <script src="js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/programa_cotizacion/programa_cotizacion.js"></script> 
 
     <script>
     document.getElementById('formulario-seleccionar-empresa').addEventListener('submit', function(event) {

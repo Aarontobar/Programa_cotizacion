@@ -18,7 +18,7 @@ BPPJ
 
 <!-- TÍTULO: IMPORTACIÓN DE ARCHIVO .CSS -->
     <!-- Llama al archivo CSS -->
-<link rel="stylesheet" href="../../../css/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_ver_cotizacion/detalle_encargado.css">
+<link rel="stylesheet" href="css/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_ver_cotizacion/detalle_encargado.css">
 
 <!---------- DETALLE DEL ENCARGADO -------->
 
@@ -34,7 +34,7 @@ BPPJ
 
 <!-- TÍTULO: IMPORTACIÓN DE ARCHIVO .JS -->
     <!-- Llama al archivo JS -->
-    <script src="../../../js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_ver_cotizacion/datos_encargado.js"></script>
+    <script src="js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_ver_cotizacion/datos_encargado.js"></script>
 
 <!-- ------------------------------------------------------------------------------------------------------------
     -------------------------------------- FIN ITred Spa Detalle encargado .PHP -----------------------------------

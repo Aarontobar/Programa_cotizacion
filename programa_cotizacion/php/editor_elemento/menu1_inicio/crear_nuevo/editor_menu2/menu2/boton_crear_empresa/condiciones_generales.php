@@ -19,7 +19,7 @@ BPPJ
 <!-- TITULO: IMPORTACIÓN DE ARCHIVO .CSS -->
 
     <!-- Llama al archivo CSS -->
-    <link rel="stylesheet" href="../../../css/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_crear_empresa/condiciones_generales.css"> <!-- Enlaza una hoja de estilo externa que se encuentra en la ruta especificada para estilizar el contenido de la página -->
+    <link rel="stylesheet" href="css/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_crear_empresa/condiciones_generales.css"> <!-- Enlaza una hoja de estilo externa que se encuentra en la ruta especificada para estilizar el contenido de la página -->
 
 <!-- TÍTULO: SECCIÓN DE CONDICIONES GENERALES -->
     <!-- Conidiciones generales -->
@@ -46,7 +46,7 @@ BPPJ
 
 <!-- TITULO: IMPORTACIÓN DE ARCHIVO .CSS -->
     <!-- Llama al archivo JS -->
-    <script src="../../../js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_crear_empresa/condiciones_generales.js"></script>
+    <script src="js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_crear_empresa/condiciones_generales.js"></script>
 
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['formulario']) && $_POST['formulario'] === 'empresa') {

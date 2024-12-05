@@ -135,7 +135,7 @@ BPPJ
 
 <!-- TITULO: ARCHIVO JS -->
     <!-----------------------------archivoJS----------------------------->
-    <script src="../../../js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_nueva_cotizacion/traer_datos_bancarios.js"></script> 
+    <script src="js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_nueva_cotizacion/traer_datos_bancarios.js"></script> 
 
      <!-- ------------------------------------------------------------------------------------------------------------
     -------------------------------------- FIN ITred Spa Traer datos bancarios.PHP ----------------------------------------

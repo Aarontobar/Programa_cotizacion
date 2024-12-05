@@ -14,7 +14,24 @@ BPPJ
     -------------------------------------- INICIO ITred Spa menu.CSS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
 
+/* Define el estilo del menú de navegación */
+.programa_cotizacion .menu {
+    list-style-type: none; /* Sin viñetas en la lista */
+    padding: 0; /* Sin relleno */
+    display: flex; /* Mostrar en línea */
+    justify-content: center; /* Centrar el contenido del menú */
+    gap: 10px; /* Espacio entre los elementos del menú */
+    margin: 20px auto; /* Margen automático en los lados */
+}
 
+/* Define el estilo de cada elemento del menú */
+.programa_cotizacion .menu li {
+    min-width: 100px; /* Ancho mínimo de los elementos del menú */
+    min-height: 40px; /* Altura mínima de los elementos del menú */
+    display: flex; /* Usar flexbox para alinear elementos */
+    align-items: center; /* Centrar verticalmente los elementos del menú */
+    justify-content: center; /* Centrar horizontalmente los elementos del menú */
+}
 
 /* --------------------------------------------------------------------------------------------------------------
     ---------------------------------------- FIN ITred Spa menu .CSS ---------------------------------------

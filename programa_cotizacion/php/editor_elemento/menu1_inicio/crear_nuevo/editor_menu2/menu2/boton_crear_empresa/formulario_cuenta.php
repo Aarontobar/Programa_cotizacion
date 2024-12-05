@@ -19,7 +19,7 @@ BPPJ
 <!-- TITULO: IMPORTACIÓN DE ARCHIVO .CSS -->
 
     <!-- Llama al archivo CSS -->
-    <link rel="stylesheet" href="../../../css/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_crear_empresa/formulario_cuenta.css">
+    <link rel="stylesheet" href="css/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_crear_empresa/formulario_cuenta.css">
 
     <div class="row">
 
@@ -142,7 +142,7 @@ BPPJ
 <!-- TITULO: IMPORTACION DE ARCHIVO .JS -->
 
     <!-- Llama al archivo JS -->
-    <script src="../../../js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_crear_empresa/formulario_cuenta.js"></script>
+    <script src="js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_crear_empresa/formulario_cuenta.js"></script>
 
 
 <?php

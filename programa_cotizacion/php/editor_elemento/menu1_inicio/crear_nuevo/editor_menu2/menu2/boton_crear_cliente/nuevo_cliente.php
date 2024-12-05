@@ -30,7 +30,7 @@ BPPJ
 <!-- TITULO: IMPORTACIÓN DE ARCHIVO .CSS -->
 
     <!-- Llama al archivo CSS -->
-    <link rel="stylesheet" href="../../../css/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_crear_cliente/nuevo_cliente.css"> 
+    <link rel="stylesheet" href="css/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_crear_cliente/nuevo_cliente.css"> 
     
     <!-- Cierra el elemento de cabecera -->
 </head> 
@@ -89,7 +89,7 @@ BPPJ
 
 <!-- TITULO: IMPORTACION DE ARCHIVO .JS -->
     <!-- Llama al archivo JS -->
-    <script src="../../../js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_crear_cliente/nuevo_cliente.js"></script> 
+    <script src="js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_crear_cliente/nuevo_cliente.js"></script> 
 
 <!-- ------------------------------------------------------------------------------------------------------------
     -------------------------------------- FIN ITred Spa nuevo cliente .PHP ----------------------------------------

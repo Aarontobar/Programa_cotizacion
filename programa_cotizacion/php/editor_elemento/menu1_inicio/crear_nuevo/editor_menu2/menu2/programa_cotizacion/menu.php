@@ -54,49 +54,38 @@ if (isset($_SESSION['id_empresa']) && !empty($_SESSION['id_empresa'])) {
     <!-- formato de botones para navegar entre paginas -->
     <nav>  
         <ul class="menu">
-            <!-- TÍTULO: ENLACE PARA NUEVA COTIZACIÓN -->
             <li>
-                <a href="javascript:void(0);" onclick="mostrarContenido('nueva_cotizacion');" 
-                   class="<?php echo $empresaEncontrada ? '' : 'disabled'; ?>">
+                <a href="#" data-pagina="nueva_cotizacion" 
+                   class="menu-link <?php echo $empresaEncontrada ? '' : 'disabled'; ?>">
                     Nueva Cotización
                 </a>
             </li>
-
-            <!-- TÍTULO: ENLACE PARA CREAR CLIENTE -->
             <li>
-                <a href="javascript:void(0);" onclick="mostrarContenido('crear_cliente');" 
-                   class="<?php echo $empresaEncontrada ? '' : 'disabled'; ?>">
+                <a href="#" data-pagina="crear_cliente" 
+                   class="menu-link <?php echo $empresaEncontrada ? '' : 'disabled'; ?>">
                     Crear Cliente
                 </a>
             </li>
-
-            <!-- TÍTULO: ENLACE PARA CREAR PRODUCTO -->
             <li>
-                <a href="javascript:void(0);" onclick="mostrarContenido('crear_producto');" 
-                   class="<?php echo $empresaEncontrada ? '' : 'disabled'; ?>">
+                <a href="#" data-pagina="crear_producto" 
+                   class="menu-link <?php echo $empresaEncontrada ? '' : 'disabled'; ?>">
                     Crear Producto
                 </a>
             </li>
-
-            <!-- TÍTULO: ENLACE PARA CREAR PROVEEDOR -->
             <li>
-                <a href="javascript:void(0);" onclick="mostrarContenido('crear_proveedor');" 
-                   class="<?php echo $empresaEncontrada ? '' : 'disabled'; ?>">
+                <a href="#" data-pagina="crear_proveedor" 
+                   class="menu-link <?php echo $empresaEncontrada ? '' : 'disabled'; ?>">
                     Crear Proveedor
                 </a>
             </li>
-
-            <!-- TÍTULO: ENLACE PARA VER LISTADO DE COTIZACIÓN -->
             <li>
-                <a href="javascript:void(0);" onclick="mostrarContenido('ver_cotizacion');" 
-                   class="<?php echo $empresaEncontrada ? '' : 'disabled'; ?>">
+                <a href="#" data-pagina="ver_cotizacion" 
+                   class="menu-link <?php echo $empresaEncontrada ? '' : 'disabled'; ?>">
                     Ver listado Cotización
                 </a>
             </li>
-
-            <!-- TÍTULO: ENLACE PARA CREAR NUEVA EMPRESA -->
             <li>
-                <a href="javascript:void(0);" onclick="mostrarContenido('crear_empresa');">
+                <a href="#" data-pagina="crear_empresa" class="menu-link">
                     Crear nueva empresa
                 </a>
             </li>

@@ -16,6 +16,14 @@ BPPJ
      -- INICIO CONEXION BD --
      ------------------------ -->
      <?php
+// Inicia la sesión si aún no está iniciada
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
+// Asegúrate de que la conexión a la base de datos esté disponible
+require_once($_SERVER['DOCUMENT_ROOT'] . '/programa_cotizacion/config/database.php');
+
 // Verifica si el formulario de actualización de estado ha sido enviado
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['cotizacion_id'], $_POST['nuevo_estado'])) {
     $id_cotizacion = intval($_POST['cotizacion_id']);
@@ -28,8 +36,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['cotizacion_id'], $_PO
     $stmt_update->close();
 }
 
-// Obtiene el ID de la empresa desde la URL
-$id_empresa = isset($_GET['id']) ? intval($_GET['id']) : 0;
+// Obtiene el ID de la empresa desde la URL o la sesión
+$id_empresa = isset($_GET['empresa_id']) ? intval($_GET['empresa_id']) : 
+             (isset($_SESSION['id_empresa']) ? intval($_SESSION['id_empresa']) : 0);
+
+if (!$id_empresa) {
+    die("Error: No se ha seleccionado una empresa.");
+}
 
 // Filtros (recibidos por GET)
 $numero_cotizacion = isset($_GET['numero_cotizacion']) ? $_GET['numero_cotizacion'] : '';
@@ -156,46 +169,51 @@ if ($result->num_rows > 0) {
     <link rel="stylesheet" href="css/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_ver_cotizacion/ver_listado.css">
 </head>
 <body>
-    <div class="ver_cotizacion_principal">
+<div class="ver_cotizacion_principal">
 
-        <!-- llama al archivo PHP -->
-        <div>
-            <?php include 'filtros_busqueda.php'; ?>
-        </div>
+<!-- llama al archivo PHP -->
+<div>
+    <?php include 'filtros_busqueda.php'; ?>
+</div>
 
-        <!-- envia mensaje de estado -->
-        <?php echo $mensaje; ?>
+<!-- envia mensaje de estado -->
+<?php echo $mensaje; ?>
 
-    </div>
+</div>
 
-    <!-- Contenedor para mostrar el contenido dinámico -->
-    <div id="contenido-dinamico">
-        <?php
-        // Verifica si se ha pasado un parámetro 'action' en la URL
-        if (isset($_GET['action'])) {
-            $action = $_GET['action'];
+<!-- Contenedor para mostrar el contenido dinámico -->
+<div id="contenido-dinamico">
+<?php
+// Verifica si se ha pasado un parámetro 'action' en la URL
+if (isset($_GET['action'])) {
+    $action = $_GET['action'];
 
-            // Incluye el archivo PHP correspondiente según el valor de 'action'
-            switch ($action) {
-                case 'ver':
-                    include 'crear_nuevo/editor_menu2/menu2/boton_ver_cotizacion/ver.php';
-                    break;
-                case 'modificar':
-                    include 'crear_nuevo/editor_menu2/menu2/boton_ver_cotizacion/modificar_cotizacion.php';
-                    break;
-                default:
-                    echo '<p>Acción no encontrada.</p>';
-                    break;
-            }
-        }
-        ?>
-    </div>
+    // Incluye el archivo PHP correspondiente según el valor de 'action'
+    switch ($action) {
+        case 'ver':
+            include 'crear_nuevo/editor_menu2/menu2/boton_ver_cotizacion/ver.php';
+            break;
+        case 'modificar':
+            include 'crear_nuevo/editor_menu2/menu2/boton_ver_cotizacion/modificar_cotizacion.php';
+            break;
+        default:
+            echo '<p>Acción no encontrada.</p>';
+            break;
+    }
+}
+?>
+</div>
 
-    </div>
+</div>
+
+
+<!-- llama al archivo CSS -->
+<script src="js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_ver_cotizacion/ver_listado.js"></script>
+
 </body>
 </html>
 
-<script src="js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_ver_cotizacion/ver_listado.js"></script>
+
 
 
 

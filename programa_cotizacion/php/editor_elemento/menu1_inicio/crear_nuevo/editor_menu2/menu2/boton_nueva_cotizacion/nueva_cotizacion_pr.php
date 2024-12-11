@@ -11,232 +11,183 @@ BPPJ
 <!-- ------------------------------------------------------------------------------------------------------------
     ------------------------------------- INICIO ITred Spa Nueva cotizacion .PHP --------------------------------------
     ------------------------------------------------------------------------------------------------------------- -->
-     <?php
+<?php
+// Iniciar sesión si no está iniciada
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 
-// Redirigir a la página de visualización de la cotización usando un formulario oculto
+// Verificar si existe una conexión a la base de datos
+if (!isset($mysqli)) {
+    $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
+    if ($mysqli->connect_error) {
+        die('Error de conexión: ' . $mysqli->connect_error);
+    }
+    $mysqli->set_charset("utf8");
+}
+
+// Definir la ruta base para los includes
+define('BASE_PATH', $_SERVER['DOCUMENT_ROOT'] . '/programa_cotizacion/php/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_nueva_cotizacion/');
 
 // TÍTULO: PROCESAMIENTO DEL FORMULARIO
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['formulario']) && $_POST['formulario'] === 'cotizacion') {
     try {
-        // TÍTULO: VALIDACIÓN Y PROCESAMIENTO DE DATOS
-        // Aquí va tu código existente para procesar los datos del formulario
-        // y crear la cotización en la base de datos
+        // Validar que exista una empresa seleccionada
+        if (!isset($_SESSION['id_empresa'])) {
+            throw new Exception('No se ha seleccionado una empresa');
+        }
+
+        // Validar campos requeridos
+        $fecha_emision = $_POST['fecha_emision'] ?? null;
+        $numero_cotizacion = $_POST['numero_cotizacion'] ?? null;
+        $empresa_rut = $_POST['empresa_rut'] ?? null;
+
+        if (!$fecha_emision || !$numero_cotizacion || !$empresa_rut) {
+            throw new Exception('Faltan campos requeridos');
+        }
+
+        // Iniciar transacción
+        $mysqli->begin_transaction();
+
+        // Insertar la cotización
+        $stmt = $mysqli->prepare("
+            INSERT INTO C_Cotizaciones (
+                fecha_emision, 
+                numero_cotizacion,
+                id_empresa,
+                estado
+            ) VALUES (?, ?, ?, 'pendiente')
+        ");
         
-        // TÍTULO: VERIFICACIÓN DE CREACIÓN EXITOSA
-        if (isset($id_cotizacion) && $id_cotizacion > 0) {
-            $response = array(
-                'success' => true,
-                'message' => 'Cotización creada exitosamente',
-                'cotizacion_id' => $id_cotizacion
-            );
-        } else {
-            throw new Exception('Error al crear la cotización: ID no generado');
+        $stmt->bind_param("ssi", $fecha_emision, $numero_cotizacion, $_SESSION['id_empresa']);
+        
+        if (!$stmt->execute()) {
+            throw new Exception('Error al crear la cotización: ' . $mysqli->error);
         }
         
+        $id_cotizacion = $mysqli->insert_id;
+        
+        // Aquí puedes agregar más inserciones para los otros detalles de la cotización
+        // Por ejemplo, insertar en C_pago, etc.
+
+        // Confirmar transacción
+        $mysqli->commit();
+        
+        $response = array(
+            'success' => true,
+            'message' => 'Cotización creada exitosamente',
+            'cotizacion_id' => $id_cotizacion
+        );
+        
     } catch (Exception $e) {
-        // TÍTULO: MANEJO DE ERRORES
+        // Revertir transacción en caso de error
+        $mysqli->rollback();
+        
         $response = array(
             'success' => false,
             'message' => $e->getMessage()
         );
     }
     
-    // TÍTULO: ENVÍO DE RESPUESTA
+    // Enviar respuesta JSON
+    header('Content-Type: application/json');
     echo json_encode($response);
     exit;
 }
-
-//-------------------------------------------------------------------------------------
-    
 ?>
 
 <!DOCTYPE html>
 <html lang="es">
-
-<head> <!-- Abre el elemento de cabecera que contiene metadatos y enlaces a recursos externos -->
-
-    <meta charset="UTF-8"> <!-- Define la codificación de caracteres como UTF-8 para asegurar la correcta visualización de caracteres especiales y diversos idiomas -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Configura la vista en dispositivos móviles. width=device-width asegura que el ancho de la página se ajuste al ancho de la pantalla del dispositivo, y initial-scale=1.0 establece el nivel de zoom inicial -->
-    <title>Formulario de Cotización</title> <!-- Define el título de la página que se muestra en la pestaña del navegador -->
-    
-    <!-- TITULO: ARCHIVO CSS -->
-
-        <!-- llama al archivo CSS -->
-        <link rel="stylesheet" href="css/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_nueva_cotizacion/nueva_cotizacion.css"> <!-- Enlaza una hoja de estilo externa que se encuentra en la ruta especificada para estilizar el contenido de la página -->
-
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Cotización</title>
+    <link rel="stylesheet" href="/programa_cotizacion/css/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_nueva_cotizacion/nueva_cotizacion.css">
 </head>
 
-
-<body> 
-
-    <!-- Abre el elemento del cuerpo de la página donde se coloca el contenido visible -->
-
-    <div class="nueva-cotizacion"> 
-        <!-- Contenedor principal que puede ayudar a centrar y organizar el contenido en la página -->
+<body>
+    <div class="nueva-cotizacion">
         <form id="formulario-cotizacion" method="POST" action="" enctype="multipart/form-data">
-
             <input type="hidden" name="formulario" value="cotizacion">
+            
             <!-- Fila 1 -->
-            <div class="row"> <!-- Crea una fila para organizar los elementos en una disposición horizontal -->
+            <div class="row">
+                <!-- TÍTULO: LOGO DE LA EMPRESA -->
+                <?php include BASE_PATH . 'cargar_logo_empresa.php'; ?>
 
-            <!-- TÍTULO: LOGO DE LA EMPRESA -->
+                <!-- TÍTULO: CUADRO ROJO DE COTIZACIÓN -->
+                <?php include BASE_PATH . 'cuadro_rojo_cotizacion.php'; ?>
 
-                <!-- llama al cargar_logo_empresa.php -->
-                <?php include 'cargar_logo_empresa.php'; ?>
-
-            <!-- TÍTULO: CUADRO ROJO DE COTIZACIÓN -->
-
-                <!-- llama al cuadro_rojo_cotizacion.php -->
-                <?php include 'cuadro_rojo_cotizacion.php'; ?>
-
-
-            <!-- TÍTULO: SECCIÓN DE DATOS -->
-
-                <!-- Caja de la inserción de la fecha de emisión -->
-                <fieldset class="box-6 cuadro-datos"> 
-                    <label for="fecha_emision">Fecha de Emisión:</label> <!-- Etiqueta para el campo de entrada de la fecha de emisión -->
-                    <input type="date" id="fecha_emision" name="fecha_emision" required> <!-- Campo de fecha para seleccionar la fecha de emisión. Es obligatorio --> 
+                <!-- TÍTULO: SECCIÓN DE DATOS -->
+                <fieldset class="box-6 cuadro-datos">
+                    <label for="fecha_emision">Fecha de Emisión:</label>
+                    <input type="date" id="fecha_emision" name="fecha_emision" required>
                 </fieldset>
-
-
             </div>
 
-            <!-- Fila 2 -->
+            <!-- Fila 2: DATOS DE LA EMPRESA -->
+            <?php include BASE_PATH . 'datos_empresa.php'; ?>
 
-        <!-- TÍTULO: DATOS DE LA EMPRESA -->
+            <!-- Fila 3: DETALLE DEL CLIENTE -->
+            <?php include BASE_PATH . 'detalle_cliente.php'; ?>
 
-            <!-- llama al datos_empresa.php -->
-            <?php include 'datos_empresa.php'; ?>
+            <div class="row">
+                <!-- Fila 4: DETALLE DEL PROYECTO -->
+                <?php include BASE_PATH . 'detalle_proyecto.php'; ?>
+            </div>
 
+            <!-- Fila 5: DETALLE DEL ENCARGADO -->
+            <?php include BASE_PATH . 'detalle_encargado.php'; ?>
 
-            <!-- Fila 3 -->
-             
-            <!-- TÍTULO: DETALLE DEL CLIENTE -->
+            <!-- Fila 6: DETALLE DEL VENDEDOR -->
+            <?php include BASE_PATH . 'detalle_vendedor.php'; ?>
 
-                <!-- llama al detalle del cliente.php -->
-                <?php include 'detalle_cliente.php'; ?>
-
-                <!-- Crea una fila para organizar los elementos en una disposición horizontal -->
-                <div class="row"> 
-                
-
-
-            <!-- Fila 4 -->
-
-            <!-- TÍTULO: DETALLE DEL PROYECTO -->
-
-                    <!-- llama al detalle del proyecto.php -->
-                    <?php include 'detalle_proyecto.php'; ?> 
-
-
-                </div>
-
-            <!-- Fila 5 -->
-
-        <!-- TÍTULO: DETALLE DEL ENCARGADO -->
-
-            <!-- llama al detalle del proyecto.php -->
-            <?php include 'detalle_encargado.php'; ?>
-
-
-            <!-- Fila 6 -->
-
-        <!-- TÍTULO: DETALLE DEL VENDEDOR -->
-
-            <!-- llama al detalle_vendedor.php -->
-            <?php include 'detalle_vendedor.php'; ?>
-
-
-        <!-- TÍTULO: DETALLE DE COTIZACIÓN -->
-
-            <!-- llama al detalle_cotizacion.php -->
-            <?php include 'detalle_cotizacion.php'; ?>
+            <!-- TÍTULO: DETALLE DE COTIZACIÓN -->
+            <?php include BASE_PATH . 'detalle_cotizacion.php'; ?>
             
-        <!-- TÍTULO: DETALLE GENERAL -->
+            <!-- TÍTULO: DETALLE GENERAL -->
+            <?php include BASE_PATH . 'detalle.php'; ?>
 
-            <!-- llama al detalle_general.php -->
-            <?php include 'detalle.php'; ?>
+            <!-- TÍTULO: CÁLCULOS FINALES -->
+            <?php include BASE_PATH . 'detalle_total.php'; ?>
 
+            <!-- TÍTULO: OBSERVACIONES -->
+            <?php include BASE_PATH . 'observaciones.php'; ?>
 
-        <!-- TÍTULO: CÁLCULOS FINALES -->
-
-            <!-- llama al detalle_total.php -->
-            <?php include 'detalle_total.php'; ?>
-
-
-        <!-- TÍTULO: OBSERVACIONES -->
-
-            <!-- llama a las observaciones -->
-            <?php include 'observaciones.php'; ?>
-
-            
-        <!-- TÍTULO: SECCIÓN PARA LOS PAGOS -->
-
+            <!-- TÍTULO: SECCIÓN PARA LOS PAGOS -->
             <br>
-            <!-- llama al sección para los pagos -->
-            <?php include 'pago.php'; ?>
-            
+            <?php include BASE_PATH . 'pago.php'; ?>
             <br>
-            
 
-        <!-- TÍTULO: CONDICIONES -->
-            
-            <!-- llama a las condiciones-->
-            <?php include 'traer_condiciones.php'; ?>
+            <!-- TÍTULO: CONDICIONES -->
+            <?php include BASE_PATH . 'traer_condiciones.php'; ?>
 
+            <!-- TÍTULO: REQUISITOS -->
+            <?php include BASE_PATH . 'traer_requisitos.php'; ?>
 
-        <!-- TÍTULO: REQUISITOS -->
-            
-            <!-- llama a los requisitos -->
-            <?php include 'traer_requisitos.php'; ?>
+            <!-- TÍTULO: OBLIGACIONES DEL CLIENTE -->
+            <?php include BASE_PATH . 'obligaciones_cliente.php'; ?>
 
-
-        <!-- TÍTULO: OBLIGACIONES DEL CLIENTE -->
-            
-            <!-- llama al obligaciones del cliente -->
-            <?php include 'obligaciones_cliente.php'; ?>
-
-            
-            <!-- Botón para enviar el formulario y generar la cotización -->
-
-        <!-- TÍTULO: MENSAJE DE DESPEDIDA -->            
-            
-            <!-- trae el mensaje de despedida -->
+            <!-- TÍTULO: MENSAJE DE DESPEDIDA -->
             <div>
-                <?php include 'mensaje_despedida.php'; ?>            
+                <?php include BASE_PATH . 'mensaje_despedida.php'; ?>
             </div>
 
+            <!-- TÍTULO: DATOS BANCARIOS -->
+            <?php include BASE_PATH . 'traer_datos_bancarios.php'; ?>
 
-        <!-- TÍTULO: DATOS BANCARIOS -->
-            <!-- trae los datos bancarios-->
-            <?php include 'traer_datos_bancarios.php'; ?>
+            <!-- TÍTULO: FIRMA -->
+            <?php include BASE_PATH . 'firma.php'; ?>
 
+            <button type="submit" class="submit">Guardar cotización</button>
+        </form>
+    </div>
 
-        <!-- TÍTULO: FIRMA -->
-            <!-- trae la firma -->
-            <?php include 'firma.php'; ?>
-
-            
-        <!-- TÍTULO: ENLAZA NUEVAMENTE EL ARCHIVO JAVASCRIPT PARA MANEJAR LA LÓGICA DEL FORMULARIO DE COTIZACIÓN -->  
-
-            <!-- llama al archivo nueva_cotizacion.sj -->
-            <script src="js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_nueva_cotizacion/nueva_cotizacion_pr.js"></script> 
-             <!-- llama al archivo cuadro_rojo_cotizacion.sj -->
-            <script src="js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_nueva_cotizacion/cuadro_rojo_cotizacion.js"></script> 
-
-            <button type="submit" class="submit">Guardar cotizacion</button> 
-
-        <!-- Título: Botón para Guardar Cotización -->
-
-        </form> <!-- Cierra el formulario -->
-    </div> <!-- Cierra el contenedor principal -->
+    <!-- TÍTULO: ARCHIVOS JAVASCRIPT -->
+    <script src="js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_nueva_cotizacion/nueva_cotizacion_pr.js"></script> 
+    <script src="js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_nueva_cotizacion/cuadro_rojo_cotizacion.js"></script> 
 
 </body>
-
-<!-- TÍTULO: SCRIPT DE PROCESAMIENTO DEL FORMULARIO -->
-<script>
-
-</script>
 </html>
 
 <!-- ------------------------------------------------------------------------------------------------------------

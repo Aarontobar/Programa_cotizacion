@@ -11,89 +11,112 @@ BPPJ
 <!-- ------------------------------------------------------------------------------------------------------------
     ------------------------------------- INICIO ITred Spa Cuadro rojo cotizacion.PHP --------------------------------------
     ------------------------------------------------------------------------------------------------------------- -->
+    <?php
+// Verificar si hay una sesión activa
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
+// Verificar conexión a la base de datos
+if (!isset($mysqli)) {
+    $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
+    if ($mysqli->connect_error) {
+        die('Error de conexión: ' . $mysqli->connect_error);
+    }
+    $mysqli->set_charset("utf8");
+}
+
+$row = [
+    'EmpresaRUT' => '',
+];
+$numero_cotizacion = isset($_POST['numero_cotizacion']) ? $_POST['numero_cotizacion'] : 30; // Valor por defecto
+$dias_validez = isset($_POST['dias_validez']) ? $_POST['dias_validez'] : 30; // Valor por defecto
+
+// Si hay una empresa seleccionada en la sesión, obtener sus datos
+if (isset($_SESSION['id_empresa'])) {
+    $id_empresa = $_SESSION['id_empresa'];
+    $query = "SELECT rut_empresa as EmpresaRUT FROM E_Empresa WHERE id_empresa = ?";
+    
+    if ($stmt = $mysqli->prepare($query)) {
+        $stmt->bind_param("i", $id_empresa);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+        }
+        $stmt->close();
+    }
+
+    // Obtener el último número de cotización para esta empresa
+    $query_numero = "SELECT MAX(CAST(numero_cotizacion AS UNSIGNED)) as ultimo_numero 
+                    FROM C_Cotizaciones 
+                    WHERE id_empresa = ?";
+    
+    if ($stmt = $mysqli->prepare($query_numero)) {
+        $stmt->bind_param("i", $id_empresa);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if ($result->num_rows > 0) {
+            $num_row = $result->fetch_assoc();
+            if ($num_row['ultimo_numero'] !== null) {
+                $numero_cotizacion = $num_row['ultimo_numero'] + 1;
+            }
+        }
+        $stmt->close();
+    }
+}
+?>
     
 <!-- TITULO IMPORT ARCHIVO CSS -->
+<link rel="stylesheet" href="css/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_nueva_cotizacion/cuadro_rojo_cotizacion.css">
 
-    <!-- Enlaza el archivo CSS para estilizar el cuadro de cotización -->
-    <link rel="stylesheet" href="css/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_nueva_cotizacion/cuadro_rojo_cotizacion.css">
-
-
-<!-- Ejecuta la función calcularFechaValidez al cargar la página -->
 <body onload="calcularFechaValidez();"> 
     
 <div class="cuadro_rojo_nueva_cotizacion">
+    <fieldset class="box-6 cuadro-datos cuadro-datos-rojo"> 
+        <legend>Detalle Cotización</legend>
 
-<!-- TÍTULO: CAJA PARA INGRESAR DATOS -->
+        <label for="empresa_rut">RUT de la Empresa:</label>
+        <input type="text" 
+               id="empresa_rut" 
+               name="empresa_rut" 
+               minlength="7" 
+               maxlength="12" 
+               title="El RUT debe contener entre 7 y 12 caracteres numéricos o 'K'." 
+               required 
+               oninput="FormatearRut(this)" 
+               value="<?php echo htmlspecialchars($row['EmpresaRUT']); ?>">
 
-<!-- Crea una caja para ingresar datos, ocupando otras 6 columnas. Se aplica una clase adicional para estilo -->
+        <label for="numero_cotizacion">Número de Cotización:</label>
+        <input type="number" 
+               id="numero-cotizacion" 
+               name="numero_cotizacion" 
+               required 
+               min="1" 
+               placeholder="30" 
+               value="<?php echo htmlspecialchars($numero_cotizacion); ?>">
 
-<fieldset class="box-6 cuadro-datos cuadro-datos-rojo"> 
+        <label for="dias_validez">Días de Validez:</label>
+        <input type="number" 
+               id="dias_validez" 
+               name="dias_validez" 
+               required 
+               min="1" 
+               placeholder="30" 
+               value="<?php echo htmlspecialchars($dias_validez); ?>" 
+               readonly>
 
-<!-- TÍTULO: ENCABEZADO DE DETALLE DE COTIZACIÓN -->
-
-    <legend>Detalle Cotización</legend> <!-- TÍTULO DEL CAMPO DE DATOS -->
-
-<!-- TÍTULO: CAMPO PARA EL RUT DE LA EMPRESA -->
-
-    <!-- Etiqueta para el campo de entrada del RUT de la empresa -->
-    <label for="empresa_rut">RUT de la Empresa:</label> 
-
-
-<!-- TÍTULO: CAMPO PARA INGRESAR EL RUT DE LA EMPRESA -->
-
-    <!-- Campo de texto para ingresar el RUT de la empresa. El atributo "required" hace que el campo sea obligatorio -->
-    <input type="text" id="empresa_rut" name="empresa_rut" 
-    minlength="7" maxlength="12" 
-    title="El RUT debe contener entre 7 y 12 caracteres numéricos o 'K'." 
-    required oninput="FormatearRut(this)" 
-    value="<?php echo htmlspecialchars($row['EmpresaRUT']); ?>"> 
-
-<!-- TÍTULO: CAMPO PARA EL NÚMERO DE COTIZACIÓN -->
-
-    <!-- Etiqueta para el campo de entrada del número de cotización -->
-    <label for="numero_cotizacion">Número de Cotización:</label> 
-
-<!-- TÍTULO: CAMPO PARA INGRESAR EL NÚMERO DE COTIZACIÓN -->
-
-    <!-- Campo de texto para ingresar el número de cotización. También es obligatorio -->
-
-    <input type="number" id="numero-cotizacion" name="numero_cotizacion" required min="1" placeholder="30" value="<?php echo htmlspecialchars($numero_cotizacion); ?>"> 
-    
-
-<!-- TÍTULO: CAMPO PARA LOS DÍAS DE VALIDEZ -->
-
-    <!-- Etiqueta para el campo de entrada de la validez de la cotización -->
-
-    <label for="dias_validez">Días de Validez:</label> 
-
-<!-- TÍTULO: CAMPO PARA INGRESAR DÍAS DE VALIDEZ -->
-
-    <!-- Campo para ingresar los días de validez de la cotización. Solo lectura -->
-
-    <input type="number" id="dias_validez" name="dias_validez" required min="1" placeholder="30" value="<?php echo htmlspecialchars($dias_validez); ?>" readonly> 
-
-<!-- TÍTULO: CAMPO PARA LA FECHA DE VALIDEZ -->
-
-    <!-- Etiqueta para el campo de entrada de la fecha de validez -->
-
-    <label for="fecha_validez">Fecha de Validez:</label> 
-
-<!-- TÍTULO: CAMPO PARA SELECCIONAR LA FECHA DE VALIDEZ -->
-
-    <!-- Campo para seleccionar la fecha de validez de la cotización. Solo lectura -->
-
-    <input type="date" id="fecha_validez" name="fecha_validez" readonly> 
-
-
-</fieldset>   
+        <label for="fecha_validez">Fecha de Validez:</label>
+        <input type="date" 
+               id="fecha_validez" 
+               name="fecha_validez" 
+               readonly>
+    </fieldset>   
 </div>
 </body>
 
- <!-- TÍTULO: AQUÍ SE CARGA EL JS DEL ARCHIVO -->
-
-    <!-- llama al archivo JS -->
-    <script src="js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_nueva_cotizacion/cuadro_rojo_cotizacion.js"></script> 
-
+<!-- TÍTULO: AQUÍ SE CARGA EL JS DEL ARCHIVO -->
+<script src="js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_nueva_cotizacion/cuadro_rojo_cotizacion.js"></script>
 
 <!-- ------------------------------------------------------------------------------------------------------------
     -------------------------------------- FIN ITred Spa Cuadro rojo cotizacion.PHP ----------------------------------------

@@ -13,6 +13,21 @@ BPPJ
     -------------------------------------- INICIO ITred Spa Crear Clientes .JS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
 
+    document.addEventListener('DOMContentLoaded', function() {
+        // Manejo de la notificación
+        const notificacion = document.getElementById('notificacion');
+        if (notificacion) {
+            setTimeout(() => {
+                notificacion.style.display = 'none';
+            }, 5000);
+        }
+
+        // Si hay un mensaje de éxito, hacer scroll a la lista de clientes
+        <?php if ($mostrarLista): ?>
+        document.querySelector('.lista-clientes').scrollIntoView({ behavior: 'smooth' });
+        <?php endif; ?>
+    });
+
 /* --------------------------------------------------------------------------------------------------------------
     ---------------------------------------- FIN ITred Spa Crear Clientes .JS ---------------------------------------
     ------------------------------------------------------------------------------------------------------------- */

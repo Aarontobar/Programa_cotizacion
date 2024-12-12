@@ -14,37 +14,47 @@ BPPJ
     -------------------------------------- INICIO ITred Spa Crear Clientes .CSS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
 
-/* Estilo para el enlace "Crear nuevo cliente" */
-.boton-opcion {
-    color: #4CAF50; /* Color del texto */
-    text-decoration: underline; /* Subraya el texto */
-    font-size: 14px; /* Tamaño de letra */
-    cursor: pointer; /* Cambia el cursor al pasar sobre el enlace */
-    display: block; /* Hace que el enlace sea un bloque */
-    text-align: center; /* Centra el texto */
+.lista-clientes {
+    margin-top: 2rem;
+    padding: 1rem;
 }
 
-.boton-opcion:hover {
-    color: #45a049; /* Color del texto al pasar el cursor */
+.tabla-contenedor-lista {
+    overflow-x: auto;
+    margin-top: 1rem;
 }
 
-/* Estilo para el botón fijado en crear_cliente.php */
-.boton-fijado {
-    display: inline-block;
-    padding: 10px 20px;
-    margin: 10px 5px;
-    font-size: 14px;
-    color: #fff;
-    background-color: #4CAF50; /* Color verde del botón */
-    text-align: center;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
+.tabla-contenedor-lista table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 800px;
 }
 
-.boton-fijado:hover {
-    background-color: #45a049; /* Color verde del botón al pasar el cursor */
+.tabla-contenedor-lista th,
+.tabla-contenedor-lista td {
+    padding: 0.75rem;
+    text-align: left;
+    border: 1px solid #000000;
 }
+
+.tabla-contenedor-lista th {
+    background-color: #828282;
+    font-weight: bold;
+}
+
+.tabla-contenedor-lista tr:nth-child(even) {
+    background-color: #828282;
+}
+
+.tabla-contenedor-lista tr:hover {
+    background-color: #cecece;
+}
+
+thead{
+    background-color: #ffffff;
+    background: #ffffff;
+}
+
 /* --------------------------------------------------------------------------------------------------------------
     ---------------------------------------- FIN ITred Spa Crear Clientes .CSS ---------------------------------------
     ------------------------------------------------------------------------------------------------------------- */

@@ -11,6 +11,37 @@ BPPJ
 <!-- ------------------------------------------------------------------------------------------------------------
     ------------------------------------- INICIO ITred Spa seleccionar empresa.PHP --------------------------------------
     ------------------------------------------------------------------------------------------------------------- -->
+
+    <?php
+
+// Verificar conexión a la base de datos
+if (!isset($mysqli)) {
+    $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
+    if ($mysqli->connect_error) {
+        die('Error de conexión: ' . $mysqli->connect_error);
+    }
+    $mysqli->set_charset("utf8");
+}
+
+// Procesar la selección de empresa
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['empresa'])) {
+    $_SESSION['id_empresa'] = (int)$_POST['empresa'];
+    
+    // Obtener información de la empresa seleccionada
+    $stmt = $mysqli->prepare("SELECT nombre_empresa FROM E_Empresa WHERE id_empresa = ?");
+    $stmt->bind_param("i", $_SESSION['id_empresa']);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    if ($row = $result->fetch_assoc()) {
+        $_SESSION['nombre_empresa'] = $row['nombre_empresa'];
+    }
+    $stmt->close();
+}
+
+// Verificar si hay una empresa seleccionada
+$empresa_seleccionada = isset($_SESSION['id_empresa']) && !empty($_SESSION['id_empresa']);
+?>
+
     <!------------------Archivo CSS ----------------------->
     <link rel="stylesheet" href="css/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/programa_cotizacion/seleccionar_empresa.css">
     <!----------------------------------------------------->

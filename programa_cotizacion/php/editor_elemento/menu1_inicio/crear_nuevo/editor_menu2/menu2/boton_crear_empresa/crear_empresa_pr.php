@@ -12,6 +12,33 @@ BPPJ
     ------------------------------------- INICIO ITred Spa Crear Empresa .PHP --------------------------------------
     ------------------------------------------------------------------------------------------------------------- -->
 
+    <?php
+session_start();
+
+// Verificar si hay una empresa seleccionada
+if (!isset($_SESSION['id_empresa']) && basename($_SERVER['PHP_SELF']) !== 'crear_empresa_pr.php') {
+    die('Por favor, seleccione una empresa primero.');
+}
+
+// Obtener el ID de empresa de la sesión o del parámetro GET
+$id_empresa = $_SESSION['id_empresa'] ?? $_GET['id_empresa'] ?? null;
+
+if (!$id_empresa && basename($_SERVER['PHP_SELF']) !== 'crear_empresa_pr.php') {
+    die('ID de empresa no válido.');
+}
+
+// Verificar conexión a la base de datos
+if (!isset($mysqli)) {
+    $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
+    if ($mysqli->connect_error) {
+        die('Error de conexión: ' . $mysqli->connect_error);
+    }
+    $mysqli->set_charset("utf8");
+}
+
+// Ahora puedes usar $id_empresa en tu código
+?>
+
 <!-- TITULO: AQUÍ INICIA EL HTML -->
 
     <!-- INICIO HTML -->

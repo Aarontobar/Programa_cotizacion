@@ -32,7 +32,7 @@ BPPJ
 <div class='contenedor-principal'>
 
     <div class="contenedor">  
-        <form id="formulario-proveedor" method="POST" action="" enctype="multipart/form-data">
+        <form id="formulario-proveedor" method="POST" action="">
 
             <!-- TÍTULO PARA EL FORMULARIO DE NUEVO PROVEEDOR -->
                 
@@ -54,7 +54,7 @@ BPPJ
             </div> 
 
             <!-- Botón de submit debe estar dentro del formulario -->
-            <button type="submit" class="subir">Crear proveedor</button> 
+            <button type="submit" class="submit">Crear Proveedor</button> 
         </form> 
     </div> 
 
@@ -76,7 +76,7 @@ BPPJ
 
 <!-- TÍTULO: IMPORTACIÓN DE ARCHIVO .JS -->
 
-<script src="js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_crear_proveedor/crear_proveedor_pr.js"></script> 
+<script src="js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_crear_proveedor/crear_proveedor_pr.js"></script>
 
 <!--------------------------------------------------------------------->
 </html>

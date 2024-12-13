@@ -16,32 +16,25 @@ BPPJ
      -- INICIO CONEXION BD --
      ------------------------ -->
      <?php
-// Inicia la sesión si aún no está iniciada
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
+// Verificar si hay una empresa seleccionada
+if (!isset($_SESSION['id_empresa']) && basename($_SERVER['PHP_SELF']) !== 'crear_empresa_pr.php') {
+    die('Por favor, seleccione una empresa primero.');
 }
 
-// Asegúrate de que la conexión a la base de datos esté disponible
-require_once($_SERVER['DOCUMENT_ROOT'] . '/programa_cotizacion/config/database.php');
+// Obtener el ID de empresa de la sesión o del parámetro GET
+$id_empresa = $_SESSION['id_empresa'] ?? $_GET['id_empresa'] ?? null;
 
-// Verifica si el formulario de actualización de estado ha sido enviado
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['cotizacion_id'], $_POST['nuevo_estado'])) {
-    $id_cotizacion = intval($_POST['cotizacion_id']);
-    $nuevo_estado = $_POST['nuevo_estado'];
-
-    // Actualiza el estado de la cotización en la base de datos
-    $stmt_update = $mysqli->prepare("UPDATE C_Cotizaciones SET estado = ? WHERE id_cotizacion = ?");
-    $stmt_update->bind_param('si', $nuevo_estado, $id_cotizacion);
-    $stmt_update->execute();
-    $stmt_update->close();
+if (!$id_empresa && basename($_SERVER['PHP_SELF']) !== 'crear_empresa_pr.php') {
+    die('ID de empresa no válido.');
 }
 
-// Obtiene el ID de la empresa desde la URL o la sesión
-$id_empresa = isset($_GET['empresa_id']) ? intval($_GET['empresa_id']) : 
-             (isset($_SESSION['id_empresa']) ? intval($_SESSION['id_empresa']) : 0);
-
-if (!$id_empresa) {
-    die("Error: No se ha seleccionado una empresa.");
+// Verificar conexión a la base de datos
+if (!isset($mysqli)) {
+    $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
+    if ($mysqli->connect_error) {
+        die('Error de conexión: ' . $mysqli->connect_error);
+    }
+    $mysqli->set_charset("utf8");
 }
 
 // Filtros (recibidos por GET)

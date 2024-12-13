@@ -16,7 +16,7 @@ BPPj
      -- INICIO CONEXION BD --
      ------------------------ -->
 
-     <?php
+<?php
 // Establece la conexión a la base de datos de ITred Spa
 $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
 ?>
@@ -27,18 +27,17 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
 
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!-- llama al archivo CSS -->
-        <link rel="stylesheet" href="css/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/programa_cotizacion/programa_cotizacion.css">
-    </head>
 
-    <body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- llama al archivo CSS -->
+    <link rel="stylesheet" href="css/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/programa_cotizacion/programa_cotizacion.css">
+</head>
+
+<body>
 
     <div class="programa_cotizacion">
-        <!-- Incluye el menú de navegación desde un archivo PHP externo -->
-        <?php include 'crear_nuevo/editor_menu2/menu2/programa_cotizacion/menu.php'; ?>
 
         <!-- Formulario para seleccionar la Empresa -->
         <form id="formulario-seleccionar-empresa" method="POST" action="">
@@ -47,9 +46,15 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
 
             <!-- boton seleccionar empresa -->
             <input type="hidden" id="selected-empresa" name="empresa" value="<?php echo isset($_SESSION['id_empresa']) ? $_SESSION['id_empresa'] : ''; ?>" />
-            <button type="submit">Seleccionar</button>
+            <button type="submit">Reiniciar</button>
         </form>
+
+        <!-- Incluye el menú de navegación desde un archivo PHP externo -->
+        <?php include 'crear_nuevo/editor_menu2/menu2/programa_cotizacion/menu.php'; ?>
     </div>
+
+    <!-- TÍTULO: CONTENEDOR PARA EL FORMULARIO DE MODIFICACIÓN -->
+    <div id="modificar-cotizacion-container"></div>
 
     <!-- Contenedor para mostrar el contenido dinámico -->
     <div id="contenido-dinamico">
@@ -86,35 +91,35 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
         ?>
     </div>
 
-    <!-- TÍTULO: CONTENEDOR PARA EL FORMULARIO DE MODIFICACIÓN -->
-    <div id="modificar-cotizacion-container"></div>
-
     <!-- Carga el archivo JavaScript para la funcionalidad del formulario -->
-    <script src="js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/programa_cotizacion/programa_cotizacion.js"></script> 
+    <script src="js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/programa_cotizacion/programa_cotizacion.js"></script>
 
     <script>
-    document.getElementById('formulario-seleccionar-empresa').addEventListener('submit', function(event) {
-        event.preventDefault(); // Evita el envío del formulario por defecto
-        // Aquí puedes agregar cualquier lógica adicional antes de enviar el formulario
-        this.submit(); // Envía el formulario
-    });
+        document.getElementById('formulario-seleccionar-empresa').addEventListener('submit', function(event) {
+            event.preventDefault(); // Evita el envío del formulario por defecto
+            // Aquí puedes agregar cualquier lógica adicional antes de enviar el formulario
+            this.submit(); // Envía el formulario
+        });
 
-    // TÍTULO: FUNCIÓN PARA CARGAR EL FORMULARIO DE MODIFICACIÓN
-    function cargarModificarCotizacion(id) {
-        fetch(`crear_nuevo/editor_menu2/menu2/boton_ver_cotizacion/modificar_cotizacion.php?id=${id}`)
-            .then(response => response.text())
-            .then(html => {
-                document.getElementById('modificar-cotizacion-container').innerHTML = html;
-                document.getElementById('modificar-cotizacion-container').style.display = 'block';
-                document.getElementById('modificar-cotizacion-container').scrollIntoView({behavior: 'smooth'});
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('Error al cargar el formulario de modificación');
-            });
-    }
+        // TÍTULO: FUNCIÓN PARA CARGAR EL FORMULARIO DE MODIFICACIÓN
+        function cargarModificarCotizacion(id) {
+            fetch(`crear_nuevo/editor_menu2/menu2/boton_ver_cotizacion/modificar_cotizacion.php?id=${id}`)
+                .then(response => response.text())
+                .then(html => {
+                    document.getElementById('modificar-cotizacion-container').innerHTML = html;
+                    document.getElementById('modificar-cotizacion-container').style.display = 'block';
+                    document.getElementById('modificar-cotizacion-container').scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Error al cargar el formulario de modificación');
+                });
+        }
     </script>
-    </body>
+</body>
+
 </html>
 
 <!-- ---------------------

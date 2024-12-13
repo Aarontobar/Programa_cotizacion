@@ -27,6 +27,13 @@ if (!isset($mysqli)) {
     $mysqli->set_charset("utf8");
 }
 
+// Obtener el ID de empresa de la sesión o del parámetro GET
+$id_empresa = $_SESSION['id_empresa'] ?? $_GET['id_empresa'] ?? null;
+
+if (!$id_empresa && basename($_SERVER['PHP_SELF']) !== 'crear_empresa_pr.php') {
+    die('ID de empresa no válido.');
+}
+
 $mensaje = '';
 $mostrarLista = false;
 

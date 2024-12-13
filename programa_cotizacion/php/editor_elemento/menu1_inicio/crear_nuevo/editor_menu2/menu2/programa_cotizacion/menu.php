@@ -11,7 +11,6 @@ BPPJ
 <?php
 // Establece la conexión a la base de datos de ITred Spa
 $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
-session_start();
 
 $error = ''; // Variable para almacenar mensajes de error
 $empresaEncontrada = false; // Variable para controlar si se ha seleccionado una empresa

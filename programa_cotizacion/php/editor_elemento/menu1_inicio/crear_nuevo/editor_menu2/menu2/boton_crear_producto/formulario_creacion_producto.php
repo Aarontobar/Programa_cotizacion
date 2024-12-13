@@ -69,7 +69,7 @@ $conn->close();
 
 <!-- TITULO: FORMULARIO -->
     <!-- Formulario de los productos a crear -->
-<form id="productos-form" action="crear_nuevo/menu_2_programas/boton_crear_producto/procesar_productos.php" method="post" enctype="multipart/form-data">
+<form id="productos-form" action="php\editor_elemento\menu1_inicio\crear_nuevo\editor_menu2\menu2\boton_crear_producto\procesar_productos.php" method="post" enctype="multipart/form-data">
     <fieldset>
 
         <!-- TÍTULO PARA LOS DETALLES DEL PRODUCTO -->

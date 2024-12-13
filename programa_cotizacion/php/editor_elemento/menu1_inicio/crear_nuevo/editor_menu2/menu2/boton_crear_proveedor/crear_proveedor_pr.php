@@ -12,6 +12,31 @@ BPPJ
     ------------------------------------- INICIO ITred Spa crear proveedor.PHP --------------------------------------
     ------------------------------------------------------------------------------------------------------------- -->
 
+    <?php
+// Iniciar sesión si no está iniciada
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
+// Verificar si existe una conexión a la base de datos
+if (!isset($mysqli)) {
+    $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
+    if ($mysqli->connect_error) {
+        die('Error de conexión: ' . $mysqli->connect_error);
+    }
+    $mysqli->set_charset("utf8");
+}
+
+// Obtener el ID de empresa de la sesión o del parámetro GET
+$id_empresa = $_SESSION['id_empresa'] ?? $_GET['id_empresa'] ?? null;
+
+if (!$id_empresa) {
+    die('ID de empresa no válido.');
+}
+
+// Resto del código de crear_proveedor_pr.php
+?>
+
 <!-- INICIO HTML -->
 <!DOCTYPE html>
 <html lang="es">

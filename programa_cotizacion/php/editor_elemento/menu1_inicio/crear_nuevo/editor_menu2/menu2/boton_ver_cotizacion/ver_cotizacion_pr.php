@@ -17,14 +17,14 @@ BPPJ
      ------------------------ -->
      <?php
 // Verificar si hay una empresa seleccionada
-if (!isset($_SESSION['id_empresa']) && basename($_SERVER['PHP_SELF']) !== 'crear_empresa_pr.php') {
+if (!isset($_SESSION['id_empresa']) && basename($_SERVER['PHP_SELF']) !== 'ver_cotizacion_pr.php') {
     die('Por favor, seleccione una empresa primero.');
 }
 
 // Obtener el ID de empresa de la sesión o del parámetro GET
 $id_empresa = $_SESSION['id_empresa'] ?? $_GET['id_empresa'] ?? null;
 
-if (!$id_empresa && basename($_SERVER['PHP_SELF']) !== 'crear_empresa_pr.php') {
+if (!$id_empresa && basename($_SERVER['PHP_SELF']) !== 'ver_cotizacion_pr.php') {
     die('ID de empresa no válido.');
 }
 
@@ -200,7 +200,7 @@ if (isset($_GET['action'])) {
 </div>
 
 
-<!-- llama al archivo CSS -->
+<!-- llama al archivo JS -->
 <script src="js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_ver_cotizacion/ver_listado.js"></script>
 
 </body>

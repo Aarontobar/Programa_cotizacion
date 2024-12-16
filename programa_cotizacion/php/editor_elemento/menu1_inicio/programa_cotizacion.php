@@ -66,22 +66,22 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
             // Incluye el archivo PHP correspondiente según el valor de 'pagina'
             switch ($pagina) {
                 case 'nueva_cotizacion':
-                    include 'php/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_nueva_cotizacion/nueva_cotizacion_pr.php';
+                    include_once 'php/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_nueva_cotizacion/nueva_cotizacion_pr.php';
                     break;
                 case 'crear_cliente':
-                    include 'php/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_crear_cliente/crear_cliente_pr.php';
+                    include_once 'php/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_crear_cliente/crear_cliente_pr.php';
                     break;
                 case 'crear_producto':
-                    include 'php/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_crear_producto/crear_producto_pr.php';
+                    include_once 'php/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_crear_producto/crear_producto_pr.php';
                     break;
                 case 'crear_proveedor':
-                    include 'php/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_crear_proveedor/crear_proveedor_pr.php';
+                    include_once 'php/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_crear_proveedor/crear_proveedor_pr.php';
                     break;
                 case 'ver_cotizacion':
-                    include 'php/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_ver_cotizacion/ver_cotizacion_pr.php';
+                    include_once 'php/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_ver_cotizacion/ver_cotizacion_pr.php';
                     break;
                 case 'crear_empresa':
-                    include 'php/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_crear_empresa/crear_empresa_pr.php';
+                    include_once 'php/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_crear_empresa/crear_empresa_pr.php';
                     break;
                 default:
                     echo '<p>Página no encontrada.</p>';
@@ -94,30 +94,6 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
     <!-- Carga el archivo JavaScript para la funcionalidad del formulario -->
     <script src="js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/programa_cotizacion/programa_cotizacion.js"></script>
 
-    <script>
-        document.getElementById('formulario-seleccionar-empresa').addEventListener('submit', function(event) {
-            event.preventDefault(); // Evita el envío del formulario por defecto
-            // Aquí puedes agregar cualquier lógica adicional antes de enviar el formulario
-            this.submit(); // Envía el formulario
-        });
-
-        // TÍTULO: FUNCIÓN PARA CARGAR EL FORMULARIO DE MODIFICACIÓN
-        function cargarModificarCotizacion(id) {
-            fetch(`crear_nuevo/editor_menu2/menu2/boton_ver_cotizacion/modificar_cotizacion.php?id=${id}`)
-                .then(response => response.text())
-                .then(html => {
-                    document.getElementById('modificar-cotizacion-container').innerHTML = html;
-                    document.getElementById('modificar-cotizacion-container').style.display = 'block';
-                    document.getElementById('modificar-cotizacion-container').scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    alert('Error al cargar el formulario de modificación');
-                });
-        }
-    </script>
 </body>
 
 </html>

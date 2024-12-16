@@ -13,19 +13,6 @@ BPPJ
     ------------------------------------------------------------------------------------------------------------- -->
 
     <?php
-session_start();
-
-// Verificar si hay una empresa seleccionada
-if (!isset($_SESSION['id_empresa']) && basename($_SERVER['PHP_SELF']) !== 'crear_empresa_pr.php') {
-    die('Por favor, seleccione una empresa primero.');
-}
-
-// Obtener el ID de empresa de la sesión o del parámetro GET
-$id_empresa = $_SESSION['id_empresa'] ?? $_GET['id_empresa'] ?? null;
-
-if (!$id_empresa && basename($_SERVER['PHP_SELF']) !== 'crear_empresa_pr.php') {
-    die('ID de empresa no válido.');
-}
 
 // Verificar conexión a la base de datos
 if (!isset($mysqli)) {
@@ -36,7 +23,22 @@ if (!isset($mysqli)) {
     $mysqli->set_charset("utf8");
 }
 
-// Ahora puedes usar $id_empresa en tu código
+// Verificar si la tabla Tp_Area existe y tiene datos
+$check_query = "SELECT COUNT(*) as count FROM Tp_Area";
+$result = $mysqli->query($check_query);
+if ($result) {
+    $row = $result->fetch_assoc();
+    if ($row['count'] == 0) {
+        // Si no hay datos, insertar algunos por defecto
+        $insert_query = "INSERT INTO Tp_Area (nombre_area) VALUES 
+            ('Recursos Humanos'),
+            ('Finanzas'),
+            ('Tecnología'),
+            ('Marketing'),
+            ('Ventas')";
+        $mysqli->query($insert_query);
+    }
+}
 ?>
 
 <!-- TITULO: AQUÍ INICIA EL HTML -->
@@ -128,7 +130,7 @@ if (!isset($mysqli)) {
                     <div class="row"> 
                         <div class="box-12 data-box">
                             <!-- Incluye el archivo para los requisitos básicos -->
-                            <?php include 'requisitos_basicos.php';?>
+                            <?php include_once 'requisitos_basicos.php';?>
                         </div>
                     </div>
 
@@ -136,7 +138,7 @@ if (!isset($mysqli)) {
                     <div class="row"> 
                         <div class="box-12 data-box">
                             <!-- Incluye el archivo para las condiciones generales -->
-                            <?php include 'condiciones_generales.php';?>
+                            <?php include_once 'condiciones_generales.php';?>
                         </div>
                     </div>
                 <!------------------------------------------------------------------------------------------->
@@ -145,7 +147,7 @@ if (!isset($mysqli)) {
                     <div class="row"> 
                         <div class="box-12 data-box">
                             <!-- Incluye el archivo para las obligaciones del cliente -->
-                            <?php include 'obligaciones_cliente.php';?>
+                            <?php include_once 'obligaciones_cliente.php';?>
                         </div>
                     </div>
 
@@ -157,7 +159,7 @@ if (!isset($mysqli)) {
                     <div class="row"> 
                         <div class="box-12 data-box">
                             <!-- Incluye el archivo para la firma -->
-                            <?php include 'firma.php';?>
+                            <?php include_once 'firma.php';?>
                         </div>
                     </div>
                 <!------------------------------------------------------------------------------------------->

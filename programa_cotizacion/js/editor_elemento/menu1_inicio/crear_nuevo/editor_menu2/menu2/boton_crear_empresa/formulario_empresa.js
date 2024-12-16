@@ -76,17 +76,21 @@ BPPJ
 
 // TÍTULO PARA CARGAR ÁREAS DE EMPRESA
 
-    // Función para cargar las áreas de la empresa
-    function CargarAreasEmpresa() {
-        // Realiza una solicitud para obtener la lista de áreas de empresa desde el servidor
-        fetch('../../../php/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_crear_empresa/get_area_empresa.php')
-            .then(response => response.text())
-            .then(data => {
-                const select = document.getElementById('empresa_area'); // Obtener el elemento select por su ID
-                select.innerHTML = data;  // Insertar directamente las opciones generadas en el select
-            })
-            .catch(error => console.error('Error al cargar áreas de empresa:', error)); // Manejar errores de la solicitud
-    }
+// Función para cargar las áreas de empresa
+function CargarAreasEmpresa() {
+    fetch('php/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_crear_empresa/get_area_empresa.php')
+        .then(response => response.text())
+        .then(data => {
+            const select = document.getElementById('empresa_area');
+            select.innerHTML = data;
+        })
+        .catch(error => {
+            console.error('Error al cargar áreas:', error);
+            // Agregar una opción por defecto en caso de error
+            const select = document.getElementById('empresa_area');
+            select.innerHTML = '<option value="">Error al cargar áreas</option>';
+        });
+}
 
     CargarAreasEmpresa();
 

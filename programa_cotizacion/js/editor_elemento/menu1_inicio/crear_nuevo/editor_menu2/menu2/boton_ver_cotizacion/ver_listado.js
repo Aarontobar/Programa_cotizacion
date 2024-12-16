@@ -74,6 +74,12 @@ BPPJ
         });
     });
 
+    function confirmarEliminar(id_cotizacion, id_empresa) {
+        if (confirm('¿Está seguro de que desea eliminar esta cotización?')) {
+            window.location.href = `eliminar_cotizacion.php?id=${id_cotizacion}&id_empresa=${id_empresa}`;
+        }
+    }
+
 /* --------------------------------------------------------------------------------------------------------------
     ---------------------------------------- FIN ITred Spa Ver Listado .JS ---------------------------------------
     ------------------------------------------------------------------------------------------------------------- */

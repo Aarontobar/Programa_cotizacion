@@ -17,50 +17,32 @@ BPPJ
      ------------------------ -->
 
      <?php
-// Establece la conexión a la base de datos de ITred Spa
+// Verificar conexión a la base de datos
+if (!isset($mysqli)) {
+    $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
+    if ($mysqli->connect_error) {
+        die('Error de conexión: ' . $mysqli->connect_error);
+    }
+    $mysqli->set_charset("utf8");
+}
 
-$mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
+// Consulta para obtener las áreas
+$query = "SELECT id_area, nombre_area FROM Tp_Area ORDER BY nombre_area";
+$result = $mysqli->query($query);
 
-// Si no hay áreas, mostrar mensaje en el select
+// Generar las opciones del select
+echo '<option value="">Seleccione un área</option>';
+if ($result) {
+    while ($row = $result->fetch_assoc()) {
+        echo '<option value="' . htmlspecialchars($row['id_area']) . '">' . 
+             htmlspecialchars($row['nombre_area']) . '</option>';
+    }
+    $result->free();
+}
 ?>
 <!-- ---------------------
      -- FIN CONEXION BD --
      --------------------- -->
-
-     <?php
-
-// Consulta para obtener las áreas de empresa
-
-$query = "SELECT id_area, nombre_area FROM Tp_Area";
-$result = $mysqli->query($query);
-
-// Verificar si se obtuvieron resultados
-
-if ($result->num_rows > 0) {
-
-    echo '<option value="">Seleccionar Area</option>';
-    // Recorrer los resultados y crear opciones en el select
-
-    while ($row = $result->fetch_assoc()) {
-
-        // Mostrar solo el nombre en el texto de la opción, con el valor como id_area_empresa
-
-        echo '<option value="' . htmlspecialchars($row['id_area']) . '">' . htmlspecialchars($row['nombre_area']) . '</option>';
-
-         //-----------------------------------------------------------------
-    }
-} else {
-
-    // Si no hay áreas, mostrar mensaje en el select
-
-    echo "<option value=''>No hay áreas disponibles</option>";
-
-     //----------------------------------------------
-}
-?>
-
-
-
 
 <!-- ---------------------
 -- INICIO CIERRE CONEXION BD --

@@ -11,87 +11,87 @@ BPPJ
 <!-- ------------------------------------------------------------------------------------------------------------
     ------------------------------------- INICIO ITred Spa Formulario Empresa.PHP --------------------------------------
     ------------------------------------------------------------------------------------------------------------- -->
-  
+
 <!-- TITULO: IMPORTACIÓN DE ARCHIVO .CSS -->
 
-    <!-- Llama al archivo CSS -->
-    <link rel="stylesheet" href="css/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_crear_empresa/formulario_empresa.css"> 
-    
-<!-- Crea una fila para organizar los elementos en una disposición horizontal -->
-<div class="row"> 
+<!-- Llama al archivo CSS -->
+<link rel="stylesheet" href="css/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_crear_empresa/formulario_empresa.css">
 
-<!-- TÍTULO: CREA UNA CAJA PARA INGRESAR DATOS, OCUPANDO LAS 12 COLUMNAS DISPONIBLES EN EL DISEÑO. ESTA CAJA CONTIENE VARIOS CAMPOS DE ENTRADA DE DATOS -->
-    
+<!-- Crea una fila para organizar los elementos en una disposición horizontal -->
+<div class="row">
+
+    <!-- TÍTULO: CREA UNA CAJA PARA INGRESAR DATOS, OCUPANDO LAS 12 COLUMNAS DISPONIBLES EN EL DISEÑO. ESTA CAJA CONTIENE VARIOS CAMPOS DE ENTRADA DE DATOS -->
+
     <!-- Se define el campo de los datos de la empresa-->
     <fieldset class="box-12 data-box">
-            <legend>Datos empresa</legend>
-            
-        <!-- TÍTULO: ETIQUETA PARA EL CAMPO DE ENTRADA DEL NOMBRE DE LA EMPRESA -->
-            
-            <!-- Define el nombre de la empresa -->
-            <div class="form-group">
-                <label for="empresa_nombre">Nombre de la Empresa:</label>
-                <input type="text" id="empresa_nombre" name="empresa_nombre" required minlength="3" maxlength="100" 
-                    pattern="^[A-Za-zÀ-ÿ0-9\s&.-]+$" 
-                    title="Por favor, ingrese solo letras, números y caracteres como &,-."
-                    placeholder="Ejemplo: Mi Empresa S.A.">
-            </div>
+        <legend>Datos empresa</legend>
 
-            <div class="form-group-inline">
-                <div class="form-group">
+        <!-- TÍTULO: ETIQUETA PARA EL CAMPO DE ENTRADA DEL NOMBRE DE LA EMPRESA -->
+
+        <!-- Define el nombre de la empresa -->
+        <div class="form-group">
+            <label for="empresa_nombre">Nombre de la Empresa:</label>
+            <input type="text" id="empresa_nombre" name="empresa_nombre" required minlength="3" maxlength="100"
+                pattern="^[A-Za-zÀ-ÿ0-9\s&.-]+$"
+                title="Por favor, ingrese solo letras, números y caracteres como &,-."
+                placeholder="Ejemplo: Mi Empresa S.A.">
+        </div>
+
+        <div class="form-group-inline">
+            <div class="form-group">
 
                 <!-- TÍTULO: ETIQUETA PARA EL CAMPO DE SELECCIÓN DEL ÁREA DE LA EMPRESA -->
-                    <!-- Define el área de la empresa -->
-                    <label for="empresa_area">Área de la Empresa:</label>
-                    <select id="empresa_area" name="empresa_area" required>
-                        
-                    </select>
-                </div>
-
-                <div class="form-group">
-
-                    <!-- TÍTULO: ETIQUETA PARA EL CAMPO DE SELECCIÓN DEL PAÍS -->
-                        <!-- Define el país de la empresa -->
-                        <label for="empresa_pais">País:</label>
-                        <select id="empresa_pais" name="empresa_pais">
-                            <option value="Chile">Chile</option>
-                        </select>
-                </div>
-
-                <div class="form-group">
-
-                    <!-- TÍTULO: ETIQUETA PARA EL CAMPO DE SELECCIÓN DE LA CIUDAD -->
-                        <!-- Define la ciudad de la empresa -->
-                        <label for="empresa_ciudad">Ciudad:</label>
-                        <select id="empresa_ciudad" name="empresa_ciudad">
-                            <option value="Santiago">Santiago</option>
-                            <option value="Valparaíso">Valparaíso</option>
-                            <option value="Concepción">Concepción</option>
-                            <option value="La Serena">La Serena</option>
-                            <option value="Antofagasta">Antofagasta</option>
-                        </select>
-                </div>
+                <!-- Define el área de la empresa -->
+                <label for="empresa_area">Área de la Empresa:</label>
+                <select id="empresa_area" name="empresa_area" required>
+                    <option value="">Cargando áreas...</option>
+                </select>
             </div>
-
 
             <div class="form-group">
 
-                <!-- TÍTULO: ETIQUETA PARA EL CAMPO DE ENTRADA DE LA DIRECCIÓN DE LA EMPRESA -->
-                    
-                    <!-- Define el país de la empresa -->
-                    <label for="empresa_direccion">Dirección de la Empresa:</label>
-                    <input type="text" id="empresa_direccion" name="empresa_direccion" 
-                        minlength="5" maxlength="100" 
-                        pattern="^[A-Za-z0-9À-ÿ\s#,-.]*$" 
-                        title="Por favor, ingrese una dirección válida. Se permiten letras, números, espacios y los caracteres #, -, , y .."
-                        placeholder="Ejemplo: Av. Siempre Viva 742">
+                <!-- TÍTULO: ETIQUETA PARA EL CAMPO DE SELECCIÓN DEL PAÍS -->
+                <!-- Define el país de la empresa -->
+                <label for="empresa_pais">País:</label>
+                <select id="empresa_pais" name="empresa_pais">
+                    <option value="Chile">Chile</option>
+                </select>
             </div>
 
-            <div class="form-group-inline">
-                <div class="form-group">
-                    <!-- Etiqueta PARA el campo de entrada del teléfono del cliente -->
-                    <label for="empresa_telefono" style="margin-right: 0; height: 68%;">Teléfono:</label> 
-                    <div style="display: flex; align-items: center;">
+            <div class="form-group">
+
+                <!-- TÍTULO: ETIQUETA PARA EL CAMPO DE SELECCIÓN DE LA CIUDAD -->
+                <!-- Define la ciudad de la empresa -->
+                <label for="empresa_ciudad">Ciudad:</label>
+                <select id="empresa_ciudad" name="empresa_ciudad">
+                    <option value="Santiago">Santiago</option>
+                    <option value="Valparaíso">Valparaíso</option>
+                    <option value="Concepción">Concepción</option>
+                    <option value="La Serena">La Serena</option>
+                    <option value="Antofagasta">Antofagasta</option>
+                </select>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+
+            <!-- TÍTULO: ETIQUETA PARA EL CAMPO DE ENTRADA DE LA DIRECCIÓN DE LA EMPRESA -->
+
+            <!-- Define el país de la empresa -->
+            <label for="empresa_direccion">Dirección de la Empresa:</label>
+            <input type="text" id="empresa_direccion" name="empresa_direccion"
+                minlength="5" maxlength="100"
+                pattern="^[A-Za-z0-9À-ÿ\s#,-.]*$"
+                title="Por favor, ingrese una dirección válida. Se permiten letras, números, espacios y los caracteres #, -, , y .."
+                placeholder="Ejemplo: Av. Siempre Viva 742">
+        </div>
+
+        <div class="form-group-inline">
+            <div class="form-group">
+                <!-- Etiqueta PARA el campo de entrada del teléfono del cliente -->
+                <label for="empresa_telefono" style="margin-right: 0; height: 68%;">Teléfono:</label>
+                <div style="display: flex; align-items: center;">
                     <!-- Select para el código de país -->
                     <div class="custom-select-wrapper">
                         <select id="countryCode" name="countryCode" class="custom-select">
@@ -128,72 +128,72 @@ BPPJ
                             <!-- Agrega más opciones según sea necesario -->
                         </select>
                     </div>
-                        <!-- TÍTULO: CAMPO DE ENTRADA PARA EL TELÉFONO DE LA EMPRESA -->
-                            
-                            <!-- Define el país de la empresa -->
-                            <input type="text" id="empresa_telefono" name="empresa_telefono" 
-                            placeholder="+56 9 1234 1234" 
-                            maxlength="11" 
-                            required 
-                            title="Formato válido: +56 9 1234 1234 (código de país, seguido de número)">
-                    </div>
+                    <!-- TÍTULO: CAMPO DE ENTRADA PARA EL TELÉFONO DE LA EMPRESA -->
+
+                    <!-- Define el país de la empresa -->
+                    <input type="text" id="empresa_telefono" name="empresa_telefono"
+                        placeholder="+56 9 1234 1234"
+                        maxlength="11"
+                        required
+                        title="Formato válido: +56 9 1234 1234 (código de país, seguido de número)">
                 </div>
-                <div class="form-group">
+            </div>
+            <div class="form-group">
 
-                    <!-- TÍTULO: ETIQUETA PARA EL CAMPO DE ENTRADA DEL EMAIL DE LA EMPRESA -->
-                        
-                        <!-- Etiqueta "label" email -->
-                        <label for="empresa_email">Email de la Empresa:</label>
+                <!-- TÍTULO: ETIQUETA PARA EL CAMPO DE ENTRADA DEL EMAIL DE LA EMPRESA -->
 
-                    <!-- TÍTULO: CAMPO DE CORREO ELECTRÓNICO PARA INGRESAR EL EMAIL DE LA EMPRESA. EL TIPO "EMAIL" VALIDA QUE EL TEXTO INGRESADO SEA UNA DIRECCIÓN DE CORREO ELECTRÓNICO -->
-                        
-                        <!-- Input del "label" email para la empresa Email -->
-                        <input type="email" id="empresa_email" name="empresa_email"
-                            placeholder="ejemplo@empresa.com" 
-                            maxlength="255" 
-                            required 
-                            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" 
-                            title="Ingresa un correo electrónico válido, como ejemplo@empresa.com" 
-                            onblur="CompletarEmail(this)"> 
-                </div>
+                <!-- Etiqueta "label" email -->
+                <label for="empresa_email">Email de la Empresa:</label>
 
-                <div class="form-group">
-                    
-                <!-- TÍTULO: ETIQUETA PARA EL CAMPO DE ENTRADA DE LA FECHA DE CREACIÓN DE LA EMPRESA -->
-                        
-                        <!-- Etiqueta "label" de la fecha de creación de la empresa -->
-                        <label for="fecha_creacion">Fecha de Creacion de empresa:</label>
+                <!-- TÍTULO: CAMPO DE CORREO ELECTRÓNICO PARA INGRESAR EL EMAIL DE LA EMPRESA. EL TIPO "EMAIL" VALIDA QUE EL TEXTO INGRESADO SEA UNA DIRECCIÓN DE CORREO ELECTRÓNICO -->
 
-                <!-- TÍTULO: CAMPO DE FECHA PARA SELECCIONAR LA FECHA DE EMISIÓN. ES OBLIGATORIO -->
-                        
-                        <!-- Etiqueta "label" de la fecha de emisión de la empresa -->
-                        <input type="date" id="fecha_creacion" name="fecha_creacion" required> 
-                </div>
+                <!-- Input del "label" email para la empresa Email -->
+                <input type="email" id="empresa_email" name="empresa_email"
+                    placeholder="ejemplo@empresa.com"
+                    maxlength="255"
+                    required
+                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                    title="Ingresa un correo electrónico válido, como ejemplo@empresa.com"
+                    onblur="CompletarEmail(this)">
             </div>
 
             <div class="form-group">
 
-                <!-- TÍTULO: ETIQUETA PARA EL CAMPO DE ENTRADA DE LA WEB DE LA EMPRESA -->
+                <!-- TÍTULO: ETIQUETA PARA EL CAMPO DE ENTRADA DE LA FECHA DE CREACIÓN DE LA EMPRESA -->
 
-                    <!-- Etiqueta "label" de la empresa web -->
-                    <label for="empresa_web">Web de la Empresa:</label>
+                <!-- Etiqueta "label" de la fecha de creación de la empresa -->
+                <label for="fecha_creacion">Fecha de Creacion de empresa:</label>
 
-                <!-- TÍTULO: CAMPO DE ENTRADA PARA LA URL DE LA EMPRESA -->
+                <!-- TÍTULO: CAMPO DE FECHA PARA SELECCIONAR LA FECHA DE EMISIÓN. ES OBLIGATORIO -->
 
-                    <!-- Etiqueta "label" de la entrada de la url de la empresa -->
-                    <input type="url" id="empresa_web" name="empresa_web" 
-                        pattern="https?://[^'\"]+" 
-                        title="Por favor, ingrese una URL válida que comience con http:// o https://"
-                        placeholder="Ejemplo: https://www.miempresa.com"
-                        oninput="QuitarCaracteresInvalidos(this)">
+                <!-- Etiqueta "label" de la fecha de emisión de la empresa -->
+                <input type="date" id="fecha_creacion" name="fecha_creacion" required>
             </div>
-        </fieldset> 
+        </div>
+
+        <div class="form-group">
+
+            <!-- TÍTULO: ETIQUETA PARA EL CAMPO DE ENTRADA DE LA WEB DE LA EMPRESA -->
+
+            <!-- Etiqueta "label" de la empresa web -->
+            <label for="empresa_web">Web de la Empresa:</label>
+
+            <!-- TÍTULO: CAMPO DE ENTRADA PARA LA URL DE LA EMPRESA -->
+
+            <!-- Etiqueta "label" de la entrada de la url de la empresa -->
+            <input type="url" id="empresa_web" name="empresa_web"
+                pattern="https?://[^'\" ]+"
+                title="Por favor, ingrese una URL válida que comience con http:// o https://"
+                placeholder="Ejemplo: https://www.miempresa.com"
+                oninput="QuitarCaracteresInvalidos(this)">
+        </div>
+    </fieldset>
 </div>
 
 <!-- TITULO: IMPORTACION DE ARCHIVO .JS -->
 
-    <!-- Llama al archivo JS -->
-    <script src="js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_crear_empresa/formulario_empresa.js"></script>
+<!-- Llama al archivo JS -->
+<script src="js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_crear_empresa/formulario_empresa.js"></script>
 
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['formulario']) && $_POST['formulario'] === 'empresa') {
@@ -244,7 +244,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['formulario']) && $_POS
             // Inserta la empresa incluyendo el id del tipo de firma y nuevos campos
             $sql_empresa = "INSERT INTO E_Empresa (id_foto, rut_empresa, nombre_empresa, id_area_empresa, direccion_empresa, telefono_empresa, email_empresa, fecha_creacion, pais_empresa, ciudad_empresa, web_empresa, dias_validez, id_tipo_firma)
                             VALUES ('$id_foto', '$rut_empresa', '$nombre_empresa', '$area_empresa', '$direccion_empresa', '$telefono_empresa', '$email_empresa', '$fecha_creacion', '$empresa_pais', '$empresa_ciudad', '$empresa_web', $dias_validez, $id_tipo_firma)";
-            
+
             if ($mysqli->query($sql_empresa) === TRUE) {
                 // Obtener el ID de la empresa recién insertada
                 $id_empresa = $mysqli->insert_id;
@@ -257,7 +257,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['formulario']) && $_POS
                     // Insertar la cotización
                     $sql_cotizacion = "INSERT INTO c_cotizaciones (numero_cotizacion, fecha_emision, fecha_validez, id_empresa)
                                        VALUES ('$numero_cotizacion', CURDATE(), DATE_ADD(CURDATE(), INTERVAL $validez_cotizacion DAY), $id_empresa)";
-                    
+
                     if ($mysqli->query($sql_cotizacion) === TRUE) {
                         $mensaje = "Empresa creada correctamente, se redirige al home.";
                     } else {

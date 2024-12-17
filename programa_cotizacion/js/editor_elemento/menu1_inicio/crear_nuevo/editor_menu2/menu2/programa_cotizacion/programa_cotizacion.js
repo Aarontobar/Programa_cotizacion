@@ -37,6 +37,32 @@ BPPJ
             });
     }
 
+    document.addEventListener('DOMContentLoaded', function() {
+        var resetButton = document.getElementById('reset-empresa');
+        var empresaSelect = document.getElementById('empresa');
+        var selectedOption = document.querySelector('.selected-option');
+        var hiddenInput = document.getElementById('selected-empresa');
+
+        resetButton.addEventListener('click', function() {
+            // Reinicia el select
+            empresaSelect.selectedIndex = 0;
+            
+            // Reinicia el texto mostrado en el select personalizado
+            selectedOption.textContent = 'Seleccione una empresa';
+            
+            // Limpia el valor del input oculto
+            hiddenInput.value = '';
+
+            // Opcional: deshabilitar los botones del menú
+            document.querySelectorAll('.menu-link:not([data-pagina="crear_empresa"])').forEach(function(link) {
+                link.classList.add('disabled');
+            });
+
+            // Opcional: limpiar el contenido dinámico
+            document.getElementById('contenido-dinamico').innerHTML = '';
+        });
+    });
+
 /* --------------------------------------------------------------------------------------------------------------
     ---------------------------------------- FIN ITred Spa Programa Cotizacion .JS ---------------------------------------
     ------------------------------------------------------------------------------------------------------------- */

@@ -39,6 +39,27 @@ if ($result) {
         $mysqli->query($insert_query);
     }
 }
+
+// Capta las areas
+$areas = [];
+$result = $mysqli->query("SELECT id_area, nombre_area FROM Tp_Area");
+if ($result) {
+    while ($row = $result->fetch_assoc()) {
+        $areas[] = $row;
+    }
+    $result->free();
+}
+
+// Capta los cargos
+$cargos = [];
+$result = $mysqli->query("SELECT id_tp_cargo, nombre_cargo FROM Tp_cargo");
+if ($result) {
+    while ($row = $result->fetch_assoc()) {
+        $cargos[] = $row;
+    }
+    $result->free();
+}
+
 ?>
 
 <!-- TITULO: AQUÍ INICIA EL HTML -->

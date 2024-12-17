@@ -16,7 +16,7 @@ BPPj
      -- INICIO CONEXION BD --
      ------------------------ -->
 
-<?php
+     <?php
 // Establece la conexión a la base de datos de ITred Spa
 $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
 ?>
@@ -42,15 +42,18 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
         <!-- Formulario para seleccionar la Empresa -->
         <form id="formulario-seleccionar-empresa" method="POST" action="">
             <!-- Incluye el archivo PHP que maneja la selección de empresas -->
-            <?php include 'crear_nuevo/editor_menu2/menu2/programa_cotizacion/seleccionar_empresa.php'; ?>
+            <?php include_once 'crear_nuevo/editor_menu2/menu2/programa_cotizacion/seleccionar_empresa.php'; ?>
 
             <!-- boton seleccionar empresa -->
             <input type="hidden" id="selected-empresa" name="empresa" value="<?php echo isset($_SESSION['id_empresa']) ? $_SESSION['id_empresa'] : ''; ?>" />
-            <button type="submit">Reiniciar</button>
+            <button type="submit">Aceptar</button>
+            
+            <!-- Nuevo botón para reiniciar la selección -->
+            <button type="button" id="reset-empresa">Reiniciar Selección</button>
         </form>
 
         <!-- Incluye el menú de navegación desde un archivo PHP externo -->
-        <?php include 'crear_nuevo/editor_menu2/menu2/programa_cotizacion/menu.php'; ?>
+        <?php include_once 'crear_nuevo/editor_menu2/menu2/programa_cotizacion/menu.php'; ?>
     </div>
 
     <!-- TÍTULO: CONTENEDOR PARA EL FORMULARIO DE MODIFICACIÓN -->

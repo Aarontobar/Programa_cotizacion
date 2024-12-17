@@ -18,12 +18,27 @@ BPPJ
 
      <?php
 // Verificar conexión a la base de datos
-if (!isset($mysqli)) {
-    $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
-    if ($mysqli->connect_error) {
-        die('Error de conexión: ' . $mysqli->connect_error);
+$mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
+if ($mysqli->connect_error) {
+    die('Error de conexión: ' . $mysqli->connect_error);
+}
+$mysqli->set_charset("utf8");
+
+// Verificar si la tabla existe y tiene datos
+$check_query = "SELECT COUNT(*) as count FROM Tp_Area";
+$result = $mysqli->query($check_query);
+if ($result) {
+    $row = $result->fetch_assoc();
+    if ($row['count'] == 0) {
+        // Si no hay datos, insertar algunos por defecto
+        $insert_query = "INSERT INTO Tp_Area (nombre_area) VALUES 
+            ('Recursos Humanos'),
+            ('Finanzas'),
+            ('Tecnología'),
+            ('Marketing'),
+            ('Ventas')";
+        $mysqli->query($insert_query);
     }
-    $mysqli->set_charset("utf8");
 }
 
 // Consulta para obtener las áreas
@@ -32,13 +47,14 @@ $result = $mysqli->query($query);
 
 // Generar las opciones del select
 echo '<option value="">Seleccione un área</option>';
-if ($result) {
+if ($result && $result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         echo '<option value="' . htmlspecialchars($row['id_area']) . '">' . 
              htmlspecialchars($row['nombre_area']) . '</option>';
     }
-    $result->free();
 }
+
+$mysqli->close();
 ?>
 <!-- ---------------------
      -- FIN CONEXION BD --

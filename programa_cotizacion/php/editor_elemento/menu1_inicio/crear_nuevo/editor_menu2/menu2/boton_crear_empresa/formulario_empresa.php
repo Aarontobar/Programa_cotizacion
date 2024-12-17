@@ -44,7 +44,10 @@ BPPJ
                 <!-- Define el área de la empresa -->
                 <label for="empresa_area">Área de la Empresa:</label>
                 <select id="empresa_area" name="empresa_area" required>
-                    <option value="">Cargando áreas...</option>
+                    <option value="">Seleccione un área</option>
+                    <?php foreach ($areas as $area): ?>
+                        <option value="<?php echo $area['id_area']; ?>"><?php echo $area['nombre_area']; ?></option>
+                    <?php endforeach; ?>
                 </select>
             </div>
 

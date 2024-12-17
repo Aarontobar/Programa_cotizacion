@@ -136,10 +136,6 @@ function CargarAreasEmpresa() {
     // Trigger the change event to set the initial background image
     document.getElementById('countryCode').dispatchEvent(new Event('change'));
 
-
-
-
-
 /* --------------------------------------------------------------------------------------------------------------
     ---------------------------------------- FIN ITred Spa Formulario Empresa .JS ---------------------------------------
     ------------------------------------------------------------------------------------------------------------- */

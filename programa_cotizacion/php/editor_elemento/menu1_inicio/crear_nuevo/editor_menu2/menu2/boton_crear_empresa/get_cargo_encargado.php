@@ -18,8 +18,12 @@ BPPJ
 
      <?php
 // Establece la conexión a la base de datos de ITred Spa
-
+// Verificar conexión a la base de datos
 $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
+if ($mysqli->connect_error) {
+    die('Error de conexión: ' . $mysqli->connect_error);
+}
+$mysqli->set_charset("utf8");
 
 //-------------------------------------------
 ?>
@@ -29,40 +33,34 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
      --------------------- -->
 
      <?php
+// Verificar si la tabla existe y tiene datos
+$check_query = "SELECT COUNT(*) as count FROM tp_cargo";
+$result = $mysqli->query($check_query);
+if ($result) {
+    $row = $result->fetch_assoc();
+    if ($row['count'] == 0) {
+        // Si no hay datos, insertar algunos por defecto
+        $insert_query = "INSERT INTO tp_cargo (nombre_cargo) VALUES 
+            ('Gerente General'),
+            ('Gerente de Operaciones'),
+            ('Supervisor'),
+            ('Coordinador'),
+            ('Analista')";
+        $mysqli->query($insert_query);
+    }
+}
 
-     
-// Consulta para obtener las áreas de empresa
-
-$query = "SELECT id_tp_cargo, nombre_cargo FROM tp_cargo";
+// Consulta para obtener los cargos
+$query = "SELECT id_tp_cargo, nombre_cargo FROM tp_cargo ORDER BY nombre_cargo";
 $result = $mysqli->query($query);
 
-//-------------------------------------------
-
-// Verificar si se obtuvieron resultados
-
-if ($result->num_rows > 0) {
-
-    echo '<option value="">Seleccionar cargo</option>';
-
-    // Recorrer los resultados y crear opciones en el select
-
+// Generar las opciones del select
+echo '<option value="">Seleccione un cargo</option>';
+if ($result && $result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
-
-    //-------------------------------------------
-
-        // Mostrar solo el nombre en el texto de la opción, con el valor como id_area_empresa
-
-        echo '<option value="' . htmlspecialchars($row['id_tp_cargo']) . '">' . htmlspecialchars($row['nombre_cargo']) . '</option>';
-
-        //-------------------------------------------
+        echo '<option value="' . htmlspecialchars($row['id_tp_cargo']) . '">' . 
+             htmlspecialchars($row['nombre_cargo']) . '</option>';
     }
-} else {
-
-    // Si no hay áreas, mostrar mensaje en el select
-
-    echo "<option value=''>No hay áreas disponibles</option>";
-
-    //-------------------------------------------
 }
 ?>
 

@@ -14,7 +14,38 @@ BPPJ
     -------------------------------------- INICIO ITred Spa seleccionar empresa.CSS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
 
+    .button-container {
+        display: flex;
+        gap: 10px;
+        margin-top: 10px;
+    }
     
+    .btn-aceptar,
+    .btn-reset {
+        padding: 8px 16px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: 500;
+    }
+    
+    .btn-aceptar {
+        background-color: #4CAF50;
+        color: white;
+    }
+    
+    .btn-reset {
+        background-color: #f44336;
+        color: white;
+    }
+    
+    .btn-aceptar:hover {
+        background-color: #45a049;
+    }
+    
+    .btn-reset:hover {
+        background-color: #da190b;
+    }
 
 /* --------------------------------------------------------------------------------------------------------------
     ---------------------------------------- FIN ITred Spa seleccionar empresa .CSS ---------------------------------------

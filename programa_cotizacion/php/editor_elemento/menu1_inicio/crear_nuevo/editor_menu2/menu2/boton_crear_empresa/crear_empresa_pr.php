@@ -50,16 +50,15 @@ if ($result) {
     $result->free();
 }
 
-// Capta los cargos
+// Obtener los cargos
 $cargos = [];
-$result = $mysqli->query("SELECT id_tp_cargo, nombre_cargo FROM Tp_cargo");
+$result = $mysqli->query("SELECT id_tp_cargo, nombre_cargo FROM Tp_cargo ORDER BY nombre_cargo");
 if ($result) {
     while ($row = $result->fetch_assoc()) {
         $cargos[] = $row;
     }
     $result->free();
 }
-
 ?>
 
 <!-- TITULO: AQUÍ INICIA EL HTML -->

@@ -316,47 +316,37 @@ function CargarAreasEmpresa() {
 
 // Función para agregar una nueva fila
 function agregarNuevaFila() {
-    const tabla = document.getElementById('formulario-contenedor');
-    const idUnico = 'cargo-encargado-' + (tabla.getElementsByTagName('tr').length + 1);
+    var tabla = document.getElementById('formulario-contenedor');
+    var nuevaFila = tabla.insertRow();
+    var cargosOptions = <?php echo json_encode($cargos); ?>;
+    var optionsHtml = '<option value="">Seleccione un cargo</option>';
+    cargosOptions.forEach(function(cargo) {
+        optionsHtml += '<option value="' + cargo.id_tp_cargo + '">' + cargo.nombre_cargo + '</option>';
+    });
 
-    const nuevaFila = document.createElement('tr');
     nuevaFila.innerHTML = `
+        <td><input type="text" name="encargado_rut[]" required minlength="3" maxlength="20" 
+            pattern="^[0-9]+[-kK0-9]{1}$" placeholder="Ejemplo: 12345678-9" oninput="formatoRut(this)"></td>
+        <td><input type="text" name="encargado_nombre[]" required minlength="3" maxlength="255" 
+            pattern="^[A-Za-zÀ-ÿ\s.-]+$" placeholder="Ejemplo: Juan Pérez" oninput="QuitarCaracteresInvalidos(this)"></td>
         <td>
-            <input type="text" name="encargado_rut[]" required minlength="3" maxlength="20" 
-                pattern="^[0-9]+[-kK0-9]{1}$" placeholder="Ejemplo: 12345678-9" oninput="formatoRut(this)">
-        </td>
-        <td>
-            <input type="text" name="encargado_nombre[]" required minlength="3" maxlength="255" 
-                pattern="^[A-Za-zÀ-ÿ\s.-]+$" placeholder="Ejemplo: Juan Pérez" oninput="QuitarCaracteresInvalidos(this)">
-        </td>
-        <td>
-            <select id="${idUnico}" name="cargo_encargado[]" required>
-                <option value="">Cargando...</option>
+            <select name="cargo_encargado[]" required>
+                ${optionsHtml}
             </select>
         </td>
-        <td>
-            <input type="email" name="encargado_email[]" placeholder="ejemplo@empresa.com" maxlength="255" required>
-        </td>
-        <td>
-            <input type="text" name="encargado_fono[]" placeholder="+56 9 1234 1234" maxlength="11" required>
-        </td>
-        <td>
-            <input type="text" name="encargado_celular[]" placeholder="+56 9 1234 1234" maxlength="11" required>
-        </td>
-        <td>
-            <button type="button" class="eliminar-fila" onclick="eliminarFila(this)">Eliminar</button>
-        </td>
+        <td><input type="email" name="encargado_email[]" placeholder="ejemplo@empresa.com" maxlength="255" required></td>
+        <td><input type="text" name="encargado_fono[]" placeholder="+56 9 1234 1234" maxlength="11" required></td>
+        <td><input type="text" name="encargado_celular[]" placeholder="+56 9 1234 1234" maxlength="11" required></td>
+        <td><button type="button" class="eliminar-fila" onclick="eliminarFila(this)">Eliminar</button></td>
     `;
-
-    tabla.appendChild(nuevaFila);
-    CargarCargoEncargadO(idUnico);
 }
 
-// Función para eliminar una fila
 function eliminarFila(boton) {
-    const fila = boton.closest('tr');
-    if (fila) {
+    var fila = boton.closest('tr');
+    if (document.getElementById('formulario-contenedor').rows.length > 1) {
         fila.remove();
+    } else {
+        alert('No se puede eliminar la última fila.');
     }
 }
 

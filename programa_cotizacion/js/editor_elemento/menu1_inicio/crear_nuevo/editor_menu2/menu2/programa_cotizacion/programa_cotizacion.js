@@ -14,6 +14,8 @@ BPPJ
     -------------------------------------- INICIO ITred Spa Programa Cotizacion .JS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
 
+    console.log("Archivo programa_cotizacion.js cargado correctamente");
+
     document.getElementById('formulario-seleccionar-empresa').addEventListener('submit', function(event) {
         event.preventDefault(); // Evita el envío del formulario por defecto
         // Aquí puedes agregar cualquier lógica adicional antes de enviar el formulario

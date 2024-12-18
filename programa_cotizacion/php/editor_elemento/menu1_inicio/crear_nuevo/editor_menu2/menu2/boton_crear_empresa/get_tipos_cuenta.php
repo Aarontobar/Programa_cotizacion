@@ -18,9 +18,10 @@ BPPJ
 
      <?php
 // Establece la conexión a la base de datos de ITred Spa
-
 $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
-
+if ($mysqli->connect_error) {
+    die('Error de conexión: ' . $mysqli->connect_error);
+}
 //-------------------------------------------
 
 ?>
@@ -28,36 +29,45 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
      -- FIN CONEXION BD --
      --------------------- -->
 <?php
-// Consultar tipo de cuenta
-
-$sql_tipo_cuenta = "SELECT id_tipocuenta, tipocuenta FROM Tp_cuenta";
-$result_tipo_cuenta = $mysqli->query($sql_tipo_cuenta);
-
-//-------------------------------------------
-
-// Verificar si hay resultados y generar opciones HTML
-
-if ($result_tipo_cuenta->num_rows > 0) {
-
-    // Opciones predeterminadas
-
-    echo '<option value="">Seleccionar Tipo de Cuenta</option>'; 
-
-    //-------------------------------------------
-
-    // Generar cada opción basada en los resultados de la consulta
-
-    while ($row = $result_tipo_cuenta->fetch_assoc()) {
-        echo '<option value="' . htmlspecialchars($row['id_tipocuenta']) . '">' . htmlspecialchars($row['tipocuenta']) . '</option>';
+// Verificar si la tabla existe y tiene datos
+$check_query = "SELECT COUNT(*) as count FROM Tp_cuenta";
+$result = $mysqli->query($check_query);
+if ($result) {
+    $row = $result->fetch_assoc();
+    if ($row['count'] == 0) {
+        // Si no hay datos, insertar algunos por defecto
+        $insert_query = "INSERT INTO Tp_cuenta (tipocuenta) VALUES 
+            ('Cuenta Corriente'),
+            ('Cuenta Vista'),
+            ('Cuenta de Ahorro'),
+            ('Cuenta RUT')";
+        $mysqli->query($insert_query);
     }
-} else {
-    echo '<option value="">No hay tipos de cuenta disponibles</option>';
 }
-    //----------------------------------------------
 
+// Consulta para obtener los tipos de cuenta
+$query = "SELECT id_tipocuenta, tipocuenta FROM Tp_cuenta ORDER BY tipocuenta";
+$result = $mysqli->query($query);
+
+// Generar las opciones del select
+echo '<option value="">Seleccione un tipo de cuenta</option>';
+if ($result && $result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        echo '<option value="' . htmlspecialchars($row['id_tipocuenta']) . '">' . 
+             htmlspecialchars($row['tipocuenta']) . '</option>';
+    }
+}
 ?>
 
-
+<!-- ---------------------
+-- INICIO CIERRE CONEXION BD --
+     --------------------- -->
+     <?php
+     $mysqli->close();
+?>
+<!-- ---------------------
+     -- FIN CIERRE CONEXION BD --
+     --------------------- -->
      
 <!-- ------------------------------------------------------------------------------------------------------------
     -------------------------------------- FIN ITred Spa Get tipo cuenta .PHP -----------------------------------

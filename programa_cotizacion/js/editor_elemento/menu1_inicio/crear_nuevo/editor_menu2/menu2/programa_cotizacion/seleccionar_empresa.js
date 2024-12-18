@@ -14,6 +14,8 @@ BPPJ
     -------------------------------------- INICIO ITred Spa menu .JS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
 
+    console.log("Archivo seleccionar_empresa.js cargado correctamente");
+
 // TÍTULO: INICIALIZACIÓN DEL SELECT PERSONALIZADO
 
 //  Espera a que todo el contenido del DOM se haya cargado antes de ejecutar la lógica para el select personalizado.

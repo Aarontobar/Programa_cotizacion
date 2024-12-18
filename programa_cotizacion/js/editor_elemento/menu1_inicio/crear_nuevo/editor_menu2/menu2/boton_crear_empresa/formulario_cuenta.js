@@ -173,47 +173,24 @@ BPPJ
     }
 
 
-// TÍTULO PARA DOCUMENT.ADD_EVENTLISTENER('DOMCONTENLOADED')
+// TÍTULO PARA CARGAR BANCOS Y TIPOS DE CUENTA
+document.addEventListener('DOMContentLoaded', function() {
+    // Cargar bancos
+    fetch('php/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_crear_empresa/get_bancos.php')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('id-banco').innerHTML = data;
+        })
+        .catch(error => console.error('Error al cargar bancos:', error));
 
-    // Función para inicializar la carga de elementos del DOM
-    document.addEventListener('DOMContentLoaded', function() {
-
-
-// TÍTULO PARA CARGAR BANCOS
-
-        // Función para llenar el select de bancos
-        function CargarBancos() {
-            // Realiza una solicitud para obtener la lista de bancos desde el servidor
-            fetch('../../../php/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_crear_empresa/get_bancos.php')
-                .then(response => response.text())  // Leer el contenido de la respuesta como texto (HTML)
-                .then(data => {
-                    const select = document.getElementById('id-banco'); // Obtener el elemento select por su ID
-                    select.innerHTML = data;  // Insertar directamente las opciones generadas en el select
-                })
-                .catch(error => console.error('Error al cargar bancos:', error)); // Manejar errores de la solicitud
-        }
-
-        // Cargar bancos al cargar la página
-        CargarBancos(); // Llamar a la función para cargar los bancos
-        
-
-// TÍTULO PARA CARGAR TIPO CUENTA
-
-        // Función para cargar los tipos de cuenta
-        function CargarTipoCuenta() {
-            // Realiza una solicitud para obtener la lista de tipos de cuenta desde el servidor
-            fetch('../../../php/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_crear_empresa/get_tipos_cuenta.php')
-                .then(response => response.text())  // Leer el contenido de la respuesta como texto (HTML)
-                .then(data => {
-                    const select = document.getElementById('id-tipocuenta'); // Obtener el elemento select por su ID
-                    select.innerHTML = data;  // Insertar directamente las opciones generadas en el select
-                })
-                .catch(error => console.error('Error al cargar tipo de cuenta:', error)); // Manejar errores de la solicitud
-        }
-
-        // Cargar tipos de cuenta al cargar la página
-        CargarTipoCuenta(); // Llamar a la función para cargar los tipos de cuenta
-    });
+    // Cargar tipos de cuenta
+    fetch('php/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_crear_empresa/get_tipos_cuenta.php')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('id-tipocuenta').innerHTML = data;
+        })
+        .catch(error => console.error('Error al cargar tipos de cuenta:', error));
+});
 
 
 // TÍTULO PARA ASEGURAR MAS

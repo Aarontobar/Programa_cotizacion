@@ -19,8 +19,11 @@ BPPJ
      <?php
 // Establece la conexión a la base de datos de ITred Spa
 
+// Establece la conexión a la base de datos de ITred Spa
 $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
-
+if ($mysqli->connect_error) {
+    die('Error de conexión: ' . $mysqli->connect_error);
+}
 //---------------------------------------------------------
 
 ?>
@@ -28,30 +31,40 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
      -- FIN CONEXION BD --
      --------------------- -->
 <?php
-// Consultar bancos
 
-$sql_bancos = "SELECT id_banco, nombre_banco FROM Tp_banco";
-$result_bancos = $mysqli->query($sql_bancos);
 
-//-------------------------------------------
-
-// Verificar si hay resultados y generar opciones HTML
-
-if ($result_bancos->num_rows > 0) {
-
-    // Opción predeterminada
-
-    echo '<option value="">Seleccionar Banco</option>';
-
-    //-------------------------------------------
-
-    // Generar cada opción basada en los resultados de la consulta
-
-    while ($row = $result_bancos->fetch_assoc()) {
-        echo '<option value="' . htmlspecialchars($row['id_banco']) . '">' . htmlspecialchars($row['nombre_banco']) . '</option>';
+// Verificar si la tabla existe y tiene datos
+$check_query = "SELECT COUNT(*) as count FROM Tp_banco";
+$result = $mysqli->query($check_query);
+if ($result) {
+    $row = $result->fetch_assoc();
+    if ($row['count'] == 0) {
+        // Si no hay datos, insertar algunos por defecto
+        $insert_query = "INSERT INTO Tp_banco (nombre_banco) VALUES 
+            ('Banco de Chile'),
+            ('Banco Estado'),
+            ('Banco Santander'),
+            ('Banco BCI'),
+            ('Banco Itaú'),
+            ('Banco Security'),
+            ('Scotiabank'),
+            ('Banco Falabella'),
+            ('Banco Ripley')";
+        $mysqli->query($insert_query);
     }
-} else {
-    echo '<option value="">No hay bancos disponibles</option>';
+}
+
+// Consulta para obtener los bancos
+$query = "SELECT id_banco, nombre_banco FROM Tp_banco ORDER BY nombre_banco";
+$result = $mysqli->query($query);
+
+// Generar las opciones del select
+echo '<option value="">Seleccione un banco</option>';
+if ($result && $result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        echo '<option value="' . htmlspecialchars($row['id_banco']) . '">' . 
+             htmlspecialchars($row['nombre_banco']) . '</option>';
+    }
 }
 
 //------------------------------------------------------

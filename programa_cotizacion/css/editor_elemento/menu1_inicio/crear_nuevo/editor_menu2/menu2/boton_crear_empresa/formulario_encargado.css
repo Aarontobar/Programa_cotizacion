@@ -62,7 +62,7 @@ BPPJ
 
     /* Define el estilo del botón que elimina filas */
     .eliminar-fila {
-        background-color: red;  /* Fondo rojo */
+        background-color: rgb(84, 84, 84);  /* Fondo rojo */
         color: white;           /* Texto blanco para mejor contraste */
         border: none;           /* Sin borde */
         padding: 8px 12px;      /* Espacio interno */
@@ -74,7 +74,7 @@ BPPJ
 
     /* Cambia el color de fondo al pasar el ratón */
     .eliminar-fila:hover {
-        background-color: darkred;  /* Color de fondo más oscuro */
+        background-color: rgb(20, 20, 20);  /* Color de fondo más oscuro */
     }
 
 /* --------------------------------------------------------------------------------------------------------------

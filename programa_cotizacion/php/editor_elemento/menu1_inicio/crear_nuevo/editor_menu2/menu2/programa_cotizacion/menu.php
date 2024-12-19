@@ -9,22 +9,28 @@ BPPJ
 -->
 
 <?php
-// Establece la conexión a la base de datos de ITred Spa
-$mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
 
-$error = ''; // Variable para almacenar mensajes de error
-$empresaEncontrada = false; // Variable para controlar si se ha seleccionado una empresa
+// Establece la conexión a la base de datos de ITred Spa
+if (!isset($mysqli)) {
+    $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
+    if ($mysqli->connect_error) {
+        die('Error de conexión: ' . $mysqli->connect_error);
+    }
+    $mysqli->set_charset("utf8");
+}
+
+$error = '';
+$empresaEncontrada = false;
 
 // Verifica si el formulario se ha enviado
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['empresa'])) {
-    $id_empresa = $_POST['empresa']; // Obtiene el ID de la empresa seleccionada
+    $id_empresa = $_POST['empresa'];
     
-    // Comprueba si el ID de la empresa no está vacío
     if (!empty($id_empresa)) {
-        $_SESSION['id_empresa'] = $id_empresa; // Guarda el ID de la empresa en la sesión
-        $empresaEncontrada = true; // Marca que la empresa ha sido encontrada
+        $_SESSION['id_empresa'] = $id_empresa;
+        $empresaEncontrada = true;
     } else {
-        $error = "Por favor, seleccione una empresa."; // Mensaje de error si no se selecciona una empresa
+        $error = "Por favor, seleccione una empresa.";
     }
 }
 

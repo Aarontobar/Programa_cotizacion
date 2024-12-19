@@ -11,19 +11,23 @@ BPPJ
 <!-- ------------------------------------------------------------------------------------------------------------
     ------------------------------------- INICIO ITred Spa Nueva cotizacion .PHP --------------------------------------
     ------------------------------------------------------------------------------------------------------------- -->
-<?php
-// Iniciar sesión si no está iniciada
+    <?php
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-// Verificar si existe una conexión a la base de datos
 if (!isset($mysqli)) {
     $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
     if ($mysqli->connect_error) {
         die('Error de conexión: ' . $mysqli->connect_error);
     }
     $mysqli->set_charset("utf8");
+}
+
+$id_empresa = $_SESSION['id_empresa'] ?? $_GET['id_empresa'] ?? null;
+
+if (!$id_empresa) {
+    die('ID de empresa no válido.');
 }
 
 // Definir la ruta base para los includes
@@ -101,7 +105,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['formulario']) && $_POS
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario de Cotización</title>
+    <title>Nueva Cotización</title>
     <link rel="stylesheet" href="/programa_cotizacion/css/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_nueva_cotizacion/nueva_cotizacion.css">
 </head>
 
@@ -109,6 +113,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['formulario']) && $_POS
     <div class="nueva-cotizacion">
         <form id="formulario-cotizacion" method="POST" action="" enctype="multipart/form-data">
             <input type="hidden" name="formulario" value="cotizacion">
+            <input type="hidden" name="id_empresa" value="<?php echo htmlspecialchars($id_empresa); ?>">
             
             <!-- Fila 1 -->
             <div class="row">

@@ -26,6 +26,22 @@ $conn = new mysqli('localhost', 'root', '', 'ITredSpa_bd');
 <!-- ------------------------------------------------------------------------------------------------------------
     ------------------------------------- INICIO ITred Spa creacion producto .PHP --------------------------------------
 ------------------------------------------------------------------------------------------------------------- -->
+
+<?php
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
+// Verificar conexión a la base de datos
+if (!isset($mysqli)) {
+    $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
+    if ($mysqli->connect_error) {
+        die('Error de conexión: ' . $mysqli->connect_error);
+    }
+    $mysqli->set_charset("utf8");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>

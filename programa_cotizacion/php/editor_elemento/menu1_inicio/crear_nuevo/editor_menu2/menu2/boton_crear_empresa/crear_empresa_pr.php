@@ -13,6 +13,9 @@ BPPJ
     ------------------------------------------------------------------------------------------------------------- -->
 
     <?php
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 
 // Verificar conexión a la base de datos
 if (!isset($mysqli)) {

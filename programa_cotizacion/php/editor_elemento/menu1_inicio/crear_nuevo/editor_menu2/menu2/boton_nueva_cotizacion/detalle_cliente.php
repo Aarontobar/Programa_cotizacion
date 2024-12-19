@@ -32,14 +32,28 @@ if ($result->num_rows > 0) {
 }
 ?>
 
-<!-- Select para mostrar u ocultar el formulario -->
 <div class="form-group">
     <label for="formulario_opcion">Seleccione empresa de cliente</label>
-    <select id="formulario_opcion" name="formulario_opcion" onchange="toggleFormulario()">
+    <select id="formulario_opcion" name="formulario_opcion" onchange="toggleFormulario(this)">
         <option value="" disabled selected>Seleccione una opción</option>
         <option value="nuevo">Nuevo</option>
         <?php foreach ($empresas as $empresa): ?>
-            <option value="<?php echo $empresa['id_cliente']; ?>"><?php echo $empresa['nombre_empresa_cliente']; ?></option>
+            <option value="<?php echo htmlspecialchars($empresa['id_cliente']); ?>"
+                    data-rut="<?php echo htmlspecialchars($empresa['rut_empresa_cliente']); ?>"
+                    data-nombre="<?php echo htmlspecialchars($empresa['nombre_encargado_cliente']); ?>"
+                    data-empresa="<?php echo htmlspecialchars($empresa['nombre_empresa_cliente']); ?>"
+                    data-direccion="<?php echo htmlspecialchars($empresa['direccion_empresa_cliente']); ?>"
+                    data-lugar="<?php echo htmlspecialchars($empresa['id_lugar']); ?>"
+                    data-telefono="<?php echo htmlspecialchars($empresa['telefono_empresa_cliente']); ?>"
+                    data-email="<?php echo htmlspecialchars($empresa['email_empresa_cliente']); ?>"
+                    data-giro="<?php echo htmlspecialchars($empresa['id_giro']); ?>"
+                    data-comuna="<?php echo htmlspecialchars($empresa['comuna_empresa_cliente']); ?>"
+                    data-ciudad="<?php echo htmlspecialchars($empresa['ciudad_empresa_cliente']); ?>"
+                    data-tipo="<?php echo htmlspecialchars($empresa['id_tipo_empresa']); ?>"
+                    data-cargo="<?php echo htmlspecialchars($empresa['id_cargo']); ?>"
+                    data-rut-encargado="<?php echo htmlspecialchars($empresa['rut_encargado_cliente']); ?>">
+                <?php echo htmlspecialchars($empresa['nombre_empresa_cliente']); ?>
+            </option>
         <?php endforeach; ?>
     </select>
 </div>

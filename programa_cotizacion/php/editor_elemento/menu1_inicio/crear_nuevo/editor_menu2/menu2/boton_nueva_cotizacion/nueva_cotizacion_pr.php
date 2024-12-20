@@ -11,11 +11,12 @@ BPPJ
 <!-- ------------------------------------------------------------------------------------------------------------
     ------------------------------------- INICIO ITred Spa Nueva cotizacion .PHP --------------------------------------
     ------------------------------------------------------------------------------------------------------------- -->
-    <?php
+<?php
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
+// Verificar conexión a la base de datos
 if (!isset($mysqli)) {
     $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
     if ($mysqli->connect_error) {
@@ -24,10 +25,44 @@ if (!isset($mysqli)) {
     $mysqli->set_charset("utf8");
 }
 
-$id_empresa = $_SESSION['id_empresa'] ?? $_GET['id_empresa'] ?? null;
+// Obtener id_empresa de la sesión o del GET
+$id_empresa = isset($_SESSION['id_empresa']) ? $_SESSION['id_empresa'] : 
+             (isset($_GET['id_empresa']) ? $_GET['id_empresa'] : null);
 
+// Si no hay id_empresa, redirigir a seleccionar_empresa.php
 if (!$id_empresa) {
-    die('ID de empresa no válido.');
+    header('Location: seleccionar_empresa.php');
+    exit;
+}
+
+// Guardar id_empresa en sesión si no existe
+if (!isset($_SESSION['id_empresa'])) {
+    $_SESSION['id_empresa'] = $id_empresa;
+}
+
+// Obtener datos de la empresa
+$query = "SELECT 
+            e.*,
+            a.nombre_area,
+            f.ruta_foto
+          FROM E_Empresa e
+          LEFT JOIN Tp_Area a ON e.id_area_empresa = a.id_area
+          LEFT JOIN FP_FotosPerfil f ON e.id_foto = f.id_foto
+          WHERE e.id_empresa = ?";
+
+if ($stmt = $mysqli->prepare($query)) {
+    $stmt->bind_param("i", $id_empresa);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    
+    if ($result->num_rows > 0) {
+        $empresa_data = $result->fetch_assoc();
+        // Guardar datos importantes en sesión
+        $_SESSION['empresa_data'] = $empresa_data;
+    } else {
+        die('Empresa no encontrada');
+    }
+    $stmt->close();
 }
 
 // Definir la ruta base para los includes
@@ -43,11 +78,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['formulario']) && $_POS
 
         // Validar campos requeridos
         $fecha_emision = $_POST['fecha_emision'] ?? null;
-        $numero_cotizacion = $_POST['numero_cotizacion'] ?? null;
-        $empresa_rut = $_POST['empresa_rut'] ?? null;
-
-        if (!$fecha_emision || !$numero_cotizacion || !$empresa_rut) {
-            throw new Exception('Faltan campos requeridos');
+        if (!$fecha_emision) {
+            throw new Exception('La fecha de emisión es requerida');
         }
 
         // Iniciar transacción
@@ -57,13 +89,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['formulario']) && $_POS
         $stmt = $mysqli->prepare("
             INSERT INTO C_Cotizaciones (
                 fecha_emision, 
-                numero_cotizacion,
                 id_empresa,
                 estado
-            ) VALUES (?, ?, ?, 'pendiente')
+            ) VALUES (?, ?, 'pendiente')
         ");
         
-        $stmt->bind_param("ssi", $fecha_emision, $numero_cotizacion, $_SESSION['id_empresa']);
+        $stmt->bind_param("si", $fecha_emision, $_SESSION['id_empresa']);
         
         if (!$stmt->execute()) {
             throw new Exception('Error al crear la cotización: ' . $mysqli->error);
@@ -71,9 +102,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['formulario']) && $_POS
         
         $id_cotizacion = $mysqli->insert_id;
         
-        // Aquí puedes agregar más inserciones para los otros detalles de la cotización
-        // Por ejemplo, insertar en C_pago, etc.
-
         // Confirmar transacción
         $mysqli->commit();
         
@@ -85,7 +113,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['formulario']) && $_POS
         
     } catch (Exception $e) {
         // Revertir transacción en caso de error
-        $mysqli->rollback();
+        if ($mysqli->connect_errno != 0) {
+            $mysqli->rollback();
+        }
         
         $response = array(
             'success' => false,
@@ -188,10 +218,39 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['formulario']) && $_POS
         </form>
     </div>
 
-    <!-- TÍTULO: ARCHIVOS JAVASCRIPT -->
-    <script src="js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_nueva_cotizacion/nueva_cotizacion_pr.js"></script> 
-    <script src="js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_nueva_cotizacion/cuadro_rojo_cotizacion.js"></script> 
+    <script>
+    // Add this to ensure empresa data is available in JavaScript
+    const empresaData = <?php echo json_encode($_SESSION['empresa_data'] ?? null); ?>;
+    
+    // Function to populate form fields with empresa data
+    function populateEmpresaData() {
+        if (empresaData) {
+            // Populate basic fields
+            document.getElementById('empresa_nombre').value = empresaData.nombre_empresa || '';
+            document.getElementById('empresa_area').value = empresaData.id_area_empresa || '';
+            document.getElementById('empresa_direccion').value = empresaData.direccion_empresa || '';
+            document.getElementById('empresa_telefono').value = empresaData.telefono_empresa || '';
+            document.getElementById('empresa_email').value = empresaData.email_empresa || '';
+            document.getElementById('empresa_rut').value = empresaData.rut_empresa || '';
+            
+            // If there's a logo, update it
+            if (empresaData.ruta_foto) {
+                const logoPreview = document.getElementById('Previsualizar-logo');
+                if (logoPreview) {
+                    logoPreview.src = empresaData.ruta_foto;
+                    logoPreview.style.display = 'block';
+                }
+            }
+        }
+    }
 
+    // Call the function when the document is ready
+    document.addEventListener('DOMContentLoaded', populateEmpresaData);
+    </script>
+
+    <!-- TÍTULO: ARCHIVOS JAVASCRIPT -->
+    <script src="/programa_cotizacion/js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_nueva_cotizacion/nueva_cotizacion_pr.js"></script>
+    <script src="/programa_cotizacion/js/editor_elemento/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_nueva_cotizacion/cuadro_rojo_cotizacion.js"></script>
 </body>
 </html>
 

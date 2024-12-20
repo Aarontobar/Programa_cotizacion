@@ -14,7 +14,8 @@ BPPJ
     -------------------------------------- INICIO ITred Spa Ver Listado .JS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
 
-    
+    console.log("Archivo ver_listado.js cargado correctamente");
+
 // TÍTULO: ORDENAR FILAS DE LA TABLA AL HACER CLIC EN LOS ENCABEZADOS
 
     // Detalle: Permite ordenar las filas de la tabla según el encabezado seleccionado, alternando entre orden ascendente y descendente.
@@ -74,9 +75,35 @@ BPPJ
         });
     });
 
-    function confirmarEliminar(id_cotizacion, id_empresa) {
+    function eliminarCotizacion(id_cotizacion) {
         if (confirm('¿Está seguro de que desea eliminar esta cotización?')) {
-            window.location.href = `eliminar_cotizacion.php?id=${id_cotizacion}&id_empresa=${id_empresa}`;
+            // Crear el objeto FormData
+            const formData = new FormData();
+            formData.append('id', id_cotizacion);
+    
+            // Realizar la petición fetch
+            fetch('/php/crear_nuevo/editor_menu2/menu2/boton_ver_cotizacion/eliminar_cotizacion.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Si la eliminación fue exitosa, eliminar la fila de la tabla
+                    const row = document.querySelector(`tr[data-cotizacion-id="${id_cotizacion}"]`);
+                    if (row) {
+                        row.remove();
+                    }
+                    alert(data.message);
+                } else {
+                    // Si hubo un error, mostrar el mensaje de error
+                    alert(data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Error al eliminar la cotización');
+            });
         }
     }
 

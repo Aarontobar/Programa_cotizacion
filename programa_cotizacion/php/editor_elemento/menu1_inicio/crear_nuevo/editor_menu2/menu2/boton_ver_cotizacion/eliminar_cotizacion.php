@@ -36,38 +36,48 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
      --------------------- -->
     
 <?php
-// Obtener el ID de la cotización desde la URL
+// Inicia la sesión si aún no está iniciada
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 
-$id = isset($_GET['id']) ? intval($_GET['id']) : 0;
-$id_empresa = isset($_GET['id_empresa']) ? intval($_GET['id_empresa']) : 0;
+// Establece la conexión a la base de datos de ITred Spa
+if (!isset($mysqli)) {
+    $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
+    if ($mysqli->connect_error) {
+        die(json_encode(['success' => false, 'message' => 'Error de conexión: ' . $mysqli->connect_error]));
+    }
+}
 
-//---------------------------------------------------------------------------------------------//
-
-if ($id > 0) {
+function eliminarCotizacion($id) {
+    global $mysqli;
+    
     // Preparar la consulta para eliminar la cotización
     $sql = "DELETE FROM C_Cotizaciones WHERE id_cotizacion = ?";
     $stmt = $mysqli->prepare($sql);
     $stmt->bind_param("i", $id);
 
-    //---------------------------------------------------------------------------------------------//
-
-    if ($stmt->execute()) {
-        // Redirigir a la página de lista de cotizaciones
-        header("Location: ver_listado.php?id=" . $id_empresa);
-        exit(); // Asegurarse de que no se ejecute ningún código adicional
-    } else {
-        echo "Error al eliminar la cotización.";
-    }
-    //-------------------------------------------------------------------------------//
+    // Ejecutar la consulta
+    $result = $stmt->execute();
+    
+    // Preparar la respuesta
+    $response = [
+        'success' => $result,
+        'message' => $result ? 'Cotización eliminada con éxito.' : 'Error al eliminar la cotización.'
+    ];
+    
     $stmt->close();
-    //-------------------------------------------------------------------------//
-} else {
-    echo "ID inválido.";
+    
+    // Devolver la respuesta en formato JSON
+    return json_encode($response);
 }
 
-//-------------------------------------------------------------------------//
-
-$mysqli->close();
+// Verificar si se está haciendo una petición POST
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id'])) {
+    $id = intval($_POST['id']);
+    echo eliminarCotizacion($id);
+    exit;
+}
 ?>
 
 <!-- ------------------------------------------------------------------------------------------------------------

@@ -141,10 +141,10 @@ $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
             $mensaje .= "<td>" . htmlspecialchars($row['vendedor_nombre']) . "</td>";
             $mensaje .= "<td class='estado-" . strtolower($row['estado']) . "'>" . htmlspecialchars($row['estado']) . "</td>";
             $mensaje .= "<td>
-            <a href='ver.php?id=" . $row['cotizacion_id'] . "&id_empresa=" . $id_empresa . "'>| Ver</a> |
+            <a href='ver.php?id=" . $row['cotizacion_id'] . "&id_empresa=" . $id_empresa . "'>Ver</a> | 
 
                     <a href='modificar_cotizacion.php?id=" . $row['cotizacion_id'] . "'>Modificar</a> |
-                    <a href='eliminar_cotizacion.php?id=" . $row['cotizacion_id'] . "&id_empresa=" . $id_empresa . "'>Eliminar</a> |
+                    <a href='javascript:void(0)' onclick='eliminarCotizacion(" . $row['cotizacion_id'] . ")'>Eliminar</a> |
                             <form method='POST'>
                                 <input type='hidden' name='cotizacion_id' value='" . $row['cotizacion_id'] . "'>
                                 <select name='nuevo_estado'>

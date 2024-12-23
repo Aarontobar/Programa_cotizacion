@@ -16,53 +16,36 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-// Verificar conexión a la base de datos
-if (!isset($mysqli)) {
-    $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
-    if ($mysqli->connect_error) {
-        die('Error de conexión: ' . $mysqli->connect_error);
-    }
-    $mysqli->set_charset("utf8");
-}
-
-// Obtener id_empresa de la sesión o del GET
+// Get company ID from session or URL parameter
 $id_empresa = isset($_SESSION['id_empresa']) ? $_SESSION['id_empresa'] : 
              (isset($_GET['id_empresa']) ? $_GET['id_empresa'] : null);
 
-// Si no hay id_empresa, redirigir a seleccionar_empresa.php
 if (!$id_empresa) {
-    header('Location: seleccionar_empresa.php');
-    exit;
+    die('Error: No se ha seleccionado una empresa');
 }
 
-// Guardar id_empresa en sesión si no existe
-if (!isset($_SESSION['id_empresa'])) {
-    $_SESSION['id_empresa'] = $id_empresa;
+// Get company data
+$mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
+$stmt = $mysqli->prepare("
+    SELECT e.*, a.nombre_area, f.ruta_foto
+    FROM E_Empresa e
+    LEFT JOIN Tp_Area a ON e.id_area_empresa = a.id_area
+    LEFT JOIN FP_FotosPerfil f ON e.id_foto = f.id_foto
+    WHERE e.id_empresa = ?
+");
+
+$stmt->bind_param("i", $id_empresa);
+$stmt->execute();
+$result = $stmt->get_result();
+$empresa_data = $result->fetch_assoc();
+
+if (!$empresa_data) {
+    die('Error: Empresa no encontrada');
 }
 
-// Obtener datos de la empresa
-$query = "SELECT 
-            e.*,
-            a.nombre_area,
-            f.ruta_foto
-          FROM E_Empresa e
-          LEFT JOIN Tp_Area a ON e.id_area_empresa = a.id_area
-          LEFT JOIN FP_FotosPerfil f ON e.id_foto = f.id_foto
-          WHERE e.id_empresa = ?";
-
-if ($stmt = $mysqli->prepare($query)) {
-    $stmt->bind_param("i", $id_empresa);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    
-    if ($result->num_rows > 0) {
-        $empresa_data = $result->fetch_assoc();
-        // Guardar datos importantes en sesión
-        $_SESSION['empresa_data'] = $empresa_data;
-    } else {
-        die('Empresa no encontrada');
-    }
-    $stmt->close();
+// Store company data in session if not already there
+if (!isset($_SESSION['empresa_data'])) {
+    $_SESSION['empresa_data'] = $empresa_data;
 }
 
 // Definir la ruta base para los includes
@@ -141,17 +124,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['formulario']) && $_POS
 
 <body>
     <div class="nueva-cotizacion">
-        <form id="formulario-cotizacion" method="POST" action="" enctype="multipart/form-data">
-            <input type="hidden" name="formulario" value="cotizacion">
-            <input type="hidden" name="id_empresa" value="<?php echo htmlspecialchars($id_empresa); ?>">
+    <form id="formulario-cotizacion" method="POST" action="" enctype="multipart/form-data">
+    <input type="hidden" name="id_empresa" value="<?php echo htmlspecialchars($id_empresa); ?>">
             
             <!-- Fila 1 -->
             <div class="row">
                 <!-- TÍTULO: LOGO DE LA EMPRESA -->
-                <?php include BASE_PATH . 'cargar_logo_empresa.php'; ?>
+                <?php include 'cargar_logo_empresa.php'; ?>
 
                 <!-- TÍTULO: CUADRO ROJO DE COTIZACIÓN -->
-                <?php include BASE_PATH . 'cuadro_rojo_cotizacion.php'; ?>
+                <?php include 'cuadro_rojo_cotizacion.php'; ?>
 
                 <!-- TÍTULO: SECCIÓN DE DATOS -->
                 <fieldset class="box-6 cuadro-datos">
@@ -161,7 +143,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['formulario']) && $_POS
             </div>
 
             <!-- Fila 2: DATOS DE LA EMPRESA -->
-            <?php include BASE_PATH . 'datos_empresa.php'; ?>
+            <?php include 'datos_empresa.php'; ?>
 
             <!-- Fila 3: DETALLE DEL CLIENTE -->
             <?php include BASE_PATH . 'detalle_cliente.php'; ?>
@@ -220,32 +202,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['formulario']) && $_POS
 
     <script>
     // Add this to ensure empresa data is available in JavaScript
-    const empresaData = <?php echo json_encode($_SESSION['empresa_data'] ?? null); ?>;
+    const empresaData = <?php echo json_encode($empresa_data); ?>;
     
-    // Function to populate form fields with empresa data
-    function populateEmpresaData() {
-        if (empresaData) {
-            // Populate basic fields
-            document.getElementById('empresa_nombre').value = empresaData.nombre_empresa || '';
-            document.getElementById('empresa_area').value = empresaData.id_area_empresa || '';
-            document.getElementById('empresa_direccion').value = empresaData.direccion_empresa || '';
-            document.getElementById('empresa_telefono').value = empresaData.telefono_empresa || '';
-            document.getElementById('empresa_email').value = empresaData.email_empresa || '';
-            document.getElementById('empresa_rut').value = empresaData.rut_empresa || '';
-            
-            // If there's a logo, update it
-            if (empresaData.ruta_foto) {
-                const logoPreview = document.getElementById('Previsualizar-logo');
-                if (logoPreview) {
-                    logoPreview.src = empresaData.ruta_foto;
-                    logoPreview.style.display = 'block';
-                }
+    document.addEventListener('DOMContentLoaded', function() {
+    if (empresaData) {
+        document.getElementById('empresa_nombre').value = empresaData.nombre_empresa || '';
+        document.getElementById('empresa_area').value = empresaData.id_area_empresa || '';
+        document.getElementById('empresa_direccion').value = empresaData.direccion_empresa || '';
+        document.getElementById('empresa_telefono').value = empresaData.telefono_empresa || '';
+        document.getElementById('empresa_email').value = empresaData.email_empresa || '';
+        document.getElementById('empresa_rut').value = empresaData.rut_empresa || '';
+        
+        // Update logo if available
+        if (empresaData.ruta_foto) {
+            const logoPreview = document.getElementById('Previsualizar-logo');
+            if (logoPreview) {
+                logoPreview.src = empresaData.ruta_foto;
+                logoPreview.style.display = 'block';
             }
         }
     }
-
-    // Call the function when the document is ready
-    document.addEventListener('DOMContentLoaded', populateEmpresaData);
+});
     </script>
 
     <!-- TÍTULO: ARCHIVOS JAVASCRIPT -->

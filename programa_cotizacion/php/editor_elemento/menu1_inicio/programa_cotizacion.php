@@ -17,8 +17,27 @@ BPPj
      ------------------------ -->
 
      <?php
-// Establece la conexión a la base de datos de ITred Spa
+// Verificar conexión a la base de datos
 $mysqli = new mysqli('localhost', 'root', '', 'itredspa_bd');
+if ($mysqli->connect_error) {
+    die('Error de conexión: ' . $mysqli->connect_error);
+}
+$mysqli->set_charset("utf8");
+
+// Store selected company ID in session when form is submitted
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['empresa'])) {
+    $_SESSION['id_empresa'] = (int)$_POST['empresa'];
+    
+    // Get company data and store in session
+    $stmt = $mysqli->prepare("SELECT * FROM E_Empresa WHERE id_empresa = ?");
+    $stmt->bind_param("i", $_SESSION['id_empresa']);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    if ($row = $result->fetch_assoc()) {
+        $_SESSION['empresa_data'] = $row;
+    }
+    $stmt->close();
+}
 ?>
 
 <!-- ---------------------

@@ -1,0 +1,121 @@
+
+/* 
+Sitio Web Creado por ITred Spa.
+Direccion: Guido Reni #4190
+Pedro Aguirre Cerda - Santiago - Chile
+contacto@itred.cl o itred.spa@gmail.com
+https://www.itred.cl
+Creado, Programado y Diseñado por ITred Spa.
+BPPJ 
+*/
+
+
+/* --------------------------------------------------------------------------------------------------------------
+    -------------------------------------- INICIO ITred Spa menu1_inicio_pr .CSS --------------------------------------
+    ------------------------------------------------------------------------------------------------------------- */
+    
+    
+    /* comentario pendiente  */
+    body { 
+        font-family: Arial, sans-serif; /* comentario pendiente */
+        margin: 0; /* comentario pendiente */
+        padding: 0; /* comentario pendiente */
+        background-color: #fff; /* comentario pendiente */
+    }
+
+/* TITULO MENU DE NAVEGACION PRINCIPAL */    
+
+    /* comentario pendiente */
+    nav {
+        display: flex; /* comentario pendiente */
+        justify-content: center; /* comentario pendiente */
+        background-color: #f0f0f0; /* comentario pendiente */
+        padding: 10px 0; /* comentario pendiente */
+        border-bottom: 1px solid #ddd; /* comentario pendiente */
+    }
+
+/* TITULO CONTENEDOR DE NAVEGACION */   
+
+    /* comentario pendiente */
+    .navigation-container {
+        display: flex; /* comentario pendiente */
+        justify-content: center; /* comentario pendiente */
+        gap: 0; /* comentario pendiente */
+    }
+
+/* TITULO BOTONES PREDISEÑADOS */ 
+
+    /* comentario pendiente */
+    .boton_prediseñados button{
+        border-right: none; /* comentario pendiente */
+    }
+
+/* TITULO BOTONES CREAR NUEVO */ 
+
+    /* comentario pendiente */
+    .boton_crear_nuevo button { 
+        border-right: none; /* comentario pendiente */
+    }
+
+/* TITULO BOTONES MODIFICAR */ 
+
+    /* comentario pendiente */
+    .boton_modificar button {
+        border-right: none; /* comentario pendiente */
+    }
+
+/* TITULO BOTONES ELIMINAR */ 
+
+    /* comentario pendiente */
+    .boton_eliminar button {
+        border-right: none; /* comentario pendiente */
+    }
+
+/* TITULO FORMULARIO */   
+
+    /* comentario pendiente */
+    form {
+        margin: 0; /* comentario pendiente */
+    }
+
+/* TITULO BOTONES DE NAVEGACION */ 
+
+    /* comentario pendiente */
+    .main-nav button {
+        padding: 8px 20px; /* comentario pendiente */
+        background-color: #e8e8e8; /* comentario pendiente */
+        border: 1px solid #999; /* comentario pendiente */
+        color: #333; /* comentario pendiente */
+        cursor: pointer; /* comentario pendiente */
+        font-size: 14px; /* comentario pendiente */
+        margin: 0; /* comentario pendiente */
+        min-width: 120px; /* comentario pendiente */
+        text-transform: uppercase; /* comentario pendiente */
+    }
+
+    /* comentario pendiente */
+    .main-nav button:hover {
+        background-color: #ddd; /* comentario pendiente */
+    }
+
+/* TITULO CONTENEDOR DEL CONTENIDO */ 
+
+    /* comentario pendiente */
+    .content-container {
+        margin-top: 20px; /* comentario pendiente */
+    }
+
+/* --------------------------------------------------------------------------------------------------------------
+    ---------------------------------------- FIN ITred Spa menu1_inicio_pr .CSS ---------------------------------------
+    ------------------------------------------------------------------------------------------------------------- */
+
+
+/*
+Sitio Web Creado por ITred Spa.
+Direccion: Guido Reni #4190
+Pedro Aguirre Cerda - Santiago - Chile
+contacto@itred.cl o itred.spa@gmail.com
+https://www.itred.cl
+Creado, Programado y Diseñado por ITred Spa.
+BPPJ
+*/

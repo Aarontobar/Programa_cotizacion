@@ -13,6 +13,9 @@ BPPJ
     -------------------------------------- INICIO ITred Spa Crear Clientes .JS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
 
+// TITULO POPUP NOTIFICACION
+
+    // Manejo de la notificación
     document.addEventListener('DOMContentLoaded', function() {
         // Manejo de la notificación
         const notificacion = document.getElementById('notificacion');

@@ -51,7 +51,9 @@ if (isset($_SESSION['id_empresa']) && !empty($_SESSION['id_empresa'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menú Principal - Cotización ITred Spa</title>
-    <!-- llama al archivo CSS -->
+
+<!-- TÍTULO: IMPORTACIÓN DE ARCHIVO .CSS -->
+    <!-- Llama al archivo CSS -->
     <link rel="stylesheet" href="css/editor_cotizacion/menu1_inicio/crear_nuevo/editor_menu2/menu2/programa_cotizacion/menu.css">
 </head>
 <body>
@@ -106,9 +108,10 @@ if (isset($_SESSION['id_empresa']) && !empty($_SESSION['id_empresa'])) {
     <div id="contenido-dinamico"></div>
 
 
-<!-----------------Archivo JS--------------------------->
+<!-- TÍTULO: IMPORTACIÓN DE ARCHIVO .JS -->
 
-<script src="js/editor_cotizacion/menu1_inicio/crear_nuevo/editor_menu2/menu2/programa_cotizacion/menu.js"></script>
+    <!-- Llama al archivo JS -->
+    <script src="js/editor_cotizacion/menu1_inicio/crear_nuevo/editor_menu2/menu2/programa_cotizacion/menu.js"></script>
 
      <!-- ------------------------------------------------------------------------------------------------------------
 -------------------------------------- FIN ITred Spa Menu .PHP ----------------------------------------

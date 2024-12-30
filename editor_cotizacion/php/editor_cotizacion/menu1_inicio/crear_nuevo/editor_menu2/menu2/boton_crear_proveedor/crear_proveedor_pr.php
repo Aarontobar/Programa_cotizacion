@@ -12,20 +12,30 @@ BPPJ
     ------------------------------------- INICIO ITred Spa crear proveedor.PHP --------------------------------------
     ------------------------------------------------------------------------------------------------------------- -->
 
-    <?php
-// Iniciar sesión si no está iniciada
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
+<!-- ------------------------
+     -- INICIO CONEXION BD --
+     ------------------------ -->
 
-// Verificar si existe una conexión a la base de datos
-if (!isset($mysqli)) {
+     <?php
+    // Establece la conexión con la base de datos y configura los parámetros iniciales
     $mysqli = new mysqli('localhost', 'root', '', 'editor_cotizacion_bd');
     if ($mysqli->connect_error) {
         die('Error de conexión: ' . $mysqli->connect_error);
     }
     $mysqli->set_charset("utf8");
-}
+?>
+
+<!-- ---------------------
+     -- FIN CONEXION BD --
+     --------------------- -->
+
+    <?php
+// TÍTULO: VERIFICACIÓN DE INICIO DE SESIÓN
+
+    // Verifica el inicio de sesión
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
 
 // Obtener el ID de empresa de la sesión o del parámetro GET
 $id_empresa = $_SESSION['id_empresa'] ?? $_GET['id_empresa'] ?? null;
@@ -34,10 +44,9 @@ if (!$id_empresa) {
     die('ID de empresa no válido.');
 }
 
-// Resto del código de crear_proveedor_pr.php
 ?>
 
-<!-- INICIO HTML -->
+
 <!DOCTYPE html>
 <html lang="es">
 <head> 
@@ -45,7 +54,7 @@ if (!$id_empresa) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <title> Agregar proveedor</title> 
     
-    <!-- TÍTULO: IMPORTACIÓN DE ARCHIVO .CSS -->
+<!-- TÍTULO: IMPORTACIÓN DE ARCHIVO .CSS -->
      
     <!-- llama al archivo CSS -->
     <link rel="stylesheet" href="css/editor_cotizacion/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_crear_proveedor/crear_proveedor.css"> 

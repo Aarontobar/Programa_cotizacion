@@ -14,7 +14,8 @@ BPPJ
     ------------------------------------------------------------------------------------------------------------- */
 
 /* TÍTULO: ESTILO GENERAL DEL CUERPO */
-  /* define los estilos base para el cuerpo del formulario de cotización */
+
+  /* Define los estilos base para el cuerpo del formulario de cotización */
   .nueva-cotizacion {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -24,103 +25,102 @@ BPPJ
 
 /* TÍTULO: CONTENEDOR GENERAL */
 
-  /* reestructura el formulario con el ancho y el padding */
+  /* Establece el padding y el modelo de caja para el contenedor principal */
   .nueva-cotizacion .contenedor {
-  padding: 20px; /* Relleno interno */
-  box-sizing: border-box; /* Incluye el padding en el ancho total */
+    padding: 20px;
+    box-sizing: border-box;
   }
 
 /* TÍTULO: ESTILO PARA EL CONTENEDOR DEL LOGO */
 
-  /* reestructura la parte del logo de la página el cuál la cotización quiere cargar */
+  /* Configura la disposición del contenedor del logo de la empresa */
   .nueva-cotizacion .caja-logo {
-  display: flex; /* Usar flexbox */
-  align-items: center; /* Centrar verticalmente */
-  justify-content: center; /* Centrar horizontalmente */
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
-
 
 /* TÍTULO: ESTILO PARA EL BOTÓN FIJO */
 
-  /* le da un diseño más estilizado y azulado al botón */
-    .nueva-cotizacion .boton-fijado {
-    position: fixed; /* Posición fija en la pantalla */
-    top: 20px; /* Distancia desde la parte superior */
-    left: 20px; /* Distancia desde la izquierda */
-    padding: 10px 20px; /* Relleno del botón */
-    background-color: #007bff; /* Color de fondo del botón */
-    color: white; /* Color del texto del botón */
-    text-align: center; /* Centrar texto */
-    text-decoration: none; /* Sin subrayado */
-    border-radius: 5px; /* Bordes redondeados */
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3); /* Sombra del botón */
-    z-index: 1000; /* Asegura que esté por encima de otros elementos */
-    }
+  /* Define la apariencia y posición del botón fijo en la pantalla */
+  .nueva-cotizacion .boton-fijado {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+  }
 
 /* TÍTULO: EFECTO HOVER PARA EL BOTÓN FIJO */
 
-  /* activa la sombra cuando el usuario apunta al mouse durante la selección del botón */
+  /* Cambia el color de fondo del botón fijo al pasar el cursor sobre él */
   .nueva-cotizacion .boton-fijado:hover {
-  background-color: #0056b3; /* Color de fondo en hover */
+    background-color: #0056b3;
   }
 
 /* TÍTULO: ESTILO PARA EL CONTENEDOR DE DETALLES */
 
-  /* añade detalles relevantes para el contenedor de la nueva cotizacion */
+  /* Establece la posición y el padding para el contenedor de detalles */
   .nueva-cotizacion #detalle-contenedor {
-  position: relative; /* Posición relativa para el contenedor */
-  padding-bottom: 50px; /* Relleno inferior para el contenido */
+    position: relative;
+    padding-bottom: 50px;
   }
 
 /* TÍTULO: ESTILO PARA EL BOTÓN DE ENVÍO */
 
-  /* añade detalles relevantes para el botón de envio */
-.nueva-cotizacion .submit {
-width: 80%; /* Ancho del botón de envío */
-padding: 10px 20px; /* Relleno del botón */
-background-color: #ff6f61; /* Color de fondo del botón */
-color: white; /* Color del texto del botón */
-border: none; /* Sin borde */
-border-radius: 5px; /* Bordes redondeados */
-cursor: pointer; /* Cambiar cursor a puntero */
-display: block; /* Mostrar como bloque */
-margin: 20px auto; /* Margen superior e inferior, centrar horizontalmente */
-text-align: center; /* Centrar texto */
-}
+  /* Define la apariencia y disposición del botón de envío del formulario */
+  .nueva-cotizacion .submit {
+    width: 80%;
+    padding: 10px 20px;
+    background-color: #ff6f61;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+  }
 
 /* TÍTULO: EFECTO HOVER PARA EL BOTÓN DE ENVÍO */
 
-  /* añade el efecto hover al momento de desplazar el mouse encima del botón de envio */
+  /* Cambia el color de fondo del botón de envío al pasar el cursor sobre él */
   .nueva-cotizacion .submit:hover {
-  background-color: #ff4500; /* Color de fondo en hover */
+    background-color: #ff4500;
   }
 
 /* TÍTULO: ESTILO PARA LA TABLA DE BANCOS */
 
-  /* establece una alineación de texto al apartado de bancos */
+  /* Centra el texto en las celdas de la tabla de bancos */
   .nueva-cotizacion .bancos td {
-  text-align: center; /* Centrar texto en celdas de la tabla */
+    text-align: center;
   }
 
 /* TÍTULO: MENSAJE DEL ERROR */
 
-  /* añade un mensaje de error en caso de mal colocar un dato en el formulario */
+  /* Añade un borde rojo a los campos con error */
   .nueva-cotizacion .error {
-  border: 2px solid #ff0000;
+    border: 2px solid #ff0000;
   }
 
 /* TÍTULO: MENSAJE DE LAS LETRAS DEL ERROR */
 
-  /* añade color al mensaje */
+  /* Define el estilo para los mensajes de error */
   .nueva-cotizacion .error-message {
-  color: #ff0000; /* color de la letra */
-  font-size: 0.8em; /* letra de la fuente */
-  margin-top: 5px; /* tamaño del grosor de los lados */
+    color: #ff0000;
+    font-size: 0.8em;
+    margin-top: 5px;
   }
 
 /* --------------------------------------------------------------------------------------------------------------
-  ---------------------------------------- FIN ITred Spa Formulario Cotizacion .CSS ---------------------------------------
-  ------------------------------------------------------------------------------------------------------------- */
+    ---------------------------------------- FIN ITred Spa Formulario Cotizacion .CSS ---------------------------------------
+    ------------------------------------------------------------------------------------------------------------- */
 
 
 /*

@@ -13,23 +13,23 @@ BPPJ
     -------------------------------------- INICIO ITred Spa Crear Clientes .JS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
 
-// TITULO POPUP NOTIFICACION
+// TÍTULO: MANEJO DE NOTIFICACIONES Y SCROLL
 
+    /* Gestiona la visualización de notificaciones y el desplazamiento a la lista de clientes */
+document.addEventListener('DOMContentLoaded', function() {
     // Manejo de la notificación
-    document.addEventListener('DOMContentLoaded', function() {
-        // Manejo de la notificación
-        const notificacion = document.getElementById('notificacion');
-        if (notificacion) {
-            setTimeout(() => {
-                notificacion.style.display = 'none';
-            }, 5000);
-        }
+    const notificacion = document.getElementById('notificacion');
+    if (notificacion) {
+        setTimeout(() => {
+            notificacion.style.display = 'none';
+        }, 5000);
+    }
 
-        // Si hay un mensaje de éxito, hacer scroll a la lista de clientes
-        <?php if ($mostrarLista): ?>
-        document.querySelector('.lista-clientes').scrollIntoView({ behavior: 'smooth' });
-        <?php endif; ?>
-    });
+    // Si hay un mensaje de éxito, hacer scroll a la lista de clientes
+    <?php if ($mostrarLista): ?>
+    document.querySelector('.lista-clientes').scrollIntoView({ behavior: 'smooth' });
+    <?php endif; ?>
+});
 
 /* --------------------------------------------------------------------------------------------------------------
     ---------------------------------------- FIN ITred Spa Crear Clientes .JS ---------------------------------------
@@ -45,3 +45,4 @@ https://www.itred.cl
 Creado, Programado y Diseñado por ITred Spa.
 BPPJ
 */
+

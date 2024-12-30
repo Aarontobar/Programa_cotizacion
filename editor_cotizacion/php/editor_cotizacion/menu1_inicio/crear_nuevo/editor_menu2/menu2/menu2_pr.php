@@ -17,8 +17,7 @@ BPPJ
      ------------------------ -->
 
      <?php
-    // TÍTULO: INICIO DE SESIÓN
-    // Establece la conexión a la base de datos editor tienda virtual de ITred Spa.
+    // Establece la conexión con la base de datos y configura los parámetros iniciales
     $mysqli = new mysqli('localhost', 'root', '', 'editor_cotizacion_bd');
     if ($mysqli->connect_error) {
         die('Error de conexión: ' . $mysqli->connect_error);
@@ -31,13 +30,12 @@ BPPJ
      --------------------- -->
 
      <?php
-
-
 // TÍTULO: PROCESAR SELECCIÓN DE EMPRESA
+// Este bloque maneja la selección de empresa y almacena la información en la sesión
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['empresa'])) {
     $_SESSION['id_empresa'] = (int)$_POST['empresa'];
     
-    // Obtener información de la empresa seleccionada
+    // Obtiene y almacena los datos de la empresa seleccionada
     $stmt = $mysqli->prepare("SELECT * FROM E_Empresa WHERE id_empresa = ?");
     $stmt->bind_param("i", $_SESSION['id_empresa']);
     $stmt->execute();
@@ -54,27 +52,39 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['empresa'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- TÍTULO IMPORTACIÓN DE ARCHIVO .CSS -->
+
+    <!-- Llama al archivo CSS -->
     <title>Sistema de Cotizaciones</title>
     <link rel="stylesheet" href="css/editor_cotizacion/menu1_inicio/crear_nuevo/editor_menu2/menu2/menu2_pr.css">
 </head>
 <body>
-    <!-- TÍTULO: SELECCIÓN DE EMPRESA -->
+<!-- TÍTULO: SELECCIÓN DE EMPRESA -->
+
+    <!-- contiene el formulario principal de selección de empresa -->
     <div class="programa_cotizacion">
         <form id="formulario-seleccionar-empresa" method="POST" action="">
         <?php include 'php\editor_cotizacion\menu1_inicio\crear_nuevo\editor_menu2\menu2\programa_cotizacion\seleccionar_empresa.php'; ?>
+            <!-- Campo oculto para almacenar la empresa seleccionada -->
             <input type="hidden" id="selected-empresa" name="empresa" 
                    value="<?php echo isset($_SESSION['id_empresa']) ? $_SESSION['id_empresa'] : ''; ?>" />
             <button type="submit">Aceptar</button>
             <button type="button" id="reset-empresa">Reiniciar Selección</button>
         </form>
 
-        <!-- TÍTULO: MENÚ DE NAVEGACIÓN PRINCIPAL -->
+    <!-- TÍTULO: MENÚ DE NAVEGACIÓN PRINCIPAL -->
+
+        <!-- Incluye el menú de navegación principal -->
         <?php include dirname(__FILE__) . '/programa_cotizacion/menu.php'; ?>
 
-        <!-- TÍTULO: CONTENEDOR PARA EL FORMULARIO DE MODIFICACIÓN -->
+    <!-- TÍTULO: CONTENEDOR PARA EL FORMULARIO DE MODIFICACIÓN -->
+     
+        <!-- Contenedor para mostrar el formulario de modificación -->
         <div id="modificar-cotizacion-container"></div>
 
-        <!-- TÍTULO: CONTENEDOR PARA MOSTRAR EL CONTENIDO DINÁMICO -->
+    <!-- TÍTULO: CONTENEDOR PARA MOSTRAR EL CONTENIDO DINÁMICO -->
+
+        <!-- muestra el contenido según la opción seleccionada -->
         <div id="contenido-dinamico">
             <?php
             if (isset($_GET['pagina'])) {
@@ -99,9 +109,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['empresa'])) {
         </div>
     </div>
 
+<!-- TÍTULO IMPORTACIÓN DE ARCHIVO .JS -->
 
-<!-- TÍTULO: ARCHIVOS JAVASCRIPT -->
-<script src="js\editor_cotizacion\menu1_inicio\crear_nuevo\editor_menu2\menu2\menu2_pr.js"></script>
+    <!-- Llama al archivo JS -->
+    <script src="js\editor_cotizacion\menu1_inicio\crear_nuevo\editor_menu2\menu2\menu2_pr.js"></script>
 
 </body>
 </html>

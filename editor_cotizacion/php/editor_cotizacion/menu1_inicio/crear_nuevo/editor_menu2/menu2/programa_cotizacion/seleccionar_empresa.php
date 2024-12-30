@@ -44,7 +44,7 @@ $empresa_seleccionada = isset($_SESSION['id_empresa']) && !empty($_SESSION['id_e
 
 <!-- TÍTULO IMPORTACIÓN DE ARCHIVO .CSS -->
 
-    <!-- Llama al archivo JS -->
+    <!-- Llama al archivo CSS -->
     <link rel="stylesheet" href="css/editor_cotizacion/menu1_inicio/crear_nuevo/editor_menu2/menu2/programa_cotizacion/seleccionar_empresa.css">
 
 <!-- TÍTULO SELECCIÓN DE EMPRESA -->

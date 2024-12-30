@@ -57,6 +57,7 @@ if (!isset($_SESSION['empresa_data'])) {
 $base_path = dirname(__FILE__) . '/';
 
 // TÍTULO: PROCESAMIENTO DEL FORMULARIO
+    // Función para empezar a dar posibilidades de intento de envío de datos del formulario
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['formulario']) && $_POST['formulario'] === 'cotizacion') {
     try {
         // Validar que exista una empresa seleccionada
@@ -123,8 +124,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['formulario']) && $_POS
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- TÍTULO IMPORTACIÓN DE ARCHIVO .CSS -->
+
+    <!-- Llama al archivo CSS -->
     <title>Nueva Cotización</title>
-    <link rel="stylesheet" href="/programa_cotizacion/css/editor_cotizacion/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_nueva_cotizacion/nueva_cotizacion.css">
+    <link rel="stylesheet" href="/programa_cotizacion/css/editor_cotizacion/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_nueva_cotizacion/nueva_cotizacion_pr.css">
 </head>
 
 <body>
@@ -148,21 +152,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['formulario']) && $_POS
                 </fieldset>
             </div>
 
-            <!-- Fila 2: DATOS DE LA EMPRESA -->
+            <!-- TITULO: DATOS DE LA EMPRESA -->
             <?php include $base_path . 'datos_empresa.php'; ?>
 
-            <!-- Fila 3: DETALLE DEL CLIENTE -->
+            <!-- TITULO: DETALLE DEL CLIENTE -->
             <?php include $base_path . 'detalle_cliente.php'; ?>
 
             <div class="row">
-                <!-- Fila 4: DETALLE DEL PROYECTO -->
+                <!-- TITULO: DETALLE DEL PROYECTO -->
                 <?php include $base_path . 'detalle_proyecto.php'; ?>
             </div>
 
-            <!-- Fila 5: DETALLE DEL ENCARGADO -->
+            <!-- TITULO: DETALLE DEL ENCARGADO -->
             <?php include $base_path . 'detalle_encargado.php'; ?>
 
-            <!-- Fila 6: DETALLE DEL VENDEDOR -->
+            <!-- TITULO: DETALLE DEL VENDEDOR -->
             <?php include $base_path . 'detalle_vendedor.php'; ?>
 
             <!-- TÍTULO: DETALLE DE COTIZACIÓN -->
@@ -206,7 +210,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['formulario']) && $_POS
         </form>
     </div>
 
-    <!-- TÍTULO: ARCHIVOS JAVASCRIPT -->
+<!-- TÍTULO IMPORTACIÓN DE ARCHIVO .JS -->
+
+    <!-- Llama al archivo js -->
     <script src="/programa_cotizacion/js/editor_cotizacion/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_nueva_cotizacion/nueva_cotizacion_pr.js"></script>
     <script src="/programa_cotizacion/js/editor_cotizacion/menu1_inicio/crear_nuevo/editor_menu2/menu2/boton_nueva_cotizacion/cuadro_rojo_cotizacion.js"></script>
 </body>

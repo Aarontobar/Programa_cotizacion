@@ -12,15 +12,19 @@ BPPJ
     -------------------------------------- INICIO ITred Spa Menu2_pr.JS --------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
 
+// TÍTULO: COMPROBACIÓN DE LA CONSOLA FUNCIÓN JS
+    // Esta función se ejecuta para verificar bien su carga al php
     console.log("Archivo menu2_pr.js cargado correctamente");
 
-    // TÍTULO: INICIALIZACIÓN DEL DOCUMENTO
+// TÍTULO: INICIALIZACIÓN DEL DOCUMENTO
+    // Esta función se ejecuta cuando el documento está completamente cargado
     document.addEventListener('DOMContentLoaded', function() {
         initializeFormHandling();
         initializeMenuButtons();
     });
     
-    // TÍTULO: MANEJO DEL FORMULARIO DE EMPRESA
+// TÍTULO: MANEJO DEL FORMULARIO DE EMPRESA
+    // Inicializa el manejo del formulario y sus eventos
     function initializeFormHandling() {
         const form = document.getElementById('formulario-seleccionar-empresa');
         const resetButton = document.getElementById('reset-empresa');
@@ -48,7 +52,8 @@ BPPJ
         }
     }
     
-    // TÍTULO: HABILITAR BOTONES DEL MENÚ
+// TÍTULO: HABILITAR BOTONES DEL MENÚ
+    // Habilita todos los botones del menú excepto el de crear empresa
     function enableMenuButtons() {
         const buttons = document.querySelectorAll('.menu a:not([data-pagina="crear_empresa"])');
         buttons.forEach(button => {
@@ -56,7 +61,8 @@ BPPJ
         });
     }
     
-    // TÍTULO: DESHABILITAR BOTONES DEL MENÚ
+// TÍTULO: DESHABILITAR BOTONES DEL MENÚ
+    // Deshabilita todos los botones del menú excepto el de crear empresa
     function disableMenuButtons() {
         const buttons = document.querySelectorAll('.menu a:not([data-pagina="crear_empresa"])');
         buttons.forEach(button => {
@@ -64,7 +70,8 @@ BPPJ
         });
     }
     
-    // TÍTULO: ACTUALIZAR EMPRESA SELECCIONADA
+// TÍTULO: ACTUALIZAR EMPRESA SELECCIONADA
+    // Actualiza el valor de la empresa seleccionada en el campo oculto
     function updateSelectedCompany(empresaId) {
         const hiddenInput = document.getElementById('selected-empresa');
         if (hiddenInput) {
@@ -72,7 +79,8 @@ BPPJ
         }
     }
     
-    // TÍTULO: MANEJO DEL REINICIO
+// TÍTULO: MANEJO DEL REINICIO
+    // Maneja el reinicio de la selección de empresa
     function handleReset() {
         const selectedOption = document.querySelector('.selected-option');
         const hiddenInput = document.getElementById('selected-empresa');
@@ -84,7 +92,8 @@ BPPJ
         clearContent();
     }
     
-    // TÍTULO: LIMPIAR CONTENIDO
+// TÍTULO: LIMPIAR CONTENIDO
+    // Limpia el contenido del contenedor dinámico
     function clearContent() {
         const container = document.getElementById('contenido-dinamico');
         if (container) {
@@ -92,7 +101,8 @@ BPPJ
         }
     }
     
-    // TÍTULO: INICIALIZACIÓN DE BOTONES DEL MENÚ
+// TÍTULO: INICIALIZACIÓN DE BOTONES DEL MENÚ
+    // Inicializa los eventos de los botones del menú
     function initializeMenuButtons() {
         document.querySelectorAll('.menu a').forEach(button => {
             button.addEventListener('click', function(e) {
@@ -108,7 +118,8 @@ BPPJ
         });
     }
     
-    // TÍTULO: CARGAR CONTENIDO
+// TÍTULO: CARGAR CONTENIDO
+    // Carga el contenido dinámico según la página seleccionada
     function loadContent(pagina) {
         const empresaId = document.getElementById('selected-empresa').value;
         const container = document.getElementById('contenido-dinamico');
@@ -129,11 +140,9 @@ BPPJ
             });
     }
 
-
 /* --------------------------------------------------------------------------------------------------------------
     ---------------------------------------- FIN ITred Spa Menu2_pr.JS ---------------------------------------
     ------------------------------------------------------------------------------------------------------------- */
-
 
 /*
 Sitio Web Creado por ITred Spa.
@@ -144,3 +153,4 @@ https://www.itred.cl
 Creado, Programado y Diseñado por ITred Spa.
 BPPJ
 */
+

@@ -29,6 +29,9 @@ BPPJ
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- TÍTULO IMPORTACIÓN DE ARCHIVO .CSS -->
+
+    <!-- Llama al archivo CSS -->
     <title>Menu Principal</title>
     <link rel="stylesheet" href="css\editor_cotizacion\menu1_inicio\menu1_inicio_pr.css">
 </head>
@@ -36,17 +39,17 @@ BPPJ
     
     <!-- TITULO MENU DE NAVEGACION PRINCIPAL  -->
 
-        <!-- comentario pendiente  -->
+        <!-- contiene el menú de navegación principal con los botones para las diferentes secciones  -->
         <nav class="main-nav">
 
             <!-- TITULO CONTENEDOR DE NAVEGACION -->
 
-                <!-- comentario pendiente  -->
+                <!-- agrupa todos los botones de navegación en un contenedor  -->
                 <div class="navigation-container">
 
                     <!--  TITULO BOTONES PREDISEÑADOS -->
 
-                        <!-- comentario pendiente  -->
+                        <!-- contiene el botón para acceder a la sección de prediseñados  -->
                         <div class="boton_prediseñados">
                             <form method="POST">
                                 <button id="btn" name="view" value="prediseñados">PREDISEÑADOS</button>   
@@ -55,7 +58,7 @@ BPPJ
 
                     <!--  TITULO BOTONES CREAR NUEVO -->
 
-                        <!-- comentario pendiente  -->
+                        <!-- contiene el botón para acceder a la sección de crear nuevo  -->
                         <div class="boton_crear_nuevo">
                             <form method="POST">
                                 <button id="btn" name="view" value="crear_nuevo">CREAR NUEVO</button>
@@ -64,7 +67,7 @@ BPPJ
 
                     <!--  TITULO BOTONES MODIFICAR -->
                     
-                        <!-- comentario pendiente  -->
+                        <!-- contiene el botón para acceder a la sección de modificar  -->
                         <div class="boton_modificar">
                             <form method="POST">
                                 <button id="btn" name="view" value="modificar">MODIFICAR</button>
@@ -73,7 +76,7 @@ BPPJ
 
                     <!--  TITULO BOTONES ELIMINAR -->
 
-                        <!-- comentario pendiente  -->
+                        <!-- contiene el botón para acceder a la sección de eliminar  -->
                         <div class="boton_eliminar">
                             <form method="POST">
                                 <button id="btn" name="view" value="eliminar">ELIMINAR</button>
@@ -84,7 +87,7 @@ BPPJ
 
         <!-- TITULO CONTENIDO DEL CONTENEDOR -->
 
-            <!-- comentario pendiente  -->
+            <!-- contiene el contenido dinámico que se carga según el botón presionado  -->
             <div class="content-container">
                 <?php
                 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['view'])) {
@@ -106,7 +109,9 @@ BPPJ
                 ?>
             </div>
 
-    <!-- Enlace al JS -->
+<!-- TÍTULO: IMPORTACIÓN DE ARCHIVO .JS -->
+
+    <!-- Llama al archivo JS -->
     <script src="js/editor_cotizacion/menu1_inicio/menu1_inicio_pr.js"></script>
 </body>
 </html>

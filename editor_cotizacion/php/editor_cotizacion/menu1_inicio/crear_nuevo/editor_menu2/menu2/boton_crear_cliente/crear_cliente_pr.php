@@ -13,12 +13,12 @@ BPPJ
     ------------------------------------------------------------------------------------------------------------- -->
 
     <?php
-// Iniciar sesión si no está iniciada
+// TÍTULO: INICIALIZACIÓN DE SESIÓN Y CONEXIÓN A BASE DE DATOS
+    //Inicia la sesión si no está iniciada y establece la conexión a la base de datos
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-// Verificar conexión a la base de datos
 if (!isset($mysqli)) {
     $mysqli = new mysqli('localhost', 'root', '', 'editor_cotizacion_bd');
     if ($mysqli->connect_error) {
@@ -27,7 +27,8 @@ if (!isset($mysqli)) {
     $mysqli->set_charset("utf8");
 }
 
-// Obtener el ID de empresa de la sesión o del parámetro GET
+// TÍTULO: OBTENCIÓN DE ID DE EMPRESA
+    //Obtiene el ID de empresa de la sesión o del parámetro GET
 $id_empresa = $_SESSION['id_empresa'] ?? $_GET['id_empresa'] ?? null;
 
 if (!$id_empresa && basename($_SERVER['PHP_SELF']) !== 'crear_empresa_pr.php') {
@@ -38,6 +39,7 @@ $mensaje = '';
 $mostrarLista = false;
 
 // TÍTULO: PROCESAMIENTO DEL FORMULARIO
+    // Procesa el formulario cuando se envía
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['formulario']) && $_POST['formulario'] === 'cliente') {
     // Capturar y validar los datos del formulario
     $rut_empresa_cliente = $_POST['rut_empresa_cliente'] ?? '';
@@ -61,7 +63,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['formulario']) && $_POS
     $comuna_encargado_cliente = $_POST['comuna_encargado_cliente'] ?? '';
     $direccion_encargado_cliente = $_POST['direccion_encargado_cliente'] ?? '';
 
-    // Verificar si el cliente ya existe
+ // TÍTULO: VERIFICACIÓN DE CLIENTE EXISTENTE
+    // Verifica si el cliente ya existe en la base de datos
     $stmt = $mysqli->prepare("SELECT id_cliente FROM C_Clientes WHERE rut_empresa_cliente = ?");
     $stmt->bind_param("s", $rut_empresa_cliente);
     $stmt->execute();
@@ -70,7 +73,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['formulario']) && $_POS
     if ($result->num_rows > 0) {
         $mensaje = "Este cliente ya existe. Por favor, verifique los registros o contacte a soporte.";
     } else {
-        // Insertar nuevo cliente
+    // TÍTULO: INSERCIÓN DE NUEVO CLIENTE
+        // Inserta un nuevo cliente en la base de datos
         $stmt = $mysqli->prepare("INSERT INTO C_Clientes (
             rut_empresa_cliente, nombre_empresa_cliente, telefono_empresa_cliente, 
             email_empresa_cliente, id_giro, tipo_empresa_cliente, 
@@ -112,7 +116,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['formulario']) && $_POS
 </head>
 <body>
     <div class="contenedor">
-        <!-- Formulario de creación de cliente -->
+        <!-- TÍTULO: FORMULARIO DE CREACIÓN DE CLIENTE -->
+        <!-- Formulario para agregar un nuevo cliente -->
         <form id="formulario-cliente" method="POST" action="" enctype="multipart/form-data">
             <input type="hidden" name="formulario" value="cliente">
             <h1>Rellena el formulario para agregar un nuevo cliente</h1>
@@ -138,7 +143,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['formulario']) && $_POS
             <button type="submit" class="submit">Crear Cliente</button>
         </form>
 
-        <!-- Lista de clientes -->
+        <!-- TÍTULO: LISTA DE CLIENTES -->
+        <!-- Muestra la lista de clientes existentes -->
         <div class="lista-clientes">
             <h2>Listado de Clientes</h2>
             <div class="tabla-contenedor-lista">
@@ -207,3 +213,4 @@ https://www.itred.cl
 Creado, Programado y Diseñado por ITred Spa.
 BPPJ
 -->
+

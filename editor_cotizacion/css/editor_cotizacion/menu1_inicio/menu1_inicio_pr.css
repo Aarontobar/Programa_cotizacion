@@ -1,4 +1,3 @@
-
 /* 
 Sitio Web Creado por ITred Spa.
 Direccion: Guido Reni #4190
@@ -15,94 +14,94 @@ BPPJ
     ------------------------------------------------------------------------------------------------------------- */
     
     
-    /* comentario pendiente  */
+    /* define la base para el cuerpo  */
     body { 
-        font-family: Arial, sans-serif; /* comentario pendiente */
-        margin: 0; /* comentario pendiente */
-        padding: 0; /* comentario pendiente */
-        background-color: #fff; /* comentario pendiente */
+        font-family: Arial, sans-serif; /* elige la fuente del cuerpo */
+        margin: 0; /* deja en base el tamaño del margin */
+        padding: 0; /* deja en base el tamaño del padding */
+        background-color: #fff; /* elige el color del fondo */
     }
 
 /* TITULO MENU DE NAVEGACION PRINCIPAL */    
 
-    /* comentario pendiente */
+    /* define la apariencia del menú de navegación principal */
     nav {
-        display: flex; /* comentario pendiente */
-        justify-content: center; /* comentario pendiente */
-        background-color: #f0f0f0; /* comentario pendiente */
-        padding: 10px 0; /* comentario pendiente */
-        border-bottom: 1px solid #ddd; /* comentario pendiente */
+        display: flex; /* establece un contenedor flexible */
+        justify-content: center; /* centra los elementos horizontalmente */
+        background-color: #f0f0f0; /* establece un color de fondo gris claro */
+        padding: 10px 0; /* añade espacio interno arriba y abajo */
+        border-bottom: 1px solid #ddd; /* añade una línea divisoria en la parte inferior */
     }
 
 /* TITULO CONTENEDOR DE NAVEGACION */   
 
-    /* comentario pendiente */
+    /* define la apariencia del contenedor que agrupa los botones de navegación */
     .navigation-container {
-        display: flex; /* comentario pendiente */
-        justify-content: center; /* comentario pendiente */
-        gap: 0; /* comentario pendiente */
+        display: flex; /* establece un contenedor flexible */
+        justify-content: center; /* centra los elementos horizontalmente */
+        gap: 0; /* elimina el espacio entre los elementos */
     }
 
 /* TITULO BOTONES PREDISEÑADOS */ 
 
-    /* comentario pendiente */
+    /* define la apariencia específica del botón de prediseñados */
     .boton_prediseñados button{
-        border-right: none; /* comentario pendiente */
+        border-right: none; /* borde derecho del botón prediseñados */
     }
 
 /* TITULO BOTONES CREAR NUEVO */ 
 
-    /* comentario pendiente */
+    /* define la apariencia específica del botón de crear nuevo */
     .boton_crear_nuevo button { 
-        border-right: none; /* comentario pendiente */
+        border-right: none; /* borde derecho del botón crear nuevo */
     }
 
 /* TITULO BOTONES MODIFICAR */ 
 
-    /* comentario pendiente */
+    /* define la apariencia específica del botón de modificar */
     .boton_modificar button {
-        border-right: none; /* comentario pendiente */
+        border-right: none; /* borde derecho el botón modificar */
     }
 
 /* TITULO BOTONES ELIMINAR */ 
 
-    /* comentario pendiente */
+    /* define la apariencia específica del botón de eliminar */
     .boton_eliminar button {
-        border-right: none; /* comentario pendiente */
+        border-right: none; /* borde derecho del botón eliminar */
     }
 
 /* TITULO FORMULARIO */   
 
-    /* comentario pendiente */
+    /* define la apariencia del contenedor que muestra el contenido dinámico */
     form {
-        margin: 0; /* comentario pendiente */
+        margin: 0; /* tamaño del margin */
     }
 
 /* TITULO BOTONES DE NAVEGACION */ 
 
-    /* comentario pendiente */
+    /* esto hace que el menú de navegación tenga diseño y detalles de los botones */
     .main-nav button {
-        padding: 8px 20px; /* comentario pendiente */
-        background-color: #e8e8e8; /* comentario pendiente */
-        border: 1px solid #999; /* comentario pendiente */
-        color: #333; /* comentario pendiente */
-        cursor: pointer; /* comentario pendiente */
-        font-size: 14px; /* comentario pendiente */
-        margin: 0; /* comentario pendiente */
-        min-width: 120px; /* comentario pendiente */
-        text-transform: uppercase; /* comentario pendiente */
+        padding: 8px 20px; /* tamaño del padding de los botones */
+        background-color: #e8e8e8; /* color del fondo */
+        border: 1px solid #999; /* coloca el tamaño y color del borde */
+        color: #333; /* colorea la fuente */
+        cursor: pointer; /* hace un efecto cuando se apunta el cursor al botón */
+        font-size: 14px; /* tamaño de letra */
+        margin: 0; /* tamaño del margin de los botones */
+        min-width: 120px; /* mínimo de tamaño en cuanto a los botones en conjunto */
+        text-transform: uppercase; /* transformación de los textos */
     }
 
-    /* comentario pendiente */
+    /* define el estilo de los botones al pasar el cursor por encima */
     .main-nav button:hover {
-        background-color: #ddd; /* comentario pendiente */
+        background-color: #ddd; /* cambia el color de fondo al pasar el cursor */
     }
 
 /* TITULO CONTENEDOR DEL CONTENIDO */ 
 
-    /* comentario pendiente */
+    /* define el estilo del contenedor principal del contenido */
     .content-container {
-        margin-top: 20px; /* comentario pendiente */
+        margin-top: 20px; /* añade espacio en la parte superior del contenedor */
     }
 
 /* --------------------------------------------------------------------------------------------------------------
@@ -119,3 +118,4 @@ https://www.itred.cl
 Creado, Programado y Diseñado por ITred Spa.
 BPPJ
 */
+

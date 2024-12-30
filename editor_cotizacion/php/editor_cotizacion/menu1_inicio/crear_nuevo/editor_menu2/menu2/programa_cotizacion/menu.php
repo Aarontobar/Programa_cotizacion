@@ -53,59 +53,61 @@ if (isset($_SESSION['id_empresa']) && !empty($_SESSION['id_empresa'])) {
     <title>Menú Principal - Cotización ITred Spa</title>
 
 <!-- TÍTULO: IMPORTACIÓN DE ARCHIVO .CSS -->
+    
     <!-- Llama al archivo CSS -->
     <link rel="stylesheet" href="css/editor_cotizacion/menu1_inicio/crear_nuevo/editor_menu2/menu2/programa_cotizacion/menu.css">
 </head>
 <body>
+<!-- TÍTULO: ADVERTENCIA DE ERROR -->
     <!-- Muestra el mensaje de error, si existe -->
     <?php if ($error): ?>
         <p style="color:red;"><?php echo $error; ?></p>
     <?php endif; ?>
 
     <!-- TÍTULO: NAVEGACIÓN PRINCIPAL -->
-    <!-- formato de botones para navegar entre paginas -->
-    <nav>  
-        <ul class="menu">
-            <li>
-                <a href="#" data-pagina="nueva_cotizacion" 
-                   class="menu-link <?php echo $empresaEncontrada ? '' : 'disabled'; ?>">
-                    Nueva Cotización
-                </a>
-            </li>
-            <li>
-                <a href="#" data-pagina="crear_cliente" 
-                   class="menu-link <?php echo $empresaEncontrada ? '' : 'disabled'; ?>">
-                    Crear Cliente
-                </a>
-            </li>
-            <li>
-                <a href="#" data-pagina="crear_producto" 
-                   class="menu-link <?php echo $empresaEncontrada ? '' : 'disabled'; ?>">
-                    Crear Producto
-                </a>
-            </li>
-            <li>
-                <a href="#" data-pagina="crear_proveedor" 
-                   class="menu-link <?php echo $empresaEncontrada ? '' : 'disabled'; ?>">
-                    Crear Proveedor
-                </a>
-            </li>
-            <li>
-                <a href="#" data-pagina="ver_cotizacion" 
-                   class="menu-link <?php echo $empresaEncontrada ? '' : 'disabled'; ?>">
-                    Ver listado Cotización
-                </a>
-            </li>
-            <li>
-                <a href="#" data-pagina="crear_empresa" class="menu-link">
-                    Crear nueva empresa
-                </a>
-            </li>
-        </ul>
-    </nav>
+        <!-- formato de botones para navegar entre paginas -->
+        <nav>  
+            <ul class="menu">
+                <li>
+                    <a href="#" data-pagina="nueva_cotizacion" 
+                    class="menu-link <?php echo $empresaEncontrada ? '' : 'disabled'; ?>">
+                        Nueva Cotización
+                    </a>
+                </li>
+                <li>
+                    <a href="#" data-pagina="crear_cliente" 
+                    class="menu-link <?php echo $empresaEncontrada ? '' : 'disabled'; ?>">
+                        Crear Cliente
+                    </a>
+                </li>
+                <li>
+                    <a href="#" data-pagina="crear_producto" 
+                    class="menu-link <?php echo $empresaEncontrada ? '' : 'disabled'; ?>">
+                        Crear Producto
+                    </a>
+                </li>
+                <li>
+                    <a href="#" data-pagina="crear_proveedor" 
+                    class="menu-link <?php echo $empresaEncontrada ? '' : 'disabled'; ?>">
+                        Crear Proveedor
+                    </a>
+                </li>
+                <li>
+                    <a href="#" data-pagina="ver_cotizacion" 
+                    class="menu-link <?php echo $empresaEncontrada ? '' : 'disabled'; ?>">
+                        Ver listado Cotización
+                    </a>
+                </li>
+                <li>
+                    <a href="#" data-pagina="crear_empresa" class="menu-link">
+                        Crear nueva empresa
+                    </a>
+                </li>
+            </ul>
+        </nav>
 
     <!-- TÍTULO: CONTENEDOR PARA MOSTRAR EL CONTENIDO -->
-    <div id="contenido-dinamico"></div>
+        <div id="contenido-dinamico"></div>
 
 
 <!-- TÍTULO: IMPORTACIÓN DE ARCHIVO .JS -->
